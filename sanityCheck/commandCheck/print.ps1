@@ -1,0 +1,1 @@
+bash.exe ./sanityCheck/commandCheck/print.sh
