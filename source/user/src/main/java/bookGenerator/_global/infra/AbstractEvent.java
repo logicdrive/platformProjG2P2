@@ -4,12 +4,11 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.messaging.MessageChannel;
 import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.support.MessageBuilder;
-import org.springframework.transaction.support.TransactionSynchronizationAdapter;
-import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.util.MimeTypeUtils;
 
 import bookGenerator.BootApplication;
 import bookGenerator._global.config.kafka.KafkaProcessor;
+import bookGenerator._global.eventBase.EventNameAnnotation;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 
@@ -24,7 +23,7 @@ public class AbstractEvent {
     }
 
     public AbstractEvent() {
-        this.setEventType(this.getClass().getSimpleName());
+        this.setEventType(this.getClass().getAnnotation(EventNameAnnotation.class).eventName());
         this.timestamp = System.currentTimeMillis();
     }
 
@@ -35,7 +34,7 @@ public class AbstractEvent {
         );
         MessageChannel outputChannel = processor.outboundTopic();
         
-        CustomLogger.debug(CustomLoggerType.EFFECT, "Publish event", String.format("{event: %s}", this.toString()));
+        CustomLogger.debugObject(CustomLoggerType.EFFECT, "Publish event", this);
         outputChannel.send(
             MessageBuilder
                 .withPayload(this)
@@ -45,17 +44,6 @@ public class AbstractEvent {
                 )
                 .setHeader("type", getEventType())
                 .build()
-        );
-    }
-
-    public void publishAfterCommit() {
-        TransactionSynchronizationManager.registerSynchronization(
-            new TransactionSynchronizationAdapter() {
-                @Override
-                public void afterCompletion(int status) {
-                    AbstractEvent.this.publish();
-                }
-            }
         );
     }
 
@@ -76,6 +64,6 @@ public class AbstractEvent {
     }
 
     public boolean validate() {
-        return getEventType().equals(getClass().getSimpleName());
+        return getEventType().equals(this.getClass().getAnnotation(EventNameAnnotation.class).eventName());
     }
 }
