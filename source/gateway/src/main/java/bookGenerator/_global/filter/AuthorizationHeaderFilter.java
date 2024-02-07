@@ -15,6 +15,7 @@ import org.springframework.web.server.ServerWebExchange;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator._global.security.JwtDto;
+
 import reactor.core.publisher.Mono;
 
 @Component
@@ -40,7 +41,7 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
                 String authorizationHeader = request.getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
                 String base64Token = authorizationHeader.replace("Bearer ", "");
                 JwtDto jwtDto = new JwtDto(jwtDecoder.decode(base64Token));
-                CustomLogger.debug(CustomLoggerType.ENTER_EXIT, "Jwt token was decoded", String.format("{jwtDto: %s}", jwtDto.toString()));
+                CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "Jwt token was decoded", jwtDto);
 
 
                 ServerHttpRequest mutatedRequest = exchange.getRequest()
