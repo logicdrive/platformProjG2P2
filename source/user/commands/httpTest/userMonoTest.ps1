@@ -1,1 +1,0 @@
-bash.exe .\commands\httpTest\userMonoTest.sh
