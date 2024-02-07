@@ -1,9 +1,17 @@
+global:
+  package_name: bookGenerator
+  service_name: gateway
+
+  open_port: 8088
+  host_port: 8088
+
+
 server:
-  port: 8088
+  port: ${global.open_port}
 
 spring:
   application:
-    name: gateway
+    name: ${global.service_name}
 
   config:
     use-legacy-processing: true
@@ -27,9 +35,9 @@ logging:
     root: WARN
     bookGenerator.gateway.custom: DEBUG
 
-# JWT 설정 및 인증을 위한 Public & Private 키 경로
+# JWT 설정 및 인증을 위한 Public 키 경로
 jwt:
-  issuer: musicStreaming.io
+  issuer: ${global.package_name}.io
   expire-after-seconds: 36000
   public.key: classpath:rsa.public.key
 
