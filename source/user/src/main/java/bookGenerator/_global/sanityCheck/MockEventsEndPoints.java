@@ -1,4 +1,4 @@
-package bookGenerator.sanityCheck;
+package bookGenerator._global.sanityCheck;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;

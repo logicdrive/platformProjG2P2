@@ -1,4 +1,4 @@
-package bookGenerator.user;
+package bookGenerator.endPoint;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

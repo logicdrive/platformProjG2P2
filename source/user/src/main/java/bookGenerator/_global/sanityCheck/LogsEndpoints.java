@@ -1,4 +1,4 @@
-package bookGenerator.sanityCheck;
+package bookGenerator._global.sanityCheck;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -44,7 +44,7 @@ class LogsResDto {
 @RestController
 @RequestMapping("/sanityCheck")
 public class LogsEndpoints {
-    private final String logFilePath = "./logs/logback.log";
+    private final String logFilePath = "./log/logback.log";
 
     
     @GetMapping("/logs")
