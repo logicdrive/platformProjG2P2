@@ -1,3 +1,77 @@
+// Define JPA entity class sample code
+// You need to update createdDate and updatedDate fields by using @PrePersist and @PreUpdate annotations
+@Data
+@EqualsAndHashCode(callSuper=false)
+@Builder
+@AllArgsConstructor
+@NoArgsConstructor
+@Entity
+@Table(name = "App_User")
+public class User extends LoggedEntity {
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Long id;
+
+    private String email;
+
+    private String password;
+
+    private Date createdDate;
+    
+    private Date updatedDate;
+
+
+    public static UserRepository repository() {
+        return BootApplication.applicationContext.getBean(
+            UserRepository.class
+        );
+    }
+
+
+    @PrePersist
+    public void onPrePersist() {
+        this.createdDate = new Date();
+        this.updatedDate = new Date();
+
+        super.onPrePersist();
+    }
+
+    @PreUpdate
+    public void onPreUpdate() {
+        this.updatedDate = new Date();
+
+        super.onPreUpdate();
+    }
+}
+
+// Define JPA repository class sample code
+@RepositoryRestResource(collectionResourceRel = "users", path = "users")
+public interface UserRepository
+    extends PagingAndSortingRepository<User, Long> {
+    Optional<User> findByEmail(String email);
+}
+
+
+
+@Data
+@ToString
+@EqualsAndHashCode(callSuper=false)
+public class UserEvent extends AbstractEvent {
+    protected Long id;
+    protected String email;
+    protected String password;
+    protected Date createdDate;
+    protected Date updatedDate;
+
+    public UserEvent(User aggregate) {
+        super(aggregate);
+    }
+
+    public UserEvent() {
+        super();
+    }
+}
+
 // Kafka event class sample code
 // If you want to use kafka, you should add @EventNameAnnotation(eventName="SignUpCompleted") annotation to the class
 // If your event includes User attributes, you should extend UserEvent class
