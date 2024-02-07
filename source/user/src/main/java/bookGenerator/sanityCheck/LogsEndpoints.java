@@ -61,7 +61,7 @@ public class LogsEndpoints {
             return ResponseEntity.ok(logsResDto);
 
         } catch(Exception e) {
-            CustomLogger.error(e, "", String.format("{%s: %s}", logsReqDto.getClass().getSimpleName(), logsReqDto.toString()));
+            CustomLogger.errorObject(e, logsReqDto);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

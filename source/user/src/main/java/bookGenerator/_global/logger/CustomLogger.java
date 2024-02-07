@@ -29,6 +29,14 @@ public class CustomLogger {
         logger.debug(CustomLogger.buildNormalMessages(type, "", "{}"));
     }
 
+    public static void debugObject(CustomLoggerType type, String message, Object obj) {
+        logger.debug(CustomLogger.buildNormalMessages(type, message, String.format("{%s: %s}", obj.getClass().getSimpleName(), obj.toString())));
+    }
+
+    public static void debugObject(CustomLoggerType type, Object obj) {
+        logger.debug(CustomLogger.buildNormalMessages(type, "", String.format("{%s: %s}", obj.getClass().getSimpleName(), obj.toString())));
+    }
+
     public static String buildNormalMessages(CustomLoggerType type, String message, String params) {
         final StackTraceElement[] ste = Thread.currentThread().getStackTrace();
         return String.format("[%s] [%s] %s: %s", ste[3].toString(), CustomLogger.customLoggerTypeMap.get(type), message, params);
@@ -45,6 +53,14 @@ public class CustomLogger {
 
     public static void error(Exception e) {
         logger.error(CustomLogger.buildErrorMessages(e, "", "{}"));
+    }
+
+    public static void errorObject(Exception e, String message, Object obj) {
+        logger.error(CustomLogger.buildErrorMessages(e, message, String.format("{%s: %s}", obj.getClass().getSimpleName(), obj.toString())));
+    }
+
+    public static void errorObject(Exception e, Object obj) {
+        logger.error(CustomLogger.buildErrorMessages(e, "", String.format("{%s: %s}", obj.getClass().getSimpleName(), obj.toString())));
     }
 
     public static String buildErrorMessages(Exception e, String message, String params) {
