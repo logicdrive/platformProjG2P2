@@ -21,30 +21,32 @@ import lombok.ToString;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 
+
+@Data
+@ToString
+class LogsReqDto {
+    private int lineLength = 10;
+    private String regFilter = "";
+}
+
+@Getter
+@ToString
+class LogsResDto {
+    private final List<String> logs;
+
+    public LogsResDto(List<String> logs) {
+        this.logs = logs;
+    }
+}
+
+
 // 현재 저장된 로그들 중에서 일부분을 간편하게 가져오기 위해서
 @RestController
 @RequestMapping("/sanityCheck")
 public class LogsEndpoints {
     private final String logFilePath = "./logs/logback.log";
 
-
-    @Data
-    @ToString
-    private class LogsReqDto {
-        private int lineLength = 10;
-        private String regFilter = "";
-    }
-
-    @Getter
-    @ToString
-    public class LogsResDto {
-        private final List<String> logs;
-
-        public LogsResDto(List<String> logs) {
-            this.logs = logs;
-        }
-    }
-
+    
     @GetMapping("/logs")
     public ResponseEntity<LogsResDto> logs(@ModelAttribute LogsReqDto logsReqDto) {
 

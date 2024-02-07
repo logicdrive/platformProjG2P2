@@ -10,10 +10,9 @@ import org.springframework.web.bind.annotation.RestController;
 
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+
 import bookGenerator.user.reqDtos.SignInReqDto;
-import bookGenerator.user.reqDtos.SignUpReqDto;
 import bookGenerator.user.reqDtos.UpdateNameReqDto;
-import bookGenerator.user.resDtos.SignUpResDto;
 import bookGenerator.user.service.UserService;
 
 import org.springframework.web.bind.annotation.PutMapping;
@@ -29,23 +28,6 @@ import lombok.RequiredArgsConstructor;
 @RequestMapping("/users")
 public class UserController {
     private final UserService userService;
-
-    @PutMapping("/signUp")
-    public ResponseEntity<SignUpResDto> signUp(@RequestBody SignUpReqDto signUpReqDto) {
-        try {
-
-            CustomLogger.debug(CustomLoggerType.ENTER, "", String.format("{signUpReqDto: %s}", signUpReqDto.toString()));
-        
-            SignUpResDto signUpResDto = new SignUpResDto(this.userService.signUp(signUpReqDto));
-        
-            CustomLogger.debug(CustomLoggerType.EXIT, "", String.format("{signUpResDto: %s}", signUpResDto.toString()));
-            return ResponseEntity.ok(signUpResDto);
-
-        } catch(Exception e) {
-            CustomLogger.error(e, "", String.format("{signUpReqDto: %s}", signUpReqDto.toString()));
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
-        }
-    }
 
     @PutMapping("/signIn")
     public ResponseEntity<String> signIn(@RequestBody SignInReqDto signInReqDtoForToken) {

@@ -1,7 +1,5 @@
 package bookGenerator._global.security;
 
-import java.time.Instant;
-
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
@@ -12,17 +10,29 @@ import org.springframework.security.oauth2.jwt.JwtEncoder;
 import org.springframework.security.oauth2.jwt.JwtEncoderParameters;
 import org.springframework.stereotype.Service;
 
-import bookGenerator.user.reqDtos.SignInReqDto;
+import java.time.Instant;
+
 import lombok.RequiredArgsConstructor;
+
+import bookGenerator.BootApplication;
+import bookGenerator.user.reqDtos.SignInReqDto;
+
 
 @Service
 @RequiredArgsConstructor
 public class JwtTokenService {
+    public static JwtTokenService getInstance() {
+        return BootApplication.applicationContext.getBean(
+            JwtTokenService.class
+        );
+    }
+    
     private final AuthenticationManager authenticationManager; // Spring Security를 활용한 인증을 위해서
     private final JwtEncoder jwtEncoder; // JWT의 간편한 생성을 위한 외부라이브러리
     private @Value("${jwt.issuer}") String jwtConfigIssuer;
     private @Value("${jwt.expire-after-seconds}") Long jwtConfigExpireAfterSeconds;
 
+    
     public String tokenValue(SignInReqDto signInReqDto) {
         try {
             // Spring Security를 활용한 인증을 수행하기 위해서
