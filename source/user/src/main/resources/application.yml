@@ -1,3 +1,7 @@
+global:
+  package_name: bookGenerator
+
+
 server:
   port: 8080
 
@@ -30,10 +34,10 @@ spring:
       bindings:
         event-in:
           group: user
-          destination: bookGenerator
+          destination: ${global.package_name}
           contentType: application/json
         event-out:
-          destination: bookGenerator
+          destination: ${global.package_name}
           contentType: application/json
 
 logging:
@@ -43,7 +47,7 @@ logging:
 
 # JWT 설정 및 인증을 위한 Public & Private 키 경로
 jwt:
-  issuer: bookGenerator.io
+  issuer: ${global.package_name}.io
   expire-after-seconds: 36000
   public.key: classpath:rsa.public.key
   private.key: classpath:rsa.private.key
