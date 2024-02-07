@@ -5,13 +5,16 @@ import org.springframework.stereotype.Service;
 
 import bookGenerator._global.event.SignUpCompleted;
 import bookGenerator._global.event.UserNameUpdated;
+import bookGenerator._global.exceptions.UserNotFoundException;
 import bookGenerator._global.security.JwtTokenService;
+
 import bookGenerator.domain.User;
 import bookGenerator.domain.UserRepository;
-import bookGenerator.user.UserNotFoundException;
+
 import bookGenerator.user.reqDtos.SignInReqDto;
 import bookGenerator.user.reqDtos.SignUpReqDto;
 import bookGenerator.user.reqDtos.UpdateNameReqDto;
+
 import lombok.NonNull;
 import lombok.RequiredArgsConstructor;
 

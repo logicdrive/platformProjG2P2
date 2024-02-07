@@ -1,4 +1,4 @@
-package bookGenerator.user;
+package bookGenerator._global.exceptions;
 
 import org.springframework.http.HttpStatus;
 

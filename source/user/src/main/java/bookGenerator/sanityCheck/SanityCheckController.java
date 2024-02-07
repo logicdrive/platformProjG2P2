@@ -7,12 +7,17 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+import bookGenerator._global.exceptions.DivByZeroException;
 import bookGenerator._global.infra.AbstractEvent;
-
-import bookGenerator.sanityCheck.exceptions.DivByZeroException;
 import bookGenerator.sanityCheck.reqDtos.LogsReqDto;
 import bookGenerator.sanityCheck.resDtos.AuthenticationCheckResDto;
 import bookGenerator.sanityCheck.resDtos.LogsResDto;
+
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Scanner;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -30,7 +35,6 @@ import lombok.RequiredArgsConstructor;
 @RequiredArgsConstructor
 @RequestMapping("/sanityCheck")
 public class SanityCheckController {
-    private final SanityCheckService sanityCheckService;
     private boolean isNormalSanityCheck = true;
 
     // 정상적인 통신 여부를 단순하게 확인해보기 위해서
@@ -63,11 +67,30 @@ public class SanityCheckController {
     // 현재 저장된 로그들 중에서 일부분을 간편하게 가져오기 위해서
     @GetMapping("/logs")
     public ResponseEntity<LogsResDto> logs(@ModelAttribute LogsReqDto logsReqDto) {
+        String logFilePath = "./logs/logback.log";
+
         try {
 
             CustomLogger.debug(CustomLoggerType.ENTER);
 
-            LogsResDto logsResDto = this.sanityCheckService.logs(logsReqDto);
+
+            List<String> logs = new ArrayList<>();
+
+            CustomLogger.debug(CustomLoggerType.EFFECT, "Try to read logs", String.format("{filePath: %s}", logFilePath));
+            
+            Scanner myReader = new Scanner(new File(logFilePath));
+            while (myReader.hasNextLine())
+            {
+                String readLog = myReader.nextLine();
+                if (logsReqDto.getRegFilter().isEmpty()) logs.add(readLog);
+                else if(readLog.matches(logsReqDto.getRegFilter())) logs.add(readLog);
+            }
+            myReader.close();
+            
+            CustomLogger.debug(CustomLoggerType.EFFECT, "Read logs", String.format("{logsSize: %d}", logs.size()));
+
+            LogsResDto logsResDto = new LogsResDto(logs.subList(Math.max(logs.size()-logsReqDto.getLineLength(), 0), logs.size()));
+
 
             CustomLogger.debug(CustomLoggerType.EXIT, "", String.format("{logsSize: %d}", logsResDto.getLogs().size()));
             return ResponseEntity.ok(logsResDto);

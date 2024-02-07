@@ -2,9 +2,11 @@ package bookGenerator.user.service;
 
 import org.springframework.stereotype.Service;
 
+import bookGenerator._global.exceptions.UserNotFoundException;
+
 import bookGenerator.domain.User;
 import bookGenerator.domain.UserRepository;
-import bookGenerator.user.UserNotFoundException;
+
 import lombok.RequiredArgsConstructor;
 
 @Service
