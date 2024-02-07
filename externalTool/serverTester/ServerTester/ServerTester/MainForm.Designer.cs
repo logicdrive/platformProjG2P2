@@ -63,6 +63,7 @@
             // 
             this.TestGroupListBox.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.TestGroupListBox.FormattingEnabled = true;
+            this.TestGroupListBox.HorizontalScrollbar = true;
             this.TestGroupListBox.ItemHeight = 32;
             this.TestGroupListBox.Location = new System.Drawing.Point(37, 141);
             this.TestGroupListBox.Name = "TestGroupListBox";
@@ -83,6 +84,7 @@
             // 
             this.TestListBox.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.TestListBox.FormattingEnabled = true;
+            this.TestListBox.HorizontalScrollbar = true;
             this.TestListBox.ItemHeight = 32;
             this.TestListBox.Location = new System.Drawing.Point(268, 141);
             this.TestListBox.Name = "TestListBox";
@@ -113,6 +115,7 @@
             // 
             this.RequestHistoryListBox.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
             this.RequestHistoryListBox.FormattingEnabled = true;
+            this.RequestHistoryListBox.HorizontalScrollbar = true;
             this.RequestHistoryListBox.ItemHeight = 32;
             this.RequestHistoryListBox.Location = new System.Drawing.Point(850, 141);
             this.RequestHistoryListBox.Name = "RequestHistoryListBox";
@@ -137,10 +140,11 @@
             // 
             // RequestLogTextBox
             // 
-            this.RequestLogTextBox.Enabled = false;
             this.RequestLogTextBox.Location = new System.Drawing.Point(12, 40);
             this.RequestLogTextBox.Multiline = true;
             this.RequestLogTextBox.Name = "RequestLogTextBox";
+            this.RequestLogTextBox.ReadOnly = true;
+            this.RequestLogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.RequestLogTextBox.Size = new System.Drawing.Size(776, 425);
             this.RequestLogTextBox.TabIndex = 0;
             // 
@@ -168,10 +172,11 @@
             // 
             // ResponseLogTextBox
             // 
-            this.ResponseLogTextBox.Enabled = false;
             this.ResponseLogTextBox.Location = new System.Drawing.Point(6, 38);
             this.ResponseLogTextBox.Multiline = true;
             this.ResponseLogTextBox.Name = "ResponseLogTextBox";
+            this.ResponseLogTextBox.ReadOnly = true;
+            this.ResponseLogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.ResponseLogTextBox.Size = new System.Drawing.Size(782, 427);
             this.ResponseLogTextBox.TabIndex = 0;
             // 
