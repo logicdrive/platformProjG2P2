@@ -17,7 +17,6 @@ public class SanityCheckEndpoints {
     private boolean isNormalSanityCheck = true;
 
     
-    // 정상적인 통신 여부를 단순하게 확인해보기 위해서
     @GetMapping
     public ResponseEntity<Void> sanityCheck() {
         CustomLogger.debug(CustomLoggerType.ENTER_EXIT, "",

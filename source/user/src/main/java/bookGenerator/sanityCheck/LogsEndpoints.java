@@ -45,7 +45,6 @@ public class LogsEndpoints {
         }
     }
 
-    // 현재 저장된 로그들 중에서 일부분을 간편하게 가져오기 위해서
     @GetMapping("/logs")
     public ResponseEntity<LogsResDto> logs(@ModelAttribute LogsReqDto logsReqDto) {
 
@@ -62,7 +61,7 @@ public class LogsEndpoints {
             return ResponseEntity.ok(logsResDto);
 
         } catch(Exception e) {
-            CustomLogger.error(e, "", String.format("{logsReqDto: %s}", logsReqDto.toString()));
+            CustomLogger.error(e, "", String.format("{%s: %s}", logsReqDto.getClass().getSimpleName(), logsReqDto.toString()));
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
