@@ -9,8 +9,10 @@ import bookGenerator.domain.UserManageService;
 
 @Service
 public class ServiceUserDetailService implements UserDetailsService {
+
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         return new ServiceUserDetail(UserManageService.getInstance().findByEmailOrThrow(username));
     }
+    
 }

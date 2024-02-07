@@ -7,6 +7,7 @@ import lombok.Getter;
 
 @Getter
 public class AuthenticationFailedException extends CustomException {
+
     public AuthenticationFailedException(String extraMessage) {
         super(
             HttpStatus.BAD_REQUEST,
@@ -16,4 +17,5 @@ public class AuthenticationFailedException extends CustomException {
             "유효한 이메일, 비밀번호인지 확인하거나 계정이 없을 경우 회원가입을 해주세요."
         );
     }
+    
 }

@@ -17,6 +17,7 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     private final UserRepository userRepository;
     private final PasswordEncoder passwordEncoder;
 
+    
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
         // 프로그램 실행시에 자동으로 Admin 권한 계정을 추가시키기 위해서

@@ -11,6 +11,7 @@ import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 
 public class LoggedEntity {
+
     @PrePersist
     public void onPrePersist() {
         CustomLogger.debugObject(
@@ -66,4 +67,5 @@ public class LoggedEntity {
             this
         );
     }
+    
 }

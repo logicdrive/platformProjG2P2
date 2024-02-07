@@ -32,5 +32,4 @@ public class MockEventsEndPoints {
             CustomLogger.error(e);
         }
     }
-
 }
