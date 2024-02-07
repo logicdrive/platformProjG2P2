@@ -9,6 +9,28 @@ public class SignUpCompleted extends UserEvent {
     }
 }
 
+
+// Make request Dto class
+@Data
+@ToString
+class SignUpReqDto {
+    private String email;
+    private String password;
+    private String name;
+}
+
+// Make response Dto class
+@Getter
+@ToString
+class SignUpResDto {
+    private final Long id;
+
+    public SignUpResDto(User user) {
+        this.id = user.getId();
+    }
+}
+
+
 // Http end point class sample code
 // You should include the following annotations to the class 
 @RestController
@@ -73,4 +95,5 @@ public class SignUpEndPoints {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
         }
     }
+    
 }
