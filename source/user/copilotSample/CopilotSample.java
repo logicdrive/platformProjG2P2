@@ -169,3 +169,30 @@ public class SignUpEndPoints {
     }
     
 }
+
+
+// Policy class sample code
+@Service
+@Transactional
+public class SignUpCompleted_LogEvent_Policy {
+
+    // Policy function to handle SignUpCompleted event
+    // When error is occured, log the error by using CustomLogger.errorObject
+    @StreamListener(
+        value = KafkaProcessor.INPUT,
+        condition = "headers['type']=='SignUpCompleted'"
+    )
+    public void signUpCompleted_LogEvent_Policy(
+        @Payload SignUpCompleted signUpCompleted
+    ) {
+        try
+        {
+            
+            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "LogEvent", signUpCompleted);
+
+        } catch(Exception e) {
+            CustomLogger.errorObject(e, "", signUpCompleted);        
+        }
+    }
+
+}
