@@ -6,6 +6,7 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+import bookGenerator.BootApplication;
 import bookGenerator._global.infra.LoggedEntity;
 
 import javax.persistence.GeneratedValue;
@@ -42,6 +43,13 @@ public class User extends LoggedEntity {
     private Date createdDate;
     
     private Date updatedDate;
+
+
+    public static UserRepository repository() {
+        return BootApplication.applicationContext.getBean(
+            UserRepository.class
+        );
+    }
 
 
     @PrePersist
