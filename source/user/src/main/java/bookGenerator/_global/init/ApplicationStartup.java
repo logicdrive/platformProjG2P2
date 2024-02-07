@@ -5,11 +5,13 @@ import org.springframework.context.ApplicationListener;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Component;
 
+import lombok.RequiredArgsConstructor;
+
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+
 import bookGenerator.domain.User;
 import bookGenerator.domain.UserRepository;
-import lombok.RequiredArgsConstructor;
 
 @Component
 @RequiredArgsConstructor
@@ -20,6 +22,13 @@ public class ApplicationStartup implements ApplicationListener<ApplicationReadyE
     
     @Override
     public void onApplicationEvent(final ApplicationReadyEvent event) {
+        if(!(event.getApplicationContext().getClass().getName().contains("AnnotationConfigServletWebServerApplicationContext")))
+            return;
+
+        this.addAdminAccount();
+    }
+
+    private void addAdminAccount() {
         // 프로그램 실행시에 자동으로 Admin 권한 계정을 추가시키기 위해서
         String adminPassword = "admin";
         User savedUser = this.userRepository.save(
