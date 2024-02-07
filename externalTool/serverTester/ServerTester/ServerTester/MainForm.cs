@@ -1,4 +1,5 @@
 ﻿using System;
+using RestSharp;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
+using ServerTester.Util;
 
 namespace ServerTester
 {
@@ -19,8 +21,9 @@ namespace ServerTester
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // print Hello, World ! to the console
-            Console.WriteLine("Hello, World !");
+            // HTTP Get request to "http://localhost:8082/sanityCheck"
+            string response = HttpUtil.Get("http://localhost:8082", "sanityCheck");
+            MessageBox.Show(response);
         }
     }
 }
