@@ -21,9 +21,7 @@ namespace ServerTester
 
         private void button1_Click(object sender, EventArgs e)
         {
-            // HTTP Get request to "http://localhost:8082/sanityCheck"
-            string response = HttpUtil.Get("http://localhost:8082", "sanityCheck");
-            MessageBox.Show(response);
+
         }
     }
 }
