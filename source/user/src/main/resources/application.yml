@@ -1,13 +1,17 @@
 global:
   package_name: bookGenerator
+  service_name: user
+
+  open_port: 8080
+  host_port: 8082
 
 
 server:
-  port: 8080
+  port: ${global.open_port}
 
 spring:
   application:
-    name: user
+    name: ${global.service_name}
 
   config:
     use-legacy-processing: true
@@ -33,7 +37,7 @@ spring:
 
       bindings:
         event-in:
-          group: user
+          group: ${global.service_name}
           destination: ${global.package_name}
           contentType: application/json
         event-out:
@@ -58,7 +62,7 @@ spring:
   profiles: host
   cloud.stream.kafka.binder.brokers: localhost:9092
 
-server.port: 8082
+server.port: ${global.host_port}
 
 ---
 
