@@ -16,5 +16,11 @@ namespace ServerTester
         {
             InitializeComponent();
         }
+
+        private void button1_Click(object sender, EventArgs e)
+        {
+            // print Hello, World ! to the console
+            Console.WriteLine("Hello, World !");
+        }
     }
 }
