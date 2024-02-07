@@ -16,3 +16,10 @@ frontend/node_modules
 **/__pycache__
 **/.flaskenv
 **/venv
+
+# .Netframework
+.vs/
+bin/
+obj/
+*.[Cc]ache
+*.pdb
