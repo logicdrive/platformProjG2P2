@@ -8,7 +8,7 @@ import org.springframework.transaction.support.TransactionSynchronizationAdapter
 import org.springframework.transaction.support.TransactionSynchronizationManager;
 import org.springframework.util.MimeTypeUtils;
 
-import bookGenerator.UserApplication;
+import bookGenerator.BootApplication;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
@@ -30,7 +30,7 @@ public class AbstractEvent {
 
     // 생성된 이벤트를 Kafka로 발행시키기 위해서
     public void publish() {
-        KafkaProcessor processor = UserApplication.applicationContext.getBean(
+        KafkaProcessor processor = BootApplication.applicationContext.getBean(
             KafkaProcessor.class
         );
         MessageChannel outputChannel = processor.outboundTopic();

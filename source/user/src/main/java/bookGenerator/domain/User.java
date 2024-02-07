@@ -6,7 +6,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
-import bookGenerator.UserApplication;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 
@@ -46,14 +45,6 @@ public class User {
     private Date createdDate;
     
     private Date updatedDate;
-
-
-    public static UserRepository repository() {
-        UserRepository userRepository = UserApplication.applicationContext.getBean(
-            UserRepository.class
-        );
-        return userRepository;
-    }
 
 
     @PrePersist

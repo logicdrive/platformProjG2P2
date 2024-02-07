@@ -9,11 +9,11 @@ import bookGenerator._global.config.kafka.KafkaProcessor;
 
 @SpringBootApplication
 @EnableBinding(KafkaProcessor.class)
-public class UserApplication {
+public class BootApplication {
 
     public static ApplicationContext applicationContext;
 
     public static void main(String[] args) {
-        applicationContext = SpringApplication.run(UserApplication.class, args);
+        applicationContext = SpringApplication.run(BootApplication.class, args);
     }
 }
