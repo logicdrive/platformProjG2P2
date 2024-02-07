@@ -52,19 +52,20 @@ public class User {
         this.createdDate = new Date();
         this.updatedDate = new Date();
 
-        CustomLogger.debug(
+
+        CustomLogger.debugObject(
             CustomLoggerType.EFFECT,
             String.format("Try to create %s by using JPA", this.getClass().getSimpleName()),
-            String.format("{%s: %s}", this.getClass().getSimpleName(), this.toString())
+            this
         );
     }
 
     @PostPersist
     public void onPostPersist() {
-        CustomLogger.debug(
+        CustomLogger.debugObject(
             CustomLoggerType.EFFECT,
             String.format("%s is created by using JPA", this.getClass().getSimpleName()),
-            String.format("{%s: %s}", this.getClass().getSimpleName(), this.toString())
+            this
         );
     }
 
@@ -73,38 +74,38 @@ public class User {
     public void onPreUpdate() {
         this.updatedDate = new Date();
         
-        CustomLogger.debug(
+        CustomLogger.debugObject(
             CustomLoggerType.EFFECT,
             String.format("Try to update %s by using JPA", this.getClass().getSimpleName()),
-            String.format("{%s: %s}", this.getClass().getSimpleName(), this.toString())
+            this
         );
     }
 
     @PostUpdate
     public void onPostUpdate() {
-        CustomLogger.debug(
+        CustomLogger.debugObject(
             CustomLoggerType.EFFECT,
             String.format("%s is updated by using JPA", this.getClass().getSimpleName()),
-            String.format("{%s: %s}", this.getClass().getSimpleName(), this.toString())
+            this
         );
     }
 
 
     @PreRemove
     public void onPreRemove() {
-        CustomLogger.debug(
-            CustomLoggerType.EFFECT, 
+        CustomLogger.debugObject(
+            CustomLoggerType.EFFECT,
             String.format("Try to delete %s by using JPA", this.getClass().getSimpleName()),
-            String.format("{%s: %s}", this.getClass().getSimpleName(), this.toString())
+            this
         );
     }
 
     @PostRemove
     public void onPostRemove() {
-        CustomLogger.debug(
+        CustomLogger.debugObject(
             CustomLoggerType.EFFECT,
             String.format("%s is deleted by using JPA", this.getClass().getSimpleName()),
-            String.format("{%s: %s}", this.getClass().getSimpleName(), this.toString())
+            this
         );
     }
 }
