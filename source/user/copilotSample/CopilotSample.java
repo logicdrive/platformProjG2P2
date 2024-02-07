@@ -1,5 +1,5 @@
 // Define JPA entity class sample code
-// You need to update createdDate and updatedDate fields by using @PrePersist and @PreUpdate annotations
+// Update createdDate and updatedDate fields by using @PrePersist and @PreUpdate annotations with LoggedEntity
 @Data
 @EqualsAndHashCode(callSuper=false)
 @Builder
@@ -73,8 +73,8 @@ public class UserEvent extends AbstractEvent {
 }
 
 // Kafka event class sample code
-// If you want to use kafka, you should add @EventNameAnnotation(eventName="SignUpCompleted") annotation to the class
-// If your event includes User attributes, you should extend UserEvent class
+// Add @EventNameAnnotation(eventName="SignUpCompleted") annotation to name of the kafa event
+// Extend UserEvent class to get all User attributes
 @EventNameAnnotation(eventName="SignUpCompleted")
 @NoArgsConstructor
 public class SignUpCompleted extends UserEvent {
@@ -84,7 +84,7 @@ public class SignUpCompleted extends UserEvent {
 }
 
 
-// Make request Dto class
+// Request Dto class sample code
 @Data
 @ToString
 class SignUpReqDto {
@@ -93,7 +93,7 @@ class SignUpReqDto {
     private String name;
 }
 
-// Make response Dto class
+// Response Dto class sample code
 @Getter
 @ToString
 class SignUpResDto {
@@ -106,19 +106,18 @@ class SignUpResDto {
 
 
 // Http end point class sample code
-// You should include the following annotations to the class 
 @RestController
 @Transactional
 @RequiredArgsConstructor
 @RequestMapping("/users")
 public class SignUpEndPoints {
 
-    // When you create function, you should include try ~ catch block to handle exception
+    // Include try ~ catch block to handle exception and Log by using CustomLogger.errorObject
     @PutMapping("/signUp")
     public ResponseEntity<SignUpResDto> signUp(@RequestBody SignUpReqDto signUpReqDto) {
         try {
 
-            // You should log ReqDto class by using CustomLogger.debugObject at front
+            // Log ReqDto class by using CustomLogger.debugObject at front
             CustomLogger.debugObject(CustomLoggerType.ENTER, signUpReqDto);
 
             // Make a new User object and save it to the database
@@ -134,7 +133,7 @@ public class SignUpEndPoints {
             // Publish event by using Kafka
             (new SignUpCompleted(savedUser)).publish();
 
-            // You should log ResDto class by using CustomLogger.debugObject at back
+            // Log ResDto class by using CustomLogger.debugObject at back
             SignUpResDto signUpResDto = new SignUpResDto(savedUser);
             CustomLogger.debugObject(CustomLoggerType.EXIT, signUpResDto);
 
@@ -142,7 +141,6 @@ public class SignUpEndPoints {
             
         } catch(Exception e) {
 
-            // You need to log by using CustomLogger.errorObject and return INTERNAL_SERVER_ERROR if exception is occured
             CustomLogger.errorObject(e, signUpReqDto);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
 
@@ -155,7 +153,7 @@ public class SignUpEndPoints {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, updateNameReqDto);
 
-            // You can use UserManageService.getInstance() to query user
+            // Using UserManageService.getInstance() to query user
             User userToUpdate = UserManageService.getInstance().findByIdOrThrow(userId);
             userToUpdate.setName(updateNameReqDto.getName());
             User savedUser = User.repository().save(userToUpdate);
