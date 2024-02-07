@@ -2,6 +2,7 @@ package bookGenerator.sanityCheck;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -15,12 +16,15 @@ import bookGenerator._global.infra.AbstractEvent;
 @RestController
 @RequestMapping("/sanityCheck")
 public class MockEventsEndPoints {
+    @Value("${global.package_name}")
+    private String globalPackageName;
 
+    
     @PostMapping("/mock/{eventName}")
     public void mockEvents(@PathVariable String eventName, @RequestBody String jsonData) {
         try {
             
-            Class<?> eventClass = Class.forName(String.format("bookGenerator._global.event.%s", eventName));
+            Class<?> eventClass = Class.forName(String.format("%s._global.event.%s", this.globalPackageName, eventName));
             AbstractEvent event = (AbstractEvent)((new ObjectMapper()).readValue(jsonData, eventClass));
             event.publish();
 
