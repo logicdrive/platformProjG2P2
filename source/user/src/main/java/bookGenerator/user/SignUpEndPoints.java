@@ -8,12 +8,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
 
+import javax.transaction.Transactional;
+
 import lombok.Data;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import lombok.ToString;
-
-import javax.transaction.Transactional;
 
 import bookGenerator._global.event.SignUpCompleted;
 import bookGenerator._global.logger.CustomLogger;

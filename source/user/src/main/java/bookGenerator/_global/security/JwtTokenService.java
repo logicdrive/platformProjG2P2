@@ -15,7 +15,6 @@ import java.time.Instant;
 import lombok.RequiredArgsConstructor;
 
 import bookGenerator.BootApplication;
-import bookGenerator.user.reqDtos.SignInReqDto;
 
 
 @Service
@@ -33,13 +32,13 @@ public class JwtTokenService {
     private @Value("${jwt.expire-after-seconds}") Long jwtConfigExpireAfterSeconds;
 
     
-    public String tokenValue(SignInReqDto signInReqDto) {
+    public String tokenValue(String email, String password) {
         try {
             // Spring Security를 활용한 인증을 수행하기 위해서
             // 인증 실패시 자동으로 예외가 발생됨
             Authentication authentication =
                 this.authenticationManager.authenticate(
-                    new UsernamePasswordAuthenticationToken(signInReqDto.getEmail(), signInReqDto.getPassword()));
+                    new UsernamePasswordAuthenticationToken(email, password));
             
             ServiceUserDetail serviceUserDetail = ((ServiceUserDetail) authentication.getPrincipal());
             JwtEncoderParameters jwtParameters = JwtEncoderParameters.from(
