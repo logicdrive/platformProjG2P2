@@ -30,11 +30,11 @@ namespace ServerTester
             MessageBox.Show(token);
 
 
-            // HTTP GET request to "http://localhost:8088/api/user/sanityCheck/authenticationCheck" with Authorization header token
+            // HTTP Get request to "http://localhost:8088/api/user/sanityCheck/authenticationCheck" with Authorization header token
             response = HttpUtil.request(Method.Get, "http://localhost:8088", "api/user/sanityCheck/authenticationCheck", "", new Dictionary<string, string> { { "Authorization", token } });
             MessageBox.Show(response.StatusCode + " / " + response.Content);
 
-            // HTTP PUT request to "http://localhost:8088/api/user/users/updateName" with json body and Authorization header token
+            // HTTP Put request to "http://localhost:8088/api/user/users/updateName" with json body and Authorization header token
             response = HttpUtil.request(Method.Put, "http://localhost:8088", "api/user/users/updateName", "{\"name\":\"changedTestName1\"}", new Dictionary<string, string> { { "Authorization", token } });
             MessageBox.Show(response.StatusCode + " / " + response.Content);
         }
