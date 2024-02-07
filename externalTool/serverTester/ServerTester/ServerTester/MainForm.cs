@@ -17,9 +17,20 @@ namespace ServerTester
         public MainForm()
         {
             InitializeComponent();
+            this.Size = new Size(1125, 620);
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void TestExecuteButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TestInfoButton_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void TestButton_Click(object sender, EventArgs e)
         {
 
         }
