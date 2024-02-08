@@ -9,7 +9,10 @@ namespace ServerTester.TestItem
 {
     internal class TestItemService
     {
-        public List<TestItemDto> testItemDtos { get; } = new List<TestItemDto>();
+        public Dictionary<String, List<TestItemDto>> testItemDtosDic { get; } = new Dictionary<string, List<TestItemDto>>();
+
+        public int totalCount = 0;
+
 
         public TestItemService()
         {
@@ -22,7 +25,10 @@ namespace ServerTester.TestItem
                     if (filePath.Contains("copilotSample"))
                         continue;
 
-                    testItemDtos.Add(this.loadXmlFile(filePath));
+                    TestItemDto testItemDto = this.loadXmlFile(filePath);
+                    if (!testItemDtosDic.ContainsKey(testItemDto.description.group))
+                        testItemDtosDic.Add(testItemDto.description.group, new List<TestItemDto> {});
+                    this.totalCount += 1;
                 }
 
             }

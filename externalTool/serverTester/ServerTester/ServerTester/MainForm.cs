@@ -26,7 +26,9 @@ namespace ServerTester
             this.Size = new Size(1125, 650);
             
             this.testItemService = new TestItemService();
-            HelpTextBox.Text = string.Format("{0}개의 테스트 항목이 성공적으로 로드됨 !", this.testItemService.testItemDtos.Count);
+            HelpTextBox.Text = string.Format("{0}개의 테스트 항목이 성공적으로 로드됨 !", this.testItemService.totalCount);
+        
+            
         }
 
         private void TestExecuteButton_Click(object sender, EventArgs e)
