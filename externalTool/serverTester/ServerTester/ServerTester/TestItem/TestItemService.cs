@@ -104,7 +104,7 @@ namespace ServerTester.TestItem
                     testItemTestDto.resourceUrl
                 );
                 testItemTestResultDto.statusCode = response.StatusCode;
-                testItemTestResultDto.requestLog = makeRequestLog(response.Request);
+                testItemTestResultDto.requestLog = makeRequestLog(response.Request, testItemTestDto);
                 testItemTestResultDto.responseLog = makeResponseLog(response);
 
 
@@ -138,10 +138,11 @@ namespace ServerTester.TestItem
             }
         }
 
-        public string makeRequestLog(RestRequest request)
+        public string makeRequestLog(RestRequest request, TestItemTestDto testItemTestDto)
         {
             List<string> reqeustLogs = new List<string> {
-                string.Format("{0} {1}", request.Method, request.Resource)
+                string.Format("{0} {1}/{2}", request.Method, testItemTestDto.baseUrl, request.Resource),
+                ""
             };
 
             foreach (Parameter parameter in request.Parameters)
@@ -153,7 +154,9 @@ namespace ServerTester.TestItem
         public string makeResponseLog(RestResponse response)
         {
             List<string> responseLogs = new List<string> {
-                string.Format("{0}({1}) {2}", response.StatusCode, (int)(response.StatusCode), response.StatusDescription)
+                string.Format("{0}({1}) {2}", response.StatusCode, (int)(response.StatusCode), response.StatusDescription),
+                "",
+                response.Content
             };
 
             return string.Join(Environment.NewLine, responseLogs);
