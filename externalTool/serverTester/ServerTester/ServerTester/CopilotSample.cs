@@ -38,6 +38,8 @@ namespace ServerTester
             // HTTP Put request to "http://localhost:8088/api/user/users/updateName" with json body and Authorization header token
             response = HttpUtil.request(Method.Put, "http://localhost:8088", "api/user/users/updateName", "{\"name\":\"changedTestName1\"}", new Dictionary<string, string> { { "Authorization", token } });
             MessageBox.Show(response.StatusCode + " / " + response.Content);
+
+            HelpTextBox.Text = string.Format("{0}개의 테스트 항목이 성공적으로 로드됨 !", this.testItemService.testItemDtos.Count);
         }
 
         private void controlModifySampleCode()
@@ -109,5 +111,48 @@ namespace ServerTester
                 }
             }
         }
+
+        private void etcSample()
+        {
+
+        }
+    }
+
+
+    internal class TestItemService
+    {
+        public List<TestItemDto> testItemDtos { get; } = new List<TestItemDto>();
+    }
+
+    class TestItemDto
+    {
+        public TestItemDescriptionDto description { get; set; } = new TestItemDescriptionDto();
+        public List<TestItemTestDto> tests { get; set; } = new List<TestItemTestDto>();
+    }
+
+    class TestItemDescriptionDto
+    {
+        public string group { get; set; } = "";
+        public string title { get; set; } = "";
+        public string help { get; set; } = "";
+    }
+
+    class TestItemTestDto
+    {
+        public String title { get; set; } = "";
+        public String help { get; set; } = "";
+
+        public String method { get; set; } = "";
+        public String baseUrl { get; set; } = "";
+        public String resourceUrl { get; set; } = "";
+
+
+        public List<TestItemTestCheckDto> checks { get; set; } = new List<TestItemTestCheckDto>();
+    }
+
+    class TestItemTestCheckDto
+    {
+        public String type { get; set; } = "";
+        public String value { get; set; } = "";
     }
 }
