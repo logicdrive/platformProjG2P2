@@ -102,6 +102,7 @@ namespace ServerTester
 
 
             MessageBox.Show("테스트가 성공적으로 완료되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.TestListBox_SelectedIndexChanged(null, null);
         }
 
         private void EachTestExecuteButton_Click(object sender, EventArgs e)
@@ -134,7 +135,7 @@ namespace ServerTester
 
 
             MessageBox.Show("성공적으로 요청되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.RequestHistoryListBox_SelectedIndexChanged(null, null);
+            this.TestListBox_SelectedIndexChanged(null, null);
         }
 
 
@@ -142,6 +143,11 @@ namespace ServerTester
         {
             if ((TestGroupListBox.SelectedItem == null) || (TestGroupListBox.SelectedItem.ToString().Length <= 0))
                 return;
+            RequestHistoryListBox.Items.Clear();
+            ResultLogTextBox.Text = "";
+            RequestLogTextBox.Text = "";
+            ResponseLogTextBox.Text = "";
+
 
             TestListBox.Items.Clear();
             foreach (TestItemDto testItemDto in this.testItemService.testItemDtosDic[TestGroupListBox.SelectedItem.ToString()])
@@ -151,13 +157,26 @@ namespace ServerTester
         private void TestListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(TestListBox.SelectedIndex < 0) return;
+            ResultLogTextBox.Text = "";
+            RequestLogTextBox.Text = "";
+            ResponseLogTextBox.Text = "";
+
 
             TestItemDto selectedTestItemDto = this.testItemService.testItemDtosDic[TestGroupListBox.SelectedItem.ToString()][TestListBox.SelectedIndex];
             HelpTextBox.Text = string.Format("{0}({1})", selectedTestItemDto.description.help, selectedTestItemDto.filePath);
 
             RequestHistoryListBox.Items.Clear();
             foreach (TestItemTestDto test in selectedTestItemDto.tests)
-                RequestHistoryListBox.Items.Add(test.title);
+            {
+                if((test.result != null) && (test.result.requestLog.Length > 0))
+                {
+                    RequestHistoryListBox.Items.Add(string.Format(
+                        "[{0}] {1}", test.result.statusCode.ToString(), test.title
+                    ));
+                }
+                else
+                    RequestHistoryListBox.Items.Add(test.title);
+            }
         }
 
         private void RequestHistoryListBox_SelectedIndexChanged(object sender, EventArgs e)

@@ -102,6 +102,7 @@ namespace ServerTester.TestItem
                     testItemTestDto.baseUrl, 
                     testItemTestDto.resourceUrl
                 );
+                testItemTestResultDto.statusCode = response.StatusCode;
                 testItemTestResultDto.requestLog = makeRequestLog(response.Request);
                 testItemTestResultDto.responseLog = makeResponseLog(response);
 
@@ -198,6 +199,7 @@ namespace ServerTester.TestItem
         public String resultLog { get; set; } = "";
         public String requestLog { get; set; } = "";
         public String responseLog { get; set; } = "";
+        public HttpStatusCode statusCode { get; set; } = HttpStatusCode.OK;
         public bool isPass { get; set; } = true;
     }
 }
