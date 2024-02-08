@@ -1,0 +1,4090 @@
+{
+  "collectedData": {
+    "id": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+    "name": "collectedData",
+    "elements": {
+      "Aggregate": {},
+      "Event": {},
+      "Policy": {},
+      "Command": {},
+      "View": {
+        "309855aa-2106-de64-0938-b30944e48866": {
+          "boundedContextId": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+          "id": "309855aa-2106-de64-0938-b30944e48866",
+          "name": "Book",
+          "type": "View",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "Long"
+            },
+            {
+              "name": "coverImageFileId",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "likes",
+              "className": "Long"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "3a475b82-e507-3c83-2d34-1e38b7be9916": {
+          "boundedContextId": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+          "id": "3a475b82-e507-3c83-2d34-1e38b7be9916",
+          "name": "Index",
+          "type": "View",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "190a7a0f-894e-81b3-4122-384ab6394b16": {
+          "boundedContextId": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+          "id": "190a7a0f-894e-81b3-4122-384ab6394b16",
+          "name": "Content",
+          "type": "View",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "contentId",
+              "className": "Long"
+            },
+            {
+              "name": "iundexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "d022e3e3-3b8d-39dc-4f8e-f7e6aea449f7": {
+          "boundedContextId": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+          "id": "d022e3e3-3b8d-39dc-4f8e-f7e6aea449f7",
+          "name": "Problem",
+          "type": "View",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "problemId",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "answer",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "0a63bf3c-2c2a-caaa-0010-10119169cd95": {
+          "boundedContextId": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+          "id": "0a63bf3c-2c2a-caaa-0010-10119169cd95",
+          "name": "Tag",
+          "type": "View",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "tagId",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "7d784469-3b25-1a27-fecc-e48c66435fcd": {
+          "boundedContextId": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+          "id": "7d784469-3b25-1a27-fecc-e48c66435fcd",
+          "name": "Comment",
+          "type": "View",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "commentId",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "91e44e43-845e-a2ed-1fd6-2d44510eeb42": {
+          "boundedContextId": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+          "id": "91e44e43-845e-a2ed-1fd6-2d44510eeb42",
+          "name": "File",
+          "type": "View",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "fileId",
+              "className": "Long"
+            },
+            {
+              "name": "url",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "22d791b2-89dd-616d-99b7-d70158955609": {
+          "boundedContextId": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+          "id": "22d791b2-89dd-616d-99b7-d70158955609",
+          "name": "BookShelf",
+          "type": "View",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookShelfId",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "bookCount",
+              "className": "Long"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "isDeletable",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "c207b57c-7598-f35d-9b5f-13b74b776d49": {
+          "boundedContextId": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+          "id": "c207b57c-7598-f35d-9b5f-13b74b776d49",
+          "name": "User",
+          "type": "View",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "userId",
+              "className": "Long"
+            },
+            {
+              "name": "email",
+              "className": "String"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "role",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "8a298a67-9bf8-353b-a6fd-1f6289c85b7b": {
+          "boundedContextId": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+          "id": "8a298a67-9bf8-353b-a6fd-1f6289c85b7b",
+          "name": "LikeHistory",
+          "type": "View",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "userId",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "9d5e2fee-3083-eea7-b0c4-b7e1a9d4f763": {
+          "boundedContextId": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+          "id": "9d5e2fee-3083-eea7-b0c4-b7e1a9d4f763",
+          "name": "BookShelfBook",
+          "type": "View",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookShelfBookId",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "0ab6ad99-3cbe-4321-86fb-256d2280506f": {
+          "boundedContextId": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+          "id": "0ab6ad99-3cbe-4321-86fb-256d2280506f",
+          "name": "RecommendBookToUser",
+          "type": "View",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "userId",
+              "className": "Long"
+            },
+            {
+              "name": "recommendedBookId",
+              "className": "Long"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "23afd3dd-f648-9695-83ed-4290b30907f6": {
+          "boundedContextId": "76e096b3-3e8a-af48-7128-62c181e55cb8",
+          "id": "23afd3dd-f648-9695-83ed-4290b30907f6",
+          "name": "RecommenedBookToBook",
+          "type": "View",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "recommendedBookId",
+              "className": "Long"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      }
+    }
+  },
+  "externalSystem": {
+    "id": "0a63dea9-4077-f628-8da1-611cfa21e4f8",
+    "name": "externalSystem",
+    "elements": {
+      "Aggregate": {},
+      "Event": {},
+      "Policy": {},
+      "Command": {},
+      "View": {}
+    }
+  },
+  "externalSystemProxy": {
+    "id": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+    "name": "externalSystemProxy",
+    "elements": {
+      "Aggregate": {
+        "6ce770ba-40be-abb5-7a56-9ea5e1e4588d": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "6ce770ba-40be-abb5-7a56-9ea5e1e4588d",
+          "name": "ExternalSystemProxy",
+          "type": "Aggregate",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            }
+          ]
+        }
+      },
+      "Event": {
+        "ca69911e-6678-4c25-675e-e7aa89287932": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "ca69911e-6678-4c25-675e-e7aa89287932",
+          "name": "CoverImageGenerated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "fileId",
+              "className": "Long"
+            },
+            {
+              "name": "fileUrl",
+              "className": "String"
+            }
+          ]
+        },
+        "9656f441-41cf-1a4d-1beb-d630258ec41f": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "9656f441-41cf-1a4d-1beb-d630258ec41f",
+          "name": "CoverImageGenerationFailed",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "fileId",
+              "className": "Long"
+            }
+          ]
+        },
+        "762e496e-bd36-f098-e7be-f0d67a4c5c9f": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "762e496e-bd36-f098-e7be-f0d67a4c5c9f",
+          "name": "CoverImageUploaded",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "fileId",
+              "className": "Long"
+            },
+            {
+              "name": "fileUrl",
+              "className": "String"
+            }
+          ]
+        },
+        "0ed7bc52-4953-e59a-296b-7478de81e246": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "0ed7bc52-4953-e59a-296b-7478de81e246",
+          "name": "CoverImageUploadFailed",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "fileId",
+              "className": "Long"
+            }
+          ]
+        },
+        "3f5cbaa6-5258-a26a-2006-54234481c06b": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "3f5cbaa6-5258-a26a-2006-54234481c06b",
+          "name": "ExistingCoverImageDeleted",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "fileId",
+              "className": "Long"
+            }
+          ]
+        },
+        "651ed076-6f62-6ef1-73b2-f0eece3c117c": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "651ed076-6f62-6ef1-73b2-f0eece3c117c",
+          "name": "TagGernerated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "tagName",
+              "className": "String"
+            }
+          ]
+        },
+        "486c95ca-8e78-0797-9699-94e922426578": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "486c95ca-8e78-0797-9699-94e922426578",
+          "name": "TagGenerationFailed",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            }
+          ]
+        },
+        "20d4ebf1-4f1e-eec2-26c8-655d9ea4fd48": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "20d4ebf1-4f1e-eec2-26c8-655d9ea4fd48",
+          "name": "IndexGenereated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "indexName",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            }
+          ]
+        },
+        "640ed6ab-acc3-5b02-76a7-97d784b8fed4": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "640ed6ab-acc3-5b02-76a7-97d784b8fed4",
+          "name": "ContentImageGenereated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "contentId",
+              "className": "Long"
+            },
+            {
+              "name": "fileUrl",
+              "className": "String"
+            }
+          ]
+        },
+        "e07e0968-e23b-95e5-0f45-d62fd8d62c28": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "e07e0968-e23b-95e5-0f45-d62fd8d62c28",
+          "name": "ContentmageGenerationFailed",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "contentId",
+              "className": "Long"
+            }
+          ]
+        },
+        "b1b586ad-55d3-e670-3c08-74ece2a83bf9": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "b1b586ad-55d3-e670-3c08-74ece2a83bf9",
+          "name": "IndexGenerationFailed",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            }
+          ]
+        },
+        "b095f237-cfa6-fa22-cbb2-22619aa22ccb": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "b095f237-cfa6-fa22-cbb2-22619aa22ccb",
+          "name": "ContentGenerated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "contentId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            }
+          ]
+        },
+        "275a1122-5f62-550b-758d-a813ad173114": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "275a1122-5f62-550b-758d-a813ad173114",
+          "name": "ContentGenerationFailed",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "contentId",
+              "className": "Long"
+            }
+          ]
+        },
+        "1b634ff6-118a-d7c0-e7e3-1cc5f87f6a80": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "1b634ff6-118a-d7c0-e7e3-1cc5f87f6a80",
+          "name": "ProblemGenereated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "problemId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "answer",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "String"
+            }
+          ]
+        },
+        "ef957066-6eb7-e6cc-14f9-ca91a1bb6db3": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "ef957066-6eb7-e6cc-14f9-ca91a1bb6db3",
+          "name": "ProblemGenerationFailed",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "problemId",
+              "className": "Long"
+            }
+          ]
+        },
+        "c0ccb783-0cd9-3659-77f3-df045c1f06cd": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "c0ccb783-0cd9-3659-77f3-df045c1f06cd",
+          "name": "ExistingCoverImgageDeleteFailed",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "fileId",
+              "className": "Long"
+            }
+          ]
+        }
+      },
+      "Policy": {
+        "a4e9a172-75a1-0e8d-60ea-c44a640cfcaf": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "a4e9a172-75a1-0e8d-60ea-c44a640cfcaf",
+          "name": "generateCoverImage",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+              "id": "441d356d-8767-143c-8d81-b9406badd5ac",
+              "name": "CoverImageGenerationRequested",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "url",
+                  "className": "String"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "936c538b-f47b-5419-60eb-46b1af8190bd": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "936c538b-f47b-5419-60eb-46b1af8190bd",
+          "name": "uploadNewCoverImage",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+              "id": "c2ad90bc-5090-78bd-c1ae-b7f44eb9e8e0",
+              "name": "CoverImageUpdateRequested",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "url",
+                  "className": "String"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "8aeede45-4f36-e550-a303-a9d51d4855b0": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "8aeede45-4f36-e550-a303-a9d51d4855b0",
+          "name": "deleteExistingCoverImage",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+              "id": "b6111e5e-1ea8-fa67-96bc-1a00f17d939e",
+              "name": "ExistingCoverImageDeletingRequested",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "url",
+                  "className": "String"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            },
+            {
+              "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+              "id": "9ae8ed56-5dd6-34a2-ae50-841480225e53",
+              "name": "FileInfoDeleted",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "url",
+                  "className": "String"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "33cb5ed5-068e-dc72-07af-bed1325f1a18": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "33cb5ed5-068e-dc72-07af-bed1325f1a18",
+          "name": "genereateTags",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "5cfb459d-40c4-c60f-b719-c0da68618d8c",
+              "id": "e929b373-ff81-5e36-f1e3-90e8e98a107a",
+              "name": "TagGenerationRequested",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "bookId",
+                  "className": "Long"
+                },
+                {
+                  "name": "name",
+                  "className": "String"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "77069f1f-51c1-ffe0-945e-600f0052ec57": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "77069f1f-51c1-ffe0-945e-600f0052ec57",
+          "name": "generateIndexes",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+              "id": "2ff91571-e8dc-4d07-d692-977f63a35d1e",
+              "name": "IndexGenerationRequested",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "bookId",
+                  "className": "Long"
+                },
+                {
+                  "name": "name",
+                  "className": "String"
+                },
+                {
+                  "name": "priority",
+                  "className": "Long"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "cf0ca399-39a4-7d69-fe16-17a01aad3709": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "cf0ca399-39a4-7d69-fe16-17a01aad3709",
+          "name": "generateContentImage",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+              "id": "d470cd82-4ae6-af09-044a-1ac477e0a1f6",
+              "name": "ContentImageGenerationRequested",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "imageFileId",
+                  "className": "Long"
+                },
+                {
+                  "name": "indexId",
+                  "className": "Long"
+                },
+                {
+                  "name": "content",
+                  "className": "String"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "2df3d426-8b7c-a08e-0b7f-b208a74935cb": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "2df3d426-8b7c-a08e-0b7f-b208a74935cb",
+          "name": "generateContent",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+              "id": "ac521649-1b92-f870-453e-8357e57e9a71",
+              "name": "ContentGenerationRequested",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "imageFileId",
+                  "className": "Long"
+                },
+                {
+                  "name": "indexId",
+                  "className": "Long"
+                },
+                {
+                  "name": "content",
+                  "className": "String"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "b49fe843-73f0-a31f-7e35-246739ed3898": {
+          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+          "id": "b49fe843-73f0-a31f-7e35-246739ed3898",
+          "name": "generateProblem",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "b8964aed-ab76-1e5e-b983-26c2450b2970",
+              "id": "7a7cad6b-6c02-646e-3f37-4567507c7d0c",
+              "name": "ProblemGenerationRequsted",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "indexId",
+                  "className": "Long"
+                },
+                {
+                  "name": "content",
+                  "className": "String"
+                },
+                {
+                  "name": "answer",
+                  "className": "String"
+                },
+                {
+                  "name": "priority",
+                  "className": "Long"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Command": {},
+      "View": {}
+    }
+  },
+  "user": {
+    "id": "5ac31c38-0048-1dfa-b209-109c3d1f0715",
+    "name": "user",
+    "elements": {
+      "Aggregate": {
+        "db3a9119-3360-f8ae-10c0-308acc929727": {
+          "boundedContextId": "5ac31c38-0048-1dfa-b209-109c3d1f0715",
+          "id": "db3a9119-3360-f8ae-10c0-308acc929727",
+          "name": "User",
+          "type": "Aggregate",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "email",
+              "className": "String"
+            },
+            {
+              "name": "password",
+              "className": "String"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "role",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Event": {
+        "ba2709b1-8b82-eae9-a8cc-252b209dec5d": {
+          "boundedContextId": "5ac31c38-0048-1dfa-b209-109c3d1f0715",
+          "id": "ba2709b1-8b82-eae9-a8cc-252b209dec5d",
+          "name": "SignUpCompleted",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "email",
+              "className": "String"
+            },
+            {
+              "name": "password",
+              "className": "String"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "role",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "38f3552b-b1ab-e8b4-a80b-ce677527bde8": {
+          "boundedContextId": "5ac31c38-0048-1dfa-b209-109c3d1f0715",
+          "id": "38f3552b-b1ab-e8b4-a80b-ce677527bde8",
+          "name": "UserNameUpdated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "email",
+              "className": "String"
+            },
+            {
+              "name": "password",
+              "className": "String"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "role",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Policy": {},
+      "Command": {
+        "1e14fffc-cc60-d428-baa2-818a10e89195": {
+          "boundedContextId": "5ac31c38-0048-1dfa-b209-109c3d1f0715",
+          "id": "1e14fffc-cc60-d428-baa2-818a10e89195",
+          "name": "signUp",
+          "type": "Command",
+          "apiPath": "signup",
+          "method": "PUT"
+        },
+        "390b6bae-8f17-afba-8ced-90e0daf991b6": {
+          "boundedContextId": "5ac31c38-0048-1dfa-b209-109c3d1f0715",
+          "id": "390b6bae-8f17-afba-8ced-90e0daf991b6",
+          "name": "updateName",
+          "type": "Command",
+          "apiPath": "updatename",
+          "method": "PUT"
+        },
+        "d9e1f9cd-4334-73d4-1485-422af3fdbce6": {
+          "boundedContextId": "5ac31c38-0048-1dfa-b209-109c3d1f0715",
+          "id": "d9e1f9cd-4334-73d4-1485-422af3fdbce6",
+          "name": "signIn",
+          "type": "Command",
+          "apiPath": "signin",
+          "method": "PUT"
+        }
+      },
+      "View": {}
+    }
+  },
+  "recommendCalcSystem": {
+    "id": "eedeef52-3d5d-bb4e-1eb9-5517c6b7751f",
+    "name": "recommendCalcSystem",
+    "elements": {
+      "Aggregate": {},
+      "Event": {},
+      "Policy": {},
+      "Command": {},
+      "View": {}
+    }
+  },
+  "book": {
+    "id": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+    "name": "book",
+    "elements": {
+      "Aggregate": {
+        "11365f6e-416d-ba5f-c8c7-69af6e74ec91": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "11365f6e-416d-ba5f-c8c7-69af6e74ec91",
+          "name": "Book",
+          "type": "Aggregate",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "String"
+            },
+            {
+              "name": "coverImageFileid",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Event": {
+        "11db2b11-6cb9-b76e-cd9d-c14a9bc523b1": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "11db2b11-6cb9-b76e-cd9d-c14a9bc523b1",
+          "name": "EmptyBookCreated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "String"
+            },
+            {
+              "name": "coverImageFileid",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "bf5a198b-e470-bebb-864b-a3f1e2f5ab63": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "bf5a198b-e470-bebb-864b-a3f1e2f5ab63",
+          "name": "CoverImageGenerationRequested",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "String"
+            },
+            {
+              "name": "coverImageFileid",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "a6cc1619-8434-9947-5f63-94f3fd7fd0a0": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "a6cc1619-8434-9947-5f63-94f3fd7fd0a0",
+          "name": "CoverImageUpdateRequested",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "String"
+            },
+            {
+              "name": "coverImageFileid",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "c2c01d9e-3491-af96-d26d-c4c91860de4d": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "c2c01d9e-3491-af96-d26d-c4c91860de4d",
+          "name": "BookLiked",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "String"
+            },
+            {
+              "name": "coverImageFileid",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "088187b5-c12e-79fe-4f2c-7c515218953b": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "088187b5-c12e-79fe-4f2c-7c515218953b",
+          "name": "BookTitleUpdated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "String"
+            },
+            {
+              "name": "coverImageFileid",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "8cc6f87f-12cb-acdd-26d6-673e4783af61": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "8cc6f87f-12cb-acdd-26d6-673e4783af61",
+          "name": "BookDeleted",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "String"
+            },
+            {
+              "name": "coverImageFileid",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "f1fedd55-a167-2e35-6ae7-99cb5c4ab337": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "f1fedd55-a167-2e35-6ae7-99cb5c4ab337",
+          "name": "CoverImageFileIdUpdated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "String"
+            },
+            {
+              "name": "coverImageFileid",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Policy": {
+        "9c1ed700-029f-954d-b732-a992df171554": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "9c1ed700-029f-954d-b732-a992df171554",
+          "name": "UpdateCoverImageFileId",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+              "id": "061c4ebd-0873-e86c-a982-d3ad3c6880d8",
+              "name": "EmptyCoverImageInfoCreated",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "url",
+                  "className": "String"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Command": {
+        "275e9c18-3d9e-3c27-5c4f-052166ec353b": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "275e9c18-3d9e-3c27-5c4f-052166ec353b",
+          "name": "createEmptyBook",
+          "type": "Command",
+          "apiPath": "createemptybook",
+          "method": "PUT"
+        },
+        "e8d44e02-6172-3192-0506-cf4a68e3378d": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "e8d44e02-6172-3192-0506-cf4a68e3378d",
+          "name": "generateCoverImage",
+          "type": "Command",
+          "apiPath": "updatecoverimage",
+          "method": "PUT"
+        },
+        "bd5fd1d5-083a-9f82-e758-c204ca9d1e8c": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "bd5fd1d5-083a-9f82-e758-c204ca9d1e8c",
+          "name": "updateCoverImage",
+          "type": "Command",
+          "apiPath": "",
+          "method": "PUT"
+        },
+        "b4b2b992-fa49-d96d-3bc2-7656f9d86a0d": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "b4b2b992-fa49-d96d-3bc2-7656f9d86a0d",
+          "name": "likeBook",
+          "type": "Command",
+          "apiPath": "likebook",
+          "method": "PUT"
+        },
+        "51618a40-e71f-bd6f-253d-30e7b94771c4": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "51618a40-e71f-bd6f-253d-30e7b94771c4",
+          "name": "updateBookTitle",
+          "type": "Command",
+          "apiPath": "",
+          "method": "PUT"
+        },
+        "118cdca9-1c74-5b57-6060-59e312a4c743": {
+          "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+          "id": "118cdca9-1c74-5b57-6060-59e312a4c743",
+          "name": "deleteBook",
+          "type": "Command",
+          "apiPath": "",
+          "method": "PUT"
+        }
+      },
+      "View": {}
+    }
+  },
+  "index": {
+    "id": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+    "name": "index",
+    "elements": {
+      "Aggregate": {
+        "a3d89b7d-aa20-0566-01e0-fd59f1a6ba14": {
+          "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+          "id": "a3d89b7d-aa20-0566-01e0-fd59f1a6ba14",
+          "name": "Index",
+          "type": "Aggregate",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Event": {
+        "2ff91571-e8dc-4d07-d692-977f63a35d1e": {
+          "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+          "id": "2ff91571-e8dc-4d07-d692-977f63a35d1e",
+          "name": "IndexGenerationRequested",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "e5a8cf11-2675-fa2e-0c8e-1acadfd9338f": {
+          "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+          "id": "e5a8cf11-2675-fa2e-0c8e-1acadfd9338f",
+          "name": "IndexCreated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "8e792e71-cb73-b40c-3432-cda1a71d201b": {
+          "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+          "id": "8e792e71-cb73-b40c-3432-cda1a71d201b",
+          "name": "IndexEdited",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "c76f329f-1147-5540-af15-2881c59212ab": {
+          "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+          "id": "c76f329f-1147-5540-af15-2881c59212ab",
+          "name": "IndexDeleted",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Policy": {
+        "d70ec854-9b0a-5057-c824-6a1d0807b475": {
+          "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+          "id": "d70ec854-9b0a-5057-c824-6a1d0807b475",
+          "name": "createIndex",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+              "id": "20d4ebf1-4f1e-eec2-26c8-655d9ea4fd48",
+              "name": "IndexGenereated",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "bookId",
+                  "className": "Long"
+                },
+                {
+                  "name": "indexName",
+                  "className": "String"
+                },
+                {
+                  "name": "priority",
+                  "className": "Long"
+                }
+              ]
+            }
+          ]
+        },
+        "bba10126-f46a-9ac3-b858-18b69f8a0584": {
+          "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+          "id": "bba10126-f46a-9ac3-b858-18b69f8a0584",
+          "name": "deleteIndex",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+              "id": "8cc6f87f-12cb-acdd-26d6-673e4783af61",
+              "name": "BookDeleted",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "createrId",
+                  "className": "String"
+                },
+                {
+                  "name": "coverImageFileid",
+                  "className": "Long"
+                },
+                {
+                  "name": "title",
+                  "className": "String"
+                },
+                {
+                  "name": "isShared",
+                  "className": "Boolean"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Command": {
+        "3fb77a53-aace-928f-ac6b-193d0957ff88": {
+          "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+          "id": "3fb77a53-aace-928f-ac6b-193d0957ff88",
+          "name": "generateIndexes",
+          "type": "Command",
+          "apiPath": "generateindexes",
+          "method": "PUT"
+        },
+        "291125ea-97f3-39d4-4eb3-30e903e365ce": {
+          "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+          "id": "291125ea-97f3-39d4-4eb3-30e903e365ce",
+          "name": "createIndex",
+          "type": "Command",
+          "apiPath": "createindex",
+          "method": "PUT"
+        },
+        "b814d48a-5861-8b76-32f3-113e05336485": {
+          "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+          "id": "b814d48a-5861-8b76-32f3-113e05336485",
+          "name": "editIndex",
+          "type": "Command",
+          "apiPath": "editindex",
+          "method": "PUT"
+        },
+        "88c4c047-08f7-8237-2e99-d2fb04730a9a": {
+          "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+          "id": "88c4c047-08f7-8237-2e99-d2fb04730a9a",
+          "name": "deleteIndex",
+          "type": "Command",
+          "apiPath": "deleteindex",
+          "method": "PUT"
+        }
+      },
+      "View": {}
+    }
+  },
+  "content": {
+    "id": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+    "name": "content",
+    "elements": {
+      "Aggregate": {
+        "1024ba3f-4a4d-15cc-48c2-af81bfc62c93": {
+          "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+          "id": "1024ba3f-4a4d-15cc-48c2-af81bfc62c93",
+          "name": "Content",
+          "type": "Aggregate",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "imageFileId",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Event": {
+        "d470cd82-4ae6-af09-044a-1ac477e0a1f6": {
+          "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+          "id": "d470cd82-4ae6-af09-044a-1ac477e0a1f6",
+          "name": "ContentImageGenerationRequested",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "imageFileId",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "ac521649-1b92-f870-453e-8357e57e9a71": {
+          "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+          "id": "ac521649-1b92-f870-453e-8357e57e9a71",
+          "name": "ContentGenerationRequested",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "imageFileId",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "9bd9c432-0d9a-5aa1-5a10-1176bafcdb32": {
+          "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+          "id": "9bd9c432-0d9a-5aa1-5a10-1176bafcdb32",
+          "name": "ContentImageDeleteRequsted",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "imageFileId",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "bcd8ac11-b4c2-22bd-b2ed-d8176a4c431f": {
+          "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+          "id": "bcd8ac11-b4c2-22bd-b2ed-d8176a4c431f",
+          "name": "ImageFileIdUpdated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "imageFileId",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "fdaf425d-f68d-3a03-3184-e5b8cb1385d3": {
+          "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+          "id": "fdaf425d-f68d-3a03-3184-e5b8cb1385d3",
+          "name": "ContentUpdated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "imageFileId",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "67b3b908-0cbd-9e21-58d8-33b1d9f0a1bd": {
+          "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+          "id": "67b3b908-0cbd-9e21-58d8-33b1d9f0a1bd",
+          "name": "ContentDeletedByFail",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "imageFileId",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Policy": {
+        "167bab75-77e5-bfd1-835c-d97e96fc3961": {
+          "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+          "id": "167bab75-77e5-bfd1-835c-d97e96fc3961",
+          "name": "updateImageFileId",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+              "id": "3d0cb565-cf1f-f1ea-f1cc-8117c60ce449",
+              "name": "ContentImageInfoUploaded",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "url",
+                  "className": "String"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "contentId",
+                  "className": "Long"
+                }
+              ]
+            }
+          ]
+        },
+        "3e6e0994-c9dd-3630-0358-f5eb8cd2d805": {
+          "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+          "id": "3e6e0994-c9dd-3630-0358-f5eb8cd2d805",
+          "name": "updateContent",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+              "id": "b095f237-cfa6-fa22-cbb2-22619aa22ccb",
+              "name": "ContentGenerated",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "contentId",
+                  "className": "Long"
+                },
+                {
+                  "name": "content",
+                  "className": "String"
+                }
+              ]
+            }
+          ]
+        },
+        "c4a1cd17-3b6a-6ec9-aa02-fb301ba74850": {
+          "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+          "id": "c4a1cd17-3b6a-6ec9-aa02-fb301ba74850",
+          "name": "deleteContent",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+              "id": "c76f329f-1147-5540-af15-2881c59212ab",
+              "name": "IndexDeleted",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "bookId",
+                  "className": "Long"
+                },
+                {
+                  "name": "name",
+                  "className": "String"
+                },
+                {
+                  "name": "priority",
+                  "className": "Long"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "f97b0d2c-89ce-9b07-ddf5-06f042106b91": {
+          "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+          "id": "f97b0d2c-89ce-9b07-ddf5-06f042106b91",
+          "name": "deleteContentByFail",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+              "id": "e07e0968-e23b-95e5-0f45-d62fd8d62c28",
+              "name": "ContentmageGenerationFailed",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "contentId",
+                  "className": "Long"
+                }
+              ]
+            },
+            {
+              "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+              "id": "275a1122-5f62-550b-758d-a813ad173114",
+              "name": "ContentGenerationFailed",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "contentId",
+                  "className": "Long"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Command": {
+        "56e59427-446d-702e-03d2-3469fd1f0bfd": {
+          "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+          "id": "56e59427-446d-702e-03d2-3469fd1f0bfd",
+          "name": "generateContent",
+          "type": "Command",
+          "apiPath": "",
+          "method": "PUT"
+        }
+      },
+      "View": {}
+    }
+  },
+  "comment": {
+    "id": "6edbe3a9-508e-fed9-e3fe-29d308c009ef",
+    "name": "comment",
+    "elements": {
+      "Aggregate": {
+        "52f11fcf-0010-acbd-877e-014191e9c7d2": {
+          "boundedContextId": "6edbe3a9-508e-fed9-e3fe-29d308c009ef",
+          "id": "52f11fcf-0010-acbd-877e-014191e9c7d2",
+          "name": "Comment",
+          "type": "Aggregate",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Event": {
+        "f8ce76a8-9827-15e2-580e-d3f25744349a": {
+          "boundedContextId": "6edbe3a9-508e-fed9-e3fe-29d308c009ef",
+          "id": "f8ce76a8-9827-15e2-580e-d3f25744349a",
+          "name": "CommentCreated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "3dff6210-3f73-0052-2a88-9654108b74d9": {
+          "boundedContextId": "6edbe3a9-508e-fed9-e3fe-29d308c009ef",
+          "id": "3dff6210-3f73-0052-2a88-9654108b74d9",
+          "name": "CommentUpdated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "37500651-b630-50dd-d7d2-c7114f0f5d1a": {
+          "boundedContextId": "6edbe3a9-508e-fed9-e3fe-29d308c009ef",
+          "id": "37500651-b630-50dd-d7d2-c7114f0f5d1a",
+          "name": "CommentDeleted",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Policy": {
+        "c81e8700-ac8b-7598-cff2-ed0d0c7d4375": {
+          "boundedContextId": "6edbe3a9-508e-fed9-e3fe-29d308c009ef",
+          "id": "c81e8700-ac8b-7598-cff2-ed0d0c7d4375",
+          "name": "deleteComment",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+              "id": "8cc6f87f-12cb-acdd-26d6-673e4783af61",
+              "name": "BookDeleted",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "createrId",
+                  "className": "String"
+                },
+                {
+                  "name": "coverImageFileid",
+                  "className": "Long"
+                },
+                {
+                  "name": "title",
+                  "className": "String"
+                },
+                {
+                  "name": "isShared",
+                  "className": "Boolean"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Command": {
+        "e2114434-beee-956e-a459-46b7cdb68ec1": {
+          "boundedContextId": "6edbe3a9-508e-fed9-e3fe-29d308c009ef",
+          "id": "e2114434-beee-956e-a459-46b7cdb68ec1",
+          "name": "createComment",
+          "type": "Command",
+          "apiPath": "",
+          "method": "PUT"
+        },
+        "5d229a39-2c74-822d-77d6-ed13d0e3d262": {
+          "boundedContextId": "6edbe3a9-508e-fed9-e3fe-29d308c009ef",
+          "id": "5d229a39-2c74-822d-77d6-ed13d0e3d262",
+          "name": "updateComment",
+          "type": "Command",
+          "apiPath": "",
+          "method": "PUT"
+        },
+        "4cf0a267-ca1a-538d-fa7a-1a2ad1c40f34": {
+          "boundedContextId": "6edbe3a9-508e-fed9-e3fe-29d308c009ef",
+          "id": "4cf0a267-ca1a-538d-fa7a-1a2ad1c40f34",
+          "name": "deleteComment",
+          "type": "Command",
+          "apiPath": "",
+          "method": "PUT"
+        }
+      },
+      "View": {}
+    }
+  },
+  "file": {
+    "id": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+    "name": "file",
+    "elements": {
+      "Aggregate": {
+        "e490f35c-8804-426b-acbd-d35bb95e5669": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "e490f35c-8804-426b-acbd-d35bb95e5669",
+          "name": "File",
+          "type": "Aggregate",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "url",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Event": {
+        "061c4ebd-0873-e86c-a982-d3ad3c6880d8": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "061c4ebd-0873-e86c-a982-d3ad3c6880d8",
+          "name": "EmptyCoverImageInfoCreated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "url",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "b6111e5e-1ea8-fa67-96bc-1a00f17d939e": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "b6111e5e-1ea8-fa67-96bc-1a00f17d939e",
+          "name": "ExistingCoverImageDeletingRequested",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "url",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "441d356d-8767-143c-8d81-b9406badd5ac": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "441d356d-8767-143c-8d81-b9406badd5ac",
+          "name": "CoverImageGenerationRequested",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "url",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "c2ad90bc-5090-78bd-c1ae-b7f44eb9e8e0": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "c2ad90bc-5090-78bd-c1ae-b7f44eb9e8e0",
+          "name": "CoverImageUpdateRequested",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "url",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "3d0cb565-cf1f-f1ea-f1cc-8117c60ce449": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "3d0cb565-cf1f-f1ea-f1cc-8117c60ce449",
+          "name": "ContentImageInfoUploaded",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "url",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            },
+            {
+              "name": "contentId",
+              "className": "Long"
+            }
+          ]
+        },
+        "9ae8ed56-5dd6-34a2-ae50-841480225e53": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "9ae8ed56-5dd6-34a2-ae50-841480225e53",
+          "name": "FileInfoDeleted",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "url",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "80b0878f-8e02-0098-6f3b-928922b71588": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "80b0878f-8e02-0098-6f3b-928922b71588",
+          "name": "CoverImageInfoUpdated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "url",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Policy": {
+        "fd7edaea-787b-9e8e-7e36-74e35db013e0": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "fd7edaea-787b-9e8e-7e36-74e35db013e0",
+          "name": "requestCoverImageGeneration",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+              "id": "bf5a198b-e470-bebb-864b-a3f1e2f5ab63",
+              "name": "CoverImageGenerationRequested",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "createrId",
+                  "className": "String"
+                },
+                {
+                  "name": "coverImageFileid",
+                  "className": "Long"
+                },
+                {
+                  "name": "title",
+                  "className": "String"
+                },
+                {
+                  "name": "isShared",
+                  "className": "Boolean"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "b86b33b7-f76c-9051-0fdf-55f968f3447e": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "b86b33b7-f76c-9051-0fdf-55f968f3447e",
+          "name": "createEmptyCoverImageInfo",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+              "id": "11db2b11-6cb9-b76e-cd9d-c14a9bc523b1",
+              "name": "EmptyBookCreated",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "createrId",
+                  "className": "String"
+                },
+                {
+                  "name": "coverImageFileid",
+                  "className": "Long"
+                },
+                {
+                  "name": "title",
+                  "className": "String"
+                },
+                {
+                  "name": "isShared",
+                  "className": "Boolean"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "02de7cad-4ab9-0dce-9137-42eb622a2636": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "02de7cad-4ab9-0dce-9137-42eb622a2636",
+          "name": "updateCoverImageInfo",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+              "id": "ca69911e-6678-4c25-675e-e7aa89287932",
+              "name": "CoverImageGenerated",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "fileId",
+                  "className": "Long"
+                },
+                {
+                  "name": "fileUrl",
+                  "className": "String"
+                }
+              ]
+            },
+            {
+              "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+              "id": "762e496e-bd36-f098-e7be-f0d67a4c5c9f",
+              "name": "CoverImageUploaded",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "fileId",
+                  "className": "Long"
+                },
+                {
+                  "name": "fileUrl",
+                  "className": "String"
+                }
+              ]
+            }
+          ]
+        },
+        "8001f9f8-9743-6916-f2d6-8db149a733cd": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "8001f9f8-9743-6916-f2d6-8db149a733cd",
+          "name": "requestCoverImageUpdate",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+              "id": "a6cc1619-8434-9947-5f63-94f3fd7fd0a0",
+              "name": "CoverImageUpdateRequested",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "createrId",
+                  "className": "String"
+                },
+                {
+                  "name": "coverImageFileid",
+                  "className": "Long"
+                },
+                {
+                  "name": "title",
+                  "className": "String"
+                },
+                {
+                  "name": "isShared",
+                  "className": "Boolean"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "21822eb3-2eab-1f0d-74f0-540ec14b83fb": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "21822eb3-2eab-1f0d-74f0-540ec14b83fb",
+          "name": "uploadContentImageInfo",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+              "id": "640ed6ab-acc3-5b02-76a7-97d784b8fed4",
+              "name": "ContentImageGenereated",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "contentId",
+                  "className": "Long"
+                },
+                {
+                  "name": "fileUrl",
+                  "className": "String"
+                }
+              ]
+            }
+          ]
+        },
+        "16e9dfb8-4000-8477-25af-e7e78298a86f": {
+          "boundedContextId": "a1e41830-f7dc-cc56-a939-6c2b523014a3",
+          "id": "16e9dfb8-4000-8477-25af-e7e78298a86f",
+          "name": "DeleteFileInfo",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+              "id": "8cc6f87f-12cb-acdd-26d6-673e4783af61",
+              "name": "BookDeleted",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "createrId",
+                  "className": "String"
+                },
+                {
+                  "name": "coverImageFileid",
+                  "className": "Long"
+                },
+                {
+                  "name": "title",
+                  "className": "String"
+                },
+                {
+                  "name": "isShared",
+                  "className": "Boolean"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            },
+            {
+              "boundedContextId": "faeb932f-a7c4-0a8a-5f45-1c8a00f202ad",
+              "id": "9bd9c432-0d9a-5aa1-5a10-1176bafcdb32",
+              "name": "ContentImageDeleteRequsted",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "imageFileId",
+                  "className": "Long"
+                },
+                {
+                  "name": "indexId",
+                  "className": "Long"
+                },
+                {
+                  "name": "content",
+                  "className": "String"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Command": {},
+      "View": {}
+    }
+  },
+  "tag": {
+    "id": "5cfb459d-40c4-c60f-b719-c0da68618d8c",
+    "name": "tag",
+    "elements": {
+      "Aggregate": {
+        "01e75d1d-fafe-2f9f-17a0-1aa0baf51579": {
+          "boundedContextId": "5cfb459d-40c4-c60f-b719-c0da68618d8c",
+          "id": "01e75d1d-fafe-2f9f-17a0-1aa0baf51579",
+          "name": "Tag",
+          "type": "Aggregate",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Event": {
+        "e929b373-ff81-5e36-f1e3-90e8e98a107a": {
+          "boundedContextId": "5cfb459d-40c4-c60f-b719-c0da68618d8c",
+          "id": "e929b373-ff81-5e36-f1e3-90e8e98a107a",
+          "name": "TagGenerationRequested",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "bcfa3921-6cb4-7de5-0a85-a46ca9afef96": {
+          "boundedContextId": "5cfb459d-40c4-c60f-b719-c0da68618d8c",
+          "id": "bcfa3921-6cb4-7de5-0a85-a46ca9afef96",
+          "name": "TagCreated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "364bd8cd-b1c2-9c98-10b8-6021a8c2ac1d": {
+          "boundedContextId": "5cfb459d-40c4-c60f-b719-c0da68618d8c",
+          "id": "364bd8cd-b1c2-9c98-10b8-6021a8c2ac1d",
+          "name": "TagDeleted",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "ca0bacfd-c2a7-975d-0c92-de58bd9cfde4": {
+          "boundedContextId": "5cfb459d-40c4-c60f-b719-c0da68618d8c",
+          "id": "ca0bacfd-c2a7-975d-0c92-de58bd9cfde4",
+          "name": "TagEdited",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "name",
+              "className": "String"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Policy": {
+        "0a4e7104-1bbe-d3dc-e71e-1f86455f3009": {
+          "boundedContextId": "5cfb459d-40c4-c60f-b719-c0da68618d8c",
+          "id": "0a4e7104-1bbe-d3dc-e71e-1f86455f3009",
+          "name": "createTag",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+              "id": "651ed076-6f62-6ef1-73b2-f0eece3c117c",
+              "name": "TagGernerated",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "bookId",
+                  "className": "Long"
+                },
+                {
+                  "name": "tagName",
+                  "className": "String"
+                }
+              ]
+            }
+          ]
+        },
+        "5238b4e3-8829-560d-7530-3c3a25ed781f": {
+          "boundedContextId": "5cfb459d-40c4-c60f-b719-c0da68618d8c",
+          "id": "5238b4e3-8829-560d-7530-3c3a25ed781f",
+          "name": "deleteTag",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+              "id": "8cc6f87f-12cb-acdd-26d6-673e4783af61",
+              "name": "BookDeleted",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "createrId",
+                  "className": "String"
+                },
+                {
+                  "name": "coverImageFileid",
+                  "className": "Long"
+                },
+                {
+                  "name": "title",
+                  "className": "String"
+                },
+                {
+                  "name": "isShared",
+                  "className": "Boolean"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Command": {
+        "0ffec712-546f-a1d6-5e43-0aae01a42b54": {
+          "boundedContextId": "5cfb459d-40c4-c60f-b719-c0da68618d8c",
+          "id": "0ffec712-546f-a1d6-5e43-0aae01a42b54",
+          "name": "generateTags",
+          "type": "Command",
+          "apiPath": "",
+          "method": "PUT"
+        },
+        "10492143-fbc5-8f56-5e9f-e3f9e8961e6e": {
+          "boundedContextId": "5cfb459d-40c4-c60f-b719-c0da68618d8c",
+          "id": "10492143-fbc5-8f56-5e9f-e3f9e8961e6e",
+          "name": "createTag",
+          "type": "Command",
+          "apiPath": "createtag",
+          "method": "PUT"
+        },
+        "c7922266-9058-2543-5554-27cb2b6a48f0": {
+          "boundedContextId": "5cfb459d-40c4-c60f-b719-c0da68618d8c",
+          "id": "c7922266-9058-2543-5554-27cb2b6a48f0",
+          "name": "deleteTag",
+          "type": "Command",
+          "apiPath": "deletetag",
+          "method": "PUT"
+        },
+        "b44ba6e7-d36e-505a-a32a-a17bb84be262": {
+          "boundedContextId": "5cfb459d-40c4-c60f-b719-c0da68618d8c",
+          "id": "b44ba6e7-d36e-505a-a32a-a17bb84be262",
+          "name": "editTag",
+          "type": "Command",
+          "apiPath": "edittag",
+          "method": "PUT"
+        }
+      },
+      "View": {}
+    }
+  },
+  "bookShelf": {
+    "id": "c15b382e-9729-affb-4fa3-0afd41f9dbad",
+    "name": "bookShelf",
+    "elements": {
+      "Aggregate": {
+        "87a9935b-e425-91c5-a2a0-e901f7add8a4": {
+          "boundedContextId": "c15b382e-9729-affb-4fa3-0afd41f9dbad",
+          "id": "87a9935b-e425-91c5-a2a0-e901f7add8a4",
+          "name": "BookShelf",
+          "type": "Aggregate",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "bookCount",
+              "className": "Long"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "isDeletable",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Event": {
+        "28e96cff-7fe3-7a71-a33d-6279a2c50dac": {
+          "boundedContextId": "c15b382e-9729-affb-4fa3-0afd41f9dbad",
+          "id": "28e96cff-7fe3-7a71-a33d-6279a2c50dac",
+          "name": "BookShelfCreated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "bookCount",
+              "className": "Long"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "isDeletable",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "e6ab43fa-9a31-6b6c-b6fd-60385e1229a4": {
+          "boundedContextId": "c15b382e-9729-affb-4fa3-0afd41f9dbad",
+          "id": "e6ab43fa-9a31-6b6c-b6fd-60385e1229a4",
+          "name": "BookCountUpdated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "bookCount",
+              "className": "Long"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "isDeletable",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "6e50c0df-4e2b-d392-4c5d-e86e6f20d7d7": {
+          "boundedContextId": "c15b382e-9729-affb-4fa3-0afd41f9dbad",
+          "id": "6e50c0df-4e2b-d392-4c5d-e86e6f20d7d7",
+          "name": "BookShelfDeleted",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "bookCount",
+              "className": "Long"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "isDeletable",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "7c957713-baf4-e4c0-5395-726d483609d4": {
+          "boundedContextId": "c15b382e-9729-affb-4fa3-0afd41f9dbad",
+          "id": "7c957713-baf4-e4c0-5395-726d483609d4",
+          "name": "BookShelfTItleUpdated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "createrId",
+              "className": "Long"
+            },
+            {
+              "name": "title",
+              "className": "String"
+            },
+            {
+              "name": "bookCount",
+              "className": "Long"
+            },
+            {
+              "name": "isShared",
+              "className": "Boolean"
+            },
+            {
+              "name": "isDeletable",
+              "className": "Boolean"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Policy": {
+        "82f6255e-5670-0972-729c-4b156cab8556": {
+          "boundedContextId": "c15b382e-9729-affb-4fa3-0afd41f9dbad",
+          "id": "82f6255e-5670-0972-729c-4b156cab8556",
+          "name": "createMyBookShelf",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "5ac31c38-0048-1dfa-b209-109c3d1f0715",
+              "id": "ba2709b1-8b82-eae9-a8cc-252b209dec5d",
+              "name": "SignUpCompleted",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "email",
+                  "className": "String"
+                },
+                {
+                  "name": "password",
+                  "className": "String"
+                },
+                {
+                  "name": "name",
+                  "className": "String"
+                },
+                {
+                  "name": "role",
+                  "className": "String"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "c1c3bb2e-69c1-855c-ae0c-bddea03ba2ed": {
+          "boundedContextId": "c15b382e-9729-affb-4fa3-0afd41f9dbad",
+          "id": "c1c3bb2e-69c1-855c-ae0c-bddea03ba2ed",
+          "name": "IncreaseBookCount",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "247c063b-0136-b14f-7e77-7bb8a9d07ba3",
+              "id": "ab0b828a-848e-340f-5e06-d2878a6c3316",
+              "name": "BookShelfBookAdded",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "bookId",
+                  "className": "Long"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "e5ff81c7-9e30-da96-3173-18c3edd46b46": {
+          "boundedContextId": "c15b382e-9729-affb-4fa3-0afd41f9dbad",
+          "id": "e5ff81c7-9e30-da96-3173-18c3edd46b46",
+          "name": "decreaseBookCount",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "247c063b-0136-b14f-7e77-7bb8a9d07ba3",
+              "id": "68c22bee-1877-25ee-3847-8b7a06769662",
+              "name": "BookShelfBookDeleted",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "bookId",
+                  "className": "Long"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Command": {
+        "5eea51f8-b493-c5ad-4f64-594e54cf0720": {
+          "boundedContextId": "c15b382e-9729-affb-4fa3-0afd41f9dbad",
+          "id": "5eea51f8-b493-c5ad-4f64-594e54cf0720",
+          "name": "createBookShelf",
+          "type": "Command",
+          "apiPath": "createbookshelf",
+          "method": "PUT"
+        },
+        "867ea19f-2563-b662-814b-fe6aefb65853": {
+          "boundedContextId": "c15b382e-9729-affb-4fa3-0afd41f9dbad",
+          "id": "867ea19f-2563-b662-814b-fe6aefb65853",
+          "name": "deleteBookShelf",
+          "type": "Command",
+          "apiPath": "deletebookshelf",
+          "method": "PUT"
+        },
+        "2b1943f4-f4e0-99f0-04e7-c64a302d35ac": {
+          "boundedContextId": "c15b382e-9729-affb-4fa3-0afd41f9dbad",
+          "id": "2b1943f4-f4e0-99f0-04e7-c64a302d35ac",
+          "name": "updateBookShelfTitle",
+          "type": "Command",
+          "apiPath": "updatebookshelftitle",
+          "method": "PUT"
+        }
+      },
+      "View": {}
+    }
+  },
+  "problem": {
+    "id": "b8964aed-ab76-1e5e-b983-26c2450b2970",
+    "name": "problem",
+    "elements": {
+      "Aggregate": {
+        "dbb05695-2833-97f0-a154-79c7d2bacb1a": {
+          "boundedContextId": "b8964aed-ab76-1e5e-b983-26c2450b2970",
+          "id": "dbb05695-2833-97f0-a154-79c7d2bacb1a",
+          "name": "Problem",
+          "type": "Aggregate",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "answer",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Event": {
+        "7a7cad6b-6c02-646e-3f37-4567507c7d0c": {
+          "boundedContextId": "b8964aed-ab76-1e5e-b983-26c2450b2970",
+          "id": "7a7cad6b-6c02-646e-3f37-4567507c7d0c",
+          "name": "ProblemGenerationRequsted",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "answer",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "0b1d7259-555e-2e53-8b4a-b3d5cf364e1e": {
+          "boundedContextId": "b8964aed-ab76-1e5e-b983-26c2450b2970",
+          "id": "0b1d7259-555e-2e53-8b4a-b3d5cf364e1e",
+          "name": "ProblemUpdated",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "answer",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "b1f009c0-1198-8432-6301-c1da00b0748f": {
+          "boundedContextId": "b8964aed-ab76-1e5e-b983-26c2450b2970",
+          "id": "b1f009c0-1198-8432-6301-c1da00b0748f",
+          "name": "ProblemDeleted",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "answer",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "6e3c0a0a-b9b6-1255-24a7-5e0b92919c4e": {
+          "boundedContextId": "b8964aed-ab76-1e5e-b983-26c2450b2970",
+          "id": "6e3c0a0a-b9b6-1255-24a7-5e0b92919c4e",
+          "name": "ProblemDeletedByFail",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "indexId",
+              "className": "Long"
+            },
+            {
+              "name": "content",
+              "className": "String"
+            },
+            {
+              "name": "answer",
+              "className": "String"
+            },
+            {
+              "name": "priority",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Policy": {
+        "65ecaa69-df82-6e32-d897-48810edf79ea": {
+          "boundedContextId": "b8964aed-ab76-1e5e-b983-26c2450b2970",
+          "id": "65ecaa69-df82-6e32-d897-48810edf79ea",
+          "name": "updateProblem",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+              "id": "1b634ff6-118a-d7c0-e7e3-1cc5f87f6a80",
+              "name": "ProblemGenereated",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "problemId",
+                  "className": "Long"
+                },
+                {
+                  "name": "content",
+                  "className": "String"
+                },
+                {
+                  "name": "answer",
+                  "className": "String"
+                },
+                {
+                  "name": "priority",
+                  "className": "String"
+                }
+              ]
+            }
+          ]
+        },
+        "b199dd64-df7d-4483-c167-852abe42646d": {
+          "boundedContextId": "b8964aed-ab76-1e5e-b983-26c2450b2970",
+          "id": "b199dd64-df7d-4483-c167-852abe42646d",
+          "name": "deleteProblem",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "85a6f67a-996d-a1b0-8703-e8ac4759a852",
+              "id": "c76f329f-1147-5540-af15-2881c59212ab",
+              "name": "IndexDeleted",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "bookId",
+                  "className": "Long"
+                },
+                {
+                  "name": "name",
+                  "className": "String"
+                },
+                {
+                  "name": "priority",
+                  "className": "Long"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        },
+        "1d3eeb84-b38b-c0b6-5f07-f1916419a654": {
+          "boundedContextId": "b8964aed-ab76-1e5e-b983-26c2450b2970",
+          "id": "1d3eeb84-b38b-c0b6-5f07-f1916419a654",
+          "name": "deleteProblemByFail",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
+              "id": "ef957066-6eb7-e6cc-14f9-ca91a1bb6db3",
+              "name": "ProblemGenerationFailed",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "problemId",
+                  "className": "Long"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Command": {
+        "9da834a9-dae2-8903-77da-2817f2817a5d": {
+          "boundedContextId": "b8964aed-ab76-1e5e-b983-26c2450b2970",
+          "id": "9da834a9-dae2-8903-77da-2817f2817a5d",
+          "name": "generateProblem",
+          "type": "Command",
+          "apiPath": "",
+          "method": "PUT"
+        }
+      },
+      "View": {}
+    }
+  },
+  "bookShelfBook": {
+    "id": "247c063b-0136-b14f-7e77-7bb8a9d07ba3",
+    "name": "bookShelfBook",
+    "elements": {
+      "Aggregate": {
+        "bb01cc2b-ce81-fc03-42e3-42ab95437c7f": {
+          "boundedContextId": "247c063b-0136-b14f-7e77-7bb8a9d07ba3",
+          "id": "bb01cc2b-ce81-fc03-42e3-42ab95437c7f",
+          "name": "BookShelfBook",
+          "type": "Aggregate",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Event": {
+        "ab0b828a-848e-340f-5e06-d2878a6c3316": {
+          "boundedContextId": "247c063b-0136-b14f-7e77-7bb8a9d07ba3",
+          "id": "ab0b828a-848e-340f-5e06-d2878a6c3316",
+          "name": "BookShelfBookAdded",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        },
+        "68c22bee-1877-25ee-3847-8b7a06769662": {
+          "boundedContextId": "247c063b-0136-b14f-7e77-7bb8a9d07ba3",
+          "id": "68c22bee-1877-25ee-3847-8b7a06769662",
+          "name": "BookShelfBookDeleted",
+          "type": "Event",
+          "attributes": [
+            {
+              "name": "id",
+              "className": "Long"
+            },
+            {
+              "name": "bookId",
+              "className": "Long"
+            },
+            {
+              "name": "createdDate",
+              "className": "Date"
+            },
+            {
+              "name": "updatedDate",
+              "className": "Date"
+            }
+          ]
+        }
+      },
+      "Policy": {
+        "32ddbb2f-17e7-068e-3d4f-938e347489fc": {
+          "boundedContextId": "247c063b-0136-b14f-7e77-7bb8a9d07ba3",
+          "id": "32ddbb2f-17e7-068e-3d4f-938e347489fc",
+          "name": "deleteBookShelfBook",
+          "type": "Policy",
+          "from": [
+            {
+              "boundedContextId": "c5ef95d8-4f84-e246-7b6d-5af66d5e6991",
+              "id": "8cc6f87f-12cb-acdd-26d6-673e4783af61",
+              "name": "BookDeleted",
+              "type": "Event",
+              "attributes": [
+                {
+                  "name": "id",
+                  "className": "Long"
+                },
+                {
+                  "name": "createrId",
+                  "className": "String"
+                },
+                {
+                  "name": "coverImageFileid",
+                  "className": "Long"
+                },
+                {
+                  "name": "title",
+                  "className": "String"
+                },
+                {
+                  "name": "isShared",
+                  "className": "Boolean"
+                },
+                {
+                  "name": "createdDate",
+                  "className": "Date"
+                },
+                {
+                  "name": "updatedDate",
+                  "className": "Date"
+                }
+              ]
+            }
+          ]
+        }
+      },
+      "Command": {
+        "e0feaf55-a16c-bdde-9ef9-313a59620446": {
+          "boundedContextId": "247c063b-0136-b14f-7e77-7bb8a9d07ba3",
+          "id": "e0feaf55-a16c-bdde-9ef9-313a59620446",
+          "name": "addBookShelfBook",
+          "type": "Command",
+          "apiPath": "addbook",
+          "method": "PUT"
+        },
+        "350e245f-0415-5f55-7f9c-ce41ee8d26c7": {
+          "boundedContextId": "247c063b-0136-b14f-7e77-7bb8a9d07ba3",
+          "id": "350e245f-0415-5f55-7f9c-ce41ee8d26c7",
+          "name": "deleteBookShelfBook",
+          "type": "Command",
+          "apiPath": "deletebook",
+          "method": "PUT"
+        }
+      },
+      "View": {}
+    }
+  }
+}
