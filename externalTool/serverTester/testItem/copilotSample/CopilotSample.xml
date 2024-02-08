@@ -44,6 +44,47 @@
             </checks>
         </test>
 
+
+        <test>
+            <title>로그 얻기(Logs)</title>
+            <help>User 서비스의 로그들을 얻어옵니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8082</baseUrl>
+            <resourceUrl>sanityCheck/logs</resourceUrl>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+        <test>
+            <title>에러 로그 얻기(ErrorLogs)</title>
+            <help>User 서비스의 로그들 중에서 에러 로그만 얻어옵니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8082</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>0 나누기 오류 체크(DivByZeroCheck)</title>
+            <help>일부로 0으로 나눠서 에러를 일으켜서 결과를 관찰합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8082</baseUrl>
+            <resourceUrl>sanityCheck/divByZeroCheck</resourceUrl>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
         <test>
             <title>모든 유저 목록 얻기(UserAll)</title>
             <help>모든 유저의 목록을 얻어옵니다.</help>
