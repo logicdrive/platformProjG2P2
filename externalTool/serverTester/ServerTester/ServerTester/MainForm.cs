@@ -136,21 +136,7 @@ namespace ServerTester
             }
 
 
-            TestItemDto selectedTestItemDto = this.testItemService.testItemDtosDic[TestGroupListBox.SelectedItem.ToString()][TestListBox.SelectedIndex];
-            bool isAllPassed = true;
-            foreach(TestItemTestDto test in selectedTestItemDto.tests)
-            {
-                if(!test.result.isPass)
-                {
-                    isAllPassed = false;
-                    break;
-                }
-            }
-            selectedTestItemDto.isPassed = isAllPassed;
-
-
             MessageBox.Show("성공적으로 요청되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
-            this.TestGroupListBox_SelectedIndexChanged(null, null);
             this.TestListBox_SelectedIndexChanged(null, null);
         }
 
@@ -197,7 +183,7 @@ namespace ServerTester
             RequestHistoryListBox.Items.Clear();
             foreach (TestItemTestDto test in selectedTestItemDto.tests)
             {
-                if((test.result != null) && (test.result.requestLog.Length > 0))
+                if((test.result != null) && (test.result.responseLog.Length > 0))
                 {
                     RequestHistoryListBox.Items.Add(string.Format(
                         "[{0}] {1}", test.result.statusCode.ToString(), test.title

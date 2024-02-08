@@ -86,6 +86,8 @@ namespace ServerTester.TestItem
                 {
                     testItemTestDto.headers.Add(headerNode.Attributes["key"].Value, headerNode.InnerText);
                 }
+                testItemTestDto.result.requestLog = this.makeRequestLog(testItemTestDto);
+
 
                 testItemDto.tests.Add(testItemTestDto);
             }
@@ -110,7 +112,7 @@ namespace ServerTester.TestItem
                     testItemTestDto.headers
                 );
                 testItemTestResultDto.statusCode = response.StatusCode;
-                testItemTestResultDto.requestLog = makeRequestLog(response.Request, testItemTestDto);
+                testItemTestResultDto.requestLog = makeRequestLog(testItemTestDto);
                 testItemTestResultDto.responseLog = makeResponseLog(response);
 
 
@@ -156,14 +158,14 @@ namespace ServerTester.TestItem
             }
         }
 
-        public string makeRequestLog(RestRequest request, TestItemTestDto testItemTestDto)
+        public string makeRequestLog(TestItemTestDto testItemTestDto)
         {
             string headerString = "";
             foreach (var header in testItemTestDto.headers)
                 headerString += string.Format("{0}: {1}{2}", header.Key, header.Value, Environment.NewLine);
 
             List<string> reqeustLogs = new List<string> {
-                string.Format("{0} {1}/{2}", request.Method, testItemTestDto.baseUrl, testItemTestDto.resourceUrl),
+                string.Format("{0} {1}/{2}", testItemTestDto.method, testItemTestDto.baseUrl, testItemTestDto.resourceUrl),
                 "",
                 headerString,
                 "",
