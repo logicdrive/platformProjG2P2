@@ -1,15 +1,12 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
 using ServerTester.Util;
 using RestSharp;
 using System.Net;
-using System.Windows.Forms.VisualStyles;
-using static System.Windows.Forms.LinkLabel;
-using System.Runtime.CompilerServices;
+using System.Text.RegularExpressions;
 
 namespace ServerTester.TestItem
 {
@@ -113,7 +110,7 @@ namespace ServerTester.TestItem
                     if(check.type == "status")
                     {
                         // Check if the response has valid status code
-                        if (((int)(response.StatusCode)).ToString() != check.value.ToString())
+                        if (!(Regex.IsMatch(((int)(response.StatusCode)).ToString(), check.value)))
                         {
                             testItemTestResultDto.isPass = false;
                             testItemTestResultDto.resultLog = string.Format(
