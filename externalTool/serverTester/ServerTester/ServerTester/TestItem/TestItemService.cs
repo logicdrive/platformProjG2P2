@@ -202,6 +202,6 @@ namespace ServerTester.TestItem
         public string requestLog { get; set; } = "";
         public string responseLog { get; set; } = "";
         public HttpStatusCode statusCode { get; set; } = HttpStatusCode.OK;
-        public bool isPass { get; set; } = true;
+        public bool isPass { get; set; } = false;
     }
 }

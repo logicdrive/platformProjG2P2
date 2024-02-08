@@ -101,7 +101,9 @@ namespace ServerTester
             }
 
 
+            selectedTestItemDto.isPassed = true;
             MessageBox.Show("테스트가 성공적으로 완료되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.TestGroupListBox_SelectedIndexChanged(null, null);
             this.TestListBox_SelectedIndexChanged(null, null);
         }
 
@@ -134,7 +136,21 @@ namespace ServerTester
             }
 
 
+            TestItemDto selectedTestItemDto = this.testItemService.testItemDtosDic[TestGroupListBox.SelectedItem.ToString()][TestListBox.SelectedIndex];
+            bool isAllPassed = true;
+            foreach(TestItemTestDto test in selectedTestItemDto.tests)
+            {
+                if(!test.result.isPass)
+                {
+                    isAllPassed = false;
+                    break;
+                }
+            }
+            selectedTestItemDto.isPassed = isAllPassed;
+
+
             MessageBox.Show("성공적으로 요청되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.TestGroupListBox_SelectedIndexChanged(null, null);
             this.TestListBox_SelectedIndexChanged(null, null);
         }
 
@@ -150,10 +166,18 @@ namespace ServerTester
                 ResponseLogTextBox.Text = "";
             }
 
-
+            int savedSelectedIndex = TestListBox.SelectedIndex;
             TestListBox.Items.Clear();
             foreach (TestItemDto testItemDto in this.testItemService.testItemDtosDic[TestGroupListBox.SelectedItem.ToString()])
-                TestListBox.Items.Add(testItemDto.description.title);
+            {
+                if(testItemDto.isPassed) 
+                    TestListBox.Items.Add("[OK] " + testItemDto.description.title);
+                else
+                    TestListBox.Items.Add(testItemDto.description.title);
+            }
+
+            if (e == null)
+                TestListBox.SelectedIndex = savedSelectedIndex;
         }
 
         private void TestListBox_SelectedIndexChanged(object sender, EventArgs e)
