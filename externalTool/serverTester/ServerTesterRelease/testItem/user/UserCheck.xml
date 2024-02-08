@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>User</group>
+        <title>로그인 및 이름 변경 작동 여부 확인</title>
+        <help>회원가입, 로그인, 이름 변경에 따른 순차적인 작동 여부를 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>통신 확인(SanityCheck)</title>
+            <help>User 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8082</baseUrl>
+            <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>회원 가입(SignUp)</title>
+            <help>회원가입 요청을 보냅니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8082</baseUrl>
+            <resourceUrl>users/signUp</resourceUrl>
+            <headers></headers>
+            <data>{"email":"testemail1@gmail.com","password":"testpassword1","name":"testname1"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+        <test>
+            <title>유저 추가 확인(UserAll)</title>
+            <help>회원가입시킨 유저가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8082</baseUrl>
+            <resourceUrl>users</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">testemail1@gmail.com</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>로그인(SignIn)</title>
+            <help>로그인 요청을 보냅니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8082</baseUrl>
+            <resourceUrl>users/signIn</resourceUrl>
+            <headers></headers>
+            <data>{"email":"testemail1@gmail.com","password":"testpassword1"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>유저명 변경(UpdateName)</title>
+            <help>유저 이름 변경 요청을 보냅니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8082</baseUrl>
+            <resourceUrl>users/updateName</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"name":"changedTestName1"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+        <test>
+            <title>변경된 유저명 확인(UserAll)</title>
+            <help>유저명이 정말로 변경되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8082</baseUrl>
+            <resourceUrl>users</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">changedTestName1</check>
+            </checks>
+        </test>
+    </tests>
+</root>
