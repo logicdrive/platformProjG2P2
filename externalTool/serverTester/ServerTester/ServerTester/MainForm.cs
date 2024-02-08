@@ -27,9 +27,11 @@ namespace ServerTester
             
             this.testItemService = new TestItemService();
             HelpTextBox.Text = string.Format("{0}개의 테스트 항목이 성공적으로 로드됨 !", this.testItemService.totalCount);
-        
-            
+
+            foreach (string key in this.testItemService.testItemDtosDic.Keys)
+                TestGroupListBox.Items.Add(key);
         }
+
 
         private void TestExecuteButton_Click(object sender, EventArgs e)
         {
@@ -41,8 +43,12 @@ namespace ServerTester
 
         }
 
+
         private void TestGroupListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            TestListBox.Items.Clear();
+            foreach (TestItemDto testItemDto in this.testItemService.testItemDtosDic[TestGroupListBox.SelectedItem.ToString()])
+                TestListBox.Items.Add(testItemDto.description.title);
         }
     }
 }

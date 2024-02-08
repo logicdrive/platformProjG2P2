@@ -28,6 +28,8 @@ namespace ServerTester.TestItem
                     TestItemDto testItemDto = this.loadXmlFile(filePath);
                     if (!testItemDtosDic.ContainsKey(testItemDto.description.group))
                         testItemDtosDic.Add(testItemDto.description.group, new List<TestItemDto> {});
+                    testItemDtosDic[testItemDto.description.group].Add(testItemDto);
+
                     this.totalCount += 1;
                 }
 
