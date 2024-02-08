@@ -240,7 +240,7 @@
             // 
             this.RequestProgressBar.Location = new System.Drawing.Point(268, 31);
             this.RequestProgressBar.Name = "RequestProgressBar";
-            this.RequestProgressBar.Size = new System.Drawing.Size(1516, 50);
+            this.RequestProgressBar.Size = new System.Drawing.Size(1523, 50);
             this.RequestProgressBar.TabIndex = 17;
             // 
             // MainForm
