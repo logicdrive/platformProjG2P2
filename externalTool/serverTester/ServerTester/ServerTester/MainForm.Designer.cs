@@ -45,8 +45,11 @@
             this.ResponseLogTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.TestButton = new System.Windows.Forms.Button();
+            this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.ResultLogTextBox = new System.Windows.Forms.TextBox();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
+            this.groupBox3.SuspendLayout();
             this.SuspendLayout();
             // 
             // TestExecuteButton
@@ -145,16 +148,16 @@
             this.RequestLogTextBox.Name = "RequestLogTextBox";
             this.RequestLogTextBox.ReadOnly = true;
             this.RequestLogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.RequestLogTextBox.Size = new System.Drawing.Size(776, 425);
+            this.RequestLogTextBox.Size = new System.Drawing.Size(776, 357);
             this.RequestLogTextBox.TabIndex = 0;
             // 
             // groupBox1
             // 
             this.groupBox1.Controls.Add(this.RequestLogTextBox);
             this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(1211, 141);
+            this.groupBox1.Location = new System.Drawing.Point(1217, 289);
             this.groupBox1.Name = "groupBox1";
-            this.groupBox1.Size = new System.Drawing.Size(811, 489);
+            this.groupBox1.Size = new System.Drawing.Size(811, 421);
             this.groupBox1.TabIndex = 12;
             this.groupBox1.TabStop = false;
             this.groupBox1.Text = "요청 로그";
@@ -163,9 +166,9 @@
             // 
             this.groupBox2.Controls.Add(this.ResponseLogTextBox);
             this.groupBox2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(1211, 648);
+            this.groupBox2.Location = new System.Drawing.Point(1217, 716);
             this.groupBox2.Name = "groupBox2";
-            this.groupBox2.Size = new System.Drawing.Size(811, 489);
+            this.groupBox2.Size = new System.Drawing.Size(811, 421);
             this.groupBox2.TabIndex = 13;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "응답 로그";
@@ -177,7 +180,7 @@
             this.ResponseLogTextBox.Name = "ResponseLogTextBox";
             this.ResponseLogTextBox.ReadOnly = true;
             this.ResponseLogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.ResponseLogTextBox.Size = new System.Drawing.Size(782, 427);
+            this.ResponseLogTextBox.Size = new System.Drawing.Size(782, 359);
             this.ResponseLogTextBox.TabIndex = 0;
             // 
             // label2
@@ -200,11 +203,33 @@
             this.TestButton.UseVisualStyleBackColor = true;
             this.TestButton.Click += new System.EventHandler(this.TestButton_Click);
             // 
+            // groupBox3
+            // 
+            this.groupBox3.Controls.Add(this.ResultLogTextBox);
+            this.groupBox3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.groupBox3.Location = new System.Drawing.Point(1217, 141);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(811, 142);
+            this.groupBox3.TabIndex = 13;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "검토 결과";
+            // 
+            // ResultLogTextBox
+            // 
+            this.ResultLogTextBox.Location = new System.Drawing.Point(12, 40);
+            this.ResultLogTextBox.Multiline = true;
+            this.ResultLogTextBox.Name = "ResultLogTextBox";
+            this.ResultLogTextBox.ReadOnly = true;
+            this.ResultLogTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.ResultLogTextBox.Size = new System.Drawing.Size(776, 83);
+            this.ResultLogTextBox.TabIndex = 0;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2074, 1179);
+            this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.TestButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox2);
@@ -227,6 +252,8 @@
             this.groupBox1.PerformLayout();
             this.groupBox2.ResumeLayout(false);
             this.groupBox2.PerformLayout();
+            this.groupBox3.ResumeLayout(false);
+            this.groupBox3.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -249,6 +276,8 @@
         private System.Windows.Forms.TextBox ResponseLogTextBox;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Button TestButton;
+        private System.Windows.Forms.GroupBox groupBox3;
+        private System.Windows.Forms.TextBox ResultLogTextBox;
     }
 }
 
