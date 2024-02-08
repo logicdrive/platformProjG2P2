@@ -153,7 +153,7 @@ namespace ServerTester.TestItem
         public string makeResponseLog(RestResponse response)
         {
             List<string> responseLogs = new List<string> {
-                string.Format("{0} {1}", response.StatusCode, response.StatusDescription)
+                string.Format("{0}({1}) {2}", response.StatusCode, (int)(response.StatusCode), response.StatusDescription)
             };
 
             return string.Join(Environment.NewLine, responseLogs);
