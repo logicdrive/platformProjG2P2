@@ -9,12 +9,13 @@ using RestSharp;
 using System.Net;
 using System.Windows.Forms.VisualStyles;
 using static System.Windows.Forms.LinkLabel;
+using System.Runtime.CompilerServices;
 
 namespace ServerTester.TestItem
 {
     internal class TestItemService
     {
-        public Dictionary<String, List<TestItemDto>> testItemDtosDic { get; } = new Dictionary<string, List<TestItemDto>>();
+        public Dictionary<string, List<TestItemDto>> testItemDtosDic { get; } = new Dictionary<string, List<TestItemDto>>();
 
         public int totalCount = 0;
 
@@ -46,7 +47,7 @@ namespace ServerTester.TestItem
             }
         }
 
-        private TestItemDto loadXmlFile(String filePath)
+        private TestItemDto loadXmlFile(string filePath)
         {
             TestItemDto testItemDto = new TestItemDto();
             testItemDto.filePath = filePath;
@@ -115,7 +116,7 @@ namespace ServerTester.TestItem
                         if (((int)(response.StatusCode)).ToString() != check.value.ToString())
                         {
                             testItemTestResultDto.isPass = false;
-                            testItemTestResultDto.resultLog = String.Format(
+                            testItemTestResultDto.resultLog = string.Format(
                                 "유효하지 않은 Status Code. (기대값: {0}, 결과값: {1})",
                                 check.value, (int)(response.StatusCode)
                             );
@@ -164,7 +165,8 @@ namespace ServerTester.TestItem
     {
         public TestItemDescriptionDto description { get; set; } = new TestItemDescriptionDto();
         public List<TestItemTestDto> tests { get; set; } = new List<TestItemTestDto>();
-        public String filePath { get; set; } = "";
+        public string filePath { get; set; } = "";
+        public bool isPassed { get; set; } = false;
     }
 
     class TestItemDescriptionDto
@@ -176,12 +178,12 @@ namespace ServerTester.TestItem
 
     class TestItemTestDto
     {
-        public String title { get; set; } = "";
-        public String help { get; set; } = "";
+        public string title { get; set; } = "";
+        public string help { get; set; } = "";
 
-        public String method { get; set; } = "";
-        public String baseUrl { get; set; } = "";
-        public String resourceUrl { get; set; } = "";
+        public string method { get; set; } = "";
+        public string baseUrl { get; set; } = "";
+        public string resourceUrl { get; set; } = "";
 
 
         public List<TestItemTestCheckDto> checks { get; set; } = new List<TestItemTestCheckDto>();
@@ -190,15 +192,15 @@ namespace ServerTester.TestItem
 
     class TestItemTestCheckDto
     {
-        public String type { get; set; } = "";
-        public String value { get; set; } = "";
+        public string type { get; set; } = "";
+        public string value { get; set; } = "";
     }
 
     class TestItemTestResultDto
     {
-        public String resultLog { get; set; } = "";
-        public String requestLog { get; set; } = "";
-        public String responseLog { get; set; } = "";
+        public string resultLog { get; set; } = "";
+        public string requestLog { get; set; } = "";
+        public string responseLog { get; set; } = "";
         public HttpStatusCode statusCode { get; set; } = HttpStatusCode.OK;
         public bool isPass { get; set; } = true;
     }
