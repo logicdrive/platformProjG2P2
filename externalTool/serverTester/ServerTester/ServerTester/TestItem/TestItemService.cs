@@ -107,8 +107,7 @@ namespace ServerTester.TestItem
 
                 foreach (TestItemTestCheckDto check in testItemTestDto.checks)
                 {
-                    if(check.type == "status")
-                    {
+                    if(check.type == "status") {
                         // Check if the response has valid status code
                         if (!(Regex.IsMatch(((int)(response.StatusCode)).ToString(), check.value)))
                         {
@@ -116,6 +115,19 @@ namespace ServerTester.TestItem
                             testItemTestResultDto.resultLog = string.Format(
                                 "유효하지 않은 Status Code. (기대값: {0}, 결과값: {1})",
                                 check.value, (int)(response.StatusCode)
+                            );
+                            return testItemTestResultDto;
+                        }
+                    }
+                    else if(check.type == "data")
+                    {
+                        // Check if the reponse content contains the value of check
+                        if (!(response.Content.Contains(check.value)))
+                        {
+                            testItemTestResultDto.isPass = false;
+                            testItemTestResultDto.resultLog = string.Format(
+                                 "유효하지 않은 데이터. (포함되기를 기대한 값: {0})",
+                                 check.value
                             );
                             return testItemTestResultDto;
                         }
