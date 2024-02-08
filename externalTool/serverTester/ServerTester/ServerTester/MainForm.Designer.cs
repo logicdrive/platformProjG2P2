@@ -34,7 +34,6 @@
             this.TestGroupListBox = new System.Windows.Forms.ListBox();
             this.label1 = new System.Windows.Forms.Label();
             this.TestListBox = new System.Windows.Forms.ListBox();
-            this.TestInfoButton = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.RequestHistoryListBox = new System.Windows.Forms.ListBox();
             this.label4 = new System.Windows.Forms.Label();
@@ -47,6 +46,9 @@
             this.TestButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ResultLogTextBox = new System.Windows.Forms.TextBox();
+            this.label5 = new System.Windows.Forms.Label();
+            this.HelpTextBox = new System.Windows.Forms.TextBox();
+            this.RequestProgressBar = new System.Windows.Forms.ProgressBar();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -72,6 +74,7 @@
             this.TestGroupListBox.Name = "TestGroupListBox";
             this.TestGroupListBox.Size = new System.Drawing.Size(219, 996);
             this.TestGroupListBox.TabIndex = 1;
+            this.TestGroupListBox.SelectedIndexChanged += new System.EventHandler(this.TestGroupListBox_SelectedIndexChanged);
             // 
             // label1
             // 
@@ -93,16 +96,6 @@
             this.TestListBox.Name = "TestListBox";
             this.TestListBox.Size = new System.Drawing.Size(438, 996);
             this.TestListBox.TabIndex = 3;
-            // 
-            // TestInfoButton
-            // 
-            this.TestInfoButton.Location = new System.Drawing.Point(268, 26);
-            this.TestInfoButton.Name = "TestInfoButton";
-            this.TestInfoButton.Size = new System.Drawing.Size(219, 60);
-            this.TestInfoButton.TabIndex = 5;
-            this.TestInfoButton.Text = "세부 내용";
-            this.TestInfoButton.UseVisualStyleBackColor = true;
-            this.TestInfoButton.Click += new System.EventHandler(this.TestInfoButton_Click);
             // 
             // label3
             // 
@@ -224,11 +217,40 @@
             this.ResultLogTextBox.Size = new System.Drawing.Size(776, 83);
             this.ResultLogTextBox.TabIndex = 0;
             // 
+            // label5
+            // 
+            this.label5.AutoSize = true;
+            this.label5.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
+            this.label5.Location = new System.Drawing.Point(31, 1159);
+            this.label5.Name = "label5";
+            this.label5.Size = new System.Drawing.Size(86, 32);
+            this.label5.TabIndex = 16;
+            this.label5.Text = "도움말";
+            // 
+            // HelpTextBox
+            // 
+            this.HelpTextBox.Location = new System.Drawing.Point(123, 1154);
+            this.HelpTextBox.Name = "HelpTextBox";
+            this.HelpTextBox.ReadOnly = true;
+            this.HelpTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
+            this.HelpTextBox.Size = new System.Drawing.Size(1899, 35);
+            this.HelpTextBox.TabIndex = 1;
+            // 
+            // RequestProgressBar
+            // 
+            this.RequestProgressBar.Location = new System.Drawing.Point(268, 31);
+            this.RequestProgressBar.Name = "RequestProgressBar";
+            this.RequestProgressBar.Size = new System.Drawing.Size(1516, 50);
+            this.RequestProgressBar.TabIndex = 17;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2074, 1179);
+            this.ClientSize = new System.Drawing.Size(2074, 1229);
+            this.Controls.Add(this.RequestProgressBar);
+            this.Controls.Add(this.HelpTextBox);
+            this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox3);
             this.Controls.Add(this.TestButton);
             this.Controls.Add(this.label2);
@@ -237,7 +259,6 @@
             this.Controls.Add(this.label4);
             this.Controls.Add(this.RequestHistoryListBox);
             this.Controls.Add(this.label3);
-            this.Controls.Add(this.TestInfoButton);
             this.Controls.Add(this.TestListBox);
             this.Controls.Add(this.label1);
             this.Controls.Add(this.TestGroupListBox);
@@ -265,7 +286,6 @@
         private System.Windows.Forms.ListBox TestGroupListBox;
         private System.Windows.Forms.Label label1;
         private System.Windows.Forms.ListBox TestListBox;
-        private System.Windows.Forms.Button TestInfoButton;
         private System.Windows.Forms.Label label3;
         private System.Windows.Forms.ListBox RequestHistoryListBox;
         private System.Windows.Forms.Label label4;
@@ -278,6 +298,9 @@
         private System.Windows.Forms.Button TestButton;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox ResultLogTextBox;
+        private System.Windows.Forms.Label label5;
+        private System.Windows.Forms.TextBox HelpTextBox;
+        private System.Windows.Forms.ProgressBar RequestProgressBar;
     }
 }
 

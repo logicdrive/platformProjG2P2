@@ -17,7 +17,7 @@ namespace ServerTester
         public MainForm()
         {
             InitializeComponent();
-            this.Size = new Size(1125, 620);
+            this.Size = new Size(1125, 650);
         }
 
         private void TestExecuteButton_Click(object sender, EventArgs e)
@@ -25,14 +25,13 @@ namespace ServerTester
 
         }
 
-        private void TestInfoButton_Click(object sender, EventArgs e)
+        private void TestButton_Click(object sender, EventArgs e)
         {
 
         }
 
-        private void TestButton_Click(object sender, EventArgs e)
+        private void TestGroupListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-
         }
     }
 }
