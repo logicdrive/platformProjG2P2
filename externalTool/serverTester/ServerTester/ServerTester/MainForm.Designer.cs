@@ -117,7 +117,7 @@
             this.RequestHistoryListBox.ItemHeight = 32;
             this.RequestHistoryListBox.Location = new System.Drawing.Point(850, 141);
             this.RequestHistoryListBox.Name = "RequestHistoryListBox";
-            this.RequestHistoryListBox.Size = new System.Drawing.Size(355, 996);
+            this.RequestHistoryListBox.Size = new System.Drawing.Size(667, 996);
             this.RequestHistoryListBox.TabIndex = 7;
             this.RequestHistoryListBox.SelectedIndexChanged += new System.EventHandler(this.RequestHistoryListBox_SelectedIndexChanged);
             // 
@@ -125,7 +125,7 @@
             // 
             this.label4.AutoSize = true;
             this.label4.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.label4.Location = new System.Drawing.Point(976, 106);
+            this.label4.Location = new System.Drawing.Point(1120, 106);
             this.label4.Name = "label4";
             this.label4.Size = new System.Drawing.Size(118, 32);
             this.label4.TabIndex = 8;
@@ -151,7 +151,7 @@
             // 
             this.groupBox1.Controls.Add(this.RequestLogTextBox);
             this.groupBox1.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox1.Location = new System.Drawing.Point(1217, 289);
+            this.groupBox1.Location = new System.Drawing.Point(1538, 289);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(811, 421);
             this.groupBox1.TabIndex = 12;
@@ -162,7 +162,7 @@
             // 
             this.groupBox2.Controls.Add(this.ResponseLogTextBox);
             this.groupBox2.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox2.Location = new System.Drawing.Point(1217, 716);
+            this.groupBox2.Location = new System.Drawing.Point(1538, 716);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(811, 421);
             this.groupBox2.TabIndex = 13;
@@ -191,7 +191,7 @@
             // 
             // InitButton
             // 
-            this.InitButton.Location = new System.Drawing.Point(1803, 26);
+            this.InitButton.Location = new System.Drawing.Point(2130, 26);
             this.InitButton.Name = "InitButton";
             this.InitButton.Size = new System.Drawing.Size(219, 60);
             this.InitButton.TabIndex = 15;
@@ -203,7 +203,7 @@
             // 
             this.groupBox3.Controls.Add(this.ResultLogTextBox);
             this.groupBox3.Font = new System.Drawing.Font("맑은 고딕", 9F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(129)));
-            this.groupBox3.Location = new System.Drawing.Point(1217, 141);
+            this.groupBox3.Location = new System.Drawing.Point(1538, 141);
             this.groupBox3.Name = "groupBox3";
             this.groupBox3.Size = new System.Drawing.Size(811, 142);
             this.groupBox3.TabIndex = 13;
@@ -236,14 +236,14 @@
             this.HelpTextBox.Name = "HelpTextBox";
             this.HelpTextBox.ReadOnly = true;
             this.HelpTextBox.ScrollBars = System.Windows.Forms.ScrollBars.Both;
-            this.HelpTextBox.Size = new System.Drawing.Size(1899, 35);
+            this.HelpTextBox.Size = new System.Drawing.Size(2226, 35);
             this.HelpTextBox.TabIndex = 1;
             // 
             // RequestProgressBar
             // 
             this.RequestProgressBar.Location = new System.Drawing.Point(498, 31);
             this.RequestProgressBar.Name = "RequestProgressBar";
-            this.RequestProgressBar.Size = new System.Drawing.Size(1293, 50);
+            this.RequestProgressBar.Size = new System.Drawing.Size(1605, 50);
             this.RequestProgressBar.TabIndex = 17;
             // 
             // EachTestExecuteButton
@@ -260,7 +260,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(2074, 1229);
+            this.ClientSize = new System.Drawing.Size(2424, 1229);
             this.Controls.Add(this.EachTestExecuteButton);
             this.Controls.Add(this.RequestProgressBar);
             this.Controls.Add(this.HelpTextBox);

@@ -23,7 +23,7 @@ namespace ServerTester
         public MainForm()
         {
             InitializeComponent();
-            this.Size = new Size(1125, 650);
+            this.Size = new Size(1300, 650);
             this.initMainForm();
         }
 
