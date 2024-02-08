@@ -193,7 +193,7 @@ namespace ServerTester
             TestItemDto selectedTestItemDto = this.testItemService.testItemDtosDic[TestGroupListBox.SelectedItem.ToString()][TestListBox.SelectedIndex];
             HelpTextBox.Text = string.Format("{0}({1})", selectedTestItemDto.description.help, selectedTestItemDto.filePath);
 
-            int savedSelectedIndex = TestListBox.SelectedIndex;
+            int savedSelectedIndex = RequestHistoryListBox.SelectedIndex;
             RequestHistoryListBox.Items.Clear();
             foreach (TestItemTestDto test in selectedTestItemDto.tests)
             {
