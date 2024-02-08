@@ -143,10 +143,12 @@ namespace ServerTester
         {
             if ((TestGroupListBox.SelectedItem == null) || (TestGroupListBox.SelectedItem.ToString().Length <= 0))
                 return;
-            RequestHistoryListBox.Items.Clear();
-            ResultLogTextBox.Text = "";
-            RequestLogTextBox.Text = "";
-            ResponseLogTextBox.Text = "";
+            if(e != null) {
+                RequestHistoryListBox.Items.Clear();
+                ResultLogTextBox.Text = "";
+                RequestLogTextBox.Text = "";
+                ResponseLogTextBox.Text = "";
+            }
 
 
             TestListBox.Items.Clear();
@@ -157,9 +159,11 @@ namespace ServerTester
         private void TestListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
             if(TestListBox.SelectedIndex < 0) return;
-            ResultLogTextBox.Text = "";
-            RequestLogTextBox.Text = "";
-            ResponseLogTextBox.Text = "";
+            if(e != null) {
+                ResultLogTextBox.Text = "";
+                RequestLogTextBox.Text = "";
+                ResponseLogTextBox.Text = "";
+            }
 
 
             TestItemDto selectedTestItemDto = this.testItemService.testItemDtosDic[TestGroupListBox.SelectedItem.ToString()][TestListBox.SelectedIndex];
