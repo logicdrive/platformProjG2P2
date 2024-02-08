@@ -4,6 +4,11 @@ using System.Linq;
 using System.Windows.Forms;
 using System.IO;
 using System.Xml;
+using ServerTester.Util;
+using RestSharp;
+using System.Net;
+using System.Windows.Forms.VisualStyles;
+using static System.Windows.Forms.LinkLabel;
 
 namespace ServerTester.TestItem
 {
@@ -83,6 +88,74 @@ namespace ServerTester.TestItem
 
             return testItemDto; 
         }
+
+
+        public TestItemTestResultDto executeTestItemTest(TestItemTestDto testItemTestDto)
+        {
+            TestItemTestResultDto testItemTestResultDto = new TestItemTestResultDto();
+
+            try
+            {
+                // Create Http request by using testItemTestResultDto
+                RestResponse response = HttpUtil.request(
+                    HttpUtil.getMethodByString(testItemTestDto.method), 
+                    testItemTestDto.baseUrl, 
+                    testItemTestDto.resourceUrl
+                );
+                testItemTestResultDto.requestLog = makeRequestLog(response.Request);
+                testItemTestResultDto.responseLog = makeResponseLog(response);
+
+
+                foreach (TestItemTestCheckDto check in testItemTestDto.checks)
+                {
+                    if(check.type == "status")
+                    {
+                        // Check if the response has valid status code
+                        if (((int)(response.StatusCode)).ToString() != check.value.ToString())
+                        {
+                            testItemTestResultDto.isPass = false;
+                            testItemTestResultDto.resultLog = String.Format(
+                                "유효하지 않은 Status Code. (기대값: {0}, 결과값: {1})",
+                                check.value, (int)(response.StatusCode)
+                            );
+                            return testItemTestResultDto;
+                        }
+                    }
+                }
+
+                testItemTestResultDto.isPass = true;
+                testItemTestResultDto.resultLog = "테스트 항목 통과";
+
+                return testItemTestResultDto;
+            }
+            catch(Exception e)
+            {
+                testItemTestResultDto.isPass = false;
+                testItemTestResultDto.resultLog = e.Message;
+                return testItemTestResultDto;
+            }
+        }
+
+        public string makeRequestLog(RestRequest request)
+        {
+            List<string> reqeustLogs = new List<string> {
+                string.Format("{0} {1}", request.Method, request.Resource)
+            };
+
+            foreach (Parameter parameter in request.Parameters)
+                reqeustLogs.Add(string.Format("{0}: {1}", parameter.Name, parameter.Value));
+            
+            return string.Join(Environment.NewLine, reqeustLogs); ;
+        }
+
+        public string makeResponseLog(RestResponse response)
+        {
+            List<string> responseLogs = new List<string> {
+                string.Format("{0} {1}", response.StatusCode, response.StatusDescription)
+            };
+
+            return string.Join(Environment.NewLine, responseLogs);
+        }
     }
 
 
@@ -111,11 +184,20 @@ namespace ServerTester.TestItem
 
 
         public List<TestItemTestCheckDto> checks { get; set; } = new List<TestItemTestCheckDto>();
+        public TestItemTestResultDto result { get; set; } = new TestItemTestResultDto();
     }
 
     class TestItemTestCheckDto
     {
         public String type { get; set; } = "";
         public String value { get; set; } = "";
+    }
+
+    class TestItemTestResultDto
+    {
+        public String resultLog { get; set; } = "";
+        public String requestLog { get; set; } = "";
+        public String responseLog { get; set; } = "";
+        public bool isPass { get; set; } = true;
     }
 }

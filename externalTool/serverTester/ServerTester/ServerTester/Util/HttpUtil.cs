@@ -18,5 +18,22 @@ namespace ServerTester.Util
 
             return (new RestClient(baseUrl)).Execute(request);
         }
+
+        public static Method getMethodByString(string method)
+        {
+            switch (method.ToUpper())
+            {
+                case "GET":
+                    return Method.Get;
+                case "POST":
+                    return Method.Post;
+                case "PUT":
+                    return Method.Put;
+                case "DELETE":
+                    return Method.Delete;
+                default:
+                    return Method.Get;
+            }
+        }
     }
 }
