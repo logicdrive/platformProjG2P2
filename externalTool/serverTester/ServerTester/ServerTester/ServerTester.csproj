@@ -78,7 +78,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CopilotSample.cs" />
+    <None Include="CopilotSample.cs" />
     <Compile Include="MainForm.cs">
       <SubType>Form</SubType>
     </Compile>
