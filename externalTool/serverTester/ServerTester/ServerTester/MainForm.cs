@@ -46,6 +46,9 @@ namespace ServerTester
 
         private void TestGroupListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
+            if ((TestGroupListBox.SelectedItem == null) || (TestGroupListBox.SelectedItem.ToString().Length <= 0))
+                return;
+
             TestListBox.Items.Clear();
             foreach (TestItemDto testItemDto in this.testItemService.testItemDtosDic[TestGroupListBox.SelectedItem.ToString()])
                 TestListBox.Items.Add(testItemDto.description.title);

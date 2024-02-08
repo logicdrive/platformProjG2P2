@@ -50,6 +50,11 @@ namespace ServerTester
             // Add 'New Item 1' to 'TestGroupListBox' ListBox
             TestGroupListBox.Items.Add("New Item 1");
 
+
+            // Null check for 'TestGroupListBox' ListBox
+            if ((TestGroupListBox.SelectedItem == null) || (TestGroupListBox.SelectedItem.ToString().Length <= 0))
+                return;
+
             // Check if user selected ''New Item 1' from 'TestGroupListBox' ListBox
             if (TestGroupListBox.SelectedItem.ToString() == "New Item 1")
             {
@@ -62,6 +67,7 @@ namespace ServerTester
                 TestListBox.Items.Add("New Sub Item 2");
                 TestListBox.Items.Add("New Sub Item 3");
             }
+
 
             // Check if user selected 0th item from 'TestGroupListBox' ListBox
             if (TestGroupListBox.SelectedIndex == 0)
