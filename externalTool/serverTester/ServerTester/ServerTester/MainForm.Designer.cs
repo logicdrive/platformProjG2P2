@@ -43,7 +43,7 @@
             this.groupBox2 = new System.Windows.Forms.GroupBox();
             this.ResponseLogTextBox = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
-            this.TestButton = new System.Windows.Forms.Button();
+            this.InitButton = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
             this.ResultLogTextBox = new System.Windows.Forms.TextBox();
             this.label5 = new System.Windows.Forms.Label();
@@ -188,15 +188,15 @@
             this.label2.TabIndex = 14;
             this.label2.Text = "테스트 항목";
             // 
-            // TestButton
+            // InitButton
             // 
-            this.TestButton.Location = new System.Drawing.Point(1803, 26);
-            this.TestButton.Name = "TestButton";
-            this.TestButton.Size = new System.Drawing.Size(219, 60);
-            this.TestButton.TabIndex = 15;
-            this.TestButton.Text = "테스트";
-            this.TestButton.UseVisualStyleBackColor = true;
-            this.TestButton.Click += new System.EventHandler(this.TestButton_Click);
+            this.InitButton.Location = new System.Drawing.Point(1803, 26);
+            this.InitButton.Name = "InitButton";
+            this.InitButton.Size = new System.Drawing.Size(219, 60);
+            this.InitButton.TabIndex = 15;
+            this.InitButton.Text = "초기화";
+            this.InitButton.UseVisualStyleBackColor = true;
+            this.InitButton.Click += new System.EventHandler(this.InitButton_Click);
             // 
             // groupBox3
             // 
@@ -254,7 +254,7 @@
             this.Controls.Add(this.HelpTextBox);
             this.Controls.Add(this.label5);
             this.Controls.Add(this.groupBox3);
-            this.Controls.Add(this.TestButton);
+            this.Controls.Add(this.InitButton);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.groupBox2);
             this.Controls.Add(this.groupBox1);
@@ -297,7 +297,7 @@
         private System.Windows.Forms.GroupBox groupBox2;
         private System.Windows.Forms.TextBox ResponseLogTextBox;
         private System.Windows.Forms.Label label2;
-        private System.Windows.Forms.Button TestButton;
+        private System.Windows.Forms.Button InitButton;
         private System.Windows.Forms.GroupBox groupBox3;
         private System.Windows.Forms.TextBox ResultLogTextBox;
         private System.Windows.Forms.Label label5;

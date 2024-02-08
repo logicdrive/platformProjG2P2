@@ -24,12 +24,46 @@ namespace ServerTester
         {
             InitializeComponent();
             this.Size = new Size(1125, 650);
-            
+            this.initMainForm();
+        }
+
+        public void initMainForm()
+        {
+            this.ClearAllControlls();
+
             this.testItemService = new TestItemService();
             HelpTextBox.Text = string.Format("{0}개의 테스트 항목이 성공적으로 로드됨 !", this.testItemService.totalCount);
 
             foreach (string key in this.testItemService.testItemDtosDic.Keys)
                 TestGroupListBox.Items.Add(key);
+        }
+
+        public void ClearAllControlls()
+        {
+            TestGroupListBox.SelectedIndex = -1;
+            TestGroupListBox.Items.Clear();
+
+            TestListBox.SelectedIndex = -1;
+            TestListBox.Items.Clear();
+
+            RequestHistoryListBox.SelectedIndex = -1;
+            RequestHistoryListBox.Items.Clear();
+
+            HelpTextBox.Text = "";
+            ResultLogTextBox.Text = "";
+            RequestLogTextBox.Text = "";
+            ResponseLogTextBox.Text = "";
+
+            RequestProgressBar.Value = 0;   
+        }
+
+        private void InitButton_Click(object sender, EventArgs e)
+        {
+            if (MessageBox.Show("정말 초기화 하시겠습니까?", "경고", MessageBoxButtons.YesNo, MessageBoxIcon.Warning) == DialogResult.No)
+                return;
+
+            this.initMainForm();
+            MessageBox.Show("초기화가 완료되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
 
@@ -68,10 +102,6 @@ namespace ServerTester
 
 
             MessageBox.Show("테스트가 성공적으로 완료되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
-        }
-
-        private void TestButton_Click(object sender, EventArgs e)
-        {
         }
 
 
