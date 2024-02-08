@@ -99,6 +99,7 @@ namespace ServerTester
 
                 RequestProgressBar.Value += 100 / selectedTestItemDto.tests.Count;
             }
+            RequestProgressBar.Value = 100;
 
 
             selectedTestItemDto.isPassed = true;
