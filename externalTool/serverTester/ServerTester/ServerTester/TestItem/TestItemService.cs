@@ -150,12 +150,12 @@ namespace ServerTester.TestItem
         public string makeRequestLog(RestRequest request, TestItemTestDto testItemTestDto)
         {
             List<string> reqeustLogs = new List<string> {
-                string.Format("{0} {1}/{2}", request.Method, testItemTestDto.baseUrl, request.Resource),
+                string.Format("{0} {1}/{2}", request.Method, testItemTestDto.baseUrl, testItemTestDto.resourceUrl),
                 ""
             };
 
-            foreach (Parameter parameter in request.Parameters)
-                reqeustLogs.Add(string.Format("{0}: {1}", parameter.Name, parameter.Value));
+            // foreach (Parameter parameter in request.Parameters)
+            //    reqeustLogs.Add(string.Format("{0}: {1}", parameter.Name, parameter.Value));
             
             return string.Join(Environment.NewLine, reqeustLogs); ;
         }
