@@ -134,6 +134,7 @@ namespace ServerTester
     {
         public TestItemDescriptionDto description { get; set; } = new TestItemDescriptionDto();
         public List<TestItemTestDto> tests { get; set; } = new List<TestItemTestDto>();
+        public String filePath { get; set; } = "";
     }
 
     class TestItemDescriptionDto

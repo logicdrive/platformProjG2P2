@@ -53,5 +53,25 @@ namespace ServerTester
             foreach (TestItemDto testItemDto in this.testItemService.testItemDtosDic[TestGroupListBox.SelectedItem.ToString()])
                 TestListBox.Items.Add(testItemDto.description.title);
         }
+
+        private void TestListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(TestListBox.SelectedIndex < 0) return;
+
+            TestItemDto selectedTestItemDto = this.testItemService.testItemDtosDic[TestGroupListBox.SelectedItem.ToString()][TestListBox.SelectedIndex];
+            HelpTextBox.Text = string.Format("{0}({1})", selectedTestItemDto.description.help, selectedTestItemDto.filePath);
+
+            RequestHistoryListBox.Items.Clear();
+            foreach (TestItemTestDto test in selectedTestItemDto.tests)
+                RequestHistoryListBox.Items.Add(test.title);
+        }
+
+        private void RequestHistoryListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(RequestHistoryListBox.SelectedIndex < 0) return;
+
+            TestItemTestDto testItemTestDto = this.testItemService.testItemDtosDic[TestGroupListBox.SelectedItem.ToString()][TestListBox.SelectedIndex].tests[RequestHistoryListBox.SelectedIndex];
+            HelpTextBox.Text = testItemTestDto.help;
+        }
     }
 }

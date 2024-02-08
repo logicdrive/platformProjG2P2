@@ -96,6 +96,7 @@
             this.TestListBox.Name = "TestListBox";
             this.TestListBox.Size = new System.Drawing.Size(438, 996);
             this.TestListBox.TabIndex = 3;
+            this.TestListBox.SelectedIndexChanged += new System.EventHandler(this.TestListBox_SelectedIndexChanged);
             // 
             // label3
             // 
@@ -117,6 +118,7 @@
             this.RequestHistoryListBox.Name = "RequestHistoryListBox";
             this.RequestHistoryListBox.Size = new System.Drawing.Size(355, 996);
             this.RequestHistoryListBox.TabIndex = 7;
+            this.RequestHistoryListBox.SelectedIndexChanged += new System.EventHandler(this.RequestHistoryListBox_SelectedIndexChanged);
             // 
             // label4
             // 

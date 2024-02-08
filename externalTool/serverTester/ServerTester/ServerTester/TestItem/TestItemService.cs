@@ -44,6 +44,7 @@ namespace ServerTester.TestItem
         private TestItemDto loadXmlFile(String filePath)
         {
             TestItemDto testItemDto = new TestItemDto();
+            testItemDto.filePath = filePath;
 
 
             XmlDocument doc = new XmlDocument();
@@ -76,7 +77,7 @@ namespace ServerTester.TestItem
                     });
                 }
 
-                testItemDto.tests.Append(testItemTestDto);
+                testItemDto.tests.Add(testItemTestDto);
             }
 
 
@@ -89,6 +90,7 @@ namespace ServerTester.TestItem
     {
         public TestItemDescriptionDto description { get; set; } = new TestItemDescriptionDto();
         public List<TestItemTestDto> tests { get; set; } = new List<TestItemTestDto>();
+        public String filePath { get; set; } = "";
     }
 
     class TestItemDescriptionDto
