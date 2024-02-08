@@ -14,6 +14,8 @@
             <method>GET</method>
             <baseUrl>http://localhost:8082</baseUrl>
             <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
 
             <checks>
                 <check type="status">2.*</check>
@@ -26,6 +28,8 @@
             <method>PUT</method>
             <baseUrl>http://localhost:8082</baseUrl>
             <resourceUrl>sanityCheck/setNormal</resourceUrl>
+            <headers></headers>
+            <data></data>
 
             <checks>
                 <check type="status">2.*</check>
@@ -38,6 +42,8 @@
             <method>PUT</method>
             <baseUrl>http://localhost:8082</baseUrl>
             <resourceUrl>sanityCheck/setError</resourceUrl>
+            <headers></headers>
+            <data></data>
 
             <checks>
                 <check type="status">2.*</check>
@@ -52,6 +58,8 @@
             <method>GET</method>
             <baseUrl>http://localhost:8082</baseUrl>
             <resourceUrl>sanityCheck/logs</resourceUrl>
+            <headers></headers>
+            <data></data>
 
             <checks>
                 <check type="status">2.*</check>
@@ -64,6 +72,8 @@
             <method>GET</method>
             <baseUrl>http://localhost:8082</baseUrl>
             <resourceUrl>sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
 
             <checks>
                 <check type="status">2.*</check>
@@ -78,6 +88,25 @@
             <method>GET</method>
             <baseUrl>http://localhost:8082</baseUrl>
             <resourceUrl>sanityCheck/divByZeroCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+            <test>
+            <title>유저 인증 여부 확인(AuthenticationCheck)</title>
+            <help>HTTP 헤더로 전달된 유저 정보를 출력합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8082</baseUrl>
+            <resourceUrl>sanityCheck/authenticationCheck</resourceUrl>
+            <headers>
+                <header key="User-Id">1</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
 
             <checks>
                 <check type="status">2.*</check>
@@ -92,7 +121,9 @@
             <method>GET</method>
             <baseUrl>http://localhost:8082</baseUrl>
             <resourceUrl>users</resourceUrl>
-
+            <headers></headers>
+            <data></data>
+            
             <checks>
                 <check type="status">2.*</check>
                 <check type="data">admin@gmail.com</check>

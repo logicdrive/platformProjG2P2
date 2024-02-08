@@ -67,7 +67,8 @@ namespace ServerTester.TestItem
                     help = testNode.SelectSingleNode("help").InnerText,
                     method = testNode.SelectSingleNode("method").InnerText,
                     baseUrl = testNode.SelectSingleNode("baseUrl").InnerText,
-                    resourceUrl = testNode.SelectSingleNode("resourceUrl").InnerText
+                    resourceUrl = testNode.SelectSingleNode("resourceUrl").InnerText,
+                    data = testNode.SelectSingleNode("data").InnerText
                 };
 
                 XmlNodeList checkNodeList = testNode.SelectNodes("checks/check");
@@ -78,6 +79,12 @@ namespace ServerTester.TestItem
                         type = checkNode.Attributes["type"].Value,
                         value = checkNode.InnerText
                     });
+                }
+
+                XmlNodeList headerNodeList = testNode.SelectNodes("headers/header");
+                foreach (XmlNode headerNode in headerNodeList)
+                {
+                    testItemTestDto.headers.Add(headerNode.Attributes["key"].Value, headerNode.InnerText);
                 }
 
                 testItemDto.tests.Add(testItemTestDto);
@@ -98,7 +105,9 @@ namespace ServerTester.TestItem
                 RestResponse response = HttpUtil.request(
                     HttpUtil.getMethodByString(testItemTestDto.method), 
                     testItemTestDto.baseUrl, 
-                    testItemTestDto.resourceUrl
+                    testItemTestDto.resourceUrl,
+                    testItemTestDto.data,
+                    testItemTestDto.headers
                 );
                 testItemTestResultDto.statusCode = response.StatusCode;
                 testItemTestResultDto.requestLog = makeRequestLog(response.Request, testItemTestDto);
@@ -149,13 +158,17 @@ namespace ServerTester.TestItem
 
         public string makeRequestLog(RestRequest request, TestItemTestDto testItemTestDto)
         {
+            string headerString = "";
+            foreach (var header in testItemTestDto.headers)
+                headerString += string.Format("{0}: {1}{2}", header.Key, header.Value, Environment.NewLine);
+
             List<string> reqeustLogs = new List<string> {
                 string.Format("{0} {1}/{2}", request.Method, testItemTestDto.baseUrl, testItemTestDto.resourceUrl),
-                ""
+                "",
+                headerString,
+                "",
+                testItemTestDto.data
             };
-
-            // foreach (Parameter parameter in request.Parameters)
-            //    reqeustLogs.Add(string.Format("{0}: {1}", parameter.Name, parameter.Value));
             
             return string.Join(Environment.NewLine, reqeustLogs); ;
         }
@@ -196,6 +209,10 @@ namespace ServerTester.TestItem
         public string method { get; set; } = "";
         public string baseUrl { get; set; } = "";
         public string resourceUrl { get; set; } = "";
+
+
+        public Dictionary<string, string> headers { get; set; } = new Dictionary<string, string>();
+        public string data { get; set; } = "";
 
 
         public List<TestItemTestCheckDto> checks { get; set; } = new List<TestItemTestCheckDto>();
