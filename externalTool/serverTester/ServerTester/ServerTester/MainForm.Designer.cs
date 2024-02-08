@@ -49,6 +49,7 @@
             this.label5 = new System.Windows.Forms.Label();
             this.HelpTextBox = new System.Windows.Forms.TextBox();
             this.RequestProgressBar = new System.Windows.Forms.ProgressBar();
+            this.EachTestExecuteButton = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             this.groupBox2.SuspendLayout();
             this.groupBox3.SuspendLayout();
@@ -60,7 +61,7 @@
             this.TestExecuteButton.Name = "TestExecuteButton";
             this.TestExecuteButton.Size = new System.Drawing.Size(219, 60);
             this.TestExecuteButton.TabIndex = 0;
-            this.TestExecuteButton.Text = "실행";
+            this.TestExecuteButton.Text = "테스트 항목 실행";
             this.TestExecuteButton.UseVisualStyleBackColor = true;
             this.TestExecuteButton.Click += new System.EventHandler(this.TestExecuteButton_Click);
             // 
@@ -240,16 +241,27 @@
             // 
             // RequestProgressBar
             // 
-            this.RequestProgressBar.Location = new System.Drawing.Point(268, 31);
+            this.RequestProgressBar.Location = new System.Drawing.Point(498, 31);
             this.RequestProgressBar.Name = "RequestProgressBar";
-            this.RequestProgressBar.Size = new System.Drawing.Size(1523, 50);
+            this.RequestProgressBar.Size = new System.Drawing.Size(1293, 50);
             this.RequestProgressBar.TabIndex = 17;
+            // 
+            // EachTestExecuteButton
+            // 
+            this.EachTestExecuteButton.Location = new System.Drawing.Point(268, 26);
+            this.EachTestExecuteButton.Name = "EachTestExecuteButton";
+            this.EachTestExecuteButton.Size = new System.Drawing.Size(219, 60);
+            this.EachTestExecuteButton.TabIndex = 18;
+            this.EachTestExecuteButton.Text = "단일 요청 실행";
+            this.EachTestExecuteButton.UseVisualStyleBackColor = true;
+            this.EachTestExecuteButton.Click += new System.EventHandler(this.EachTestExecuteButton_Click);
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(13F, 24F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(2074, 1229);
+            this.Controls.Add(this.EachTestExecuteButton);
             this.Controls.Add(this.RequestProgressBar);
             this.Controls.Add(this.HelpTextBox);
             this.Controls.Add(this.label5);
@@ -303,6 +315,7 @@
         private System.Windows.Forms.Label label5;
         private System.Windows.Forms.TextBox HelpTextBox;
         private System.Windows.Forms.ProgressBar RequestProgressBar;
+        private System.Windows.Forms.Button EachTestExecuteButton;
     }
 }
 

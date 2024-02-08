@@ -104,6 +104,39 @@ namespace ServerTester
             MessageBox.Show("테스트가 성공적으로 완료되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
+        private void EachTestExecuteButton_Click(object sender, EventArgs e)
+        {
+            if ((TestGroupListBox.SelectedItem == null) || (TestGroupListBox.SelectedItem.ToString().Length <= 0))
+            {
+                MessageBox.Show("테스트 그룹을 선택해주세요.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (TestListBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("테스트 항목을 선택해주세요.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+            if (RequestHistoryListBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("요청시킬 항목을 선택해주세요.", "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            TestItemTestDto testItemTestDto = this.testItemService.testItemDtosDic[TestGroupListBox.SelectedItem.ToString()][TestListBox.SelectedIndex].tests[RequestHistoryListBox.SelectedIndex];
+            testItemTestDto.result = this.testItemService.executeTestItemTest(testItemTestDto);
+
+            if (!testItemTestDto.result.isPass)
+            {
+                MessageBox.Show(testItemTestDto.result.resultLog, "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                return;
+            }
+
+
+            MessageBox.Show("성공적으로 요청되었습니다.", "성공", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            this.RequestHistoryListBox_SelectedIndexChanged(null, null);
+        }
+
 
         private void TestGroupListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
