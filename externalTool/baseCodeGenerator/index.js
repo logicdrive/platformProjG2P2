@@ -5,12 +5,35 @@ import replace from 'replace-in-file'
 function applyCallback(settings, prettyEventStormingData) {
     createDomainEntities(settings, prettyEventStormingData)
     createEvents(settings, prettyEventStormingData)
+    createCommands(settings, prettyEventStormingData)
+
 }
 
 function main() {
     createServiceByUsingTemplate('./input/settings.json', './input/prettyEventStormingData.json', applyCallback)
 }
 
+
+function createCommands(settings, prettyEventStormingData) {
+    IteratorUtil.iterateValueFromDic(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.Command, (command) => {
+        const ENTITY_NAME = settings.TARGET_BOUNDARY_CONTEXT
+        const ENDPOINT_TITLE = upperFrontChar(command.name)
+        const ENDPOINT_FUNCTION = command.name
+        
+        const commandPath = `./output/base/src/main/java/${settings.SERVICE_INFO.PACKAGE_NAME}/endPoint`
+        const commandOutputPath = `${commandPath}/${ENDPOINT_TITLE}EndPoints.java`
+
+
+        fs.cpSync('./template/files/EndPointsTemplate.java', commandOutputPath, {overwrite: true})
+        
+        const commandOptions = {
+            files: [commandOutputPath],
+            from: [/\[\[TEMPLATE\.ENTITY_NAME\]\]/g, /\[\[TEMPLATE\.ENDPOINT_TITLE\]\]/g, /\[\[TEMPLATE\.ENDPOINT_FUNCTION\]\]/g],
+            to: [ENTITY_NAME, ENDPOINT_TITLE, ENDPOINT_FUNCTION]
+        }
+        replace.sync(commandOptions)
+    })
+}
 
 function createEvents(settings, prettyEventStormingData) {
     IteratorUtil.iterateValueFromDic(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.Event, (event) => {
@@ -23,8 +46,7 @@ function createEvents(settings, prettyEventStormingData) {
         const eventOptions = {
             files: [eventOutputPath],
             from: [/\[\[TEMPLATE\.NAME\]\]/g, /\[\[TEMPLATE\.EVENT_NAME\]\]/g],
-            to: [settings.TARGET_BOUNDARY_CONTEXT[0].toUpperCase() + settings.TARGET_BOUNDARY_CONTEXT.slice(1).toLowerCase(),
-                 event.name]
+            to: [upperFrontChar(settings.TARGET_BOUNDARY_CONTEXT), event.name]
         }
         replace.sync(eventOptions)
     })
@@ -132,6 +154,10 @@ function copyAllRecursive(srcPath, destPath) {
     }
     
     fs.cpSync(srcPath, destPath, { recursive: true })
+}
+
+function upperFrontChar(str) {
+    return str[0].toUpperCase() + str.slice(1)
 }
 
 
