@@ -26,4 +26,6 @@ obj/
 packages/
 
 # baseCodeGenerator
+externalTool/baseCodeGenerator/input/settings.json
 externalTool/baseCodeGenerator/output/*
+externalTool/baseCodeGenerator/node_modules

@@ -1,9 +1,9 @@
 global:
-  package_name: bookGenerator
-  service_name: user
+  package_name: [[SERVICE_INFO.PACKAGE_NAME]]
+  service_name: [[SERVICE_INFO.SERVICE_NAME]]
 
-  open_port: 8080
-  host_port: 8082
+  open_port: [[SERVICE_INFO.OPEN_PORT]]
+  host_port: [[SERVICE_INFO.HOST_PORT]]
 
 
 server:
@@ -47,7 +47,7 @@ spring:
 logging:
   level:
     root: WARN
-    bookGenerator.user.custom: DEBUG
+    [[SERVICE_INFO.PACKAGE_NAME]].[[SERVICE_INFO.SERVICE_NAME]].custom: DEBUG
 
 # JWT 설정 및 인증을 위한 Public & Private 키 경로
 jwt:
