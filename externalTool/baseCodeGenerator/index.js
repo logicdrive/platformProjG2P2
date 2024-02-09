@@ -6,13 +6,54 @@ function applyCallback(settings, prettyEventStormingData) {
     createDomainEntities(settings, prettyEventStormingData)
     createEvents(settings, prettyEventStormingData)
     createCommands(settings, prettyEventStormingData)
-
+    createPolicy(settings, prettyEventStormingData)
 }
 
 function main() {
     createServiceByUsingTemplate('./input/settings.json', './input/prettyEventStormingData.json', applyCallback)
 }
 
+
+function createPolicy(settings, prettyEventStormingData) {
+    IteratorUtil.iterateValueFromDic(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.Policy, (policy) => {        
+        policy.from.forEach((fromEvent) => {
+        
+        const FROM_EVENT_NAME = fromEvent.name
+        const FROM_EVENT_NAME_FUNCTION = lowerFrontChar(fromEvent.name)
+        const FROM_EVENT_ATTRIBUTE = (fromEvent.attributes.map((attribute) => {
+            return `\tprivate ${attribute.className} ${attribute.name};`
+        })).join('\n')
+        const POLICY_NAME = policy.name
+        
+        
+        const fromEventPath = `./output/base/src/main/java/${settings.SERVICE_INFO.PACKAGE_NAME}/_global/event`
+        const fromEventOutputPath = `${fromEventPath}/${FROM_EVENT_NAME}.java`
+
+        fs.cpSync('./template/files/RawEventTemplate.java', fromEventOutputPath, {overwrite: true})
+        
+        const fromEventOptions = {
+            files: [fromEventOutputPath],
+            from: [/\[\[TEMPLATE\.FROM_EVENT_NAME\]\]/g, /\[\[TEMPLATE\.FROM_EVENT_ATTRIBUTE\]\]/g],
+            to: [FROM_EVENT_NAME, FROM_EVENT_ATTRIBUTE]
+        }
+        replace.sync(fromEventOptions)
+
+
+        const policyPath = `./output/base/src/main/java/${settings.SERVICE_INFO.PACKAGE_NAME}/policy`
+        const policyOutputPath = `${policyPath}/${FROM_EVENT_NAME}_${POLICY_NAME}_Policy.java`
+
+        fs.cpSync('./template/files/PolicyTemplate.java', policyOutputPath, {overwrite: true})
+        
+        const policyOptions = {
+            files: [policyOutputPath],
+            from: [/\[\[TEMPLATE\.FROM_EVENT_NAME\]\]/g, /\[\[TEMPLATE\.FROM_EVENT_NAME_FUNCTION\]\]/g, /\[\[TEMPLATE\.POLICY_NAME\]\]/g],
+            to: [FROM_EVENT_NAME, FROM_EVENT_NAME_FUNCTION, POLICY_NAME]
+        }
+        replace.sync(policyOptions)
+
+        })
+    })
+}
 
 function createCommands(settings, prettyEventStormingData) {
     IteratorUtil.iterateValueFromDic(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.Command, (command) => {
@@ -158,6 +199,10 @@ function copyAllRecursive(srcPath, destPath) {
 
 function upperFrontChar(str) {
     return str[0].toUpperCase() + str.slice(1)
+}
+
+function lowerFrontChar(str) {
+    return str[0].toLowerCase() + str.slice(1)
 }
 
 
