@@ -92,7 +92,8 @@ function createServiceByUsingTemplate(settingPath, prettyEventStormingDataPath, 
 
     const options = {
         files: ['./output/base/src/main/**/*.*', './output/base/pom.xml', 
-                './output/base/command/docker/value/**/*.*', './output/base/command/kubernetes/value/**/*.*'],
+                './output/base/command/docker/value/**/*.*', './output/base/command/kubernetes/value/**/*.*',
+                './output/base/command/copilot/collectAllJavaCodes.sh'],
         from: [/\[\[SERVICE_INFO\.PACKAGE_NAME\]\]/g, /\[\[SERVICE_INFO\.SERVICE_NAME\]\]/g, 
             /\[\[SERVICE_INFO\.OPEN_PORT\]\]/g, /\[\[SERVICE_INFO\.HOST_PORT\]\]/g,
             /\[\[SERVICE_INFO\.DOCKER_IMAGE_NAME\]\]/g, /\[\[SERVICE_INFO\.DOCKER_SERVICE_NAME\]\]/g,
