@@ -2,9 +2,16 @@ import fs from 'fs'
 import replace from 'replace-in-file'
 
 
-function main() {
-    createServiceByUsingTemplate('./input/settings.json', './input/prettyEventStormingData.json', (settings, prettyEventStormingData) => {
+function applyCallback(settings, prettyEventStormingData) {
+    createDomainEntities(settings, prettyEventStormingData)
+}
 
+function main() {
+    createServiceByUsingTemplate('./input/settings.json', './input/prettyEventStormingData.json', applyCallback)
+}
+
+
+function createDomainEntities(settings, prettyEventStormingData) {
     IteratorUtil.iterateValueFromDic(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.Aggregate, (aggregate) => {
         const domainPath = `./output/base/src/main/java/${settings.SERVICE_INFO.PACKAGE_NAME}/domain`
         const aggregateOutputPath = `${domainPath}/${aggregate.name}.java`
@@ -50,10 +57,7 @@ function main() {
         }
         replace.sync(manageServiceOptions)
     })
-
-    })
 }
-
 
 function createServiceByUsingTemplate(settingPath, prettyEventStormingDataPath, applyCallback) {
     const settings = readJsonFile(settingPath)
