@@ -3,6 +3,10 @@
         "PACKAGE_NAME": "",
         "SERVICE_NAME": "",
         "OPEN_PORT": 0,
-        "HOST_PORT": 0
+        "HOST_PORT": 0,
+
+        "DOCKER_IMAGE_NAME": "",
+        "DOCKER_SERVICE_NAME": "",
+        "DOKCER_IMAGE_UESR_NAME": ""
     }
 }
