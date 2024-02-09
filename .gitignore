@@ -24,3 +24,6 @@ obj/
 *.[Cc]ache
 *.pdb
 packages/
+
+# baseCodeGenerator
+externalTool/baseCodeGenerator/output/*
