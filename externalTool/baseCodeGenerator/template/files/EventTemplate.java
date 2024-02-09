@@ -1,15 +1,15 @@
-package bookGenerator._global.event;
+package [[SERVICE_INFO.PACKAGE_NAME]]._global.event;
 
 import lombok.NoArgsConstructor;
-import bookGenerator._global.eventBase.EventNameAnnotation;
-import bookGenerator._global.eventBase.BaseEventTemplate;
-import bookGenerator.domain.EntityTemplate;
 
-// 회원가입 정보 등록이 완료됨을 알리기 위한 이벤트
-@EventNameAnnotation(eventName="SignUpCompleted")
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.eventBase.EventNameAnnotation;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.eventBase.[[TEMPLATE.NAME]]Event;
+import [[SERVICE_INFO.PACKAGE_NAME]].domain.[[TEMPLATE.NAME]];
+
+@EventNameAnnotation(eventName="[[TEMPLATE.EVENT_NAME]]")
 @NoArgsConstructor
-public class EventTemplate extends BaseEventTemplate {
-    public EventTemplate(EntityTemplate aggregate) {
+public class [[TEMPLATE.EVENT_NAME]] extends [[TEMPLATE.NAME]]Event {
+    public [[TEMPLATE.EVENT_NAME]]([[TEMPLATE.NAME]] aggregate) {
         super(aggregate);
     }
 }

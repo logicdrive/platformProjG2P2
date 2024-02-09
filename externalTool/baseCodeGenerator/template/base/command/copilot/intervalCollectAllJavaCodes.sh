@@ -2,7 +2,7 @@
 
 while :
 do
-    start_directory="src/main/java/bookGenerator"
+    start_directory="src/main/java/[[SERVICE_INFO.PACKAGE_NAME]]"
     output_file="./copilotSample/AllJavaCodes.java"
 
     echo "" > "$output_file"

@@ -4,16 +4,31 @@ import replace from 'replace-in-file'
 
 function applyCallback(settings, prettyEventStormingData) {
     createDomainEntities(settings, prettyEventStormingData)
-
-    IteratorUtil.iterateValueFromDic(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.Event, (event) => {
-    
-    })
+    createEvents(settings, prettyEventStormingData)
 }
 
 function main() {
     createServiceByUsingTemplate('./input/settings.json', './input/prettyEventStormingData.json', applyCallback)
 }
 
+
+function createEvents(settings, prettyEventStormingData) {
+    IteratorUtil.iterateValueFromDic(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.Event, (event) => {
+        const eventPath = `./output/base/src/main/java/${settings.SERVICE_INFO.PACKAGE_NAME}/_global/event`
+        const eventOutputPath = `${eventPath}/${event.name}.java`
+
+
+        fs.cpSync('./template/files/EventTemplate.java', eventOutputPath, {overwrite: true})
+        
+        const eventOptions = {
+            files: [eventOutputPath],
+            from: [/\[\[TEMPLATE\.NAME\]\]/g, /\[\[TEMPLATE\.EVENT_NAME\]\]/g],
+            to: [settings.TARGET_BOUNDARY_CONTEXT[0].toUpperCase() + settings.TARGET_BOUNDARY_CONTEXT.slice(1).toLowerCase(),
+                 event.name]
+        }
+        replace.sync(eventOptions)
+    })
+}
 
 function createDomainEntities(settings, prettyEventStormingData) {
     IteratorUtil.iterateValueFromDic(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.Aggregate, (aggregate) => {
@@ -93,7 +108,7 @@ function createServiceByUsingTemplate(settingPath, prettyEventStormingDataPath, 
     const options = {
         files: ['./output/base/src/main/**/*.*', './output/base/pom.xml', 
                 './output/base/command/docker/value/**/*.*', './output/base/command/kubernetes/value/**/*.*',
-                './output/base/command/copilot/collectAllJavaCodes.sh'],
+                './output/base/command/copilot/*.sh'],
         from: [/\[\[SERVICE_INFO\.PACKAGE_NAME\]\]/g, /\[\[SERVICE_INFO\.SERVICE_NAME\]\]/g, 
             /\[\[SERVICE_INFO\.OPEN_PORT\]\]/g, /\[\[SERVICE_INFO\.HOST_PORT\]\]/g,
             /\[\[SERVICE_INFO\.DOCKER_IMAGE_NAME\]\]/g, /\[\[SERVICE_INFO\.DOCKER_SERVICE_NAME\]\]/g,
