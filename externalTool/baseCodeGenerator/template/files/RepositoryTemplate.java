@@ -1,7 +1,5 @@
 package [[SERVICE_INFO.PACKAGE_NAME]].domain;
 
-import java.util.Optional;
-
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 

@@ -3,13 +3,13 @@ import replace from 'replace-in-file'
 
 
 function main() {
-    const settings = readJsonFile('./input/settings.json')
-    const prettyEventStormingData = readJsonFile('./input/prettyEventStormingData.json')
+    createServiceByUsingTemplate('./input/settings.json', './input/prettyEventStormingData.json', (settings, prettyEventStormingData) => {
 
     IteratorUtil.iterateValueFromDic(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.Aggregate, (aggregate) => {
-        const aggregateOutputPath = `./output/${aggregate.name}.java`
-        const repositoryOutputPath = `./output/${aggregate.name}Repository.java`
-        const manageServiceOutputPath = `./output/${aggregate.name}ManageService.java`
+        const domainPath = `./output/base/src/main/java/${settings.SERVICE_INFO.PACKAGE_NAME}/domain`
+        const aggregateOutputPath = `${domainPath}/${aggregate.name}.java`
+        const repositoryOutputPath = `${domainPath}/${aggregate.name}Repository.java` 
+        const manageServiceOutputPath = `${domainPath}/${aggregate.name}ManageService.java`
         
         
         fs.cpSync('./template/files/EntityTemplate.java', aggregateOutputPath, {overwrite: true})
@@ -51,12 +51,22 @@ function main() {
         replace.sync(manageServiceOptions)
     })
 
-    return
+    })
+}
+
+
+function createServiceByUsingTemplate(settingPath, prettyEventStormingDataPath, applyCallback) {
+    const settings = readJsonFile(settingPath)
+    const prettyEventStormingData = readJsonFile(prettyEventStormingDataPath)
+
     copyAllRecursive('./template/base', './output/base')
     fs.renameSync('./output/base/src/main/java/SERVICE_INFO_PACKAGE_NAME',  
               `./output/base/src/main/java/${settings.SERVICE_INFO.PACKAGE_NAME}`)
 
+
+    applyCallback(settings, prettyEventStormingData)
     
+
     const options = {
         files: ['./output/base/src/main/**/*.*', './output/base/pom.xml', 
                 './output/base/command/docker/value/**/*.*', './output/base/command/kubernetes/value/**/*.*'],
@@ -84,6 +94,7 @@ function copyAllRecursive(srcPath, destPath) {
     
     fs.cpSync(srcPath, destPath, { recursive: true })
 }
+
 
 class IteratorUtil {
     static iterateValueFromDic(dic, callback) {
