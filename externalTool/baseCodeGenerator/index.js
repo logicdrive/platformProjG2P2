@@ -14,8 +14,10 @@ function main() {
     const settings = require('./input/settings.json')
     const options = {
         files: './output/base/src/main/resources/application.yml',
-        from: /\[\[SERVICE_INFO\.PACKAGE_NAME\]\]/g,
-        to: settings.SERVICE_INFO.PACKAGE_NAME
+        from: [/\[\[SERVICE_INFO\.PACKAGE_NAME\]\]/g, /\[\[SERVICE_INFO\.SERVICE_NAME\]\]/g, 
+            /\[\[SERVICE_INFO\.OPEN_PORT\]\]/g, /\[\[SERVICE_INFO\.HOST_PORT\]\]/g],
+        to: [settings.SERVICE_INFO.PACKAGE_NAME, settings.SERVICE_INFO.SERVICE_NAME, 
+            settings.SERVICE_INFO.OPEN_PORT, settings.SERVICE_INFO.HOST_PORT]
     }
     replace.sync(options)
 }
