@@ -13,7 +13,9 @@ function main() {
     const replace = require('replace-in-file')
     const settings = require('./input/settings.json')
     const options = {
-        files: './output/base/src/main/resources/application.yml',
+        files: ['./output/base/src/main/resources/application.yml',
+                './output/base/src/main/java/bookGenerator/_global/logger/CustomLogger.java',
+                './output/base/pom.xml'],
         from: [/\[\[SERVICE_INFO\.PACKAGE_NAME\]\]/g, /\[\[SERVICE_INFO\.SERVICE_NAME\]\]/g, 
             /\[\[SERVICE_INFO\.OPEN_PORT\]\]/g, /\[\[SERVICE_INFO\.HOST_PORT\]\]/g],
         to: [settings.SERVICE_INFO.PACKAGE_NAME, settings.SERVICE_INFO.SERVICE_NAME, 

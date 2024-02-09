@@ -8,7 +8,7 @@ import org.slf4j.LoggerFactory;
 
 // 프로그램에서 일어나는 외부 환경과의 상호작용들을 로깅하기 위해서
 public class CustomLogger {
-    public static Logger logger = LoggerFactory.getLogger("bookGenerator.user.custom");
+    public static Logger logger = LoggerFactory.getLogger("[[SERVICE_INFO.PACKAGE_NAME]].[[SERVICE_INFO.SERVICE_NAME]].custom");
     public static Map<CustomLoggerType, String> customLoggerTypeMap = new HashMap<>() {{
         put(CustomLoggerType.ENTER_EXIT, "ENTER/EXIT");
         put(CustomLoggerType.ENTER, "ENTER");

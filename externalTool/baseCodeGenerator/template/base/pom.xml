@@ -8,11 +8,11 @@
 		<version>2.3.1.RELEASE</version>
 		<relativePath/>
 	</parent>
-	<groupId>bookGenerator</groupId>
-	<artifactId>book</artifactId>
+	<groupId>[[SERVICE_INFO.PACKAGE_NAME]]</groupId>
+	<artifactId>[[SERVICE_INFO.SERVICE_NAME]]</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>book</name>
-	<description>Demo project for Spring Boot</description>
+	<name>[[SERVICE_INFO.SERVICE_NAME]]</name>
+	<description>[[SERVICE_INFO.PACKAGE_NAME]] project for Spring Boot</description>
 
 	<properties>
 		<java.version>11</java.version>
