@@ -1,0 +1,77 @@
+global:
+  package_name: bookGenerator
+  service_name: bookShelf
+
+  open_port: 8080
+  host_port: 8090
+
+
+server:
+  port: ${global.open_port}
+
+spring:
+  application:
+    name: ${global.service_name}
+
+  config:
+    use-legacy-processing: true
+
+  jpa:
+    properties:
+      hibernate:
+        show_sql: false
+        format_sql: true
+        implicit_naming_strategy: org.hibernate.boot.model.naming.ImplicitNamingStrategyComponentPathImpl
+
+  cloud:
+    stream:
+      kafka:
+        streams:
+          binder:
+            configuration:
+              default:
+                key:
+                  serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+                value:
+                  serde: org.apache.kafka.common.serialization.Serdes$StringSerde
+
+      bindings:
+        event-in:
+          group: ${global.service_name}
+          destination: ${global.package_name}
+          contentType: application/json
+        event-out:
+          destination: ${global.package_name}
+          contentType: application/json
+
+logging:
+  level:
+    root: WARN
+    bookGenerator.bookShelf.custom: DEBUG
+
+# JWT 설정 및 인증을 위한 Public & Private 키 경로
+jwt:
+  issuer: ${global.package_name}.io
+  expire-after-seconds: 36000
+  public.key: classpath:rsa.public.key
+  private.key: classpath:rsa.private.key
+
+---
+
+spring:
+  profiles: host
+  cloud.stream.kafka.binder.brokers: localhost:9092
+
+server.port: ${global.host_port}
+
+---
+
+spring:
+  profiles: docker
+  cloud.stream.kafka.binder.brokers: host.docker.internal:9092
+
+---
+
+spring:
+  profiles: kubernates
+  cloud.stream.kafka.binder.brokers: my-kafka:9092

@@ -1,0 +1,1 @@
+bash.exe ./command/kubernetes/deleteService.sh

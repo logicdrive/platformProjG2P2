@@ -1,0 +1,1 @@
+bash.exe ./command/docker/push.sh

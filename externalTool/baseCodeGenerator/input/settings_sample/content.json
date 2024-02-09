@@ -1,0 +1,14 @@
+{
+    "TARGET_BOUNDARY_CONTEXT": "content",
+
+    "SERVICE_INFO": {
+        "PACKAGE_NAME": "bookGenerator",
+        "SERVICE_NAME": "content",
+        "OPEN_PORT": 8080,
+        "HOST_PORT": 8086,
+
+        "DOCKER_IMAGE_NAME": "book-generator",
+        "DOCKER_SERVICE_NAME": "content",
+        "DOKCER_IMAGE_UESR_NAME": "sinsung6722"
+    }
+}

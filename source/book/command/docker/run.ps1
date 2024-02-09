@@ -1,0 +1,1 @@
+bash.exe ./command/docker/run.sh

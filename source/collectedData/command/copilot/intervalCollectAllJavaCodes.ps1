@@ -1,0 +1,1 @@
+bash.exe ./command/copilot/intervalCollectAllJavaCodes.sh

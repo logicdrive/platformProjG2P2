@@ -1,0 +1,14 @@
+{
+    "TARGET_BOUNDARY_CONTEXT": "externalSystemProxy",
+
+    "SERVICE_INFO": {
+        "PACKAGE_NAME": "bookGenerator",
+        "SERVICE_NAME": "externalSystemProxy",
+        "OPEN_PORT": 8080,
+        "HOST_PORT": 8092,
+
+        "DOCKER_IMAGE_NAME": "book-generator",
+        "DOCKER_SERVICE_NAME": "externalSystemProxy",
+        "DOKCER_IMAGE_UESR_NAME": "sinsung6722"
+    }
+}

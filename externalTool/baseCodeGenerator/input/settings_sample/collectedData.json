@@ -1,0 +1,14 @@
+{
+    "TARGET_BOUNDARY_CONTEXT": "collectedData",
+
+    "SERVICE_INFO": {
+        "PACKAGE_NAME": "bookGenerator",
+        "SERVICE_NAME": "collectedData",
+        "OPEN_PORT": 8080,
+        "HOST_PORT": 8093,
+
+        "DOCKER_IMAGE_NAME": "book-generator",
+        "DOCKER_SERVICE_NAME": "collectedData",
+        "DOKCER_IMAGE_UESR_NAME": "sinsung6722"
+    }
+}
