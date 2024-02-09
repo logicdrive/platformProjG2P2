@@ -82,15 +82,32 @@ function createEvents(settings, prettyEventStormingData) {
         const eventPath = `./output/base/src/main/java/${settings.SERVICE_INFO.PACKAGE_NAME}/_global/event`
         const eventOutputPath = `${eventPath}/${event.name}.java`
 
-
-        fs.cpSync('./template/files/EventTemplate.java', eventOutputPath, {overwrite: true})
+        if(Object.keys(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.Aggregate).length === 0)
+        {
+            fs.cpSync('./template/files/RawEventTemplate.java', eventOutputPath, {overwrite: true})
         
-        const eventOptions = {
-            files: [eventOutputPath],
-            from: [/\[\[TEMPLATE\.NAME\]\]/g, /\[\[TEMPLATE\.EVENT_NAME\]\]/g],
-            to: [upperFrontChar(settings.TARGET_BOUNDARY_CONTEXT), event.name]
+            const EVENT_ATTRIBUTE = (event.attributes.map((attribute) => {
+                return `\tprivate ${attribute.className} ${attribute.name};`
+            })).join('\n')
+
+            const eventOptions = {
+                files: [eventOutputPath],
+                from: [/\[\[TEMPLATE\.FROM_EVENT_NAME\]\]/g, /\[\[TEMPLATE\.FROM_EVENT_ATTRIBUTE\]\]/g],
+                to: [event.name, EVENT_ATTRIBUTE]
+            }
+            replace.sync(eventOptions)
         }
-        replace.sync(eventOptions)
+        else
+        {
+            fs.cpSync('./template/files/EventTemplate.java', eventOutputPath, {overwrite: true})
+        
+            const eventOptions = {
+                files: [eventOutputPath],
+                from: [/\[\[TEMPLATE\.NAME\]\]/g, /\[\[TEMPLATE\.EVENT_NAME\]\]/g],
+                to: [upperFrontChar(settings.TARGET_BOUNDARY_CONTEXT), event.name]
+            }
+            replace.sync(eventOptions)
+        }
     })
 }
 

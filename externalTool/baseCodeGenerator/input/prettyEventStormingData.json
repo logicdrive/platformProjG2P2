@@ -474,20 +474,7 @@
     "id": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
     "name": "externalSystemProxy",
     "elements": {
-      "Aggregate": {
-        "6ce770ba-40be-abb5-7a56-9ea5e1e4588d": {
-          "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
-          "id": "6ce770ba-40be-abb5-7a56-9ea5e1e4588d",
-          "name": "ExternalSystemProxy",
-          "type": "Aggregate",
-          "attributes": [
-            {
-              "name": "id",
-              "className": "Long"
-            }
-          ]
-        }
-      },
+      "Aggregate": {},
       "Event": {
         "ca69911e-6678-4c25-675e-e7aa89287932": {
           "boundedContextId": "4ad48239-f83f-18c0-af35-d5e4d3b4fc0e",
