@@ -7,6 +7,7 @@ function applyCallback(settings, prettyEventStormingData) {
     createEvents(settings, prettyEventStormingData)
     createCommands(settings, prettyEventStormingData)
     createPolicy(settings, prettyEventStormingData)
+    createViews(settings, prettyEventStormingData)
 }
 
 function main() {
@@ -93,6 +94,56 @@ function createEvents(settings, prettyEventStormingData) {
     })
 }
 
+function createViews(settings, prettyEventStormingData) {
+    IteratorUtil.iterateValueFromDic(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.View, (view) => {
+        const functionViewName = lowerFrontChar(view.name)
+        const viewRootPath = `./output/base/src/main/java/${settings.SERVICE_INFO.PACKAGE_NAME}/${functionViewName}`
+        fs.mkdirSync(viewRootPath, { recursive: true })
+
+        const domainPath = `${viewRootPath}/domain`
+        const aggregateOutputPath = `${domainPath}/${view.name}.java`
+        const repositoryOutputPath = `${domainPath}/${view.name}Repository.java` 
+        const manageServiceOutputPath = `${domainPath}/${view.name}ManageService.java`
+
+
+        fs.cpSync('./template/files/EntityTemplate.java', aggregateOutputPath, {overwrite: true})
+        
+        let entityAttributeStrs = []
+        view.attributes.forEach((attribute) => {
+            if(["id", "createdDate", "updatedDate"].includes(attribute.name)) return
+
+            entityAttributeStrs.push(`\tprivate ${attribute.className} ${attribute.name};\n`)
+        })
+
+        const entityOptions = {
+            files: [aggregateOutputPath],
+            from: [/\[\[TEMPLATE\.NAME\]\]/g, /\[\[TEMPLATE\.ATTRIBUTES\]\]/g, "package [[SERVICE_INFO.PACKAGE_NAME]].domain;"],
+            to: [view.name, entityAttributeStrs.join('\n'), `package ${settings.SERVICE_INFO.PACKAGE_NAME}.${functionViewName}.domain;`]
+        }
+        replace.sync(entityOptions)
+
+
+        fs.cpSync('./template/files/RepositoryTemplate.java', repositoryOutputPath, {overwrite: true})
+
+        const repositoryOptions = {
+            files: [repositoryOutputPath],
+            from: [/\[\[TEMPLATE\.NAME\]\]/g, /\[\[TEMPLATE\.RES_PATH\]\]/g, "package [[SERVICE_INFO.PACKAGE_NAME]].domain;"],
+            to: [view.name, lowerFrontChar(view.name) + "s", `package ${settings.SERVICE_INFO.PACKAGE_NAME}.${functionViewName}.domain;`]
+        }
+        replace.sync(repositoryOptions)
+
+
+        fs.cpSync('./template/files/ManageServiceTemplate.java', manageServiceOutputPath, {overwrite: true})
+
+        const manageServiceOptions = {
+            files: [manageServiceOutputPath],
+            from: [/\[\[TEMPLATE\.NAME\]\]/g, "package [[SERVICE_INFO.PACKAGE_NAME]].domain;"],
+            to: [view.name, `package ${settings.SERVICE_INFO.PACKAGE_NAME}.${functionViewName}.domain;`]
+        }
+        replace.sync(manageServiceOptions)
+    })
+}
+
 function createDomainEntities(settings, prettyEventStormingData) {
     IteratorUtil.iterateValueFromDic(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.Aggregate, (aggregate) => {
         const domainPath = `./output/base/src/main/java/${settings.SERVICE_INFO.PACKAGE_NAME}/domain`
@@ -125,7 +176,7 @@ function createDomainEntities(settings, prettyEventStormingData) {
         const repositoryOptions = {
             files: [repositoryOutputPath],
             from: [/\[\[TEMPLATE\.NAME\]\]/g, /\[\[TEMPLATE\.RES_PATH\]\]/g],
-            to: [aggregate.name, aggregate.name.toLowerCase() + "s"]
+            to: [aggregate.name, lowerFrontChar(aggregate.name) + "s"]
         }
         replace.sync(repositoryOptions)
 
