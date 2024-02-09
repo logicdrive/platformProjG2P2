@@ -1,4 +1,4 @@
-package bookGenerator._global.customExceptionControl;
+package [[SERVICE_INFO.PACKAGE_NAME]]._global.customExceptionControl;
 
 import org.springframework.http.HttpStatus;
 

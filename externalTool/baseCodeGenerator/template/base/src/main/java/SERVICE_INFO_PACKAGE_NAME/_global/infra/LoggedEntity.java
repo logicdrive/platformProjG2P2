@@ -1,4 +1,4 @@
-package bookGenerator._global.infra;
+package [[SERVICE_INFO.PACKAGE_NAME]]._global.infra;
 
 import javax.persistence.PostPersist;
 import javax.persistence.PostRemove;
@@ -7,8 +7,8 @@ import javax.persistence.PrePersist;
 import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 
-import bookGenerator._global.logger.CustomLogger;
-import bookGenerator._global.logger.CustomLoggerType;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.logger.CustomLogger;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.logger.CustomLoggerType;
 
 public class LoggedEntity {
 

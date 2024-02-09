@@ -1,4 +1,4 @@
-package bookGenerator._global.sanityCheck;
+package [[SERVICE_INFO.PACKAGE_NAME]]._global.sanityCheck;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,8 +9,9 @@ import org.springframework.web.bind.annotation.RequestBody;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import bookGenerator._global.logger.CustomLogger;
-import bookGenerator._global.infra.AbstractEvent;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.infra.AbstractEvent;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.logger.CustomLogger;
+
 
 // Policy 테스트용으로 이벤트를 강제로 발생시키기 위해서
 @RestController

@@ -1,4 +1,4 @@
-package bookGenerator._global.sanityCheck;
+package [[SERVICE_INFO.PACKAGE_NAME]]._global.sanityCheck;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.GetMapping;
 
 import lombok.Getter;
 
-import bookGenerator._global.logger.CustomLogger;
-import bookGenerator._global.customExceptionControl.CustomException;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.customExceptionControl.CustomException;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.logger.CustomLogger;
 
 // 정상적인 에러 로그 출력 여부를 테스트해보기 위해서
 @RestController

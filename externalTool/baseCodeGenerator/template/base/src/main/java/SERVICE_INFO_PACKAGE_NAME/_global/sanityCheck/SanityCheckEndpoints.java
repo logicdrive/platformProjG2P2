@@ -1,4 +1,4 @@
-package bookGenerator._global.sanityCheck;
+package [[SERVICE_INFO.PACKAGE_NAME]]._global.sanityCheck;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -7,8 +7,8 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 
-import bookGenerator._global.logger.CustomLogger;
-import bookGenerator._global.logger.CustomLoggerType;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.logger.CustomLogger;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.logger.CustomLoggerType;
 
 // 프로그램의 정상 통신 여부를 확인해보기 위해서
 @RestController

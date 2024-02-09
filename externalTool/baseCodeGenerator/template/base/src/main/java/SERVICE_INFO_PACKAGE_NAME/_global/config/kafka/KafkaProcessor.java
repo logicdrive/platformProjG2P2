@@ -1,4 +1,4 @@
-package bookGenerator._global.config.kafka;
+package [[SERVICE_INFO.PACKAGE_NAME]]._global.config.kafka;
 
 import org.springframework.cloud.stream.annotation.Input;
 import org.springframework.cloud.stream.annotation.Output;

@@ -1,4 +1,4 @@
-package bookGenerator._global.logger;
+package [[SERVICE_INFO.PACKAGE_NAME]]._global.logger;
 
 import java.util.HashMap;
 import java.util.Map;

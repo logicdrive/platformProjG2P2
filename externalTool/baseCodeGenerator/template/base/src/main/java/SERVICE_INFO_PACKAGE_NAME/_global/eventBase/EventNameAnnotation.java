@@ -1,4 +1,4 @@
-package bookGenerator._global.eventBase;
+package [[SERVICE_INFO.PACKAGE_NAME]]._global.eventBase;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.Target;

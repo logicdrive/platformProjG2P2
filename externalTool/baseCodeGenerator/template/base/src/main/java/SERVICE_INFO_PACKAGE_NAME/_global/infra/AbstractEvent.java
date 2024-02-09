@@ -1,4 +1,4 @@
-package bookGenerator._global.infra;
+package [[SERVICE_INFO.PACKAGE_NAME]]._global.infra;
 
 import org.springframework.beans.BeanUtils;
 import org.springframework.messaging.MessageChannel;
@@ -6,11 +6,11 @@ import org.springframework.messaging.MessageHeaders;
 import org.springframework.messaging.support.MessageBuilder;
 import org.springframework.util.MimeTypeUtils;
 
-import bookGenerator.BootApplication;
-import bookGenerator._global.config.kafka.KafkaProcessor;
-import bookGenerator._global.eventBase.EventNameAnnotation;
-import bookGenerator._global.logger.CustomLogger;
-import bookGenerator._global.logger.CustomLoggerType;
+import [[SERVICE_INFO.PACKAGE_NAME]].BootApplication;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.config.kafka.KafkaProcessor;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.eventBase.EventNameAnnotation;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.logger.CustomLogger;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.logger.CustomLoggerType;
 
 // Kafka 이벤트들을 관리하기 위한 기반 클래스
 public class AbstractEvent {

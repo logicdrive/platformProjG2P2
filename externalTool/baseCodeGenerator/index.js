@@ -12,9 +12,11 @@ function main() {
     // Replace all instances of 'hello' with 'world' in ./output/base
     const replace = require('replace-in-file')
     const settings = require('./input/settings.json')
+
+    fs.renameSync('./output/base/src/main/java/SERVICE_INFO_PACKAGE_NAME',  
+              `./output/base/src/main/java/${settings.SERVICE_INFO.PACKAGE_NAME}`)
     const options = {
-        files: ['./output/base/src/main/resources/application.yml',
-                './output/base/src/main/java/bookGenerator/_global/logger/CustomLogger.java',
+        files: ['./output/base/src/main/**/*.*',
                 './output/base/pom.xml'],
         from: [/\[\[SERVICE_INFO\.PACKAGE_NAME\]\]/g, /\[\[SERVICE_INFO\.SERVICE_NAME\]\]/g, 
             /\[\[SERVICE_INFO\.OPEN_PORT\]\]/g, /\[\[SERVICE_INFO\.HOST_PORT\]\]/g],
