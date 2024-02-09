@@ -1,14 +1,10 @@
-package bookGenerator.domain;
+package [[SERVICE_INFO.PACKAGE_NAME]].domain;
 
 import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
 import javax.persistence.Table;
-
-import bookGenerator.BootApplication;
-import bookGenerator._global.infra.LoggedEntity;
-
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.PrePersist;
@@ -20,34 +16,30 @@ import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
 
+import [[SERVICE_INFO.PACKAGE_NAME]].BootApplication;
+import [[SERVICE_INFO.PACKAGE_NAME]]._global.infra.LoggedEntity;
+
 @Data
 @EqualsAndHashCode(callSuper=false)
 @Builder
 @AllArgsConstructor
 @NoArgsConstructor
 @Entity
-@Table(name = "App_User")
-public class User extends LoggedEntity {
+@Table(name = "App_[[TEMPLATE.NAME]]")
+public class [[TEMPLATE.NAME]] extends LoggedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-    private String email;
-
-    private String password;
-
-    private String name;
-
-    private String role;
-
+[[TEMPLATE.ATTRIBUTES]]
     private Date createdDate;
     
     private Date updatedDate;
 
 
-    public static UserRepository repository() {
+    public static [[TEMPLATE.NAME]]Repository repository() {
         return BootApplication.applicationContext.getBean(
-            UserRepository.class
+            [[TEMPLATE.NAME]]Repository.class
         );
     }
 
