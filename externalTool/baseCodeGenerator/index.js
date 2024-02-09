@@ -4,6 +4,10 @@ import replace from 'replace-in-file'
 
 function applyCallback(settings, prettyEventStormingData) {
     createDomainEntities(settings, prettyEventStormingData)
+
+    IteratorUtil.iterateValueFromDic(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.Event, (event) => {
+    
+    })
 }
 
 function main() {
@@ -14,27 +18,28 @@ function main() {
 function createDomainEntities(settings, prettyEventStormingData) {
     IteratorUtil.iterateValueFromDic(prettyEventStormingData[settings.TARGET_BOUNDARY_CONTEXT].elements.Aggregate, (aggregate) => {
         const domainPath = `./output/base/src/main/java/${settings.SERVICE_INFO.PACKAGE_NAME}/domain`
+        const eventBasePath = `./output/base/src/main/java/${settings.SERVICE_INFO.PACKAGE_NAME}/_global/eventBase`
         const aggregateOutputPath = `${domainPath}/${aggregate.name}.java`
         const repositoryOutputPath = `${domainPath}/${aggregate.name}Repository.java` 
         const manageServiceOutputPath = `${domainPath}/${aggregate.name}ManageService.java`
+        const eventBaseOutputPath = `${eventBasePath}/${aggregate.name}Event.java`
         
-        
+
         fs.cpSync('./template/files/EntityTemplate.java', aggregateOutputPath, {overwrite: true})
         
-        let attributeStrs = []
+        let entityAttributeStrs = []
         aggregate.attributes.forEach((attribute) => {
             if(["id", "createdDate", "updatedDate"].includes(attribute.name)) return
 
-            attributeStrs.push(`\tprivate ${attribute.className} ${attribute.name};\n`)
+            entityAttributeStrs.push(`\tprivate ${attribute.className} ${attribute.name};\n`)
         })
 
         const entityOptions = {
             files: [aggregateOutputPath],
             from: [/\[\[TEMPLATE\.NAME\]\]/g, /\[\[TEMPLATE\.ATTRIBUTES\]\]/g],
-            to: [aggregate.name, attributeStrs.join('\n')]
+            to: [aggregate.name, entityAttributeStrs.join('\n')]
         }
         replace.sync(entityOptions)
-
 
 
         fs.cpSync('./template/files/RepositoryTemplate.java', repositoryOutputPath, {overwrite: true})
@@ -47,7 +52,6 @@ function createDomainEntities(settings, prettyEventStormingData) {
         replace.sync(repositoryOptions)
 
 
-
         fs.cpSync('./template/files/ManageServiceTemplate.java', manageServiceOutputPath, {overwrite: true})
 
         const manageServiceOptions = {
@@ -56,6 +60,21 @@ function createDomainEntities(settings, prettyEventStormingData) {
             to: [aggregate.name]
         }
         replace.sync(manageServiceOptions)
+
+
+        fs.cpSync('./template/files/BaseEventTemplate.java', eventBaseOutputPath, {overwrite: true})
+        
+        let eventBaseAttributeStrs = []
+        aggregate.attributes.forEach((attribute) => {
+            eventBaseAttributeStrs.push(`\tprotected ${attribute.className} ${attribute.name};`)
+        })
+
+        const eventBaseOptions = {
+            files: [eventBaseOutputPath],
+            from: [/\[\[TEMPLATE\.NAME\]\]/g, /\[\[TEMPLATE\.ATTRIBUTES\]\]/g],
+            to: [aggregate.name, eventBaseAttributeStrs.join('\n')]
+        }
+        replace.sync(eventBaseOptions)
     })
 }
 
