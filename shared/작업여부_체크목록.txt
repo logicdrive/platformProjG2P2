@@ -51,7 +51,7 @@ bookDeleted_deleteTag_Policy: O / T
 generateIndexes: O
 createIndex: O
 editIndex: O
-deleteIndex: 
+deleteIndex: O
 
 > Policy: 
 createIndex: 
