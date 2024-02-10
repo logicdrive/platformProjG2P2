@@ -15,7 +15,7 @@ import bookGenerator._global.event.EmptyCoverImageInfoCreated;
 @Transactional
 public class EmptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy {
 
-    // EmptyCoverImageInfoCreated 이벤트 발생 관련 정책
+    // E-Book 표지 이미지 파일이 생성되었을 경우, 관련 파일 ID를 업데이트하기 위해서
     @StreamListener(
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='EmptyCoverImageInfoCreated'"
@@ -25,8 +25,15 @@ public class EmptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy {
     ) {
         try
         {
+            CustomLogger.debugObject(CustomLoggerType.ENTER, "EmptyCoverImageInfoCreated", emptyCoverImageInfoCreated);
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "EmptyCoverImageInfoCreated", emptyCoverImageInfoCreated);
+            // [1] bookId로 Book 객체를 찾음
+
+            // [2] Book 객체의 coverImageFileId를 업데이트
+
+            // [3] Book 객체로 CoverImageFileIdUpdated 이벤트를 발생시킴
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", emptyCoverImageInfoCreated);        

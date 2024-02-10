@@ -18,6 +18,7 @@ public class EmptyCoverImageInfoCreated extends AbstractEvent {
 	private String url;
 	private Date createdDate;
 	private Date updatedDate;
+	private Long bookId;
 
     public EmptyCoverImageInfoCreated() {
         super();

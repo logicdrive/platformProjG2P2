@@ -46,7 +46,7 @@
             <baseUrl>http://localhost:8083</baseUrl>
             <resourceUrl>books/updateCoverImage</resourceUrl>
             <headers></headers>
-            <data>{"bookId":2,"imageUrl":"testUrl.jpg"}</data>
+            <data>{"bookId":1,"imageUrl":"testUrl.jpg"}</data>
 
             <checks>
                 <check type="status">2.*</check>

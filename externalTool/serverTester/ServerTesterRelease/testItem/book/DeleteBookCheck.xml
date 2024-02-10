@@ -47,7 +47,7 @@
             <baseUrl>http://localhost:8083</baseUrl>
             <resourceUrl>books/deleteBook</resourceUrl>
             <headers></headers>
-            <data>{"bookId":2}</data>
+            <data>{"bookId":1}</data>
 
             <checks>
                 <check type="status">2.*</check>

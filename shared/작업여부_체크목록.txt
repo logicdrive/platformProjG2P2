@@ -28,4 +28,4 @@ likeBook: O
 deleteBook: O
 
 > Policy
-UpdateCoverImageFileId: 
+UpdateCoverImageFileId: O

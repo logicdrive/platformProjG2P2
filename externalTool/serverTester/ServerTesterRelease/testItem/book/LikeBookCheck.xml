@@ -49,7 +49,7 @@
             <headers>
                 <header key="User-Id">2</header>
             </headers>
-            <data>{"bookId":2}</data>
+            <data>{"bookId":1}</data>
 
             <checks>
                 <check type="status">2.*</check>

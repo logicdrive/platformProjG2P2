@@ -46,7 +46,7 @@
             <baseUrl>http://localhost:8083</baseUrl>
             <resourceUrl>books/generateCoverImage</resourceUrl>
             <headers></headers>
-            <data>{"bookId":2}</data>
+            <data>{"bookId":1}</data>
 
             <checks>
                 <check type="status">2.*</check>

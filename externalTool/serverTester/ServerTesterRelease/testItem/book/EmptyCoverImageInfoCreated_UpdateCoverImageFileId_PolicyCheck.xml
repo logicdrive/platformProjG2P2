@@ -2,8 +2,8 @@
 <root>
     <description>
         <group>Book</group>
-        <title>엔드포인트 테스트: UpdateBookTitle</title>
-        <help>UpdateBookTitle 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
+        <title>정책 테스트: EmptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy</title>
+        <help>EmptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy 단일 정책의 정상 작동 여부를 확인합니다.</help>
     </description>
 
     <tests>
@@ -40,14 +40,14 @@
 
 
         <test>
-            <title>Book 제목 변경(UpdateBookTitle)</title>
-            <help>새로운 Book의 제목을 설정합니다.</help>
+            <title>Mock EmptyCoverImageInfoCreated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 EmptyCoverImageInfoCreated 이벤트를 생성합니다.</help>
 
-            <method>PUT</method>
+            <method>POST</method>
             <baseUrl>http://localhost:8083</baseUrl>
-            <resourceUrl>books/updateBookTitle</resourceUrl>
+            <resourceUrl>sanityCheck/mock/EmptyCoverImageInfoCreated</resourceUrl>
             <headers></headers>
-            <data>{"bookId":1,"bookTitle":"newTitle"}</data>
+            <data>{"id":1,"url":"testCoverImageUrl","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00","bookId":1}</data>
 
             <checks>
                 <check type="status">2.*</check>
@@ -55,8 +55,8 @@
         </test>
 
         <test>
-            <title>정상적인 변경여부 확인(BookAll)</title>
-            <help>E-Book의 제목이 정상적으로 변경되었는지 확인합니다.</help>
+            <title>정상적인 파일 ID 변경여부 확인(BookAll)</title>
+            <help>정책으로 인해서 coverImageFileId가 정상적으로 변경되었는지 확인합니다.</help>
 
             <method>GET</method>
             <baseUrl>http://localhost:8083</baseUrl>
@@ -66,23 +66,23 @@
 
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">"title"[ ]*:[ ]*"newTitle"</check>
+                <check type="data">"coverImageFileId"[ ]*:[ ]*"1"</check>
             </checks>
         </test>
 
         <test>
-            <title>BookTitleUpdated 이벤트 발행 확인(Logs)</title>
-            <help>BookTitleUpdated 이벤트 발행 여부를 확인합니다.</help>
+            <title>CoverImageFileIdUpdated 이벤트 발행 확인(Logs)</title>
+            <help>CoverImageFileIdUpdated 이벤트 발행 여부를 확인합니다.</help>
 
             <method>GET</method>
             <baseUrl>http://localhost:8083</baseUrl>
-            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*BookTitleUpdated.*</resourceUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*CoverImageFileIdUpdated.*</resourceUrl>
             <headers></headers>
             <data></data>
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">Publish event.*BookTitleUpdated.*</check>
+                <check type="data">Publish event.*CoverImageFileIdUpdated.*</check>
             </checks>
         </test>
     </tests>
