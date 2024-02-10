@@ -29,3 +29,6 @@ deleteBook: O
 
 > Policy
 UpdateCoverImageFileId: O
+
+> Task
+Task 분해 및 생성: 
