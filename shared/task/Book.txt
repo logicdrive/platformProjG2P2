@@ -40,6 +40,13 @@
 
 ---
 
+작업명: updateIsShared 엔드포인트 구현하기
+측정 난이도: 0.50
+대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\UpdateIsSharedEndPoints.java
+테스트 항목: Book > 엔드포인트 테스트: updateIsShared
+
+---
+
 작업명: emptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy 정책 구현하기
 측정 난이도: 0.50
 대상 파일 경로: source\book\src\main\java\bookGenerator\policy\EmptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy.java
