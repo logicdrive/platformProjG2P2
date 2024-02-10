@@ -2,6 +2,7 @@ package bookGenerator.endPoint;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -41,7 +42,7 @@ class UpdateBookTitleResDto {
 public class UpdateBookTitleEndPoints {
 
     @PutMapping("/updateBookTitle")
-    public ResponseEntity<Void> updateBookTitle(UpdateBookTitleReqDto reqDto) {
+    public ResponseEntity<Void> updateBookTitle(@RequestBody UpdateBookTitleReqDto reqDto) {
         try {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);

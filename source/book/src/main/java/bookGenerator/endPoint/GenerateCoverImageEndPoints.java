@@ -2,6 +2,7 @@ package bookGenerator.endPoint;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,6 +17,7 @@ import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 
 import bookGenerator.domain.Book;
+
 
 @Data
 @ToString
@@ -41,7 +43,7 @@ public class GenerateCoverImageEndPoints {
 
     // 유저가 E-Book의 표지를 AI를 통한 생성하기 버튼을 눌렀을 경우, E-Book의 표지를 생성 요청을 보내기 위해서
     @PutMapping("/generateCoverImage")
-    public ResponseEntity<Void> generateCoverImage(GenerateCoverImageReqDto reqDto) {
+    public ResponseEntity<Void> generateCoverImage(@RequestBody GenerateCoverImageReqDto reqDto) {
         try {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);

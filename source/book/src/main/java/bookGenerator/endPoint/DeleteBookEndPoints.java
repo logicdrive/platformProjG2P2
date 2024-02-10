@@ -2,6 +2,7 @@ package bookGenerator.endPoint;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -40,7 +41,7 @@ class DeleteBookResDto {
 public class DeleteBookEndPoints {
 
     @PutMapping("/deleteBook")
-    public ResponseEntity<Void> deleteBook(DeleteBookReqDto reqDto) {
+    public ResponseEntity<Void> deleteBook(@RequestBody DeleteBookReqDto reqDto) {
         try {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
