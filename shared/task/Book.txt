@@ -1,7 +1,46 @@
 작업명: createEmptyBook 엔드포인트 구현하기
 측정 난이도: 0.50
 대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\CreateEmptyBookEndPoints.java
-테스트 항목: User > 엔드포인트 테스트: CreateEmptyBook
+테스트 항목: Book > 엔드포인트 테스트: CreateEmptyBook
 
 ---
 
+작업명: generateCoverImage 엔드포인트 구현하기
+측정 난이도: 0.50
+대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\GenerateCoverImageEndPoints.java
+테스트 항목: Book > 엔드포인트 테스트: GenerateCoverImage
+
+---
+
+작업명: updateCoverImage 엔드포인트 구현하기
+측정 난이도: 0.50
+대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\UpdateCoverImageEndPoints.java
+테스트 항목: Book > 엔드포인트 테스트: UpdateCoverImage
+
+---
+
+작업명: updateBookTitle 엔드포인트 구현하기
+측정 난이도: 0.50
+대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\UpdateBookTitleEndPoints.java
+테스트 항목: Book > 엔드포인트 테스트: UpdateBookTitle
+
+---
+
+작업명: likeBook 엔드포인트 구현하기
+측정 난이도: 0.50
+대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\LikeBookEndPoints.java
+테스트 항목: Book > 엔드포인트 테스트: LikeBook
+
+---
+
+작업명: deleteBook 엔드포인트 구현하기
+측정 난이도: 0.50
+대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\DeleteBookEndPoints.java
+테스트 항목: Book > 엔드포인트 테스트: DeleteBook
+
+---
+
+작업명: emptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy 정책 구현하기
+측정 난이도: 0.50
+대상 파일 경로: source\book\src\main\java\bookGenerator\policy\EmptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy.java
+테스트 항목: Book > 정책 테스트: EmptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy
