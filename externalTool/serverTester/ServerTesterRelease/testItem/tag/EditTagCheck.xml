@@ -2,8 +2,8 @@
 <root>
     <description>
         <group>Tag</group>
-        <title>엔드포인트 테스트: CreateTagCheck</title>
-        <help>CreateTagCheck 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
+        <title>엔드포인트 테스트: EditTagCheck</title>
+        <help>EditTagCheck 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
     </description>
 
     <tests>
@@ -22,14 +22,13 @@
             </checks>
         </test>
 
+       <test>
+            <title>Mock Tag 생성(CreateTag)</title>
+            <help>테스트를 위해서 강제로 새로운 Tag를 생성합니다.</help>
 
-        <test>
-            <title>태그 생성 요청</title>
-            <help>태그를 생성시킵니다.</help>
-
-            <method>PUT</method>
+            <method>POST</method>
             <baseUrl>http://localhost:8084</baseUrl>
-            <resourceUrl>tags/createTag</resourceUrl>
+            <resourceUrl>tags</resourceUrl>
             <headers></headers>
             <data>{"bookId":1,"name":"testTag"}</data>
 
@@ -38,9 +37,25 @@
             </checks>
         </test>
 
+
         <test>
-            <title>태그 생성 여부 확인(TagAll)</title>
-            <help>요청한 태그가 생성되었는지 확인합니다.</help>
+            <title>태그 변경 요청</title>
+            <help>태그를 변경시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8084</baseUrl>
+            <resourceUrl>tags/editTag</resourceUrl>
+            <headers></headers>
+            <data>{"tagId":1,"tagName":"updatedTestTag"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>태그 변경 여부 확인(TagAll)</title>
+            <help>요청한 태그가 변경되었는지 확인합니다.</help>
 
             <method>GET</method>
             <baseUrl>http://localhost:8084</baseUrl>
@@ -50,23 +65,23 @@
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">"name"[ ]*:[ ]*"testTag"</check>
+                <check type="data">"name"[ ]*:[ ]*"updatedTestTag"</check>
             </checks>
         </test>
 
         <test>
-            <title>TagCreated 이벤트 발행 확인(Logs)</title>
-            <help>TagCreated 이벤트 발행 여부를 확인합니다.</help>
+            <title>TagEdited 이벤트 발행 확인(Logs)</title>
+            <help>TagEdited 이벤트 발행 여부를 확인합니다.</help>
 
             <method>GET</method>
             <baseUrl>http://localhost:8084</baseUrl>
-            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*TagCreated.*</resourceUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*TagEdited.*</resourceUrl>
             <headers></headers>
             <data></data>
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">Publish event.*TagCreated.*</check>
+                <check type="data">Publish event.*TagEdited.*</check>
             </checks>
         </test>
     </tests>
