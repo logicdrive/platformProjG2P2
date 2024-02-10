@@ -94,6 +94,8 @@ namespace ServerTester
                 if(!testItemTestDto.result.isPass)
                 {
                     MessageBox.Show(testItemTestDto.result.resultLog, "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                    this.TestGroupListBox_SelectedIndexChanged(null, null);
+                    this.TestListBox_SelectedIndexChanged(null, null);
                     return;
                 }
 
@@ -133,6 +135,7 @@ namespace ServerTester
             if (!testItemTestDto.result.isPass)
             {
                 MessageBox.Show(testItemTestDto.result.resultLog, "에러", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                this.TestListBox_SelectedIndexChanged(null, null);
                 return;
             }
 
