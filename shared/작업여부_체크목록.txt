@@ -1,0 +1,31 @@
+* 서비스 작업 여부
+user: (O)
+book: 
+tag: 
+index: 
+content: 
+problem: 
+comment: 
+bookShelf: 
+bookShelfBook: 
+externalSystemProxy: 
+collectedData: 
+file: 
+externalSystem: 
+recommendCalcSystem: 
+gateway: 
+frontend: 
+
+---
+
+* book
+> EndPoints
+createEmptyBook: 
+generateCoverImage: 
+updateCoverImage: 
+updateBookTitle: 
+likeBook: 
+deleteBook: 
+
+> Policy
+UpdateCoverImageFileId: 

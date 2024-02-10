@@ -53,6 +53,10 @@ public class Book extends LoggedEntity {
 
     @PrePersist
     public void onPrePersist() {
+        this.coverImageFileid = null;
+        this.title = "Untitled Book";
+        this.isShared = false;
+
         this.createdDate = new Date();
         this.updatedDate = new Date();
 
