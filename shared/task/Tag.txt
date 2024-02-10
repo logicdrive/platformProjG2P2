@@ -2,3 +2,38 @@
 측정 난이도: 0.50
 대상 파일 경로: source\tag\src\main\java\bookGenerator\endPoint\GenerateTagsEndPoints.java
 테스트 항목: Tag > 엔드포인트 테스트: GenerateTags
+
+---
+
+작업명: createTag 엔드포인트 구현하기
+측정 난이도: 0.50
+대상 파일 경로: source\tag\src\main\java\bookGenerator\endPoint\CreateTagEndPoints.java
+테스트 항목: Tag > 엔드포인트 테스트: CreateTag
+
+---
+
+작업명: editTag 엔드포인트 구현하기
+측정 난이도: 0.50
+대상 파일 경로: source\tag\src\main\java\bookGenerator\endPoint\EditTagEndPoints.java
+테스트 항목: Tag > 엔드포인트 테스트: EditTag
+
+---
+
+작업명: deleteTag 엔드포인트 구현하기
+측정 난이도: 0.50
+대상 파일 경로: source\tag\src\main\java\bookGenerator\endPoint\DeleteTagEndPoints.java
+테스트 항목: Tag > 엔드포인트 테스트: DeleteTag
+
+---
+
+작업명: tagGernerated_createTag_Policy 정책 구현하기
+측정 난이도: 0.50
+대상 파일 경로: source\book\src\main\java\bookGenerator\policy\TagGernerated_createTag_Policy.java
+테스트 항목: Book > 정책 테스트: TagGernerated_createTag_Policy
+
+---
+
+작업명: bookDeleted_deleteTag_Policy 정책 구현하기
+측정 난이도: 0.50
+대상 파일 경로: source\book\src\main\java\bookGenerator\policy\BookDeleted_deleteTag_Policy.java
+테스트 항목: Book > 정책 테스트: BookDeleted_deleteTag_Policy

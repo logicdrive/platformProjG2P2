@@ -1,7 +1,7 @@
 * 서비스 작업 여부
 user: O / D
 book: O / T
-tag: 
+tag: O / T
 index: 
 content: 
 problem: 
@@ -34,11 +34,11 @@ emptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy: O / T
 
 * tag
 > EndPoints
-generateTags: O
-createTag: O
-editTag: O
-deleteTag: O
+generateTags: O / T
+createTag: O / T
+editTag: O / T
+deleteTag: O / T
 
 > Policy
-tagGernerated_createTag_Policy: O
-bookDeleted_deleteTag_Policy: O
+tagGernerated_createTag_Policy: O / T
+bookDeleted_deleteTag_Policy: O / T
