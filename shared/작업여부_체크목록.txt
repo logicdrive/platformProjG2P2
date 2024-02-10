@@ -61,7 +61,7 @@ bookDeleted_deleteIndex_Policy: O / T
 
 * content
 > EndPoints
-generateContent: 
+generateContent: O
 
 > Policy
 contentImageInfoUploaded_updateImageFileId_Policy: 
