@@ -55,5 +55,21 @@
                 <check type="data">"createrId"[ ]*:[ ]*"2"</check>
             </checks>
         </test>
+
+        <test>
+            <title>EmptyBookCreated 이벤트 발행 확인(Logs)</title>
+            <help>EmptyBookCreated 이벤트 발행 여부를 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8083</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*EmptyBookCreated.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">Publish event.*EmptyBookCreated.*2</check>
+            </checks>
+        </test>
     </tests>
 </root>
