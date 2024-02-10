@@ -1,0 +1,4 @@
+작업명: generateTags 엔드포인트 구현하기
+측정 난이도: 0.50
+대상 파일 경로: source\tag\src\main\java\bookGenerator\endPoint\GenerateTagsEndPoints.java
+테스트 항목: Tag > 엔드포인트 테스트: GenerateTags

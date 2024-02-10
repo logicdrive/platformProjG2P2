@@ -2,8 +2,8 @@
 <root>
     <description>
         <group>Tag</group>
-        <title>엔드포인트 테스트: GenerateTagsCheck</title>
-        <help>GenerateTagsCheck 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
+        <title>엔드포인트 테스트: GenerateTags</title>
+        <help>GenerateTags 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
     </description>
 
     <tests>
