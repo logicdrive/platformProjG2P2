@@ -33,7 +33,7 @@ public class Book extends LoggedEntity {
 
 	private String createrId;
 
-	private Long coverImageFileid;
+	private Long coverImageFileId;
 
 	private String title;
 
@@ -53,7 +53,7 @@ public class Book extends LoggedEntity {
 
     @PrePersist
     public void onPrePersist() {
-        this.coverImageFileid = null;
+        this.coverImageFileId = null;
         this.title = "Untitled Book";
         this.isShared = false;
 

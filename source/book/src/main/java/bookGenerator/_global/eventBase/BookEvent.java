@@ -16,7 +16,7 @@ import bookGenerator.domain.Book;
 public class BookEvent extends AbstractEvent {
 	protected Long id;
 	protected String createrId;
-	protected Long coverImageFileid;
+	protected Long coverImageFileId;
 	protected String title;
 	protected Boolean isShared;
 	protected Date createdDate;
