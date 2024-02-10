@@ -34,7 +34,7 @@ emptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy: O / T
 
 * tag
 > EndPoints
-generateTags: 
+generateTags: O
 creteTag: 
 editTag: 
 deleteTag: 
