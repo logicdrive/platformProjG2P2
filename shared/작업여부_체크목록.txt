@@ -41,4 +41,4 @@ deleteTag: O
 
 > Policy
 tagGernerated_createTag_Policy: O
-bookDeleted_deleteTag_Policy: 
+bookDeleted_deleteTag_Policy: O

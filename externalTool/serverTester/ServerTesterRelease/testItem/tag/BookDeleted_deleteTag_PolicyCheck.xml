@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>Tag</group>
+        <title>정책 테스트: BookDeleted_deleteTag_PolicyCheck</title>
+        <help>BookDeleted_deleteTag_PolicyCheck 단일 정책의 정상 작동 여부를 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>통신 확인(SanityCheck)</title>
+            <help>Tag 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8084</baseUrl>
+            <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+       <test>
+            <title>Mock Tag 생성(CreateTag)</title>
+            <help>테스트를 위해서 강제로 새로운 Tag를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8084</baseUrl>
+            <resourceUrl>tags</resourceUrl>
+            <headers></headers>
+            <data>{"bookId":1,"name":"testTag"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Mock BookDeleted 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 BookDeleted 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8084</baseUrl>
+            <resourceUrl>sanityCheck/mock/BookDeleted</resourceUrl>
+            <headers></headers>
+            <data>{"id":1,"createrId":1,"coverImageFileid":1,"title":"testTitle","isShared":false,"createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>BookDeleted 이벤트 발행 확인(Logs)</title>
+            <help>BookDeleted 이벤트 발행 여부를 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8084</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*BookDeleted.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">Publish event.*BookDeleted.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>
