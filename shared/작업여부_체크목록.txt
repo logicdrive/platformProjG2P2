@@ -37,7 +37,7 @@ emptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy: O / T
 generateTags: O
 createTag: O
 editTag: O
-deleteTag: 
+deleteTag: O
 
 > Policy
 createTag: 

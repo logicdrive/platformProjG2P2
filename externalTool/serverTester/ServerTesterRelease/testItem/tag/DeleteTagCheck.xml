@@ -2,8 +2,8 @@
 <root>
     <description>
         <group>Tag</group>
-        <title>엔드포인트 테스트: EditTagCheck</title>
-        <help>EditTagCheck 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
+        <title>엔드포인트 테스트: DeleteTag</title>
+        <help>DeleteTag 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
     </description>
 
     <tests>
@@ -40,14 +40,14 @@
 
 
         <test>
-            <title>태그 변경 요청</title>
-            <help>태그를 변경시킵니다.</help>
+            <title>Tag를 삭제함(DeleteTag)</title>
+            <help>Tag를 삭제시키는 요청을 수행합니다.</help>
 
             <method>PUT</method>
             <baseUrl>http://localhost:8084</baseUrl>
-            <resourceUrl>tags/editTag</resourceUrl>
+            <resourceUrl>tags/deleteTag</resourceUrl>
             <headers></headers>
-            <data>{"tagId":1,"tagName":"updatedTestTag"}</data>
+            <data>{"tagId":1}</data>
 
             <checks>
                 <check type="status">2.*</check>
@@ -55,34 +55,18 @@
         </test>
 
         <test>
-            <title>태그 변경 여부 확인(TagAll)</title>
-            <help>요청한 태그가 변경되었는지 확인합니다.</help>
+            <title>TagDeleted 이벤트 발행 확인(Logs)</title>
+            <help>TagDeleted 이벤트 발행 여부를 확인합니다.</help>
 
             <method>GET</method>
             <baseUrl>http://localhost:8084</baseUrl>
-            <resourceUrl>tags</resourceUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*TagDeleted.*</resourceUrl>
             <headers></headers>
             <data></data>
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">"name"[ ]*:[ ]*"updatedTestTag"</check>
-            </checks>
-        </test>
-
-        <test>
-            <title>TagEdited 이벤트 발행 확인(Logs)</title>
-            <help>TagEdited 이벤트 발행 여부를 확인합니다.</help>
-
-            <method>GET</method>
-            <baseUrl>http://localhost:8084</baseUrl>
-            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*TagEdited.*</resourceUrl>
-            <headers></headers>
-            <data></data>
-            
-            <checks>
-                <check type="status">2.*</check>
-                <check type="data">Publish event.*TagEdited.*</check>
+                <check type="data">Publish event.*TagDeleted.*</check>
             </checks>
         </test>
     </tests>
