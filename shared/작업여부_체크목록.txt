@@ -43,3 +43,16 @@ deleteTag: O / T
 > Policy
 tagGernerated_createTag_Policy: O / T
 bookDeleted_deleteTag_Policy: O / T
+
+---
+
+* index
+> EndPoints
+generateIndexes: 
+createIndex: 
+editIndex: 
+deleteIndex: 
+
+> Policy: 
+createIndex: 
+deleteIndex: 
