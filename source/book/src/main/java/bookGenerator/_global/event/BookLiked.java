@@ -9,7 +9,10 @@ import bookGenerator.domain.Book;
 @EventNameAnnotation(eventName="BookLiked")
 @NoArgsConstructor
 public class BookLiked extends BookEvent {
-    public BookLiked(Book aggregate) {
+    private Long userId;
+
+    public BookLiked(Book aggregate, Long userId) {
         super(aggregate);
+        this.userId = userId;
     }
 }

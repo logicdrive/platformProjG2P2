@@ -9,7 +9,7 @@ import bookGenerator.domain.Book;
 @EventNameAnnotation(eventName="CoverImageUpdateRequested")
 @NoArgsConstructor
 public class CoverImageUpdateRequested extends BookEvent {
-    String imageUrl;
+    private String imageUrl;
 
     public CoverImageUpdateRequested(Book aggregate, String imageUrl) {
         super(aggregate);

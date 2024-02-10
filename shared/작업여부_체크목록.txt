@@ -24,7 +24,7 @@ createEmptyBook: O
 generateCoverImage: O
 updateCoverImage: O
 updateBookTitle: O
-likeBook: 
+likeBook: O
 deleteBook: 
 
 > Policy
