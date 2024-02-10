@@ -2,6 +2,7 @@ package bookGenerator.endPoint;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -28,7 +29,7 @@ class GenerateTagsReqDto {
 public class GenerateTagsEndPoints {
 
     @PutMapping("/generateTags")
-    public ResponseEntity<Void> generateTags(GenerateTagsReqDto reqDto) {
+    public ResponseEntity<Void> generateTags(@RequestBody GenerateTagsReqDto reqDto) {
         try {
 
             CustomLogger.debug(CustomLoggerType.ENTER, reqDto.toString());
