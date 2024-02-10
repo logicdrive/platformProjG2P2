@@ -20,7 +20,7 @@ frontend:
 
 * book
 > EndPoints
-createEmptyBook: O
+createEmptyBook: O / TC
 generateCoverImage: O
 updateCoverImage: O
 updateBookTitle: O
@@ -29,6 +29,3 @@ deleteBook: O
 
 > Policy
 UpdateCoverImageFileId: O
-
-> Task
-Task 분해 및 생성: 
