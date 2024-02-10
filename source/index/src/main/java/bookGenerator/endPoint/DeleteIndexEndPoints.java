@@ -44,7 +44,7 @@ public class DeleteIndexEndPoints {
     public ResponseEntity<Void> deleteIndex(@RequestBody DeleteIndexReqDto reqDto) {
         try {
 
-            CustomLogger.debug(CustomLoggerType.ENTER, reqDto.toString());
+            CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
             // [1] reqDto.indexId로 Index 객체를 찾음
 

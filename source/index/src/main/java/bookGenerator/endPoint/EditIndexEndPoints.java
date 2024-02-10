@@ -46,7 +46,7 @@ public class EditIndexEndPoints {
     public ResponseEntity<Void> editIndex(@RequestBody EditIndexReqDto reqDto) {
         try {
 
-            CustomLogger.debug(CustomLoggerType.ENTER, reqDto.toString());
+            CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
             // [1] indexId에 해당하는 Index 객체를 찾음
 
