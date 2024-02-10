@@ -48,7 +48,7 @@ bookDeleted_deleteTag_Policy: O / T
 
 * index
 > EndPoints
-generateIndexes: 
+generateIndexes: O
 createIndex: 
 editIndex: 
 deleteIndex: 

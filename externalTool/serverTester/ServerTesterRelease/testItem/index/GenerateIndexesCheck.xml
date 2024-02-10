@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>Index</group>
+        <title>엔드포인트 테스트: GenerateIndexes</title>
+        <help>GenerateIndexes 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>통신 확인(SanityCheck)</title>
+            <help>Index 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8085</baseUrl>
+            <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>AI 기반 인덱스 생성 요청</title>
+            <help>AI를 기반으로 특정 인덱스 생성에 관해서 요청합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8085</baseUrl>
+            <resourceUrl>indexs/generateIndexes</resourceUrl>
+            <headers></headers>
+            <data>{"bookId":1}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>IndexGenerationRequested 이벤트 발행 확인(Logs)</title>
+            <help>IndexGenerationRequested 이벤트 발행 여부를 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8085</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*IndexGenerationRequested.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">Publish event.*IndexGenerationRequested.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>

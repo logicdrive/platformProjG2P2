@@ -1,9 +1,7 @@
 package bookGenerator.endPoint;
 
-import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
@@ -16,16 +14,26 @@ import lombok.ToString;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 
+
+@Data
+@ToString
+class GenerateIndexesReqDto {
+    private final Long bookId;
+}
+
+
 @RestController
 @Transactional
 @RequestMapping("/indexs")
 public class GenerateIndexesEndPoints {
 
     @PutMapping("/generateIndexes")
-    public ResponseEntity<Void> generateIndexes() {
+    public ResponseEntity<Void> generateIndexes(GenerateIndexesReqDto reqDto) {
         try {
 
-            CustomLogger.debug(CustomLoggerType.ENTER);
+            CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
+
+            // [1] IndexGenerationRequested 이벤트를 bookId를 기반으로 생성함
                 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
