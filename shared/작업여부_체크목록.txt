@@ -22,7 +22,7 @@ frontend:
 > EndPoints
 createEmptyBook: O
 generateCoverImage: O
-updateCoverImage: 
+updateCoverImage: O
 updateBookTitle: 
 likeBook: 
 deleteBook: 

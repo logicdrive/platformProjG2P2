@@ -2,8 +2,8 @@
 <root>
     <description>
         <group>Book</group>
-        <title>단일 엔드포인트 테스트: GenerateCoverImage</title>
-        <help>GenerateCoverImage 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
+        <title>단일 엔드포인트 테스트: UpdateCoverImage</title>
+        <help>UpdateCoverImage 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
     </description>
 
     <tests>
@@ -39,14 +39,14 @@
         </test>
 
         <test>
-            <title>책 표지 이미지 생성 요청(GenerateCoverImage)</title>
-            <help>새로운 책 표지 이미지 생성을 요청합니다.</help>
+            <title>책 표지 이미지 업데이트 요청(UpdateCoverImage)</title>
+            <help>책 표지 이미지에 대한 업데이트 요청을 수행합니다.</help>
 
             <method>PUT</method>
             <baseUrl>http://localhost:8083</baseUrl>
-            <resourceUrl>books/generateCoverImage</resourceUrl>
+            <resourceUrl>books/updateCoverImage</resourceUrl>
             <headers></headers>
-            <data>{"bookId":2}</data>
+            <data>{"bookId":2,"imageUrl":"testUrl.jpg"}</data>
 
             <checks>
                 <check type="status">2.*</check>
@@ -54,18 +54,18 @@
         </test>
 
         <test>
-            <title>CoverImageGenerationRequested 이벤트 발행 확인(Logs)</title>
-            <help>CoverImageGenerationRequested 이벤트 발행 여부를 확인합니다.</help>
+            <title>CoverImageUpdateRequested 이벤트 발행 확인(Logs)</title>
+            <help>CoverImageUpdateRequested 이벤트 발행 여부를 확인합니다.</help>
 
             <method>GET</method>
             <baseUrl>http://localhost:8083</baseUrl>
-            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*CoverImageGenerationRequested.*</resourceUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*CoverImageUpdateRequested.*</resourceUrl>
             <headers></headers>
             <data></data>
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">Publish event.*CoverImageGenerationRequested.*</check>
+                <check type="data">Publish event.*CoverImageUpdateRequested.*</check>
             </checks>
         </test>
     </tests>
