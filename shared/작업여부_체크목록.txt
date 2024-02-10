@@ -20,7 +20,7 @@ frontend:
 
 * book
 > EndPoints
-createEmptyBook: 
+createEmptyBook: O
 generateCoverImage: 
 updateCoverImage: 
 updateBookTitle: 
