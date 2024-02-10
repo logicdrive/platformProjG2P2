@@ -29,3 +29,16 @@ deleteBook: O / T
 
 > Policy
 emptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy: O / T
+
+---
+
+* tag
+> EndPoints
+generateTags: 
+creteTag: 
+editTag: 
+deleteTag: 
+
+> Policy
+createTag: 
+deleteTag: 
