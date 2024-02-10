@@ -21,6 +21,7 @@
                 <check type="status">2.*</check>
             </checks>
         </test>
+
         <test>
             <title>통신 확인시에 정상으로 반환되도록 만들기(SanityCheckSetNormal)</title>
             <help>sanityCheck 요청시에 200이 반환되도록 만듭니다.</help>
@@ -35,6 +36,7 @@
                 <check type="status">2.*</check>
             </checks>
         </test>
+
         <test>
             <title>통신 확인시에 비정상으로 반환되도록 만들기(SanityCheckSetError)</title>
             <help>sanityCheck 요청시에 500이 반환되도록 만듭니다.</help>
@@ -65,6 +67,7 @@
                 <check type="status">2.*</check>
             </checks>
         </test>
+
         <test>
             <title>에러 로그 얻기(ErrorLogs)</title>
             <help>User 서비스의 로그들 중에서 에러 로그만 얻어옵니다.</help>
@@ -95,7 +98,8 @@
                 <check type="status">2.*</check>
             </checks>
         </test>
-            <test>
+        
+        <test>
             <title>유저 인증 여부 확인(AuthenticationCheck)</title>
             <help>HTTP 헤더로 전달된 유저 정보를 출력합니다.</help>
 
@@ -126,7 +130,7 @@
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">admin@gmail.com</check>
+                <check type="data">"email"[ ]*:[ ]*"admin@gmail.com"</check>
             </checks>
         </test>
     </tests>

@@ -22,6 +22,7 @@
             </checks>
         </test>
 
+
         <test>
             <title>회원 가입(SignUp)</title>
             <help>회원가입 요청을 보냅니다.</help>
@@ -36,6 +37,7 @@
                 <check type="status">2.*</check>
             </checks>
         </test>
+
         <test>
             <title>유저 추가 확인(UserAll)</title>
             <help>회원가입시킨 유저가 존재하는지 확인합니다.</help>
@@ -48,9 +50,10 @@
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">testemail1@gmail.com</check>
+                <check type="data">"email"[ ]*:[ ]*"testemail1@gmail.com"</check>
             </checks>
         </test>
+
 
         <test>
             <title>로그인(SignIn)</title>
@@ -84,6 +87,7 @@
                 <check type="status">2.*</check>
             </checks>
         </test>
+        
         <test>
             <title>변경된 유저명 확인(UserAll)</title>
             <help>유저명이 정말로 변경되었는지 확인합니다.</help>
@@ -96,7 +100,7 @@
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">changedTestName1</check>
+                <check type="data">"name"[ ]*:[ ]*"changedTestName1"</check>
             </checks>
         </test>
     </tests>

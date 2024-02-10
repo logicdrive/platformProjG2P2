@@ -126,7 +126,7 @@
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">admin@gmail.com</check>
+                <check type="data">"email"[ ]*:[ ]*"admin@gmail.com"</check>
             </checks>
         </test>
     </tests>

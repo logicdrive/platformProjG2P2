@@ -115,7 +115,7 @@ namespace ServerTester.TestItem
                 testItemTestResultDto.requestLog = makeRequestLog(testItemTestDto);
                 testItemTestResultDto.responseLog = makeResponseLog(response);
 
-
+                List<string> resultLogs = new List<string>() { "테스트 항목 통과"  };
                 foreach (TestItemTestCheckDto check in testItemTestDto.checks)
                 {
                     if(check.type == "status") {
@@ -124,29 +124,33 @@ namespace ServerTester.TestItem
                         {
                             testItemTestResultDto.isPass = false;
                             testItemTestResultDto.resultLog = string.Format(
-                                "유효하지 않은 Status Code. (기대값: {0}, 결과값: {1})",
+                                "유효하지 않은 Status Code. (기대값 정규식: {0}, 결과값: {1})",
                                 check.value, (int)(response.StatusCode)
                             );
                             return testItemTestResultDto;
                         }
+                        resultLogs.Add(string.Format("매칭된 상태코드({0}): {1}", check.value,
+                            Regex.Match(((int)(response.StatusCode)).ToString(), check.value).Value));
                     }
                     else if(check.type == "data")
                     {
                         // Check if the reponse content contains the value of check
-                        if (!(response.Content.Contains(check.value)))
+                        if (!(Regex.IsMatch(response.Content, check.value)))
                         {
                             testItemTestResultDto.isPass = false;
                             testItemTestResultDto.resultLog = string.Format(
-                                 "유효하지 않은 데이터. (포함되기를 기대한 값: {0})",
+                                 "유효하지 않은 데이터. (기대값 정규식: {0})",
                                  check.value
                             );
                             return testItemTestResultDto;
                         }
+                        resultLogs.Add(string.Format("매칭된 데이터({0}): {1}", check.value,
+                            Regex.Match(response.Content, check.value).Value));
                     }
                 }
 
                 testItemTestResultDto.isPass = true;
-                testItemTestResultDto.resultLog = "테스트 항목 통과";
+                testItemTestResultDto.resultLog = string.Join(Environment.NewLine, resultLogs);
 
                 return testItemTestResultDto;
             }

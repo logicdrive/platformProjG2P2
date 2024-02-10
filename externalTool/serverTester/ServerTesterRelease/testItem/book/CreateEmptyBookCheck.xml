@@ -22,6 +22,7 @@
             </checks>
         </test>
 
+
         <test>
             <title>빈 E-Book 생성(CreateEmptyBook)</title>
             <help>비어있는 E-Book을 생성합니다.</help>
@@ -51,7 +52,7 @@
 
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">"createrId" : "2"</check>
+                <check type="data">"createrId"[ ]*:[ ]*"2"</check>
             </checks>
         </test>
     </tests>
