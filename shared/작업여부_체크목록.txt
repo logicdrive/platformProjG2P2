@@ -8,9 +8,9 @@ problem:
 comment: 
 bookShelf: 
 bookShelfBook: 
-externalSystemProxy: 
-collectedData: 
 file: 
+collectedData: 
+externalSystemProxy: 
 externalSystem: 
 recommendCalcSystem: 
 gateway: 

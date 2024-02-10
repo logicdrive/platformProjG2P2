@@ -8,9 +8,9 @@ problem: E-Book의 목차에 해당하는 문제를 관리함
 comment: E-Book에 유저간 단 댓글을 관리함
 bookShelf: E-Book들을 보관하는 책장을 관리함
 bookShelfBook: E-Book 책장에 담긴 책에 대한 정보를 관리함
-externalSystemProxy: externalSystem에 접근하기 위한 중개자 역할을 함
-collectedData: 모든 이벤트 정보를 수집해서 기록하는 ReadModel
 file: E-Book의 표지나 각 목차의 내용에 포함되는 이미지 파일 정보를 관리함
+collectedData: 모든 이벤트 정보를 수집해서 기록하는 ReadModel
+externalSystemProxy: externalSystem에 접근하기 위한 중개자 역할을 함
 externalSystem: 구글 이미지 검색, AWS S3, ChatGPT들에 대한 API 요청을 보낼 수 있음
 recommendCalcSystem: 사용자의 첫 화면에서 보이는 맞춤형 E-Book에 대한 정보 및 각 E-Book에 대한 연관성 높은 E-Book의 정보를 주기적으로 계산해줌
 gateway: 단일 진입점 제공, 사용자 인증 및 권한 확인, 접근 통제를 위해서 사용됨
@@ -27,9 +27,9 @@ problem: 8087
 comment: 8089
 bookShelf: 8090
 bookShelfBook: 8091
-externalSystemProxy: 8092
-collectedData: 8093
 file: 8094
+collectedData: 8093
+externalSystemProxy: 8092
 externalSystem: 8095
 recommendCalcSystem: 8096
 gateway: 8088
@@ -46,9 +46,9 @@ problem: 8080 > 8087
 comment: 8080 > 8089
 bookShelf: 8080 > 8090
 bookShelfBook: 8080 > 8091
-externalSystemProxy: 8080 > 8092
-collectedData: 8080 > 8093
 file: 8080 > 8094
+collectedData: 8080 > 8093
+externalSystemProxy: 8080 > 8092
 externalSystem: 8095 > 8095
 recommendCalcSystem: 8096 > 8096
 gateway: 8088 > 8088
@@ -65,10 +65,10 @@ problem: 8080 > problem(sinsung6722/book-generator-problem:v1)
 comment: 8080 > comment(sinsung6722/book-generator-comment:v1)
 bookShelf: 8080 > bookShelf(sinsung6722/book-generator-bookShelf:v1)
 bookShelfBook: 8080 > bookShelfBook(sinsung6722/book-generator-bookShelfBook:v1)
-externalSystemProxy: 8080 > externalSystemProxy(sinsung6722/book-generator-externalSystemProxy:v1)
-collectedData: 8080 > collectedData(sinsung6722/book-generator-collectedData:v1)
 file: 8080 > file(sinsung6722/book-generator-file:v1)
+collectedData: 8080 > collectedData(sinsung6722/book-generator-collectedData:v1)
+externalSystemProxy: 8080 > externalSystemProxy(sinsung6722/book-generator-externalSystemProxy:v1)
 externalSystem: 8095 > externalSystem(sinsung6722/book-generator-externalSystem:v1)
 recommendCalcSystem: 8096 > recommendCalcSystem(sinsung6722/book-generator-recommendCalcSystem:v1)
 gateway: 8088 > gateway(sinsung6722/book-generator-gateway:v1)
-frontend: 3000 > frontend
+frontend: 3000 > frontend(sinsung6722/book-generator-frontend:v1)
