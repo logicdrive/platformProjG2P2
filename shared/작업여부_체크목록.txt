@@ -53,6 +53,19 @@ createIndex: O / T
 editIndex: O / T
 deleteIndex: O / T
 
-> Policy: 
+> Policy
 indexGenereated_createIndex_Policy: O / T
 bookDeleted_deleteIndex_Policy: O / T
+
+---
+
+* content
+> EndPoints
+generateContent: 
+
+> Policy
+contentImageInfoUploaded_updateImageFileId_Policy: 
+contentGenerated_updateContent_Policy: 
+IndexDeleted_deleteContent_Policy: 
+ContentmageGenerationFailed_deleteContentByFail_Policy: 
+ContentGenerationFailed_deleteContentByFail_Policy: 

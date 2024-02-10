@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -35,6 +36,7 @@ public class Content extends LoggedEntity {
 
 	private Long indexId;
 
+    @Lob
 	private String content;
 
     private Date createdDate;
@@ -51,6 +53,9 @@ public class Content extends LoggedEntity {
 
     @PrePersist
     public void onPrePersist() {
+        this.imageFileId = null;
+        this.content = null;
+
         this.createdDate = new Date();
         this.updatedDate = new Date();
 

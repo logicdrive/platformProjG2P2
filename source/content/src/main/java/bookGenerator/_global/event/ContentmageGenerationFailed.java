@@ -1,7 +1,5 @@
 package bookGenerator._global.event;
 
-import java.util.Date;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
 import lombok.ToString;
