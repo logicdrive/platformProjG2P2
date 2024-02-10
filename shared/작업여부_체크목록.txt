@@ -25,7 +25,7 @@ generateCoverImage: O
 updateCoverImage: O
 updateBookTitle: O
 likeBook: O
-deleteBook: 
+deleteBook: O
 
 > Policy
 UpdateCoverImageFileId: 
