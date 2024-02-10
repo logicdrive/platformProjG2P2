@@ -54,5 +54,5 @@ editIndex: O
 deleteIndex: O
 
 > Policy: 
-createIndex: 
-deleteIndex: 
+indexGenereated_createIndex_Policy: O
+bookDeleted_deleteIndex_Policy: 

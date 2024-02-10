@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>Index</group>
+        <title>정책 테스트: IndexGenereated_createIndex_Policy</title>
+        <help>IndexGenereated_createIndex_Policy 단일 정책의 정상 작동 여부를 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>통신 확인(SanityCheck)</title>
+            <help>Index 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8085</baseUrl>
+            <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>Mock IndexGenereated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 IndexGenereated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8085</baseUrl>
+            <resourceUrl>sanityCheck/mock/IndexGenereated</resourceUrl>
+            <headers></headers>
+            <data>{"bookId":1,"indexName":"generatedIndexName","priority":1}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>인덱스 생성 여부 확인(IndexAll)</title>
+            <help>요청한 인덱스가 생성되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8085</baseUrl>
+            <resourceUrl>indexes</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"name"[ ]*:[ ]*"generatedIndexName"</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>IndexCreated 이벤트 발행 확인(Logs)</title>
+            <help>IndexCreated 이벤트 발행 여부를 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8085</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*IndexCreated.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">Publish event.*IndexCreated.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>
