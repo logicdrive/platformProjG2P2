@@ -26,7 +26,10 @@ public class ContentGenerated_updateContent_Policy {
         try
         {
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "ContentGenerated", contentGenerated);
+            CustomLogger.debugObject(CustomLoggerType.ENTER, contentGenerated);
+
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", contentGenerated);        

@@ -32,7 +32,7 @@ public class GenerateTagsEndPoints {
     public ResponseEntity<Void> generateTags(@RequestBody GenerateTagsReqDto reqDto) {
         try {
 
-            CustomLogger.debug(CustomLoggerType.ENTER, reqDto.toString());
+            CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
             // [1] TagGenerationRequested 이벤트를 bookId를 기반으로 생성함
 

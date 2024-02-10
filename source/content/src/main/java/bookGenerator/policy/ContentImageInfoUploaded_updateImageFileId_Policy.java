@@ -15,7 +15,7 @@ import bookGenerator._global.event.ContentImageInfoUploaded;
 @Transactional
 public class ContentImageInfoUploaded_updateImageFileId_Policy {
 
-    // ContentImageInfoUploaded 이벤트 발생 관련 정책
+    // 이미지 생성을 요청한 파일에 대한 정보가 이벤트로 발생되었을 때, 관련 imageFileId를 업데이트하기 위해서
     @StreamListener(
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='ContentImageInfoUploaded'"
@@ -25,8 +25,10 @@ public class ContentImageInfoUploaded_updateImageFileId_Policy {
     ) {
         try
         {
-            
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "ContentImageInfoUploaded", contentImageInfoUploaded);
+            CustomLogger.debugObject(CustomLoggerType.ENTER, contentImageInfoUploaded);
+
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", contentImageInfoUploaded);        

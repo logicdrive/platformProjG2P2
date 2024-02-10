@@ -26,7 +26,10 @@ public class IndexDeleted_deleteContent_Policy {
         try
         {
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "IndexDeleted", indexDeleted);
+            CustomLogger.debugObject(CustomLoggerType.ENTER, indexDeleted);
+
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", indexDeleted);        

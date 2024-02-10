@@ -26,7 +26,10 @@ public class ContentGenerationFailed_deleteContentByFail_Policy {
         try
         {
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "ContentGenerationFailed", contentGenerationFailed);
+            CustomLogger.debugObject(CustomLoggerType.ENTER, contentGenerationFailed);
+
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", contentGenerationFailed);        

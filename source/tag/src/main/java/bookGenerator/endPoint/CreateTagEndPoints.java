@@ -45,7 +45,7 @@ public class CreateTagEndPoints {
     public ResponseEntity<Void> createTag(@RequestBody CreateTagReqDto reqDto) {
         try {
 
-            CustomLogger.debug(CustomLoggerType.ENTER, reqDto.toString());
+            CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
             // [1] 새로운 Tag 객체를 생성
             // [!] bookId, name만 초기화시키면 되며, 다른 변수들은 자동으로 초기화됨

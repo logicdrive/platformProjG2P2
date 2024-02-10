@@ -45,7 +45,7 @@ public class EditTagEndPoints {
     public ResponseEntity<Void> editTag(@RequestBody EditTagReqDto reqDto) {
         try {
 
-            CustomLogger.debug(CustomLoggerType.ENTER, reqDto.toString());
+            CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
             // [1] tagId에 해당하는 Tag 객체를 찾음
 
