@@ -2,7 +2,7 @@
 user: O / D
 book: O / T
 tag: O / T
-index: 
+index: O / T
 content: 
 problem: 
 comment: 
@@ -48,11 +48,11 @@ bookDeleted_deleteTag_Policy: O / T
 
 * index
 > EndPoints
-generateIndexes: O
-createIndex: O
-editIndex: O
-deleteIndex: O
+generateIndexes: O / T
+createIndex: O / T
+editIndex: O / T
+deleteIndex: O / T
 
 > Policy: 
-indexGenereated_createIndex_Policy: O
-bookDeleted_deleteIndex_Policy: O
+indexGenereated_createIndex_Policy: O / T
+bookDeleted_deleteIndex_Policy: O / T

@@ -1,0 +1,33 @@
+작업명: generateIndexes 엔드포인트 구현하기
+대상 파일 경로: source\index\src\main\java\bookGenerator\endPoint\GenerateIndexesEndPoints.java
+테스트 항목: Index > 엔드포인트 테스트: GenerateIndexes
+
+---
+
+작업명: createIndex 엔드포인트 구현하기
+대상 파일 경로: source\index\src\main\java\bookGenerator\endPoint\CreateIndexEndPoints.java
+테스트 항목: Index > 엔드포인트 테스트: CreateIndex
+
+---
+
+작업명: editIndex 엔드포인트 구현하기
+대상 파일 경로: source\index\src\main\java\bookGenerator\endPoint\EditIndexEndPoints.java
+테스트 항목: Index > 엔드포인트 테스트: EditIndex
+
+---
+
+작업명: deleteIndex 엔드포인트 구현하기
+대상 파일 경로: source\index\src\main\java\bookGenerator\endPoint\DeleteIndexEndPoints.java
+테스트 항목: Index > 엔드포인트 테스트: DeleteIndex
+
+---
+
+작업명: indexGenereated_createIndex_Policy 정책 구현하기
+대상 파일 경로: source\index\src\main\java\bookGenerator\policy\IndexGenereated_createIndex_Policy.java
+테스트 항목: Index > 정책 테스트: IndexGenereated_createIndex_Policy
+
+---
+
+작업명: bookDeleted_deleteIndex_Policy 정책 구현하기
+대상 파일 경로: source\index\src\main\java\bookGenerator\policy\BookDeleted_deleteIndex_Policy.java
+테스트 항목: Index > 정책 테스트: BookDeleted_deleteIndex_Policy
