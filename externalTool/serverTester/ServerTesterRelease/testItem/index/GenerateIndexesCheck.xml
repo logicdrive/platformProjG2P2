@@ -29,7 +29,7 @@
 
             <method>PUT</method>
             <baseUrl>http://localhost:8085</baseUrl>
-            <resourceUrl>indexs/generateIndexes</resourceUrl>
+            <resourceUrl>indexes/generateIndexes</resourceUrl>
             <headers></headers>
             <data>{"bookId":1}</data>
 

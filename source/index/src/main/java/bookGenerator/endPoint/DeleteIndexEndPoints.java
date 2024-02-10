@@ -18,7 +18,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 
 @RestController
 @Transactional
-@RequestMapping("/indexs")
+@RequestMapping("/indexes")
 public class DeleteIndexEndPoints {
 
     @PutMapping("/deleteIndex")

@@ -29,7 +29,7 @@
 
             <method>PUT</method>
             <baseUrl>http://localhost:8085</baseUrl>
-            <resourceUrl>indexs/createIndex</resourceUrl>
+            <resourceUrl>indexes/createIndex</resourceUrl>
             <headers></headers>
             <data>{"bookId":1,"name":"testIndex","priority":1}</data>
 
@@ -44,7 +44,7 @@
 
             <method>GET</method>
             <baseUrl>http://localhost:8085</baseUrl>
-            <resourceUrl>indexs</resourceUrl>
+            <resourceUrl>indexes</resourceUrl>
             <headers></headers>
             <data></data>
             

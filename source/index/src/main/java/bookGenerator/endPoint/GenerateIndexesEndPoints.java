@@ -25,7 +25,7 @@ class GenerateIndexesReqDto {
 
 @RestController
 @Transactional
-@RequestMapping("/indexs")
+@RequestMapping("/indexes")
 public class GenerateIndexesEndPoints {
 
     @PutMapping("/generateIndexes")

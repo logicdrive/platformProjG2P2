@@ -39,7 +39,7 @@ class CreateIndexResDto {
 
 @RestController
 @Transactional
-@RequestMapping("/indexs")
+@RequestMapping("/indexes")
 public class CreateIndexEndPoints {
 
     @PutMapping("/createIndex")
