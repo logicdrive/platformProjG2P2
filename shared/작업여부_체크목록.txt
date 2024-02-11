@@ -128,4 +128,4 @@ CoverImageGenerated_updateCoverImageInfo_Policy: O
 CoverImageUploaded_updateCoverImageInfo_Policy: O
 ContentImageGenereated_uploadContentImageInfo_Policy: O
 BookDeleted_DeleteFileInfo_Policy: O
-ContentImageDeleteRequsted_DeleteFileInfo_Policy: 
+ContentImageDeleteRequsted_DeleteFileInfo_Policy: O

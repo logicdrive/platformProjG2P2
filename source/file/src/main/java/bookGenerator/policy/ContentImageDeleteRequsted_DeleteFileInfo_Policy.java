@@ -28,7 +28,11 @@ public class ContentImageDeleteRequsted_DeleteFileInfo_Policy {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, contentImageDeleteRequsted);
 
-            
+            // [1] contentImageDeleteRequsted.imageFileId에 해당하는 File의 Id를 조회한다.
+
+            // [2] 조회된 File을 삭제한다.
+
+            // [3] 삭제된 File로 FileInfoDeleted 이벤트를 발생시킨다.
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
