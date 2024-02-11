@@ -1,0 +1,315 @@
+작업명: createEmptyBook 엔드포인트 구현하기
+대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\CreateEmptyBookEndPoints.java
+테스트 항목: Book > 엔드포인트 테스트: CreateEmptyBook
+
+---
+
+작업명: generateCoverImage 엔드포인트 구현하기
+대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\GenerateCoverImageEndPoints.java
+테스트 항목: Book > 엔드포인트 테스트: GenerateCoverImage
+
+---
+
+작업명: updateCoverImage 엔드포인트 구현하기
+대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\UpdateCoverImageEndPoints.java
+테스트 항목: Book > 엔드포인트 테스트: UpdateCoverImage
+
+---
+
+작업명: updateBookTitle 엔드포인트 구현하기
+대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\UpdateBookTitleEndPoints.java
+테스트 항목: Book > 엔드포인트 테스트: UpdateBookTitle
+
+---
+
+작업명: likeBook 엔드포인트 구현하기
+대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\LikeBookEndPoints.java
+테스트 항목: Book > 엔드포인트 테스트: LikeBook
+
+---
+
+작업명: deleteBook 엔드포인트 구현하기
+대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\DeleteBookEndPoints.java
+테스트 항목: Book > 엔드포인트 테스트: DeleteBook
+
+---
+
+작업명: updateIsShared 엔드포인트 구현하기
+대상 파일 경로: source\book\src\main\java\bookGenerator\endPoint\UpdateIsSharedEndPoints.java
+테스트 항목: Book > 엔드포인트 테스트: updateIsShared
+
+---
+
+작업명: emptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy 정책 구현하기
+대상 파일 경로: source\book\src\main\java\bookGenerator\policy\EmptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy.java
+테스트 항목: Book > 정책 테스트: EmptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy
+
+---
+
+작업명: createBookShelf 엔드포인트 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\endPoint\CreateBookShelfEndPoints.java
+테스트 항목: BookShelf > 엔드포인트 테스트: CreateBookShelf
+
+---
+
+작업명: updateBookShelfTitle 엔드포인트 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\endPoint\UpdateBookShelfTitleEndPoints.java
+테스트 항목: BookShelf > 엔드포인트 테스트: UpdateBookShelfTitle
+
+---
+
+작업명: deleteBookShelf 엔드포인트 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\endPoint\DeleteBookShelfEndPoints.java
+테스트 항목: BookShelf > 엔드포인트 테스트: DeleteBookShelf
+
+---
+
+작업명: updateIsShared 엔드포인트 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\endPoint\UpdateIsSharedEndPoints.java
+테스트 항목: BookShelf > 엔드포인트 테스트: UpdateIsShared
+
+---
+
+작업명: signUpCompleted_createMyBookShelf_Policy 정책 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\policy\SignUpCompleted_createMyBookShelf_Policy.java
+테스트 항목: BookShelf > 정책 테스트: SignUpCompleted_createMyBookShelf_Policy
+
+---
+
+작업명: bookShelfBookAdded_increaseBookCount_Policy 정책 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\policy\BookShelfBookAdded_increaseBookCount_Policy.java
+테스트 항목: BookShelf > 정책 테스트: BookShelfBookAdded_increaseBookCount_Policy
+
+---
+
+작업명: bookShelfBookDeleted_decreaseBookCount_Policy 정책 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\policy\BookShelfBookDeleted_decreaseBookCount_Policy.java
+테스트 항목: BookShelf > 정책 테스트: BookShelfBookDeleted_decreaseBookCount_Policy
+
+---
+
+작업명: addBookShelfBook 엔드포인트 구현하기
+대상 파일 경로: source\bookShelfBook\src\main\java\bookGenerator\endPoint\AddBookShelfBookEndPoints.java
+테스트 항목: BookShelfBook > 엔드포인트 테스트: AddBookShelfBook
+
+---
+
+작업명: deleteBookShelfBook 엔드포인트 구현하기
+대상 파일 경로: source\bookShelfBook\src\main\java\bookGenerator\endPoint\DeleteBookShelfBookEndPoints.java
+테스트 항목: BookShelfBook > 엔드포인트 테스트: DeleteBookShelfBook
+
+---
+
+작업명: bookDeleted_deleteBookShelfBook_Policy 정책 구현하기
+대상 파일 경로: source\bookShelfBook\src\main\java\bookGenerator\policy\BookDeleted_deleteBookShelfBook_Policy.java
+테스트 항목: BookShelfBook > 정책 테스트: BookDeleted_deleteBookShelfBook_Policy
+
+---
+
+작업명: bookShelfDeleted_deleteBookShelfBook_Policy 정책 구현하기
+대상 파일 경로: source\bookShelfBook\src\main\java\bookGenerator\policy\BookShelfDeleted_deleteBookShelfBook_Policy.java
+테스트 항목: BookShelfBook > 정책 테스트: BookShelfDeleted_deleteBookShelfBook_Policy
+
+---
+
+작업명: createComment 엔드포인트 구현하기
+대상 파일 경로: source\comment\src\main\java\bookGenerator\endPoint\CreateCommentEndPoints.java
+테스트 항목: Comment > 엔드포인트 테스트: CreateComment
+
+---
+
+작업명: updateComment 엔드포인트 구현하기
+대상 파일 경로: source\comment\src\main\java\bookGenerator\endPoint\UpdateCommentEndPoints.java
+테스트 항목: Comment > 엔드포인트 테스트: UpdateComment
+
+---
+
+작업명: deleteComment 엔드포인트 구현하기
+대상 파일 경로: source\comment\src\main\java\bookGenerator\endPoint\DeleteCommentEndPoints.java
+테스트 항목: Comment > 엔드포인트 테스트: DeleteComment
+
+---
+
+작업명: bookDeleted_deleteComment_Policy 정책 구현하기
+대상 파일 경로: source\comment\src\main\java\bookGenerator\policy\BookDeleted_deleteComment_Policy.java
+테스트 항목: Comment > 정책 테스트: BookDeleted_deleteComment_Policy
+
+---
+
+작업명: generateContent 엔드포인트 구현하기
+대상 파일 경로: source\content\src\main\java\bookGenerator\endPoint\GenerateContentEndPoints.java
+테스트 항목: Content > 엔드포인트 테스트: GenerateContent
+
+---
+
+작업명: contentImageInfoUploaded_updateImageFileId_Policy 정책 구현하기
+대상 파일 경로: source\content\src\main\java\bookGenerator\policy\ContentImageInfoUploaded_updateImageFileId_Policy.java
+테스트 항목: Content > 정책 테스트: ContentImageInfoUploaded_updateImageFileId_Policy
+
+---
+
+작업명: contentGenerated_updateContent_Policy 정책 구현하기
+대상 파일 경로: source\content\src\main\java\bookGenerator\policy\ContentGenerated_updateContent_Policy.java
+테스트 항목: Content > 정책 테스트: ContentGenerated_updateContent_Policy
+
+---
+
+작업명: indexDeleted_deleteContent_Policy 정책 구현하기
+대상 파일 경로: source\content\src\main\java\bookGenerator\policy\IndexDeleted_deleteContent_Policy.java
+테스트 항목: Content > 정책 테스트: IndexDeleted_deleteContent_Policy
+
+---
+
+작업명: contentImageGenerationFailed_deleteContentByFail_Policy 정책 구현하기
+대상 파일 경로: source\content\src\main\java\bookGenerator\policy\ContentImageGenerationFailed_deleteContentByFail_Policy.java
+테스트 항목: Content > 정책 테스트: ContentImageGenerationFailed_deleteContentByFail_Policy
+
+---
+
+작업명: contentGenerationFailed_deleteContentByFail_Policy 정책 구현하기
+대상 파일 경로: source\content\src\main\java\bookGenerator\policy\ContentGenerationFailed_deleteContentByFail_Policy.java
+테스트 항목: Content > 정책 테스트: ContentGenerationFailed_deleteContentByFail_Policy
+
+---
+
+작업명: EmptyBookCreated_createEmptyCoverImageInfo_Policy 정책 구현하기
+대상 파일 경로: source\file\src\main\java\bookGenerator\policy\EmptyBookCreated_createEmptyCoverImageInfo_Policy.java
+테스트 항목: File > 정책 테스트: EmptyBookCreated_createEmptyCoverImageInfo_Policy
+
+---
+
+작업명: CoverImageGenerationRequested_requestCoverImageGeneration_Policy 정책 구현하기
+대상 파일 경로: source\file\src\main\java\bookGenerator\policy\CoverImageGenerationRequested_requestCoverImageGeneration_Policy.java
+테스트 항목: File > 정책 테스트: CoverImageGenerationRequested_requestCoverImageGeneration_Policy
+
+---
+
+작업명: CoverImageUpdateRequested_requestCoverImageUpdate_Policy 정책 구현하기
+대상 파일 경로: source\file\src\main\java\bookGenerator\policy\CoverImageUpdateRequested_requestCoverImageUpdate_Policy.java
+테스트 항목: File > 정책 테스트: CoverImageUpdateRequested_requestCoverImageUpdate_Policy
+
+---
+
+작업명: CoverImageGenerated_updateCoverImageInfo_Policy 정책 구현하기
+대상 파일 경로: source\file\src\main\java\bookGenerator\policy\CoverImageGenerated_updateCoverImageInfo_Policy.java
+테스트 항목: File > 정책 테스트: CoverImageGenerated_updateCoverImageInfo_Policy
+
+---
+
+작업명: CoverImageUploaded_updateCoverImageInfo_Policy 정책 구현하기
+대상 파일 경로: source\file\src\main\java\bookGenerator\policy\CoverImageUploaded_updateCoverImageInfo_Policy.java
+테스트 항목: File > 정책 테스트: CoverImageUploaded_updateCoverImageInfo_Policy
+
+---
+
+작업명: ContentImageGenereated_uploadContentImageInfo_Policy 정책 구현하기
+대상 파일 경로: source\file\src\main\java\bookGenerator\policy\ContentImageGenereated_uploadContentImageInfo_Policy.java
+테스트 항목: File > 정책 테스트: ContentImageGenereated_uploadContentImageInfo_Policy
+
+---
+
+작업명: BookDeleted_DeleteFileInfo_Policy 정책 구현하기
+대상 파일 경로: source\file\src\main\java\bookGenerator\policy\BookDeleted_DeleteFileInfo_Policy.java
+테스트 항목: File > 정책 테스트: BookDeleted_DeleteFileInfo_Policy
+
+---
+
+작업명: ContentImageDeleteRequsted_DeleteFileInfo_Policy 정책 구현하기
+대상 파일 경로: source\file\src\main\java\bookGenerator\policy\ContentImageDeleteRequsted_DeleteFileInfo_Policy.java
+테스트 항목: File > 정책 테스트: ContentImageDeleteRequsted_DeleteFileInfo_Policy
+
+---
+
+작업명: generateIndexes 엔드포인트 구현하기
+대상 파일 경로: source\index\src\main\java\bookGenerator\endPoint\GenerateIndexesEndPoints.java
+테스트 항목: Index > 엔드포인트 테스트: GenerateIndexes
+
+---
+
+작업명: createIndex 엔드포인트 구현하기
+대상 파일 경로: source\index\src\main\java\bookGenerator\endPoint\CreateIndexEndPoints.java
+테스트 항목: Index > 엔드포인트 테스트: CreateIndex
+
+---
+
+작업명: editIndex 엔드포인트 구현하기
+대상 파일 경로: source\index\src\main\java\bookGenerator\endPoint\EditIndexEndPoints.java
+테스트 항목: Index > 엔드포인트 테스트: EditIndex
+
+---
+
+작업명: deleteIndex 엔드포인트 구현하기
+대상 파일 경로: source\index\src\main\java\bookGenerator\endPoint\DeleteIndexEndPoints.java
+테스트 항목: Index > 엔드포인트 테스트: DeleteIndex
+
+---
+
+작업명: indexGenereated_createIndex_Policy 정책 구현하기
+대상 파일 경로: source\index\src\main\java\bookGenerator\policy\IndexGenereated_createIndex_Policy.java
+테스트 항목: Index > 정책 테스트: IndexGenereated_createIndex_Policy
+
+---
+
+작업명: bookDeleted_deleteIndex_Policy 정책 구현하기
+대상 파일 경로: source\index\src\main\java\bookGenerator\policy\BookDeleted_deleteIndex_Policy.java
+테스트 항목: Index > 정책 테스트: BookDeleted_deleteIndex_Policy
+
+---
+
+작업명: generateProblem 엔드포인트 구현하기
+대상 파일 경로: source\problem\src\main\java\bookGenerator\endPoint\GenerateProblemEndPoints.java
+테스트 항목: Problem > 엔드포인트 테스트: GenerateProblem
+
+---
+
+작업명: problemGenereated_createProblem_Policy 정책 구현하기
+대상 파일 경로: source\problem\src\main\java\bookGenerator\policy\ProblemGenereated_createProblem_Policy.java
+테스트 항목: Problem > 정책 테스트: ProblemGenereated_createProblem_Policy
+
+---
+
+작업명: indexDeleted_deleteProblem_Policy 정책 구현하기
+대상 파일 경로: source\problem\src\main\java\bookGenerator\policy\IndexDeleted_deleteProblem_Policy.java
+테스트 항목: Problem > 정책 테스트: IndexDeleted_deleteProblem_Policy
+
+---
+
+작업명: problemGenerationFailed_deleteProblemByFail_Policy 정책 구현하기
+대상 파일 경로: source\problem\src\main\java\bookGenerator\policy\ProblemGenerationFailed_deleteProblemByFail_Policy.java
+테스트 항목: Problem > 정책 테스트: ProblemGenerationFailed_deleteProblemByFail_Policy
+
+---
+
+작업명: generateTags 엔드포인트 구현하기
+대상 파일 경로: source\tag\src\main\java\bookGenerator\endPoint\GenerateTagsEndPoints.java
+테스트 항목: Tag > 엔드포인트 테스트: GenerateTags
+
+---
+
+작업명: createTag 엔드포인트 구현하기
+대상 파일 경로: source\tag\src\main\java\bookGenerator\endPoint\CreateTagEndPoints.java
+테스트 항목: Tag > 엔드포인트 테스트: CreateTag
+
+---
+
+작업명: editTag 엔드포인트 구현하기
+대상 파일 경로: source\tag\src\main\java\bookGenerator\endPoint\EditTagEndPoints.java
+테스트 항목: Tag > 엔드포인트 테스트: EditTag
+
+---
+
+작업명: deleteTag 엔드포인트 구현하기
+대상 파일 경로: source\tag\src\main\java\bookGenerator\endPoint\DeleteTagEndPoints.java
+테스트 항목: Tag > 엔드포인트 테스트: DeleteTag
+
+---
+
+작업명: tagGernerated_createTag_Policy 정책 구현하기
+대상 파일 경로: source\tag\src\main\java\bookGenerator\policy\TagGernerated_createTag_Policy.java
+테스트 항목: Tag > 정책 테스트: TagGernerated_createTag_Policy
+
+---
+
+작업명: bookDeleted_deleteTag_Policy 정책 구현하기
+대상 파일 경로: source\tag\src\main\java\bookGenerator\policy\BookDeleted_deleteTag_Policy.java
+테스트 항목: Tag > 정책 테스트: BookDeleted_deleteTag_Policy
