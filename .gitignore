@@ -31,4 +31,4 @@ externalTool/baseCodeGenerator/output/*
 externalTool/baseCodeGenerator/node_modules
 
 # compilot
-**/All*Codes.java
+**/All*Codes.*
