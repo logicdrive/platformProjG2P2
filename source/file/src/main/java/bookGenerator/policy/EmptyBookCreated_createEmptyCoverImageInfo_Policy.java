@@ -30,6 +30,7 @@ public class EmptyBookCreated_createEmptyCoverImageInfo_Policy {
 
             // [1] 새로운 File 객체 생성
             // [!] url은 null로 둔다.
+            // [!] url만 초기화시키면 되며, 다른 변수들은 자동으로 초기화됨
 
             // [2] EmptyCoverImageInfoCreated 이벤트를 생성된 File 객체로 발생시킨다.
 

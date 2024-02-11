@@ -15,7 +15,7 @@ import bookGenerator._global.event.ContentImageGenereated;
 @Transactional
 public class ContentImageGenereated_uploadContentImageInfo_Policy {
 
-    // ContentImageGenereated 이벤트 발생 관련 정책
+    // Content 이미지가 생성되었을 경우, 관련 Url을 기반으로 새로운 File을 만들고, 그것을 해당 content에 알리는 정책
     @StreamListener(
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='ContentImageGenereated'"
@@ -28,7 +28,10 @@ public class ContentImageGenereated_uploadContentImageInfo_Policy {
             
             CustomLogger.debugObject(CustomLoggerType.ENTER, contentImageGenereated);
 
-            
+            // [1] contentImageGenereated.fileUrl로 새로운 File 객체 생성
+            // [!] url만 초기화시키면 되며, 다른 변수들은 자동으로 초기화됨
+
+            // [2] ContentImageInfoUploaded 이벤트를 생성된 File 객체와 contentImageGenereated.contentId로 발생시킨다
             
             CustomLogger.debug(CustomLoggerType.EXIT);
 

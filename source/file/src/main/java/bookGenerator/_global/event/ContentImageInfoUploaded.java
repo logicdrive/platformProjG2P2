@@ -9,7 +9,10 @@ import bookGenerator.domain.File;
 @EventNameAnnotation(eventName="ContentImageInfoUploaded")
 @NoArgsConstructor
 public class ContentImageInfoUploaded extends FileEvent {
-    public ContentImageInfoUploaded(File aggregate) {
+    private Long contentId;
+
+    public ContentImageInfoUploaded(File aggregate, Long contentId) {
         super(aggregate);
+        this.contentId = contentId;
     }
 }
