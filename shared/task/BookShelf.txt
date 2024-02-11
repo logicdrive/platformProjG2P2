@@ -1,0 +1,39 @@
+작업명: createBookShelf 엔드포인트 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\endPoint\CreateBookShelfEndPoints.java
+테스트 항목: BookShelf > 엔드포인트 테스트: CreateBookShelf
+
+---
+
+작업명: updateBookShelfTitle 엔드포인트 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\endPoint\UpdateBookShelfTitleEndPoints.java
+테스트 항목: BookShelf > 엔드포인트 테스트: UpdateBookShelfTitle
+
+---
+
+작업명: deleteBookShelf 엔드포인트 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\endPoint\DeleteBookShelfEndPoints.java
+테스트 항목: BookShelf > 엔드포인트 테스트: DeleteBookShelf
+
+---
+
+작업명: updateIsShared 엔드포인트 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\endPoint\UpdateIsSharedEndPoints.java
+테스트 항목: BookShelf > 엔드포인트 테스트: UpdateIsShared
+
+---
+
+작업명: signUpCompleted_createMyBookShelf_Policy 정책 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\policy\SignUpCompleted_createMyBookShelf_Policy.java
+테스트 항목: BookShelf > 정책 테스트: SignUpCompleted_createMyBookShelf_Policy
+
+---
+
+작업명: bookShelfBookAdded_increaseBookCount_Policy 정책 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\policy\BookShelfBookAdded_increaseBookCount_Policy.java
+테스트 항목: BookShelf > 정책 테스트: BookShelfBookAdded_increaseBookCount_Policy
+
+---
+
+작업명: bookShelfBookDeleted_decreaseBookCount_Policy 정책 구현하기
+대상 파일 경로: source\bookShelf\src\main\java\bookGenerator\policy\BookShelfBookDeleted_decreaseBookCount_Policy.java
+테스트 항목: BookShelf > 정책 테스트: BookShelfBookDeleted_decreaseBookCount_Policy
