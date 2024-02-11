@@ -25,8 +25,12 @@ public class ProblemGenerationFailed_deleteProblemByFail_Policy {
     ) {
         try
         {
+                
+            CustomLogger.debugObject(CustomLoggerType.ENTER, problemGenerationFailed);
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "ProblemGenerationFailed", problemGenerationFailed);
+
+            CustomLogger.debug(CustomLoggerType.EXIT); 
+
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", problemGenerationFailed);        

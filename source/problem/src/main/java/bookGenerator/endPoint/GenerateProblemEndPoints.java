@@ -16,6 +16,14 @@ import lombok.ToString;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 
+
+@Data
+@ToString
+class GenerateProblemReqDto {
+    private final Long indexId;
+}
+
+
 @RestController
 @Transactional
 @RequestMapping("/problems")
@@ -26,7 +34,9 @@ public class GenerateProblemEndPoints {
         try {
 
             CustomLogger.debug(CustomLoggerType.ENTER);
-                
+            
+            // [1] ProblemGenerationRequsted 이벤트를 indexId를 기반으로 생성함
+
             CustomLogger.debug(CustomLoggerType.EXIT);
 
             return ResponseEntity.status(HttpStatus.OK).build();

@@ -25,8 +25,11 @@ public class ProblemGenereated_updateProblem_Policy {
     ) {
         try
         {
+
+            CustomLogger.debugObject(CustomLoggerType.ENTER, problemGenereated);
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "ProblemGenereated", problemGenereated);
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", problemGenereated);        
