@@ -8,7 +8,7 @@ problem: O / T
 comment: O / T
 bookShelf: O / T
 bookShelfBook: O / T
-file: 
+file: O / T
 collectedData: 
 externalSystemProxy: 
 externalSystem: 
@@ -121,11 +121,11 @@ bookShelfDeleted_deleteBookShelfBook_Policy: O / T
 
 * file
 > Policy
-EmptyBookCreated_createEmptyCoverImageInfo_Policy: O
-CoverImageGenerationRequested_requestCoverImageGeneration_Policy: O
-CoverImageUpdateRequested_requestCoverImageUpdate_Policy: O
-CoverImageGenerated_updateCoverImageInfo_Policy: O
-CoverImageUploaded_updateCoverImageInfo_Policy: O
-ContentImageGenereated_uploadContentImageInfo_Policy: O
-BookDeleted_DeleteFileInfo_Policy: O
-ContentImageDeleteRequsted_DeleteFileInfo_Policy: O
+EmptyBookCreated_createEmptyCoverImageInfo_Policy: O / T
+CoverImageGenerationRequested_requestCoverImageGeneration_Policy: O / T
+CoverImageUpdateRequested_requestCoverImageUpdate_Policy: O / T
+CoverImageGenerated_updateCoverImageInfo_Policy: O / T
+CoverImageUploaded_updateCoverImageInfo_Policy: O / T
+ContentImageGenereated_uploadContentImageInfo_Policy: O / T
+BookDeleted_DeleteFileInfo_Policy: O / T
+ContentImageDeleteRequsted_DeleteFileInfo_Policy: O / T
