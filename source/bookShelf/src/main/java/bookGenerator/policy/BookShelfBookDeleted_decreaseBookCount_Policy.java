@@ -26,7 +26,10 @@ public class BookShelfBookDeleted_decreaseBookCount_Policy {
         try
         {
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "BookShelfBookDeleted", bookShelfBookDeleted);
+            CustomLogger.debugObject(CustomLoggerType.ENTER, bookShelfBookDeleted);
+
+            
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", bookShelfBookDeleted);        

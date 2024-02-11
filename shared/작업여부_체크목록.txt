@@ -97,8 +97,8 @@ bookDeleted_deleteComment_Policy: O / T
 * bookShelf
 > EndPoints
 createBookShelf: O
-updateBookShelfTitle: 
-deleteBookShelf: 
+updateBookShelfTitle: O
+deleteBookShelf: O
 updateIsShared: O
 
 > Policy

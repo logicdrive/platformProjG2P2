@@ -26,7 +26,10 @@ public class BookShelfBookAdded_IncreaseBookCount_Policy {
         try
         {
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "BookShelfBookAdded", bookShelfBookAdded);
+            CustomLogger.debugObject(CustomLoggerType.ENTER, bookShelfBookAdded);
+
+            
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", bookShelfBookAdded);        

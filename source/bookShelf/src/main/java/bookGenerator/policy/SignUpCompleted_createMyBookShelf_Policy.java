@@ -26,7 +26,10 @@ public class SignUpCompleted_createMyBookShelf_Policy {
         try
         {
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "SignUpCompleted", signUpCompleted);
+            CustomLogger.debugObject(CustomLoggerType.ENTER, signUpCompleted);
+
+            
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", signUpCompleted);        
