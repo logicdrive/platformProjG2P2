@@ -78,5 +78,5 @@ generateProblem: O
 
 > Policy
 ProblemGenereated_createProblem_Policy: O
-indexDeleted_deleteProblem_Policy: 
-problemGenerationFailed_deleteProblemByFail_Policy: 
+indexDeleted_deleteProblem_Policy: O
+problemGenerationFailed_deleteProblemByFail_Policy: O

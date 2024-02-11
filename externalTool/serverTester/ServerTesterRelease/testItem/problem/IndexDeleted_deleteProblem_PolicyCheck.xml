@@ -2,8 +2,8 @@
 <root>
     <description>
         <group>Problem</group>
-        <title>정책 테스트: ProblemGenereated_createProblem_Policy</title>
-        <help>ProblemGenereated_createProblem_Policy 단일 정책의 정상 작동 여부를 확인합니다.</help>
+        <title>정책 테스트: IndexDeleted_deleteProblem_Policy</title>
+        <help>IndexDeleted_deleteProblem_Policy 단일 정책의 정상 작동 여부를 확인합니다.</help>
     </description>
 
     <tests>
@@ -23,51 +23,49 @@
         </test>
 
 
-        <test>
-            <title>Mock ProblemGenereated 이벤트 생성</title>
-            <help>테스트를 위해서 강제로 ProblemGenereated 이벤트를 생성합니다.</help>
+       <test>
+            <title>Mock Problem 생성(CreateProblem)</title>
+            <help>테스트를 위해서 강제로 새로운 Problem을 생성합니다.</help>
 
             <method>POST</method>
             <baseUrl>http://localhost:8087</baseUrl>
-            <resourceUrl>sanityCheck/mock/ProblemGenereated</resourceUrl>
-            <headers></headers>
-            <data>{"indexId":1,"content":"generatedProblemContent","answer":"generatedProblemAnswer","priority":1}</data>
-
-            <checks>
-                <check type="status">2.*</check>
-            </checks>
-        </test>
-
-        <test>
-            <title>문제 생성 여부 확인(ProblemAll)</title>
-            <help>문제가 정말로 생성되었는지 확인합니다.</help>
-
-            <method>GET</method>
-            <baseUrl>http://localhost:8087</baseUrl>
             <resourceUrl>problems</resourceUrl>
             <headers></headers>
-            <data></data>
-            
+            <data>{"indexId":1,"content":"testContent","answer":"testAnswer","priority":1}</data>
+
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">"content"[ ]*:[ ]*"generatedProblemContent"</check>
             </checks>
         </test>
 
 
         <test>
-            <title>ProblemCreated 이벤트 발행 확인(Logs)</title>
-            <help>ProblemCreated 이벤트 발행 여부를 확인합니다.</help>
+            <title>Mock IndexDeleted 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 IndexDeleted 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>sanityCheck/mock/IndexDeleted</resourceUrl>
+            <headers></headers>
+            <data>{"id":1,"bookId":1,"name":"testIndex","priority":1,"createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>ProblemDeleted 이벤트 발행 확인(Logs)</title>
+            <help>ProblemDeleted 이벤트 발행 여부를 확인합니다.</help>
 
             <method>GET</method>
             <baseUrl>http://localhost:8087</baseUrl>
-            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*ProblemCreated.*</resourceUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*ProblemDeleted.*</resourceUrl>
             <headers></headers>
             <data></data>
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">Publish event.*ProblemCreated.*</check>
+                <check type="data">Publish event.*ProblemDeleted.*</check>
             </checks>
         </test>
     </tests>

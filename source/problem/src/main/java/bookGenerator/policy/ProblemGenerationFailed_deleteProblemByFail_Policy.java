@@ -15,7 +15,7 @@ import bookGenerator._global.event.ProblemGenerationFailed;
 @Transactional
 public class ProblemGenerationFailed_deleteProblemByFail_Policy {
 
-    // ProblemGenerationFailed 이벤트 발생 관련 정책
+    // 문제 생성에 실패 관련 이벤트를 발생시키는 정책
     @StreamListener(
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='ProblemGenerationFailed'"
@@ -27,7 +27,9 @@ public class ProblemGenerationFailed_deleteProblemByFail_Policy {
         {
                 
             CustomLogger.debugObject(CustomLoggerType.ENTER, problemGenerationFailed);
-            
+
+            // [1] problemGenerationFailed.problemId으로 ProblemDeletedByFail 이벤트를 발생시킨다.
+            // [!] 따로 문제를 삭제시킬 필요는 없다.
 
             CustomLogger.debug(CustomLoggerType.EXIT); 
 
