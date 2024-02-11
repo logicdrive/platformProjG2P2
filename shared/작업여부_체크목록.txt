@@ -116,3 +116,16 @@ deleteBookShelfBook: O / T
 > Policy
 bookDeleted_deleteBookShelfBook_Policy: O / T
 bookShelfDeleted_deleteBookShelfBook_Policy: O / T
+
+---
+
+* file
+> Policy
+EmptyBookCreated_createEmptyCoverImageInfo_Policy: 
+CoverImageGenerationRequested_requestCoverImageGeneration_Policy: 
+CoverImageUpdateRequested_requestCoverImageUpdate_Policy: 
+CoverImageGenerated_updateCoverImageInfo_Policy: 
+CoverImageUploaded_updateCoverImageInfo_Policy: 
+ContentImageGenereated_uploadContentImageInfo_Policy: 
+BookDeleted_DeleteFileInfo_Policy: 
+ContentImageDeleteRequsted_DeleteFileInfo_Policy: 

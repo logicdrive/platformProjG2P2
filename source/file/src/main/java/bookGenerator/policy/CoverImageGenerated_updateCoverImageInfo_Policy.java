@@ -25,8 +25,12 @@ public class CoverImageGenerated_updateCoverImageInfo_Policy {
     ) {
         try
         {
+
+            CustomLogger.debugObject(CustomLoggerType.ENTER, coverImageGenerated);
+
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "CoverImageGenerated", coverImageGenerated);
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", coverImageGenerated);        

@@ -25,8 +25,12 @@ public class CoverImageUpdateRequested_requestCoverImageUpdate_Policy {
     ) {
         try
         {
+
+            CustomLogger.debugObject(CustomLoggerType.ENTER, coverImageUpdateRequested);
+
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "CoverImageUpdateRequested", coverImageUpdateRequested);
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", coverImageUpdateRequested);        

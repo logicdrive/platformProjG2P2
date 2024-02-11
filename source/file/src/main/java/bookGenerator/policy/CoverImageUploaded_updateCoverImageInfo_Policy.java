@@ -25,8 +25,12 @@ public class CoverImageUploaded_updateCoverImageInfo_Policy {
     ) {
         try
         {
+
+            CustomLogger.debugObject(CustomLoggerType.ENTER, coverImageUploaded);
+
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "CoverImageUploaded", coverImageUploaded);
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", coverImageUploaded);        

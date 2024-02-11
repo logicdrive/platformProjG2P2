@@ -25,8 +25,12 @@ public class ContentImageDeleteRequsted_DeleteFileInfo_Policy {
     ) {
         try
         {
+
+            CustomLogger.debugObject(CustomLoggerType.ENTER, contentImageDeleteRequsted);
+
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "ContentImageDeleteRequsted", contentImageDeleteRequsted);
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", contentImageDeleteRequsted);        

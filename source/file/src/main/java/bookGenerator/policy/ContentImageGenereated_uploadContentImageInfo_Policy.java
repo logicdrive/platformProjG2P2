@@ -26,7 +26,11 @@ public class ContentImageGenereated_uploadContentImageInfo_Policy {
         try
         {
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "ContentImageGenereated", contentImageGenereated);
+            CustomLogger.debugObject(CustomLoggerType.ENTER, contentImageGenereated);
+
+            
+            
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", contentImageGenereated);        

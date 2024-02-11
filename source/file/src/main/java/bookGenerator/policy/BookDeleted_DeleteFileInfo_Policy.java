@@ -26,7 +26,11 @@ public class BookDeleted_DeleteFileInfo_Policy {
         try
         {
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "BookDeleted", bookDeleted);
+            CustomLogger.debugObject(CustomLoggerType.ENTER, bookDeleted);
+
+
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", bookDeleted);        

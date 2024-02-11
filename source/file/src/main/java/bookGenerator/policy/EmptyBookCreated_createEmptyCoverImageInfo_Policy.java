@@ -25,8 +25,12 @@ public class EmptyBookCreated_createEmptyCoverImageInfo_Policy {
     ) {
         try
         {
+
+            CustomLogger.debugObject(CustomLoggerType.ENTER, emptyBookCreated);
+
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "EmptyBookCreated", emptyBookCreated);
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", emptyBookCreated);        

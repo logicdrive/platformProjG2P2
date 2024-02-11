@@ -25,9 +25,13 @@ public class CoverImageGenerationRequested_requestCoverImageGeneration_Policy {
     ) {
         try
         {
-            
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "CoverImageGenerationRequested", coverImageGenerationRequested);
 
+            CustomLogger.debugObject(CustomLoggerType.ENTER, coverImageGenerationRequested);
+
+            
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
+            
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", coverImageGenerationRequested);        
         }
