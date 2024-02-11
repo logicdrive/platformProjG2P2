@@ -15,7 +15,7 @@ import bookGenerator._global.event.CoverImageUploaded;
 @Transactional
 public class CoverImageUploaded_updateCoverImageInfo_Policy {
 
-    // CoverImageUploaded 이벤트 발생 관련 정책
+    // 업로드된 Cover Image가 업데이트될 경우, 관련 Url을 파일 정보에 반영시키는 정책
     @StreamListener(
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='CoverImageUploaded'"
@@ -28,7 +28,11 @@ public class CoverImageUploaded_updateCoverImageInfo_Policy {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, coverImageUploaded);
 
-            
+            // [1] fileId에 해당하는 File 정보를 조회함
+
+            // [2] 조회된 File 객체의 url을 coverImageUploaded.fileUrl로 변경하고 저장함
+
+            // [3] 조회된 File 객체로 CoverImageInfoUpdated 이벤트를 발생시킴
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
