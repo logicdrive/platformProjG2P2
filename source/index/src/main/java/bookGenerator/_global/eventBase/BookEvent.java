@@ -13,7 +13,7 @@ import bookGenerator._global.infra.AbstractEvent;
 @EqualsAndHashCode(callSuper=false)
 public class BookEvent extends AbstractEvent {
 	protected Long id;
-	protected String createrId;
+	protected Long createrId;
 	protected Long coverImageFileId;
 	protected String title;
 	protected Boolean isShared;

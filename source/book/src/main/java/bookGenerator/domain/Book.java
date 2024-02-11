@@ -31,7 +31,7 @@ public class Book extends LoggedEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
-	private String createrId;
+	private Long createrId;
 
 	private Long coverImageFileId;
 
