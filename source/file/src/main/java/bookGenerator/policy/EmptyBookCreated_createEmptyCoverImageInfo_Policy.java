@@ -15,7 +15,7 @@ import bookGenerator._global.event.EmptyBookCreated;
 @Transactional
 public class EmptyBookCreated_createEmptyCoverImageInfo_Policy {
 
-    // EmptyBookCreated 이벤트 발생 관련 정책
+    // 비어있는 책이 만들어졌을 경우, 비어있는 파일 정보를 만들어서 관련 id를 Book에 저장시키기 위해서
     @StreamListener(
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='EmptyBookCreated'"
@@ -28,7 +28,10 @@ public class EmptyBookCreated_createEmptyCoverImageInfo_Policy {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, emptyBookCreated);
 
-            
+            // [1] 새로운 File 객체 생성
+            // [!] url은 null로 둔다.
+
+            // [2] EmptyCoverImageInfoCreated 이벤트를 생성된 File 객체로 발생시킨다.
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
