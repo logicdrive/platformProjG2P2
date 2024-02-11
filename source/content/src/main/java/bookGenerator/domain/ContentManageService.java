@@ -23,6 +23,11 @@ public class ContentManageService {
         return Content.repository().findById(id)
             .orElseThrow(() -> new ContentNotFoundException());
     }
+
+    public Content findByIndexIdOrThrow(Long indexId) {
+        return Content.repository().findByIndexId(indexId)
+            .orElseThrow(() -> new ContentNotFoundException());
+    }
 }
 
 @Getter
