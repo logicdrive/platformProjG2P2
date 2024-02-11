@@ -6,10 +6,10 @@ import bookGenerator._global.eventBase.EventNameAnnotation;
 import bookGenerator._global.eventBase.ContentEvent;
 import bookGenerator.domain.Content;
 
-@EventNameAnnotation(eventName="ImageFileIdUpdated")
+@EventNameAnnotation(eventName="ContentImageFileIdUpdated")
 @NoArgsConstructor
-public class ImageFileIdUpdated extends ContentEvent {
-    public ImageFileIdUpdated(Content aggregate) {
+public class ContentImageFileIdUpdated extends ContentEvent {
+    public ContentImageFileIdUpdated(Content aggregate) {
         super(aggregate);
     }
 }
