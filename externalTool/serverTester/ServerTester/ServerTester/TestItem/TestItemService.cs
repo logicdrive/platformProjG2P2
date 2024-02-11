@@ -12,7 +12,7 @@ namespace ServerTester.TestItem
 {
     internal class TestItemService
     {
-        public Dictionary<string, List<TestItemDto>> testItemDtosDic { get; } = new Dictionary<string, List<TestItemDto>>();
+        public SortedDictionary<string, List<TestItemDto>> testItemDtosDic { get; } = new SortedDictionary<string, List<TestItemDto>>();
 
         public int totalCount = 0;
 
@@ -36,8 +36,12 @@ namespace ServerTester.TestItem
                     this.totalCount += 1;
                 }
 
+                // Sort each testItemDto list by description.title
+                foreach (string key in testItemDtosDic.Keys)
+                    testItemDtosDic[key].Sort((x, y) => x.description.title.CompareTo(y.description.title));
+
             }
-            catch(Exception e)
+            catch (Exception e)
             {
                 MessageBox.Show(e.Message);
                 System.Console.WriteLine(e.Message);
