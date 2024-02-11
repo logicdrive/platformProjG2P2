@@ -15,7 +15,7 @@ import bookGenerator._global.event.BookDeleted;
 @Transactional
 public class BookDeleted_DeleteFileInfo_Policy {
 
-    // BookDeleted 이벤트 발생 관련 정책
+    // 책이 삭제되었을 경우, 해당 책의 Cover Image도 삭제시키는 정책
     @StreamListener(
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='BookDeleted'"
@@ -28,7 +28,11 @@ public class BookDeleted_DeleteFileInfo_Policy {
             
             CustomLogger.debugObject(CustomLoggerType.ENTER, bookDeleted);
 
+            // [1] bookDeleted.coverImageFileId에 해당하는 File의 Id를 조회한다.
 
+            // [2] 조회된 File을 삭제한다.
+
+            // [3] 삭제된 File로 FileInfoDeleted 이벤트를 발생시킨다.
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
