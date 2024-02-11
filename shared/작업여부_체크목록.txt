@@ -80,3 +80,15 @@ generateProblem: O / T
 problemGenereated_createProblem_Policy: O / T
 indexDeleted_deleteProblem_Policy: O / T
 problemGenerationFailed_deleteProblemByFail_Policy: O / T
+
+---
+
+* comment
+> EndPoints
+createComment: O
+updateComment: 
+deleteComment: 
+
+> Policy
+bookDeleted_deleteComment_Policy: 
+
