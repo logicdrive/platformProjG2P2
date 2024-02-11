@@ -105,3 +105,13 @@ updateIsShared: O / T
 signUpCompleted_createMyBookShelf_Policy: O / T
 bookShelfBookAdded_increaseBookCount_Policy: O / T
 bookShelfBookDeleted_decreaseBookCount_Policy: O / T
+
+---
+
+* bookShelfBook
+> EndPoints
+addBookShelfBook: 
+deleteBookShelfBook: 
+
+> Policy
+bookDeleted_deleteBookShelfBook_Policy: 

@@ -8,23 +8,19 @@ import lombok.ToString;
 
 import bookGenerator._global.infra.AbstractEvent;
 
-import bookGenerator.domain.BookShelfBook;
-
 @Data
 @ToString
 @EqualsAndHashCode(callSuper=false)
-public class BookShelfBookEvent extends AbstractEvent {
+public class BookEvent extends AbstractEvent {
 	protected Long id;
-    protected Long bookShelfId;
-	protected Long bookId;
+	protected String createrId;
+	protected Long coverImageFileId;
+	protected String title;
+	protected Boolean isShared;
 	protected Date createdDate;
 	protected Date updatedDate;
 
-    public BookShelfBookEvent(BookShelfBook aggregate) {
-        super(aggregate);
-    }
-
-    public BookShelfBookEvent() {
+    public BookEvent() {
         super();
     }
 }

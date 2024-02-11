@@ -31,6 +31,8 @@ public class BookShelfBook extends LoggedEntity {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Long id;
 
+    private Long bookShelfId;
+
 	private Long bookId;
 
     private Date createdDate;
