@@ -53,5 +53,21 @@
                 <check type="data">Publish event.*ContentImageGenerationRequested.*</check>
             </checks>
         </test>
+
+        <test>
+            <title>ContentGenerationRequested 이벤트 발행 확인(Logs)</title>
+            <help>ContentGenerationRequested 이벤트 발행 여부를 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8086</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*ContentGenerationRequested.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">Publish event.*ContentGenerationRequested.*</check>
+            </checks>
+        </test>
     </tests>
 </root>

@@ -51,7 +51,9 @@ public class GenerateContentEndPoints {
 
             // [2] ContentImageGenerationRequested 이벤트를 생성된 Content 기반으로 발생시킴
 
-            // [3] 생성된 Content 객체의 id를 반환
+            // [3] ContentGenerationRequested 이벤트를 생성된 Content 기반으로 발생시킴
+
+            // [4] 생성된 Content 객체의 id를 반환
                 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
