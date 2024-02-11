@@ -5,7 +5,7 @@ tag: O / T
 index: O / T
 content: O / T
 problem: O / T
-comment: 
+comment: O
 bookShelf: 
 bookShelfBook: 
 file: 
@@ -90,5 +90,5 @@ updateComment: O
 deleteComment: O
 
 > Policy
-bookDeleted_deleteComment_Policy: 
+bookDeleted_deleteComment_Policy: O
 

@@ -15,7 +15,7 @@ import bookGenerator._global.event.BookDeleted;
 @Transactional
 public class BookDeleted_deleteComment_Policy {
 
-    // BookDeleted 이벤트 발생 관련 정책
+    // 책이 삭제되었을 경우, 생성된 코멘트들을 삭제하기 위한 정책
     @StreamListener(
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='BookDeleted'"
@@ -26,7 +26,13 @@ public class BookDeleted_deleteComment_Policy {
         try
         {
             
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "BookDeleted", bookDeleted);
+            CustomLogger.debugObject(CustomLoggerType.ENTER, bookDeleted);
+
+            // [1] 해당 책과 관련된 Comment들을 삭제
+
+            // [2] 각각의 삭제된 Comment들에 대해서 CommentDeleted 이벤트를 발생시킴
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", bookDeleted);        
