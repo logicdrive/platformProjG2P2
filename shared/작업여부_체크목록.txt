@@ -65,7 +65,7 @@ generateContent: O
 
 > Policy
 contentImageInfoUploaded_updateImageFileId_Policy: O
-contentGenerated_updateContent_Policy: 
+contentGenerated_updateContent_Policy: O
 IndexDeleted_deleteContent_Policy: 
 ContentmageGenerationFailed_deleteContentByFail_Policy: 
 ContentGenerationFailed_deleteContentByFail_Policy: 

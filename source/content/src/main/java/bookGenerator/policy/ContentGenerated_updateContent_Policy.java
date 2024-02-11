@@ -15,7 +15,7 @@ import bookGenerator._global.event.ContentGenerated;
 @Transactional
 public class ContentGenerated_updateContent_Policy {
 
-    // ContentGenerated 이벤트 발생 관련 정책
+    // 컨텐츠 생성을 요청한 파일에 대한 정보가 이벤트로 발생되었을 때, 관련 content를 업데이트하기 위해서
     @StreamListener(
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='ContentGenerated'"
@@ -28,6 +28,11 @@ public class ContentGenerated_updateContent_Policy {
             
             CustomLogger.debugObject(CustomLoggerType.ENTER, contentGenerated);
 
+            // [1] contentGenerated.contentId를 이용하여 Content를 조회함
+
+            // [2] 조회된 Content의 content를 contentGenerated.content로 업데이트함
+
+            // [3] ContentUpdated 이벤트를 업데이트된 Content를 기반으로 발생시킴
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 

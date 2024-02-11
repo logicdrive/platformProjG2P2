@@ -12,7 +12,6 @@ import bookGenerator._global.infra.AbstractEvent;
 @EqualsAndHashCode(callSuper=false)
 @EventNameAnnotation(eventName="ContentGenerated")
 public class ContentGenerated extends AbstractEvent {
-	private Long id;
 	private Long contentId;
 	private String content;
 
