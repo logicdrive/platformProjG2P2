@@ -1,0 +1,136 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>Problem</group>
+        <title>정상 작동 여부 체크용 엔드포인트들</title>
+        <help>Problem 서비스에 요청할 수 있는 체크용 엔드포인트들 입니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>통신 확인(SanityCheck)</title>
+            <help>Problem 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+        
+        <test>
+            <title>통신 확인시에 정상으로 반환되도록 만들기(SanityCheckSetNormal)</title>
+            <help>sanityCheck 요청시에 200이 반환되도록 만듭니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>sanityCheck/setNormal</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>통신 확인시에 비정상으로 반환되도록 만들기(SanityCheckSetError)</title>
+            <help>sanityCheck 요청시에 500이 반환되도록 만듭니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>sanityCheck/setError</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>로그 얻기(Logs)</title>
+            <help>Problem 서비스의 로그들을 얻어옵니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>sanityCheck/logs</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>에러 로그 얻기(ErrorLogs)</title>
+            <help>Problem 서비스의 로그들 중에서 에러 로그만 얻어옵니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>0 나누기 오류 체크(DivByZeroCheck)</title>
+            <help>일부로 0으로 나눠서 에러를 일으켜서 결과를 관찰합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>sanityCheck/divByZeroCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>유저 인증 여부 확인(AuthenticationCheck)</title>
+            <help>HTTP 헤더로 전달된 유저 정보를 출력합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>sanityCheck/authenticationCheck</resourceUrl>
+            <headers>
+                <header key="User-Id">1</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>모든 문제 목록 얻기(ProblemAll)</title>
+            <help>모든 문제의 목록을 얻어옵니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>problems</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>

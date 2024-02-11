@@ -69,3 +69,14 @@ contentGenerated_updateContent_Policy: O / T
 indexDeleted_deleteContent_Policy: O / T
 contentImageGenerationFailed_deleteContentByFail_Policy: O / T
 contentGenerationFailed_deleteContentByFail_Policy: O / T
+
+---
+
+* problem
+> EndPoints
+generateProblem: 
+
+> Policy
+problemGenereated_updateProblem_Policy: 
+indexDeleted_deleteProblem_Policy: 
+problemGenerationFailed_deleteProblemByFail_Policy: 
