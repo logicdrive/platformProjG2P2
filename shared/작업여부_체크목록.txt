@@ -99,6 +99,7 @@ bookDeleted_deleteComment_Policy: O / T
 createBookShelf: 
 updateBookShelfTitle: 
 deleteBookShelf: 
+updateIsShared: O
 
 > Policy
 signUpCompleted_createMyBookShelf_Policy: 
