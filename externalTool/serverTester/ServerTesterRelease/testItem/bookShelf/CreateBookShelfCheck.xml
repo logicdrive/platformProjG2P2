@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>BookShelf</group>
+        <title>엔드포인트 테스트: CreateBookShelf</title>
+        <help>CreateBookShelf 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>통신 확인(SanityCheck)</title>
+            <help>BookShelf 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8097</baseUrl>
+            <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>새로운 BookShelf 생성(CreateBookShelf)</title>
+            <help>비어있는 BookShelf를 생성합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8097</baseUrl>
+            <resourceUrl>bookShelfs/createBookShelf</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+            </headers>
+            <data>{"title":"testBookShelf","isShared":false}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>정상적인 생성여부 확인(BookShelfAll)</title>
+            <help>비어있는 BookShelf가 정상적으로 생성되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8097</baseUrl>
+            <resourceUrl>bookShelfs</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"title"[ ]*:[ ]*"testBookShelf"</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>BookShelfCreated 이벤트 발행 확인(Logs)</title>
+            <help>BookShelfCreated 이벤트 발행 여부를 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8097</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*BookShelfCreated.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">Publish event.*BookShelfCreated.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>
