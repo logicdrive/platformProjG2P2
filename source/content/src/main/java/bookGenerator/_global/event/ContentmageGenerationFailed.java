@@ -12,7 +12,6 @@ import bookGenerator._global.infra.AbstractEvent;
 @EqualsAndHashCode(callSuper=false)
 @EventNameAnnotation(eventName="ContentmageGenerationFailed")
 public class ContentmageGenerationFailed extends AbstractEvent {
-	private Long id;
 	private Long contentId;
 
     public ContentmageGenerationFailed() {

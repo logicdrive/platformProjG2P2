@@ -15,7 +15,7 @@ import bookGenerator._global.event.ContentGenerationFailed;
 @Transactional
 public class ContentGenerationFailed_deleteContentByFail_Policy {
 
-    // ContentGenerationFailed 이벤트 발생 관련 정책
+    // 컨텐츠 생성에 실패시에 관련 컨텐츠를 삭제하고, 이벤트를 발생시키는 정책
     @StreamListener(
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='ContentGenerationFailed'"
@@ -28,6 +28,9 @@ public class ContentGenerationFailed_deleteContentByFail_Policy {
             
             CustomLogger.debugObject(CustomLoggerType.ENTER, contentGenerationFailed);
 
+            // [1] contentGenerationFailed.contentId에 해당하는 컨텐츠를 삭제한다.
+
+            // [2] 삭제된 Content에 대한 ContentDeletedByFail 이벤트를 발생시킨다.
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
