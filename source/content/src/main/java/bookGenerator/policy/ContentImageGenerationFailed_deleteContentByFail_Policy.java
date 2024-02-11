@@ -13,14 +13,14 @@ import bookGenerator._global.event.ContentmageGenerationFailed;
 
 @Service
 @Transactional
-public class ContentmageGenerationFailed_deleteContentByFail_Policy {
+public class ContentImageGenerationFailed_deleteContentByFail_Policy {
 
     // 이미지 생성에 실패시에 관련 컨텐츠를 삭제하고, 이벤트를 발생시키는 정책
     @StreamListener(
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='ContentmageGenerationFailed'"
     )
-    public void contentmageGenerationFailed_deleteContentByFail_Policy(
+    public void contentImageGenerationFailed_deleteContentByFail_Policy(
         @Payload ContentmageGenerationFailed contentmageGenerationFailed
     ) {
         try
