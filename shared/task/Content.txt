@@ -1,0 +1,33 @@
+작업명: generateContent 엔드포인트 구현하기
+대상 파일 경로: source\content\src\main\java\bookGenerator\endPoint\GenerateContentEndPoints.java
+테스트 항목: Content > 엔드포인트 테스트: GenerateContent
+
+---
+
+작업명: contentImageInfoUploaded_updateImageFileId_Policy 정책 구현하기
+대상 파일 경로: source\content\src\main\java\bookGenerator\policy\ContentImageInfoUploaded_updateImageFileId_Policy.java
+테스트 항목: Content > 정책 테스트: ContentImageInfoUploaded_updateImageFileId_Policy
+
+---
+
+작업명: contentGenerated_updateContent_Policy 정책 구현하기
+대상 파일 경로: source\content\src\main\java\bookGenerator\policy\ContentGenerated_updateContent_Policy.java
+테스트 항목: Content > 정책 테스트: ContentGenerated_updateContent_Policy
+
+---
+
+작업명: indexDeleted_deleteContent_Policy 정책 구현하기
+대상 파일 경로: source\content\src\main\java\bookGenerator\policy\IndexDeleted_deleteContent_Policy.java
+테스트 항목: Content > 정책 테스트: IndexDeleted_deleteContent_Policy
+
+---
+
+작업명: contentImageGenerationFailed_deleteContentByFail_Policy 정책 구현하기
+대상 파일 경로: source\content\src\main\java\bookGenerator\policy\ContentImageGenerationFailed_deleteContentByFail_Policy.java
+테스트 항목: Content > 정책 테스트: ContentImageGenerationFailed_deleteContentByFail_Policy
+
+---
+
+작업명: contentGenerationFailed_deleteContentByFail_Policy 정책 구현하기
+대상 파일 경로: source\content\src\main\java\bookGenerator\policy\ContentGenerationFailed_deleteContentByFail_Policy.java
+테스트 항목: Content > 정책 테스트: ContentGenerationFailed_deleteContentByFail_Policy
