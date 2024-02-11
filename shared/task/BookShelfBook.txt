@@ -1,0 +1,21 @@
+작업명: addBookShelfBook 엔드포인트 구현하기
+대상 파일 경로: source\bookShelfBook\src\main\java\bookGenerator\endPoint\AddBookShelfBookEndPoints.java
+테스트 항목: BookShelfBook > 엔드포인트 테스트: AddBookShelfBook
+
+---
+
+작업명: deleteBookShelfBook 엔드포인트 구현하기
+대상 파일 경로: source\bookShelfBook\src\main\java\bookGenerator\endPoint\DeleteBookShelfBookEndPoints.java
+테스트 항목: BookShelfBook > 엔드포인트 테스트: DeleteBookShelfBook
+
+---
+
+작업명: bookDeleted_deleteBookShelfBook_Policy 정책 구현하기
+대상 파일 경로: source\bookShelfBook\src\main\java\bookGenerator\policy\BookDeleted_deleteBookShelfBook_Policy.java
+테스트 항목: BookShelfBook > 정책 테스트: BookDeleted_deleteBookShelfBook_Policy
+
+---
+
+작업명: bookShelfDeleted_deleteBookShelfBook_Policy 정책 구현하기
+대상 파일 경로: source\bookShelfBook\src\main\java\bookGenerator\policy\BookShelfDeleted_deleteBookShelfBook_Policy.java
+테스트 항목: BookShelfBook > 정책 테스트: BookShelfDeleted_deleteBookShelfBook_Policy
