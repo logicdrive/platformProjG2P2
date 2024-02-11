@@ -74,9 +74,9 @@ contentGenerationFailed_deleteContentByFail_Policy: O / T
 
 * problem
 > EndPoints
-generateProblem: 
+generateProblem: O
 
 > Policy
-problemGenereated_updateProblem_Policy: 
+ProblemGenereated_createProblem_Policy: O
 indexDeleted_deleteProblem_Policy: 
 problemGenerationFailed_deleteProblemByFail_Policy: 

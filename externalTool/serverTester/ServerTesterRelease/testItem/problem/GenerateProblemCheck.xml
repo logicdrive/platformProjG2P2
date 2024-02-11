@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>Problem</group>
+        <title>엔드포인트 테스트: GenerateProblem</title>
+        <help>GenerateProblem 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>통신 확인(SanityCheck)</title>
+            <help>Problem 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>AI 기반 문제 생성 요청</title>
+            <help>AI를 기반으로 특정 문제 생성에 관해서 요청합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>problems/generateProblem</resourceUrl>
+            <headers></headers>
+            <data>{"indexId":1}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>ProblemGenerationRequsted 이벤트 발행 확인(Logs)</title>
+            <help>ProblemGenerationRequsted 이벤트 발행 여부를 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*ProblemGenerationRequsted.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">Publish event.*ProblemGenerationRequsted.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>

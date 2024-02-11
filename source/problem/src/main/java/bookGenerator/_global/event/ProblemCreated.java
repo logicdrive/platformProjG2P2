@@ -6,10 +6,10 @@ import bookGenerator._global.eventBase.EventNameAnnotation;
 import bookGenerator._global.eventBase.ProblemEvent;
 import bookGenerator.domain.Problem;
 
-@EventNameAnnotation(eventName="ProblemUpdated")
+@EventNameAnnotation(eventName="ProblemCreated")
 @NoArgsConstructor
-public class ProblemUpdated extends ProblemEvent {
-    public ProblemUpdated(Problem aggregate) {
+public class ProblemCreated extends ProblemEvent {
+    public ProblemCreated(Problem aggregate) {
         super(aggregate);
     }
 }
