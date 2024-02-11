@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>File</group>
+        <title>정책 테스트: CoverImageGenerated_updateCoverImageInfo_Policy</title>
+        <help>CoverImageGenerated_updateCoverImageInfo_Policy 단일 정책의 정상 작동 여부를 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>통신 확인(SanityCheck)</title>
+            <help>File 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8094</baseUrl>
+            <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+       <test>
+            <title>Mock File 생성(CreateFile)</title>
+            <help>테스트를 위해서 강제로 새로운 File을 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8094</baseUrl>
+            <resourceUrl>files</resourceUrl>
+            <headers></headers>
+            <data>{"url":""}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>Mock CoverImageGenerated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 CoverImageGenerated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8094</baseUrl>
+            <resourceUrl>sanityCheck/mock/CoverImageGenerated</resourceUrl>
+            <headers></headers>
+            <data>{"fileId":1,"fileUrl":"generatedFileUrl.jpg"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>파일 url 업데이트 확인(FileAll)</title>
+            <help>파일의 url이 업데이트되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8094</baseUrl>
+            <resourceUrl>files</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"fileUrl"[ ]*:[ ]*"generatedFileUrl.jpg"</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>CoverImageInfoUpdated 이벤트 발행 확인(Logs)</title>
+            <help>CoverImageInfoUpdated 이벤트 발행 여부를 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8094</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*CoverImageInfoUpdated.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">Publish event.*CoverImageInfoUpdated.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>
