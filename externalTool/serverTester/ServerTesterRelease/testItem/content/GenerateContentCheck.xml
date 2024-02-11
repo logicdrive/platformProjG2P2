@@ -2,8 +2,8 @@
 <root>
     <description>
         <group>Content</group>
-        <title>엔드포인트 테스트: GenerateContentCheck</title>
-        <help>Content 서비스에 요청할 수 있는 체크용 엔드포인트들 입니다.</help>
+        <title>엔드포인트 테스트: GenerateContent</title>
+        <help>GenerateContent 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
     </description>
 
     <tests>

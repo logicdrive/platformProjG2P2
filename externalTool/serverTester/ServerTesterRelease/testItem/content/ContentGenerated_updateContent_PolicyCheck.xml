@@ -2,8 +2,8 @@
 <root>
     <description>
         <group>Content</group>
-        <title>정책 테스트: ContentGenerated_updateContent_PolicyCheck</title>
-        <help>ContentGenerated_updateContent_PolicyCheck 단일 정책의 정상 작동 여부를 확인합니다.</help>
+        <title>정책 테스트: ContentGenerated_updateContent_Policy</title>
+        <help>ContentGenerated_updateContent_Policy 단일 정책의 정상 작동 여부를 확인합니다.</help>
     </description>
 
     <tests>

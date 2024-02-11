@@ -2,8 +2,8 @@
 <root>
     <description>
         <group>Content</group>
-        <title>정책 테스트: ContentmageGenerationFailed_deleteContentByFail_PolicyCheck</title>
-        <help>ContentmageGenerationFailed_deleteContentByFail_PolicyCheck 단일 정책의 정상 작동 여부를 확인합니다.</help>
+        <title>정책 테스트: ContentmageGenerationFailed_deleteContentByFail_Policy</title>
+        <help>ContentmageGenerationFailed_deleteContentByFail_Policy 단일 정책의 정상 작동 여부를 확인합니다.</help>
     </description>
 
     <tests>
