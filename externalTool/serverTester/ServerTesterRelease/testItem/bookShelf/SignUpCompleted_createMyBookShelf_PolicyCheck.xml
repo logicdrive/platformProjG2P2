@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>BookShelf</group>
+        <title>정책 테스트: SignUpCompleted_createMyBookShelf_Policy</title>
+        <help>SignUpCompleted_createMyBookShelf_Policy 단일 정책의 정상 작동 여부를 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>통신 확인(SanityCheck)</title>
+            <help>BookShelf 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8097</baseUrl>
+            <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>Mock SignUpCompleted 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 SignUpCompleted 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8097</baseUrl>
+            <resourceUrl>sanityCheck/mock/SignUpCompleted</resourceUrl>
+            <headers></headers>
+            <data>{"id":1,"email":"testemail1@gmail.com","password":"testpassword1","name":"testname1","role":"User","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>BookShelf 생성 여부 확인(BookShelfAll)</title>
+            <help>BookShelf가 생성되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8097</baseUrl>
+            <resourceUrl>bookShelfs</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"title"[ ]*:[ ]*"BookShelf"</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>BookShelfCreated 이벤트 발행 확인(Logs)</title>
+            <help>BookShelfCreated 이벤트 발행 여부를 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8097</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*BookShelfCreated.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">Publish event.*BookShelfCreated.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>

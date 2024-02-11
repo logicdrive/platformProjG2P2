@@ -102,6 +102,6 @@ deleteBookShelf: O
 updateIsShared: O
 
 > Policy
-signUpCompleted_createMyBookShelf_Policy: 
+signUpCompleted_createMyBookShelf_Policy: O
 bookShelfBookAdded_IncreaseBookCount_Policy: 
 bookShelfBookDeleted_decreaseBookCount_Policy: 
