@@ -20,7 +20,7 @@ public class BookShelfBookAdded_increaseBookCount_Policy {
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='BookShelfBookAdded'"
     )
-    public void bookShelfBookAdded_increaseBookCount_Policy(
+    public void bookShelfBookAdded_IncreaseBookCount_Policy(
         @Payload BookShelfBookAdded bookShelfBookAdded
     ) {
         try
