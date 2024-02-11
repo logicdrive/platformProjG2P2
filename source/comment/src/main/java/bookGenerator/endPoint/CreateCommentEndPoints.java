@@ -23,7 +23,7 @@ import bookGenerator.domain.Comment;
 @ToString
 class CreateCommentReqDto {
     private final Long bookId;
-    private final String comment;
+    private final String content;
 }
 
 @Getter
@@ -47,8 +47,8 @@ public class CreateCommentEndPoints {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
-            // [1] 새로운 Comment 객체를 CreaterId=userId, bookId, comment로 생성
-            // [!] createrId, bookId, comment만 초기화시키면 되며, 다른 변수들은 자동으로 초기화됨
+            // [1] 새로운 Comment 객체를 CreaterId=userId, bookId, content로 생성
+            // [!] createrId, bookId, content만 초기화시키면 되며, 다른 변수들은 자동으로 초기화됨
             
             // [2] CommentCreated 이벤트를 발생시킴
 

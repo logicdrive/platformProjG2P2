@@ -33,7 +33,7 @@
             <headers>
                 <header key="User-Id">2</header>
             </headers>
-            <data>{"bookId":1, "comment":"testComment"}</data>
+            <data>{"bookId":1, "content":"testContent"}</data>
 
             <checks>
                 <check type="status">2.*</check>
