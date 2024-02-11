@@ -15,7 +15,7 @@ import bookGenerator._global.event.BookDeleted;
 @Transactional
 public class BookDeleted_deleteBookShelfBook_Policy {
 
-    // BookDeleted 이벤트 발생 관련 정책
+    // Book이 삭제되었을시에 연관된 BookShelfBook을 삭제시키는 정책
     @StreamListener(
         value = KafkaProcessor.INPUT,
         condition = "headers['type']=='BookDeleted'"
@@ -28,7 +28,9 @@ public class BookDeleted_deleteBookShelfBook_Policy {
             
             CustomLogger.debugObject(CustomLoggerType.ENTER, bookDeleted);
 
-            
+            // [1] bookId가 일치하는 BookShelfBook을 삭제한다.
+
+            // [2] BookShelfBookDeleted 이벤트를 삭제된 BookShelfBook을 이용해서 발생시킨다.
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 

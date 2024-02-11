@@ -114,4 +114,5 @@ addBookShelfBook:
 deleteBookShelfBook: 
 
 > Policy
-bookDeleted_deleteBookShelfBook_Policy: 
+bookDeleted_deleteBookShelfBook_Policy: O
+bookShelfDeleted_deleteBookShelfBook_Policy: O
