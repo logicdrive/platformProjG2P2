@@ -1,0 +1,21 @@
+작업명: createComment 엔드포인트 구현하기
+대상 파일 경로: source\comment\src\main\java\bookGenerator\endPoint\CreateCommentEndPoints.java
+테스트 항목: Comment > 엔드포인트 테스트: CreateComment
+
+---
+
+작업명: updateComment 엔드포인트 구현하기
+대상 파일 경로: source\comment\src\main\java\bookGenerator\endPoint\UpdateCommentEndPoints.java
+테스트 항목: Comment > 엔드포인트 테스트: UpdateComment
+
+---
+
+작업명: deleteComment 엔드포인트 구현하기
+대상 파일 경로: source\comment\src\main\java\bookGenerator\endPoint\DeleteCommentEndPoints.java
+테스트 항목: Comment > 엔드포인트 테스트: DeleteComment
+
+---
+
+작업명: bookDeleted_deleteComment_Policy 정책 구현하기
+대상 파일 경로: source\comment\src\main\java\bookGenerator\policy\BookDeleted_deleteComment_Policy.java
+테스트 항목: Comment > 정책 테스트: BookDeleted_deleteComment_Policy

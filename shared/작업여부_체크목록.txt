@@ -5,7 +5,7 @@ tag: O / T
 index: O / T
 content: O / T
 problem: O / T
-comment: O
+comment: O / T
 bookShelf: 
 bookShelfBook: 
 file: 
@@ -85,10 +85,10 @@ problemGenerationFailed_deleteProblemByFail_Policy: O / T
 
 * comment
 > EndPoints
-createComment: O
-updateComment: O
-deleteComment: O
+createComment: O / T
+updateComment: O / T
+deleteComment: O / T
 
 > Policy
-bookDeleted_deleteComment_Policy: O
+bookDeleted_deleteComment_Policy: O / T
 
