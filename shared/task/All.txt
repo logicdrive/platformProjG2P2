@@ -172,49 +172,49 @@
 
 ---
 
-작업명: EmptyBookCreated_createEmptyCoverImageInfo_Policy 정책 구현하기
+작업명: emptyBookCreated_createEmptyCoverImageInfo_Policy 정책 구현하기
 대상 파일 경로: source\file\src\main\java\bookGenerator\policy\EmptyBookCreated_createEmptyCoverImageInfo_Policy.java
 테스트 항목: File > 정책 테스트: EmptyBookCreated_createEmptyCoverImageInfo_Policy
 
 ---
 
-작업명: CoverImageGenerationRequested_requestCoverImageGeneration_Policy 정책 구현하기
+작업명: coverImageGenerationRequested_requestCoverImageGeneration_Policy 정책 구현하기
 대상 파일 경로: source\file\src\main\java\bookGenerator\policy\CoverImageGenerationRequested_requestCoverImageGeneration_Policy.java
 테스트 항목: File > 정책 테스트: CoverImageGenerationRequested_requestCoverImageGeneration_Policy
 
 ---
 
-작업명: CoverImageUpdateRequested_requestCoverImageUpdate_Policy 정책 구현하기
+작업명: coverImageUpdateRequested_requestCoverImageUpdate_Policy 정책 구현하기
 대상 파일 경로: source\file\src\main\java\bookGenerator\policy\CoverImageUpdateRequested_requestCoverImageUpdate_Policy.java
 테스트 항목: File > 정책 테스트: CoverImageUpdateRequested_requestCoverImageUpdate_Policy
 
 ---
 
-작업명: CoverImageGenerated_updateCoverImageInfo_Policy 정책 구현하기
+작업명: coverImageGenerated_updateCoverImageInfo_Policy 정책 구현하기
 대상 파일 경로: source\file\src\main\java\bookGenerator\policy\CoverImageGenerated_updateCoverImageInfo_Policy.java
 테스트 항목: File > 정책 테스트: CoverImageGenerated_updateCoverImageInfo_Policy
 
 ---
 
-작업명: CoverImageUploaded_updateCoverImageInfo_Policy 정책 구현하기
+작업명: coverImageUploaded_updateCoverImageInfo_Policy 정책 구현하기
 대상 파일 경로: source\file\src\main\java\bookGenerator\policy\CoverImageUploaded_updateCoverImageInfo_Policy.java
 테스트 항목: File > 정책 테스트: CoverImageUploaded_updateCoverImageInfo_Policy
 
 ---
 
-작업명: ContentImageGenereated_uploadContentImageInfo_Policy 정책 구현하기
+작업명: contentImageGenereated_uploadContentImageInfo_Policy 정책 구현하기
 대상 파일 경로: source\file\src\main\java\bookGenerator\policy\ContentImageGenereated_uploadContentImageInfo_Policy.java
 테스트 항목: File > 정책 테스트: ContentImageGenereated_uploadContentImageInfo_Policy
 
 ---
 
-작업명: BookDeleted_DeleteFileInfo_Policy 정책 구현하기
+작업명: bookDeleted_DeleteFileInfo_Policy 정책 구현하기
 대상 파일 경로: source\file\src\main\java\bookGenerator\policy\BookDeleted_DeleteFileInfo_Policy.java
 테스트 항목: File > 정책 테스트: BookDeleted_DeleteFileInfo_Policy
 
 ---
 
-작업명: ContentImageDeleteRequsted_DeleteFileInfo_Policy 정책 구현하기
+작업명: contentImageDeleteRequsted_DeleteFileInfo_Policy 정책 구현하기
 대상 파일 경로: source\file\src\main\java\bookGenerator\policy\ContentImageDeleteRequsted_DeleteFileInfo_Policy.java
 테스트 항목: File > 정책 테스트: ContentImageDeleteRequsted_DeleteFileInfo_Policy
 
