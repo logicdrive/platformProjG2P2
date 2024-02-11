@@ -55,6 +55,8 @@ public class BookShelf extends LoggedEntity {
 
     @PrePersist
     public void onPrePersist() {
+        this.bookCount = 0L;
+        this.isShared = false;
         this.createdDate = new Date();
         this.updatedDate = new Date();
 

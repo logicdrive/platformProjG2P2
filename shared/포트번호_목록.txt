@@ -25,7 +25,7 @@ index: 8085
 content: 8086
 problem: 8087
 comment: 8089
-bookShelf: 8090
+bookShelf: 8097
 bookShelfBook: 8091
 file: 8094
 collectedData: 8093
@@ -44,7 +44,7 @@ index: 8080 > 8085
 content: 8080 > 8086
 problem: 8080 > 8087
 comment: 8080 > 8089
-bookShelf: 8080 > 8090
+bookShelf: 8080 > 8097
 bookShelfBook: 8080 > 8091
 file: 8080 > 8094
 collectedData: 8080 > 8093

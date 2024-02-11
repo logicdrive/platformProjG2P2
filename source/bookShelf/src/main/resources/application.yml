@@ -3,7 +3,7 @@ global:
   service_name: bookShelf
 
   open_port: 8080
-  host_port: 8090
+  host_port: 8097
 
 
 server:

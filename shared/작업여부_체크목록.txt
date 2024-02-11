@@ -92,3 +92,15 @@ deleteComment: O / T
 > Policy
 bookDeleted_deleteComment_Policy: O / T
 
+---
+
+* bookShelf
+> EndPoints
+createBookShelf: 
+updateBookShelfTitle: 
+deleteBookShelf: 
+
+> Policy
+signUpCompleted_createMyBookShelf_Policy: 
+bookShelfBookAdded_IncreaseBookCount_Policy: 
+bookShelfBookDeleted_decreaseBookCount_Policy: 
