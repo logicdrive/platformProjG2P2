@@ -1,0 +1,21 @@
+작업명: generateProblem 엔드포인트 구현하기
+대상 파일 경로: source\problem\src\main\java\bookGenerator\endPoint\GenerateProblemEndPoints.java
+테스트 항목: Problem > 엔드포인트 테스트: GenerateProblem
+
+---
+
+작업명: problemGenereated_createProblem_Policy 정책 구현하기
+대상 파일 경로: source\problem\src\main\java\bookGenerator\policy\ProblemGenereated_createProblem_Policy.java
+테스트 항목: Problem > 정책 테스트: ProblemGenereated_createProblem_Policy
+
+---
+
+작업명: indexDeleted_deleteProblem_Policy 정책 구현하기
+대상 파일 경로: source\problem\src\main\java\bookGenerator\policy\IndexDeleted_deleteProblem_Policy.java
+테스트 항목: Problem > 정책 테스트: IndexDeleted_deleteProblem_Policy
+
+---
+
+작업명: problemGenerationFailed_deleteProblemByFail_Policy 정책 구현하기
+대상 파일 경로: source\problem\src\main\java\bookGenerator\policy\ProblemGenerationFailed_deleteProblemByFail_Policy.java
+테스트 항목: Problem > 정책 테스트: ProblemGenerationFailed_deleteProblemByFail_Policy

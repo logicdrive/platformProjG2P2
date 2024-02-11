@@ -4,7 +4,7 @@ book: O / T
 tag: O / T
 index: O / T
 content: O / T
-problem: 
+problem: O / T
 comment: 
 bookShelf: 
 bookShelfBook: 
@@ -74,9 +74,9 @@ contentGenerationFailed_deleteContentByFail_Policy: O / T
 
 * problem
 > EndPoints
-generateProblem: O
+generateProblem: O / T
 
 > Policy
-ProblemGenereated_createProblem_Policy: O
-indexDeleted_deleteProblem_Policy: O
-problemGenerationFailed_deleteProblemByFail_Policy: O
+problemGenereated_createProblem_Policy: O / T
+indexDeleted_deleteProblem_Policy: O / T
+problemGenerationFailed_deleteProblemByFail_Policy: O / T
