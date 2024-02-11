@@ -13,6 +13,7 @@ import bookGenerator._global.infra.AbstractEvent;
 @EqualsAndHashCode(callSuper=false)
 public class BookShelfBookEvent extends AbstractEvent {
 	protected Long id;
+	protected Long bookShelfId;
 	protected Long bookId;
 	protected Date createdDate;
 	protected Date updatedDate;
