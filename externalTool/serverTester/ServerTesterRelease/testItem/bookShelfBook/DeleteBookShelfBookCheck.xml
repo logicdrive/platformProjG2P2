@@ -1,0 +1,73 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>BookShelfBook</group>
+        <title>엔드포인트 테스트: DeleteBookShelfBook</title>
+        <help>DeleteBookShelfBook 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>통신 확인(SanityCheck)</title>
+            <help>BookShelfBook 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8091</baseUrl>
+            <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+       <test>
+            <title>Mock BookShelfBook 생성(CreateBookShelfBook)</title>
+            <help>테스트를 위해서 강제로 새로운 BookShelfBook를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8091</baseUrl>
+            <resourceUrl>bookShelfBooks</resourceUrl>
+            <headers></headers>
+            <data>{"bookShelfId":1,"bookId":1}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>BookShelfBook을 삭제함(DeleteBookShelfBook)</title>
+            <help>BookShelfBook을 삭제시키는 요청을 수행합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8091</baseUrl>
+            <resourceUrl>bookShelfBooks/deleteBookShelfBook</resourceUrl>
+            <headers></headers>
+            <data>{"bookShelfBookId":1}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>BookShelfBookDeleted 이벤트 발행 확인(Logs)</title>
+            <help>BookShelfBookDeleted 이벤트 발행 여부를 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8091</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*BookShelfBookDeleted.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">Publish event.*BookShelfBookDeleted.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>

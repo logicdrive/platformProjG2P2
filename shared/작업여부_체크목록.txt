@@ -110,8 +110,8 @@ bookShelfBookDeleted_decreaseBookCount_Policy: O / T
 
 * bookShelfBook
 > EndPoints
-addBookShelfBook: 
-deleteBookShelfBook: 
+addBookShelfBook: O
+deleteBookShelfBook: O
 
 > Policy
 bookDeleted_deleteBookShelfBook_Policy: O
