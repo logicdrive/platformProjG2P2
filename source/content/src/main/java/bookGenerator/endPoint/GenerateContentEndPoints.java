@@ -10,16 +10,28 @@ import org.springframework.web.bind.annotation.PutMapping;
 import javax.transaction.Transactional;
 
 import lombok.Data;
+import lombok.Getter;
 import lombok.ToString;
 
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+import bookGenerator.domain.Content;
 
 
 @Data
 @ToString
 class GenerateContentReqDto {
     private final Long indexId;
+}
+
+@Getter
+@ToString
+class GenerateContentResDto {
+    private final Long id;
+
+    public GenerateContentResDto(Content content) {
+        this.id = content.getId();
+    }
 }
 
 
@@ -34,7 +46,12 @@ public class GenerateContentEndPoints {
 
             CustomLogger.debug(CustomLoggerType.ENTER, reqDto.toString());
 
-            // [1] ContentImageGenerationRequested 이벤트를 indexId를 기반으로 생성함
+            // [1] 새로운 Content 객체를 생성
+            // [!] indexId만 초기화시키면 되며, 다른 변수들은 자동으로 초기화됨
+
+            // [2] ContentImageGenerationRequested 이벤트를 생성된 Content 기반으로 발생시킴
+
+            // [3] 생성된 Content 객체의 id를 반환
                 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
