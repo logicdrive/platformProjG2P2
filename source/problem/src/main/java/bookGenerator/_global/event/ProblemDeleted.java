@@ -6,8 +6,8 @@ import bookGenerator._global.eventBase.EventNameAnnotation;
 import bookGenerator._global.eventBase.ProblemEvent;
 import bookGenerator.domain.Problem;
 
-@EventNameAnnotation(eventName="ProblemDeleted")
 @NoArgsConstructor
+@EventNameAnnotation(eventName="ProblemDeleted")
 public class ProblemDeleted extends ProblemEvent {
     public ProblemDeleted(Problem aggregate) {
         super(aggregate);

@@ -6,8 +6,8 @@ import bookGenerator._global.eventBase.EventNameAnnotation;
 import bookGenerator._global.eventBase.BookEvent;
 import bookGenerator.domain.Book;
 
-@EventNameAnnotation(eventName="CoverImageFileIdUpdated")
 @NoArgsConstructor
+@EventNameAnnotation(eventName="CoverImageFileIdUpdated")
 public class CoverImageFileIdUpdated extends BookEvent {
     public CoverImageFileIdUpdated(Book aggregate) {
         super(aggregate);

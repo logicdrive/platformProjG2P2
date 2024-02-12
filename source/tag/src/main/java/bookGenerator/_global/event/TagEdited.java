@@ -6,8 +6,8 @@ import bookGenerator._global.eventBase.EventNameAnnotation;
 import bookGenerator._global.eventBase.TagEvent;
 import bookGenerator.domain.Tag;
 
-@EventNameAnnotation(eventName="TagEdited")
 @NoArgsConstructor
+@EventNameAnnotation(eventName="TagEdited")
 public class TagEdited extends TagEvent {
     public TagEdited(Tag aggregate) {
         super(aggregate);

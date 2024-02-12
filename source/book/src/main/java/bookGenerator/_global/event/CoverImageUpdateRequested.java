@@ -1,13 +1,16 @@
 package bookGenerator._global.event;
 
+import lombok.Data;
+import lombok.EqualsAndHashCode;
 import lombok.NoArgsConstructor;
-
 import bookGenerator._global.eventBase.EventNameAnnotation;
 import bookGenerator._global.eventBase.BookEvent;
 import bookGenerator.domain.Book;
 
-@EventNameAnnotation(eventName="CoverImageUpdateRequested")
+@Data
 @NoArgsConstructor
+@EqualsAndHashCode(callSuper=false)
+@EventNameAnnotation(eventName="CoverImageUpdateRequested")
 public class CoverImageUpdateRequested extends BookEvent {
     private String imageUrl;
 
@@ -17,7 +20,7 @@ public class CoverImageUpdateRequested extends BookEvent {
     }
 
     public String toString() {
-        return String.format("%s(bookId=%d, imageUrlLength=%d)",
-            this.getClass().getSimpleName(), this.id, this.imageUrl.length());
+        return String.format("%s(super=%s, imageUrlLength=%d)",
+            this.getClass().getSimpleName(), super.toString(), this.imageUrl.length());
     }
 }

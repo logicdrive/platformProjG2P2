@@ -6,8 +6,8 @@ import bookGenerator._global.eventBase.EventNameAnnotation;
 import bookGenerator._global.eventBase.IndexEvent;
 import bookGenerator.domain.Index;
 
-@EventNameAnnotation(eventName="IndexCreated")
 @NoArgsConstructor
+@EventNameAnnotation(eventName="IndexCreated")
 public class IndexCreated extends IndexEvent {
     public IndexCreated(Index aggregate) {
         super(aggregate);

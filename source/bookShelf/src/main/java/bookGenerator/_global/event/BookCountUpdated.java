@@ -6,8 +6,8 @@ import bookGenerator._global.eventBase.EventNameAnnotation;
 import bookGenerator._global.eventBase.BookShelfEvent;
 import bookGenerator.domain.BookShelf;
 
-@EventNameAnnotation(eventName="BookCountUpdated")
 @NoArgsConstructor
+@EventNameAnnotation(eventName="BookCountUpdated")
 public class BookCountUpdated extends BookShelfEvent {
     public BookCountUpdated(BookShelf aggregate) {
         super(aggregate);
