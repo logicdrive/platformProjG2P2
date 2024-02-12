@@ -4,10 +4,14 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PostPersist;
+import javax.persistence.PostRemove;
+import javax.persistence.PostUpdate;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 
 import lombok.AllArgsConstructor;
@@ -63,4 +67,17 @@ public class Comment extends LoggedEntity {
 
         super.onPreUpdate();
     }
+
+
+    @PostPersist
+    public void onPostPersist() {super.onPostPersist();}
+
+    @PostUpdate
+    public void onPostUpdate() {super.onPostUpdate();}
+    
+    @PreRemove
+    public void onPreRemove() {super.onPreRemove();}
+
+    @PostRemove
+    public void onPostRemove() {super.onPostRemove();}
 }
