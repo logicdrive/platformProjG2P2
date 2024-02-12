@@ -31,7 +31,7 @@
             <baseUrl>http://localhost:8084</baseUrl>
             <resourceUrl>sanityCheck/mock/TagGernerated</resourceUrl>
             <headers></headers>
-            <data>{"id":1,"bookId":1,"tagName":"generatedTagName"}</data>
+            <data>{"bookId":1,"tagName":"generatedTagName"}</data>
 
             <checks>
                 <check type="status">2.*</check>

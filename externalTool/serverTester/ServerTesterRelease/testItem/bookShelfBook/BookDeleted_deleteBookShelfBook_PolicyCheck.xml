@@ -47,7 +47,7 @@
             <baseUrl>http://localhost:8091</baseUrl>
             <resourceUrl>sanityCheck/mock/BookDeleted</resourceUrl>
             <headers></headers>
-            <data>{"id":1,"createrId":1,"coverImageFileid":1,"title":"testTitle","isShared":false,"createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":1,"createrId":1,"coverImageFileId":1,"title":"testTitle","isShared":false,"createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
 
             <checks>
                 <check type="status">2.*</check>
