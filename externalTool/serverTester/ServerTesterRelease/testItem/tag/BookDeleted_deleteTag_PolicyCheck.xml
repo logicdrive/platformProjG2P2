@@ -38,15 +38,15 @@
             </checks>
         </test>
 
-        <test>
-            <title>Mock BookDeleted 이벤트 생성</title>
-            <help>테스트를 위해서 강제로 BookDeleted 이벤트를 생성합니다.</help>
+       <test>
+            <title>Mock Tag 생성 2(CreateTag)</title>
+            <help>테스트를 위해서 강제로 새로운 Tag를 생성합니다.</help>
 
             <method>POST</method>
             <baseUrl>http://localhost:8084</baseUrl>
-            <resourceUrl>sanityCheck/mock/BookDeleted</resourceUrl>
+            <resourceUrl>tags</resourceUrl>
             <headers></headers>
-            <data>{"id":1,"createrId":1,"coverImageFileid":1,"title":"testTitle","isShared":false,"createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"bookId":1,"name":"testTag2"}</data>
 
             <checks>
                 <check type="status">2.*</check>
@@ -55,18 +55,49 @@
 
 
         <test>
-            <title>BookDeleted 이벤트 발행 확인(Logs)</title>
-            <help>BookDeleted 이벤트 발행 여부를 확인합니다.</help>
+            <title>Mock BookDeleted 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 BookDeleted 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8084</baseUrl>
+            <resourceUrl>sanityCheck/mock/BookDeleted</resourceUrl>
+            <headers></headers>
+            <data>{"id":1,"createrId":1,"coverImageFileId":1,"title":"testTitle","isShared":false,"createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>태그 삭제 여부 확인(TagAll)</title>
+            <help>기존에 존재했던 태그들이 전부 삭제되었는지 확인합니다.</help>
 
             <method>GET</method>
             <baseUrl>http://localhost:8084</baseUrl>
-            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*BookDeleted.*</resourceUrl>
+            <resourceUrl>tags/search/findByBookId?bookId=1</resourceUrl>
             <headers></headers>
             <data></data>
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">Publish event.*BookDeleted.*</check>
+                <check type="data">"tags"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>TagDeleted 이벤트 발행 확인(Logs)</title>
+            <help>TagDeleted 이벤트 발행 여부를 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8084</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*TagDeleted.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">Publish event.*TagDeleted.*</check>
             </checks>
         </test>
     </tests>

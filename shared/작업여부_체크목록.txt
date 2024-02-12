@@ -35,14 +35,14 @@ emptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy: O / T / D
 
 * tag
 > EndPoints
-generateTags: O / T
-createTag: O / T
-editTag: O / T
-deleteTag: O / T
+generateTags: O / T / D
+createTag: O / T / D
+editTag: O / T / D
+deleteTag: O / T / D
 
 > Policy
-tagGernerated_createTag_Policy: O / T
-bookDeleted_deleteTag_Policy: O / T
+tagGernerated_createTag_Policy: O / T / D
+bookDeleted_deleteTag_Policy: O / T / D
 
 ---
 
