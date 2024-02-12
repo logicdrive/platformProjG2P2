@@ -5,6 +5,7 @@ global:
   open_port: 8088
   host_port: 8088
 
+is_dubug_mode: true
 
 server:
   port: ${global.open_port}
@@ -33,23 +34,39 @@ spring:
 
       routes:
         - id: userWithAuth
-          uri: http://${service.user_domain}:${service.user_port}
+          uri: http://${service.user.domain}:${service.user.port}
           predicates:
-            - Path=/api/user/sanityCheck/authenticationCheck,/api/user/users/updateName
+            - Path=/api/${service.user.name}/sanityCheck/authenticationCheck,/api/${service.user.name}/users/updateName
           filters:
-            - RewritePath=/api/user/(?<segment>.*), /${segment}
+            - RewritePath=/api/${service.user.name}/(?<segment>.*), /${segment}
             - AuthorizationHeaderFilter
 
         - id: userNoAuth
-          uri: http://${service.user_domain}:${service.user_port}
+          uri: http://${service.user.domain}:${service.user.port}
           predicates:
-            - Path=/api/user/**
+            - Path=/api/${service.user.name}/**
           filters:
-            - RewritePath=/api/user/(?<segment>.*), /${segment}
+            - RewritePath=/api/${service.user.name}/(?<segment>.*), /${segment}
+
+
+        - id: bookNoAuth
+          uri: http://${service.book.domain}:${service.book.port}
+          predicates:
+            - Path=/api/${service.book.name}/sanityCheck,/api/${service.book.name}/sanityCheck/logs
+          filters:
+            - RewritePath=/api/${service.book.name}/(?<segment>.*), /${segment}
+
+        - id: bookWithAuth
+          uri: http://${service.book.domain}:${service.book.port}
+          predicates:
+            - Path=/api/${service.book.name}/**
+          filters:
+            - RewritePath=/api/${service.book.name}/(?<segment>.*), /${segment}
+            - AuthorizationHeaderFilter
 
 
         - id: frontend
-          uri: http://${service.frontend_domain}:${service.frontend_port}
+          uri: http://${service.frontend.domain}:${service.frontend.port}
           predicates:
             - Path=/**
 
@@ -65,17 +82,30 @@ jwt:
   expire-after-seconds: 36000
   public.key: classpath:rsa.public.key
 
+service:
+  user:
+    name: user
+  
+  book:
+    name: book
+
 ---
 
 spring:
   profiles: host
 
 service:
-  user_domain: localhost
-  user_port: 8082
+  user:
+    domain: localhost
+    port: 8082
+  
+  book:
+    domain: localhost
+    port: 8083
 
-  frontend_domain: localhost
-  frontend_port: 3000
+  frontend:
+    domain: localhost
+    port: 3000
 
 ---
 
@@ -83,11 +113,17 @@ spring:
   profiles: docker
 
 service:
-  user_domain: host.docker.internal
-  user_port: 8082
+  user:
+    domain: host.docker.internal
+    port: 8082
+  
+  book:
+    domain: host.docker.internal
+    port: 8083
 
-  frontend_domain: host.docker.internal
-  frontend_port: 3000
+  frontend:
+    domain: host.docker.internal
+    port: 3000
 
 ---
 
@@ -95,8 +131,14 @@ spring:
   profiles: kubernates
 
 service:
-  user_domain: user
-  user_port: 8080
+  user:
+    domain: user
+    port: 8080
+  
+  book:
+    domain: book
+    port: 8080
 
-  frontend_domain: frontend
-  frontend_port: 3000
+  frontend:
+    domain: frontend
+    port: 8080

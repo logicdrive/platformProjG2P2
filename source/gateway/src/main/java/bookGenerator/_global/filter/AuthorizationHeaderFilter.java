@@ -1,6 +1,7 @@
 package bookGenerator._global.filter;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.cloud.gateway.filter.GatewayFilter;
 import org.springframework.cloud.gateway.filter.factory.AbstractGatewayFilterFactory;
 import org.springframework.core.env.Environment;
@@ -23,6 +24,9 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
     @Autowired
     private final JwtDecoder jwtDecoder;
 
+    @Value("${is_dubug_mode}")
+    private Boolean isDebugMode;
+
     public AuthorizationHeaderFilter(Environment environment, JwtDecoder jwtDecoder) {
         super(Config.class);
         this.jwtDecoder = jwtDecoder;
@@ -32,11 +36,14 @@ public class AuthorizationHeaderFilter extends AbstractGatewayFilterFactory<Auth
     public GatewayFilter apply(AuthorizationHeaderFilter.Config config) {
         return (exchange, chain) -> {
             try {
-
                 ServerHttpRequest request = exchange.getRequest();
+                if(this.isDebugMode && request.getHeaders().containsKey("User-Id")) {
+                    return chain.filter(exchange);
+                }
+
+                
                 if (!request.getHeaders().containsKey(HttpHeaders.AUTHORIZATION))
                     return responseWithError(exchange, "No authorization header", HttpStatus.UNAUTHORIZED);
-                
 
                 String authorizationHeader = request.getHeaders().get(HttpHeaders.AUTHORIZATION).get(0);
                 String base64Token = authorizationHeader.replace("Bearer ", "");
