@@ -1,6 +1,6 @@
 * 서비스 작업 여부
 user: O / D
-book: O / T
+book: O / T / D
 tag: O / T
 index: O / T
 content: O / T
@@ -20,16 +20,16 @@ frontend:
 
 * book
 > EndPoints
-createEmptyBook: O / T
-generateCoverImage: O / T
-updateCoverImage: O / T
-updateBookTitle: O / T
-likeBook: O / T
-deleteBook: O / T
-updateIsShared: O / T
+createEmptyBook: O / T / D
+generateCoverImage: O / T / D
+updateCoverImage: O / T / D
+updateBookTitle: O / T / D
+likeBook: O / T / D
+deleteBook: O / T / D
+updateIsShared: O / T / D
 
 > Policy
-emptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy: O / T
+emptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy: O / T / D
 
 ---
 
