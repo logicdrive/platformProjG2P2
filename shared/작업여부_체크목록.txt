@@ -1,7 +1,7 @@
 * 서비스 작업 여부
 user: O / D
 book: O / T / D
-tag: O / T
+tag: O / T / D
 index: O / T
 content: O / T
 problem: O / T
