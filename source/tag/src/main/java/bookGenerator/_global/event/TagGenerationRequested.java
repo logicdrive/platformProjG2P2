@@ -10,7 +10,7 @@ import bookGenerator._global.infra.AbstractEvent;
 
 @Data
 @NoArgsConstructor
-@ToString(callSuper=true)
+@ToString
 @EqualsAndHashCode(callSuper=false)
 @EventNameAnnotation(eventName="TagGenerationRequested")
 public class TagGenerationRequested extends AbstractEvent {
