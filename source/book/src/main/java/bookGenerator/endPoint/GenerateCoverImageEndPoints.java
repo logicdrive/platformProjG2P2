@@ -22,7 +22,7 @@ import bookGenerator.domain.Book;
 @Data
 @ToString
 class GenerateCoverImageReqDto {
-    private final Long bookId;
+    private Long bookId;
 }
 
 @Getter

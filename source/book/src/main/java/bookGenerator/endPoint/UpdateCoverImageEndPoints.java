@@ -20,8 +20,8 @@ import bookGenerator.domain.Book;
 
 @Data
 class UpdateCoverImageeReqDto {
-    private final Long bookId;
-    private final String imageUrl;
+    private Long bookId;
+    private String imageUrl;
     
     public String toString() { 
         return String.format("%s(bookId=%s, imageUrlLength=%d)",

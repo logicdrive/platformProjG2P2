@@ -21,8 +21,8 @@ import bookGenerator.domain.Book;
 @Data
 @ToString
 class UpdateBookTitleReqDto {
-    private final Long bookId;
-    private final String bookTitle;
+    private Long bookId;
+    private String bookTitle;
 }
 
 @Getter
