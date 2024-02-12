@@ -21,7 +21,7 @@ import bookGenerator.domain.Index;
 @Data
 @ToString
 class DeleteIndexReqDto {
-    private final Long indexId;
+    private Long indexId;
 }
 
 @Getter

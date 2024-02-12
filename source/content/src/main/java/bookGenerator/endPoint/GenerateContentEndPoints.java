@@ -21,7 +21,7 @@ import bookGenerator.domain.Content;
 @Data
 @ToString
 class GenerateContentReqDto {
-    private final Long indexId;
+    private Long indexId;
 }
 
 @Getter

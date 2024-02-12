@@ -21,7 +21,7 @@ import bookGenerator.domain.BookShelfBook;
 @Data
 @ToString
 class DeleteBookShelfReqDto {
-    private final Long bookShelfBookId;
+    private Long bookShelfBookId;
 }
 
 @Getter

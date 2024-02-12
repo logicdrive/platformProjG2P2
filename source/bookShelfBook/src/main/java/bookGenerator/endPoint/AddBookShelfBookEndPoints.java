@@ -21,8 +21,8 @@ import bookGenerator.domain.BookShelfBook;
 @Data
 @ToString
 class AddBookShelfBookReqDto {
-    private final Long bookShelfId;
-    private final Long bookId;
+    private Long bookShelfId;
+    private Long bookId;
 }
 
 @Getter

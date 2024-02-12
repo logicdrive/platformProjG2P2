@@ -19,7 +19,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 @Data
 @ToString
 class GenerateIndexesReqDto {
-    private final Long bookId;
+    private Long bookId;
 }
 
 

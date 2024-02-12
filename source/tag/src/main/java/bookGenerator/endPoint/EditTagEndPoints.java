@@ -21,8 +21,8 @@ import bookGenerator.domain.Tag;
 @Data
 @ToString
 class EditTagReqDto {
-    private final Long tagId;
-    private final String tagName;
+    private Long tagId;
+    private String tagName;
 }
 
 @Getter

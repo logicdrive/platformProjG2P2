@@ -21,8 +21,8 @@ import bookGenerator.domain.BookShelf;
 @Data
 @ToString
 class UpdateIsSharedReqDto {
-    private final Long bookShelfId;
-    private final Boolean isShared;
+    private Long bookShelfId;
+    private Boolean isShared;
 }
 
 @Getter

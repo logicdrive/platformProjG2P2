@@ -19,7 +19,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 @Data
 @ToString
 class GenerateTagsReqDto {
-    private final Long bookId;
+    private Long bookId;
 }
 
 

@@ -18,7 +18,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 @Data
 @ToString
 class GenerateProblemReqDto {
-    private final Long indexId;
+    private Long indexId;
 }
 
 

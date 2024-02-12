@@ -21,7 +21,7 @@ import bookGenerator.domain.Comment;
 @Data
 @ToString
 class DeleteCommentReqDto {
-    private final Long commentId;
+    private Long commentId;
 }
 
 @Getter

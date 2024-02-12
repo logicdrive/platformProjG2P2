@@ -21,9 +21,9 @@ import bookGenerator.domain.Index;
 @Data
 @ToString
 class EditIndexReqDto {
-    private final Long indexId;
-    private final String indexName;
-    private final Long indexPriority;
+    private Long indexId;
+    private String indexName;
+    private Long indexPriority;
 }
 
 @Getter

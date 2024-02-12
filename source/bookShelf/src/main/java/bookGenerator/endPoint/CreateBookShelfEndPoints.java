@@ -22,8 +22,8 @@ import bookGenerator.domain.BookShelf;
 @Data
 @ToString
 class CreateBookShelfReqDto {
-    private final String title;
-    private final Boolean isShared;
+    private String title;
+    private Boolean isShared;
 }
 
 @Getter

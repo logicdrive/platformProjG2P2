@@ -21,8 +21,8 @@ import bookGenerator.domain.Comment;
 @Data
 @ToString
 class UpdateCommentReqDto {
-    private final Long commentId;
-    private final String content;
+    private Long commentId;
+    private String content;
 }
 
 @Getter

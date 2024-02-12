@@ -21,7 +21,7 @@ import bookGenerator.domain.Tag;
 @Data
 @ToString
 class DeleteTagReqDto {
-    private final Long tagId;
+    private Long tagId;
 }
 
 @Getter
