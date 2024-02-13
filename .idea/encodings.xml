@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="Encoding">
+    <file url="file://$PROJECT_DIR$/externalTool/baseCodeGenerator/template/base/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/book/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/bookShelf/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/bookShelfBook/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/collectedData/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/comment/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/content/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/externalSystemProxy/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/file/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/gateway/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/index/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/problem/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/tag/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/source/user/src/main/java" charset="UTF-8" />
+  </component>
+</project>
