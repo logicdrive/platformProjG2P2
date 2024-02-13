@@ -85,12 +85,12 @@ problemGenerationFailed_deleteProblemByFail_Policy: O / T / D
 
 * comment
 > EndPoints
-createComment: O / T
-updateComment: O / T
-deleteComment: O / T
+createComment: O / T / D
+updateComment: O / T / D
+deleteComment: O / T / D
 
 > Policy
-bookDeleted_deleteComment_Policy: O / T
+bookDeleted_deleteComment_Policy: O / T / D
 
 ---
 

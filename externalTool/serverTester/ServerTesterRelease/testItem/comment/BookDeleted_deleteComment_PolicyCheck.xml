@@ -38,6 +38,20 @@
             </checks>
         </test>
 
+        <test>
+            <title>Mock Comment 생성 2(CreateComment)</title>
+            <help>테스트를 위해서 강제로 새로운 Comment를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8089</baseUrl>
+            <resourceUrl>comments</resourceUrl>
+            <headers></headers>
+            <data>{"createrId":2,"bookId":1,"content":"testContent2"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
 
         <test>
             <title>Mock BookDeleted 이벤트 생성</title>
@@ -51,6 +65,22 @@
 
             <checks>
                 <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Comment 삭제 여부 확인(CommentAll)</title>
+            <help>Comment가 삭제되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8089</baseUrl>
+            <resourceUrl>comments</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"comments"[ ]*:[ ]*\[[ ]*\]</check>
             </checks>
         </test>
 
