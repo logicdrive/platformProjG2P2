@@ -50,7 +50,7 @@
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">"title"[ ]*:[ ]*"BookShelf"</check>
+                <check type="data">"title"[ ]*:[ ]*"My BookShelf"</check>
             </checks>
         </test>
 
