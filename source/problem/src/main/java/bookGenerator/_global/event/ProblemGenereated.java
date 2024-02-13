@@ -17,5 +17,5 @@ public class ProblemGenereated extends AbstractEvent {
 	private Long indexId;
 	private String content;
 	private String answer;
-	private String priority;
+	private Long priority;
 }
