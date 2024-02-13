@@ -50,7 +50,7 @@
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">"fileUrl"[ ]*:[ ]*"contentFileUrl.jpg"</check>
+                <check type="data">"url"[ ]*:[ ]*"contentFileUrl.jpg"</check>
             </checks>
         </test>
 
