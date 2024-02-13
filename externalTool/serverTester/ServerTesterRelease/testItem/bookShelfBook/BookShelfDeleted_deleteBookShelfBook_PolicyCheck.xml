@@ -38,6 +38,21 @@
             </checks>
         </test>
 
+       <test>
+            <title>Mock BookShelfBook 2 생성(CreateContent)</title>
+            <help>테스트를 위해서 강제로 새로운 BookShelfBook을 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8091</baseUrl>
+            <resourceUrl>bookShelfBooks</resourceUrl>
+            <headers></headers>
+            <data>{"bookShelfId":1,"bookId":2}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
 
         <test>
             <title>Mock BookShelfDeleted 이벤트 생성</title>
@@ -50,6 +65,22 @@
             <data>{"id":1,"createrId":1,"title":"testBookShelfTitle","bookCount":1,"isShared":false,"isDeletable":false,"createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>BookShelfBook 삭제 여부 확인(BookShelfBookAll)</title>
+            <help>BookShelfBook들이 삭제되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8091</baseUrl>
+            <resourceUrl>bookShelfBooks</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"bookShelfBooks"[ ]*:[ ]*\[[ ]*\]</check>
             </checks>
         </test>
     </tests>
