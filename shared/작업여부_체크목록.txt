@@ -7,7 +7,7 @@ content: O / T / D
 problem: O / T / D
 comment: O / T / D
 bookShelf: O / T / D
-bookShelfBook: O / T
+bookShelfBook: O / T / D
 file: O / T
 collectedData: 
 externalSystemProxy: 
@@ -110,12 +110,12 @@ bookShelfBookDeleted_decreaseBookCount_Policy: O / T / D
 
 * bookShelfBook
 > EndPoints
-addBookShelfBook: O / T
-deleteBookShelfBook: O / T
+addBookShelfBook: O / T / D
+deleteBookShelfBook: O / T / D
 
 > Policy
-bookDeleted_deleteBookShelfBook_Policy: O / T
-bookShelfDeleted_deleteBookShelfBook_Policy: O / T
+bookDeleted_deleteBookShelfBook_Policy: O / T / D
+bookShelfDeleted_deleteBookShelfBook_Policy: O / T / D
 
 ---
 
