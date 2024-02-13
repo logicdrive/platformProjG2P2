@@ -311,5 +311,39 @@
                 <check type="status">2.*</check>
             </checks>
         </test>
+
+
+        <test>
+            <title>File 서비스 통신 확인(SanityCheck)</title>
+            <help>File 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/file/sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>File 서비스 권한 Bypass 체크(AuthenticationBypass)</title>
+            <help>File 서비스에 특별한 JWT 체크 없이 디버그용으로 접근할 수 있는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/file/sanityCheck/authenticationCheck</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
     </tests>
 </root>
