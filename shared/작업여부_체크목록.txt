@@ -6,7 +6,7 @@ index: O / T / D
 content: O / T / D
 problem: O / T / D
 comment: O / T / D
-bookShelf: O / T
+bookShelf: O / T / D
 bookShelfBook: O / T
 file: O / T
 collectedData: 
@@ -96,15 +96,15 @@ bookDeleted_deleteComment_Policy: O / T / D
 
 * bookShelf
 > EndPoints
-createBookShelf: O / T
-updateBookShelfTitle: O / T
-deleteBookShelf: O / T
-updateIsShared: O / T
+createBookShelf: O / T / D
+updateBookShelfTitle: O / T / D
+deleteBookShelf: O / T / D
+updateIsShared: O / T / 
 
 > Policy
-signUpCompleted_createMyBookShelf_Policy: O / T
-bookShelfBookAdded_increaseBookCount_Policy: O / T
-bookShelfBookDeleted_decreaseBookCount_Policy: O / T
+signUpCompleted_createMyBookShelf_Policy: O / T / D
+bookShelfBookAdded_increaseBookCount_Policy: O / T / D
+bookShelfBookDeleted_decreaseBookCount_Policy: O / T / D
 
 ---
 
