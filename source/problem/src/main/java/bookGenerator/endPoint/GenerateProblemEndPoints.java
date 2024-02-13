@@ -5,6 +5,7 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 
 import javax.transaction.Transactional;
 
@@ -28,7 +29,7 @@ class GenerateProblemReqDto {
 public class GenerateProblemEndPoints {
 
     @PutMapping("/generateProblem")
-    public ResponseEntity<Void> generateProblem(GenerateProblemReqDto reqDto) {
+    public ResponseEntity<Void> generateProblem(@RequestBody GenerateProblemReqDto reqDto) {
         try {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
