@@ -18,114 +18,14 @@ frontend:
 
 ---
 
-* book
-> EndPoints
-createEmptyBook: O / T / D
-generateCoverImage: O / T / D
-updateCoverImage: O / T / D
-updateBookTitle: O / T / D
-likeBook: O / T / D
-deleteBook: O / T / D
-updateIsShared: O / T / D
-
-> Policy
-emptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy: O / T / D
-
----
-
-* tag
-> EndPoints
-generateTags: O / T / D
-createTag: O / T / D
-editTag: O / T / D
-deleteTag: O / T / D
-
-> Policy
-tagGernerated_createTag_Policy: O / T / D
-bookDeleted_deleteTag_Policy: O / T / D
-
----
-
-* index
-> EndPoints
-generateIndexes: O / T / D
-createIndex: O / T / D
-editIndex: O / T / D
-deleteIndex: O / T / D
-
-> Policy
-indexGenereated_createIndex_Policy: O / T / D
-bookDeleted_deleteIndex_Policy: O / T / D
-
----
-
-* content
-> EndPoints
-generateContent: O / T / D
-
-> Policy
-contentImageInfoUploaded_updateImageFileId_Policy: O / T / D
-contentGenerated_updateContent_Policy: O / T / D
-indexDeleted_deleteContent_Policy: O / T / D
-contentImageGenerationFailed_deleteContentByFail_Policy: O / T / D
-contentGenerationFailed_deleteContentByFail_Policy: O / T / D
-
----
-
-* problem
-> EndPoints
-generateProblem: O / T / D
-
-> Policy
-problemGenereated_createProblem_Policy: O / T / D
-indexDeleted_deleteProblem_Policy: O / T / D
-problemGenerationFailed_deleteProblemByFail_Policy: O / T / D
-
----
-
-* comment
-> EndPoints
-createComment: O / T / D
-updateComment: O / T / D
-deleteComment: O / T / D
-
-> Policy
-bookDeleted_deleteComment_Policy: O / T / D
-
----
-
-* bookShelf
-> EndPoints
-createBookShelf: O / T / D
-updateBookShelfTitle: O / T / D
-deleteBookShelf: O / T / D
-updateIsShared: O / T / 
-
-> Policy
-signUpCompleted_createMyBookShelf_Policy: O / T / D
-bookShelfBookAdded_increaseBookCount_Policy: O / T / D
-bookShelfBookDeleted_decreaseBookCount_Policy: O / T / D
-
----
-
-* bookShelfBook
-> EndPoints
-addBookShelfBook: O / T / D
-deleteBookShelfBook: O / T / D
-
-> Policy
-bookDeleted_deleteBookShelfBook_Policy: O / T / D
-bookShelfDeleted_deleteBookShelfBook_Policy: O / T / D
-
----
-
-* file
-> Policy
-EmptyBookCreated_createEmptyCoverImageInfo_Policy: O / T / D
-CoverImageGenerationRequested_requestCoverImageGeneration_Policy: O / T / D
-CoverImageUpdateRequested_requestCoverImageUpdate_Policy: O / T / D
-CoverImageGenerated_updateCoverImageInfo_Policy: O / T / D
-CoverImageUploaded_updateCoverImageInfo_Policy: O / T / D
-ContentImageGenereated_uploadContentImageInfo_Policy: O / T / D
-BookDeleted_DeleteFileInfo_Policy: O / T / D
-ContentImageDeleteRequsted_DeleteFileInfo_Policy: O / T / D
+* externalSystemProxy
+> Proxy
+CoverImageGenerationRequestedByFile_generateCoverImage_Policy: 
+CoverImageUpdateRequestedByFile_uploadNewCoverImage_Policy: 
+ExistingCoverImageDeletingRequested_deleteExistingCoverImage_Policy: 
+FileInfoDeleted_deleteExistingCoverImage_Policy: 
+TagGenerationRequested_genereateTags_Policy: 
+IndexGenerationRequested_generateIndexes_Policy: 
+ContentImageGenerationRequested_generateContentImage_Policy: 
+ContentGenerationRequested_generateContent_Policy: 
+ProblemGenerationRequested_generateProblem_Policy: 
