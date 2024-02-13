@@ -74,12 +74,12 @@ contentGenerationFailed_deleteContentByFail_Policy: O / T / D
 
 * problem
 > EndPoints
-generateProblem: O / T
+generateProblem: O / T / D
 
 > Policy
-problemGenereated_createProblem_Policy: O / T
-indexDeleted_deleteProblem_Policy: O / T
-problemGenerationFailed_deleteProblemByFail_Policy: O / T
+problemGenereated_createProblem_Policy: O / T / D
+indexDeleted_deleteProblem_Policy: O / T / D
+problemGenerationFailed_deleteProblemByFail_Policy: O / T / D
 
 ---
 

@@ -38,6 +38,21 @@
             </checks>
         </test>
 
+       <test>
+            <title>Mock Problem 2 생성(CreateProblem)</title>
+            <help>테스트를 위해서 강제로 새로운 Problem을 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>problems</resourceUrl>
+            <headers></headers>
+            <data>{"indexId":1,"content":"testContent2","answer":"testAnswer2","priority":2}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
 
         <test>
             <title>Mock IndexDeleted 이벤트 생성</title>
@@ -52,6 +67,22 @@
                 <check type="status">2.*</check>
             </checks>
         </test>
+
+        <test>
+            <title>Problem 삭제 여부 확인(ProblemAll)</title>
+            <help>Problem 삭제 여부를 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8087</baseUrl>
+            <resourceUrl>problems</resourceUrl>
+            <headers></headers>
+            <data></data>
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"problems"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
 
         <test>
             <title>ProblemDeleted 이벤트 발행 확인(Logs)</title>
