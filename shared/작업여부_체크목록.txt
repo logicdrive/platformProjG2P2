@@ -5,7 +5,7 @@ tag: O / T / D
 index: O / T / D
 content: O / T / D
 problem: O / T / D
-comment: O / T
+comment: O / T / D
 bookShelf: O / T
 bookShelfBook: O / T
 file: O / T
