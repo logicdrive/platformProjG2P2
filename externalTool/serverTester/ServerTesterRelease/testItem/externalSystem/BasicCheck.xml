@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>ExternalSystem</group>
+        <title>_정상 작동 여부 체크용 엔드포인트들</title>
+        <help>ExternalSystem 서비스에 요청할 수 있는 체크용 엔드포인트들 입니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>통신 확인(SanityCheck)</title>
+            <help>ExternalSystem 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8095</baseUrl>
+            <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+        
+
+        <test>
+            <title>로그 얻기(Logs)</title>
+            <help>ExternalSystem 서비스의 로그들을 얻어옵니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8095</baseUrl>
+            <resourceUrl>sanityCheck/logs</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>에러 로그 얻기(ErrorLogs)</title>
+            <help>ExternalSystem 서비스의 로그들 중에서 에러 로그만 얻어옵니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8095</baseUrl>
+            <resourceUrl>sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>0 나누기 오류 체크(DivByZeroCheck)</title>
+            <help>일부로 0으로 나눠서 에러를 일으켜서 결과를 관찰합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8095</baseUrl>
+            <resourceUrl>sanityCheck/divByZeroCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>Echo 메세지 체크(EchoWithJson)</title>
+            <help>Json 메세지를 보내서 정상적으로 동일한 메세지를 받는지 테스트합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8095</baseUrl>
+            <resourceUrl>sanityCheck/echoWithJson</resourceUrl>
+            <headers></headers>
+            <data>{"message":"Hello, World !"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>
