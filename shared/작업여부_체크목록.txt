@@ -29,3 +29,10 @@ IndexGenerationRequested_generateIndexes_Policy:
 ContentImageGenerationRequested_generateContentImage_Policy: 
 ContentGenerationRequested_generateContent_Policy: 
 ProblemGenerationRequested_generateProblem_Policy: 
+
+---
+
+* externalSystem
+> S3
+uploadFile: 
+removeFile: 
