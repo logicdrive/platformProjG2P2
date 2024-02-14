@@ -36,3 +36,12 @@ ProblemGenerationRequested_generateProblem_Policy:
 > S3
 uploadFile: 
 removeFile: 
+
+> Google
+generateSearchImage: 
+
+> OpenAI
+generateTags: 
+generateIndexes: 
+generateContent: 
+generateProblems: 
