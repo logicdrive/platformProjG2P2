@@ -28,6 +28,6 @@ generateSearchImage: O
 
 > OpenAI
 generateTags: 
-generateIndexes: 
+generateIndexes: O
 generateContent: 
 generateProblems: 
