@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+import bookGenerator.domain.Content;
+import bookGenerator.domain.ContentManageService;
+import bookGenerator._global.event.ContentImageFileIdUpdated;
 import bookGenerator._global.event.ContentImageInfoUploaded;
 
 @Service
@@ -28,10 +31,12 @@ public class ContentImageInfoUploaded_updateImageFileId_Policy {
             CustomLogger.debugObject(CustomLoggerType.ENTER, contentImageInfoUploaded);
 
             // [1] contentImageInfoUploaded.contentId를 이용하여 Content를 조회함
-
+            Content contentToFind = ContentManageService.getInstance().findByIdOrThrow(contentImageInfoUploaded.getContentId());
             // [2] 조회된 Content의 imageFileId를 contentImageInfoUploaded.id로 업데이트함
-
+            contentToFind.setImageFileId(contentImageInfoUploaded.getId());
+            Content.repository().save(contentToFind);
             // [3] ContentImageFileIdUpdated 이벤트를 업데이트된 Content를 기반으로 발생시킴
+            (new ContentImageFileIdUpdated(contentToFind)).publish();
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
