@@ -17,3 +17,21 @@ gateway:
 frontend: 
 
 ---
+
+* collectedData
+User
+
+Book
+LikeHistory
+Tag
+Index
+Content
+Problem
+Comment
+
+BookShelf
+BookShelfBook
+File
+
+RecommendBookToUser
+RecommendBookToBook
