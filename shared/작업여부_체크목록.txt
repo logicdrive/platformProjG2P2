@@ -10,29 +10,10 @@ bookShelf: O / T / D
 bookShelfBook: O / T / D
 file: O / T / D
 collectedData: 
-externalSystemProxy: 
-externalSystem: 
+externalSystemProxy: O / D
+externalSystem: O / D
 recommendCalcSystem: 
 gateway: 
 frontend: 
 
 ---
-
-* externalSystemProxy
-> Proxy
-CoverImageGenerationRequestedByFile_generateCoverImage_Policy: 
-CoverImageUpdateRequestedByFile_uploadNewCoverImage_Policy: 
-ExistingCoverImageDeletingRequested_deleteExistingCoverImage_Policy: 
-FileInfoDeleted_deleteExistingCoverImage_Policy: 
-TagGenerationRequested_genereateTags_Policy: 
-IndexGenerationRequested_generateIndexes_Policy: 
-ContentImageGenerationRequested_generateContentImage_Policy: 
-ContentGenerationRequested_generateContent_Policy: 
-ProblemGenerationRequested_generateProblem_Policy: 
-
----
-
-* externalSystem
-> S3
-uploadFile: 
-removeFile: 
