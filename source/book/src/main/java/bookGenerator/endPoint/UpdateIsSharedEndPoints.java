@@ -1,7 +1,6 @@
 package bookGenerator.endPoint;
 
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -10,12 +9,10 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.PutMapping;
 
 import javax.transaction.Transactional;
-
 import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
 import bookGenerator._global.event.BookIsSharedUpdated;
-import bookGenerator._global.event.CoverImageUpdateRequested;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.domain.Book;
@@ -64,7 +61,7 @@ public class UpdateIsSharedEndPoints {
             if (book == null) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
             }
-            book.updateIsShared(reqDto.getIsShared());
+            book.setIsShared(reqDto.getIsShared());
             bookRepository.save(book);
 
             // [3] BookIsSharedUpdated 이벤트를 저장한 Book 객체로 발생시킴
