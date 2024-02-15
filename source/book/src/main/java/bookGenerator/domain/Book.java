@@ -86,4 +86,8 @@ public class Book extends LoggedEntity {
 
     @PostRemove
     public void onPostRemove() {super.onPostRemove();}
+
+    public void setShared(Boolean shared) {
+        isShared = shared;
+    }
 }

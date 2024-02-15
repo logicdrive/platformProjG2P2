@@ -12,10 +12,11 @@ import javax.transaction.Transactional;
 import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
-
+import bookGenerator._global.event.BookDeleted;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.domain.Book;
+import bookGenerator.domain.BookManageService;
 
 
 @Data
@@ -41,25 +42,32 @@ class DeleteBookResDto {
 public class DeleteBookEndPoints {
 
     @PutMapping("/deleteBook")
-    public ResponseEntity<Void> deleteBook(@RequestBody DeleteBookReqDto reqDto) {
+    public ResponseEntity<DeleteBookResDto> deleteBook(@RequestBody DeleteBookReqDto reqDto) {
         try {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
             
             // [1] reqDto.bookId로 Book 객체를 찾음
+            Book book = BookManageService.getInstance().findByIdOrThrow(reqDto.getBookId());
 
+            
             // [2] Book 객체를 삭제
+            Book.repository().delete(book);
+
 
             // [3] BookDeleted 이벤트를 찾은 Book 객체로 발생시킴
+            (new BookDeleted(book)).publish();
+
             
             // [4] 찾은 Book 객체의 ID를 반환
+            DeleteBookResDto deleteBookResDto = new DeleteBookResDto(book);
+            CustomLogger.debugObject(CustomLoggerType.EXIT, deleteBookResDto);
 
-            CustomLogger.debug(CustomLoggerType.EXIT);
-
-            return ResponseEntity.status(HttpStatus.OK).build();
+            return ResponseEntity.ok(deleteBookResDto);
 
         } catch(Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            
         }
     }
 
