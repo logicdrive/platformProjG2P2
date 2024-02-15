@@ -16,7 +16,7 @@ import bookGenerator._global.event.BookShelfBookAdded;
 
 @Service
 @Transactional
-public class BookShelfBookAdded_increaseBookCount_Policy {
+public class BookShelfBookAdded_IncreaseBookCount_Policy {
 
     // BookShelf에 새로운 책이 추가되었을 경우, 개수를 올리는 정책
     @StreamListener(
