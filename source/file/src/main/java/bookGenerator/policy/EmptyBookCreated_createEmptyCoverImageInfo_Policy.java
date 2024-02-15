@@ -10,8 +10,10 @@ import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.domain.File;
+import bookGenerator.domain.FileManageService;
 import bookGenerator._global.event.EmptyBookCreated;
 import bookGenerator._global.event.EmptyCoverImageInfoCreated;
+import bookGenerator._global.eventBase.BookEvent;
 
 @Service
 @Transactional
@@ -35,9 +37,12 @@ public class EmptyBookCreated_createEmptyCoverImageInfo_Policy {
             // [!] url은 null로 둔다.
             // [!] url만 초기화시키면 되며, 다른 변수들은 자동으로 초기화됨
             file.setUrl(null);
+            File.repository().save(file);
+
+            EmptyBookCreated book = new EmptyBookCreated();
 
             // [2] EmptyCoverImageInfoCreated 이벤트를 생성된 File 객체로 발생시킨다.
-            (new EmptyCoverImageInfoCreated(file,null)).publish();
+            (new EmptyCoverImageInfoCreated(file,book.getId())).publish();
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
