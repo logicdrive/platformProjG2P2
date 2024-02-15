@@ -20,8 +20,8 @@ frontend:
 
 * externalSystem
 > S3
-uploadFile: 
-removeFile: 
+uploadFile: O
+removeFile: O
 
 > Google
 generateSearchImage: 
