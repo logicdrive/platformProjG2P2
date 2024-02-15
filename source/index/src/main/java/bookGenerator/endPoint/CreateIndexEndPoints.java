@@ -1,6 +1,5 @@
 package bookGenerator.endPoint;
 
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -40,14 +39,6 @@ class CreateIndexResDto {
 @Transactional
 @RequestMapping("/indexes")
 public class CreateIndexEndPoints {
-    private final ApplicationEventPublisher eventPublisher;
-
-    public CreateIndexEndPoints(ApplicationEventPublisher eventPublisher) {
-        if (eventPublisher == null) {
-            throw new IllegalArgumentException("eventPublisher cannot be null");
-        }
-        this.eventPublisher = eventPublisher;
-    }
 
     @PutMapping("/createIndex")
     public ResponseEntity<CreateIndexResDto> createIndex(@RequestBody CreateIndexReqDto reqDto) {
@@ -72,7 +63,7 @@ public class CreateIndexEndPoints {
 
             // [2] IndexCreated 이벤트를 발생시킴
             IndexCreated indexCreatedEvent = new IndexCreated(index);
-            eventPublisher.publishEvent(indexCreatedEvent);
+            indexCreatedEvent.publish();
 
             // [3] 생성된 Index 객체의 id를 반환함
 

@@ -15,9 +15,11 @@ import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
 import bookGenerator._global.event.BookIsSharedUpdated;
+import bookGenerator._global.event.CoverImageUpdateRequested;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.domain.Book;
+import bookGenerator.domain.BookManageService;
 import bookGenerator.domain.BookRepository;
 
 @Data
@@ -44,14 +46,6 @@ public class UpdateIsSharedEndPoints {
 
     @Autowired
     private BookRepository bookRepository;
-    private final ApplicationEventPublisher eventPublisher;
-
-    public UpdateIsSharedEndPoints(ApplicationEventPublisher eventPublisher) {
-        if (eventPublisher == null) {
-            throw new IllegalArgumentException("eventPublisher cannot be null");
-        }
-        this.eventPublisher = eventPublisher;
-    }
 
     @PutMapping("/updateIsShared")
     public ResponseEntity<UpdateIsSharedResDto> updateIsShared(@RequestBody UpdateIsSharedReqDto reqDto) {
@@ -63,20 +57,19 @@ public class UpdateIsSharedEndPoints {
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
             // [1] reqDto.bookId로 Book 객체를 찾음
-            Book book = bookRepository.findById(reqDto.getBookId())
-                    .orElseThrow(() -> new RuntimeException("Book not found"));
-                    
+
+            Book book = BookManageService.getInstance().findByIdOrThrow(reqDto.getBookId());
 
             // [2] reqDto.isShared로 Book 객체의 isShared을 변경하고 저장함
             if (book == null) {
                 return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
             }
-            book.setShared(reqDto.getIsShared());
+            book.updateIsShared(reqDto.getIsShared());
             bookRepository.save(book);
 
             // [3] BookIsSharedUpdated 이벤트를 저장한 Book 객체로 발생시킴
-            BookIsSharedUpdated event = new BookIsSharedUpdated(book);
-            eventPublisher.publishEvent(event);
+
+            (new BookIsSharedUpdated(book)).publish();
 
             // [4] 저장한 Book 객체의 ID를 반환
 

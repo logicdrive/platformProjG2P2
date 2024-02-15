@@ -4,6 +4,7 @@ import javax.transaction.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
@@ -16,24 +17,13 @@ import bookGenerator._global.event.BookDeleted;
 import bookGenerator._global.event.CommentDeleted;
 import bookGenerator.domain.Comment;
 import bookGenerator.domain.CommentRepository;
-import org.springframework.context.ApplicationEventPublisher;
-import org.springframework.context.ApplicationEventPublisherAware;
 
 @Service
 @Transactional
-public class BookDeleted_deleteComment_Policy implements ApplicationEventPublisherAware {
+public class BookDeleted_deleteComment_Policy {
 
     @Autowired
     private CommentRepository commentRepository;
-    private ApplicationEventPublisher eventPublisher;
-
-    @Override
-    public void setApplicationEventPublisher(ApplicationEventPublisher eventPublisher) {
-        if (eventPublisher == null) {
-            throw new IllegalArgumentException("eventPublisher cannot be null");
-        }
-        this.eventPublisher = eventPublisher;
-    }
 
     // 책이 삭제되었을 경우, 생성된 코멘트들을 삭제하기 위한 정책
     @StreamListener(value = KafkaProcessor.INPUT, condition = "headers['type']=='BookDeleted'")
@@ -47,7 +37,7 @@ public class BookDeleted_deleteComment_Policy implements ApplicationEventPublish
             CustomLogger.debugObject(CustomLoggerType.ENTER, bookDeleted);
 
             // [1] 해당 책과 관련된 Comment들을 삭제
-            List<Comment> comments = commentRepository.findByBookId(bookDeleted.getBookId());
+            List<Comment> comments = commentRepository.findByBookId(bookDeleted.getId());
             if (comments == null) {
                 throw new IllegalArgumentException("comments is null");
             }
@@ -65,8 +55,8 @@ public class BookDeleted_deleteComment_Policy implements ApplicationEventPublish
                 if (comment == null) {
                     throw new IllegalArgumentException("comment is null");
                 }
-                CommentDeleted commentDeleted = new CommentDeleted(comment);
-                eventPublisher.publishEvent(commentDeleted);
+                (new CommentDeleted(comment)).publish();
+
             }
 
             CustomLogger.debug(CustomLoggerType.EXIT);
