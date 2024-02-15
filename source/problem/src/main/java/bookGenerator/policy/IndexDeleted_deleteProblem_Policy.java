@@ -33,8 +33,8 @@ public class IndexDeleted_deleteProblem_Policy {
             CustomLogger.debugObject(CustomLoggerType.ENTER, indexDeleted);
             
             // [1] indexDeleted.id를 이용해여 Problem들을 찾아서 삭제한다.
-            // Problem problem = ProblemManageService.getInstance().findByIdOrThrow(indexDeleted.getId());
             List<Problem> problems = Problem.repository().findByIndexId(indexDeleted.getId());
+            
             for (Problem problem : problems){
 
                 Problem.repository().delete(problem);
