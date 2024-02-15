@@ -23,6 +23,12 @@ public class CommentManageService {
         return Comment.repository().findById(id)
             .orElseThrow(() -> new CommentNotFoundException());
     }
+
+
+    public void saveOrUpdate(Comment comment) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'saveOrUpdate'");
+    }
 }
 
 @Getter
