@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 
 import lombok.Data;
 import lombok.ToString;
-
+import bookGenerator._global.event.IndexGenerationRequested;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 
@@ -35,6 +35,7 @@ public class GenerateIndexesEndPoints {
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
             // [1] IndexGenerationRequested 이벤트를 bookId를 기반으로 생성함
+            (new IndexGenerationRequested(reqDto.getBookId())).publish();
                 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
