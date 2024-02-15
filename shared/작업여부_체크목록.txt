@@ -11,23 +11,9 @@ bookShelfBook: O / T / D
 file: O / T / D
 collectedData: 
 externalSystemProxy: O / D
-externalSystem: 
+externalSystem: O / D
 recommendCalcSystem: 
 gateway: 
 frontend: 
 
 ---
-
-* externalSystem
-> S3
-uploadFile: O
-removeFile: O
-
-> Google
-generateSearchImage: O
-
-> OpenAI
-generateTags: 
-generateIndexes: O
-generateContent: 
-generateProblems: 
