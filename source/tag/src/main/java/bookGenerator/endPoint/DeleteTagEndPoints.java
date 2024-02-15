@@ -42,7 +42,7 @@ class DeleteTagResDto {
 public class DeleteTagEndPoints {
 
     @PutMapping("/deleteTag")
-    public ResponseEntity<Tag> deleteTag(@RequestBody DeleteTagReqDto reqDto) {
+    public ResponseEntity<DeleteTagResDto> deleteTag(@RequestBody DeleteTagReqDto reqDto) {
         try {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
@@ -61,8 +61,7 @@ public class DeleteTagEndPoints {
 
             CustomLogger.debugObject(CustomLoggerType.EXIT, resDto);
 
-            return ResponseEntity.status(HttpStatus.OK).body(tagToDelete);
-
+            return ResponseEntity.ok(resDto);
             // Fin
 
         } catch(Exception e) {

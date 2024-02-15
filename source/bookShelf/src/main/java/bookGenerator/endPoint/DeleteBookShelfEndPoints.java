@@ -42,7 +42,7 @@ class DeleteBookShelfResDto {
 public class DeleteBookShelfEndPoints {
 
     @PutMapping("/deleteBookShelf")
-    public ResponseEntity<BookShelf> deleteBookShelf(@RequestBody DeleteBookShelfReqDto reqDto) {
+    public ResponseEntity<DeleteBookShelfResDto> deleteBookShelf(@RequestBody DeleteBookShelfReqDto reqDto) {
         try {
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
@@ -60,7 +60,7 @@ public class DeleteBookShelfEndPoints {
             
             CustomLogger.debugObject(CustomLoggerType.EXIT, resDto);
 
-            return ResponseEntity.status(HttpStatus.OK).body(bookShelfToDelete);
+            return ResponseEntity.ok(resDto);
 
             // Fin
 

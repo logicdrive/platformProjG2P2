@@ -46,7 +46,7 @@ class UpdateCoverImageResDto {
 @RequestMapping("/books")
 public class UpdateCoverImageEndPoints {
     @PutMapping("/updateCoverImage")
-    public ResponseEntity<Book> updateCoverImage(@RequestBody UpdateCoverImageeReqDto reqDto) {
+    public ResponseEntity<UpdateCoverImageResDto> updateCoverImage(@RequestBody UpdateCoverImageeReqDto reqDto) {
         try {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
@@ -60,9 +60,9 @@ public class UpdateCoverImageEndPoints {
             // [3] 찾은 Book 객체의 ID를 반환
             UpdateCoverImageResDto resDto = new UpdateCoverImageResDto(bookToUpdateCover);
 
-            CustomLogger.debugObject(CustomLoggerType.EXIT,resDto);
+            CustomLogger.debugObject(CustomLoggerType.EXIT, resDto);
 
-            return ResponseEntity.status(HttpStatus.OK).body(bookToUpdateCover);
+            return ResponseEntity.ok(resDto);
 
             // Fin
 
