@@ -12,11 +12,10 @@ import javax.transaction.Transactional;
 import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
-
+import bookGenerator._global.event.IndexCreated;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.domain.Index;
-
 
 @Data
 @ToString
@@ -36,30 +35,45 @@ class CreateIndexResDto {
     }
 }
 
-
 @RestController
 @Transactional
 @RequestMapping("/indexes")
 public class CreateIndexEndPoints {
 
     @PutMapping("/createIndex")
-    public ResponseEntity<Void> createIndex(@RequestBody CreateIndexReqDto reqDto) {
+    public ResponseEntity<CreateIndexResDto> createIndex(@RequestBody CreateIndexReqDto reqDto) {
         try {
+            if (reqDto == null) {
+                return ResponseEntity.status(HttpStatus.BAD_REQUEST).body(null);
+            }
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
-            
+
             // [1] 새로운 Index 객체를 생성
             // [!] bookId, name, priority만 초기화시키면 되며, 다른 변수들은 자동으로 초기화됨
+            Index index = Index.builder()
+                    .bookId(reqDto.getBookId())
+                    .name(reqDto.getName())
+                    .priority(reqDto.getPriority())
+                    .build();
+            index = Index.repository().save(index);
+            if (index == null) {
+                return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            }
 
             // [2] IndexCreated 이벤트를 발생시킴
+            IndexCreated indexCreatedEvent = new IndexCreated(index);
+            indexCreatedEvent.publish();
 
             // [3] 생성된 Index 객체의 id를 반환함
 
+            CreateIndexResDto resDto = new CreateIndexResDto(index);
+
             CustomLogger.debug(CustomLoggerType.EXIT);
 
-            return ResponseEntity.status(HttpStatus.OK).build();
+            return ResponseEntity.ok(resDto);
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
