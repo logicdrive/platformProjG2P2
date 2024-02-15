@@ -24,7 +24,7 @@ uploadFile: O
 removeFile: O
 
 > Google
-generateSearchImage: 
+generateSearchImage: O
 
 > OpenAI
 generateTags: 
