@@ -32,8 +32,9 @@ public class BookShelfBookAdded_increaseBookCount_Policy {
             CustomLogger.debugObject(CustomLoggerType.ENTER, bookShelfBookAdded);
 
             // [1] bookShelfId로 BookShelf를 조회함
-            BookShelf bookShelf = BookShelfManageService.getInstance().findByIdOrThrow(bookShelfBookAdded.getId());
-
+            // BookShelf bookShelf = BookShelfManageService.getInstance().findByIdOrThrow(bookShelfBookAdded.getId());
+            // BookShelf bookShelf = BookShelf.repository().findById(bookShelfBookAdded.getBookShelfId());
+            BookShelf bookShelf = BookShelfManageService.getInstance().findByIdOrThrow(bookShelfBookAdded.getBookShelfId());
             
             // [2] 조회된 BookShelf의 bookCount를 1 올림
             bookShelf.setBookCount(bookShelf.getBookCount() + 1);
