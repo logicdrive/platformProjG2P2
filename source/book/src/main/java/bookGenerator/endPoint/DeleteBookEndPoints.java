@@ -42,7 +42,7 @@ class DeleteBookResDto {
 public class DeleteBookEndPoints {
 
     @PutMapping("/deleteBook")
-    public ResponseEntity<Void> deleteBook(@RequestBody DeleteBookReqDto reqDto) {
+    public ResponseEntity<Long> deleteBook(@RequestBody DeleteBookReqDto reqDto) {
         try {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
@@ -60,13 +60,16 @@ public class DeleteBookEndPoints {
 
             
             // [4] 찾은 Book 객체의 ID를 반환
+            // CustomLogger.debug(CustomLoggerType.EXIT);
             DeleteBookResDto deleteBookResDto = new DeleteBookResDto(book);
-            CustomLogger.debugObject(CustomLoggerType.EXIT,deleteBookResDto);
+            CustomLogger.debugObject(CustomLoggerType.EXIT, deleteBookResDto);
 
-            return ResponseEntity.status(HttpStatus.OK).build();
+            // return ResponseEntity.status(HttpStatus.OK).build();
+            return ResponseEntity.status(HttpStatus.OK).body(deleteBookResDto.getId());
 
         } catch(Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
+            
         }
     }
 
