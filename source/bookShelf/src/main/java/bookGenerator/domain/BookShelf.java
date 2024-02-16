@@ -56,6 +56,13 @@ public class BookShelf extends LoggedEntity {
         );
     }
 
+    public void decreaseBookCount() {
+        if (this.bookCount > 0) {
+            this.bookCount--;
+        } else {
+            throw new IllegalArgumentException("Book count cannot be less than 0");
+        }
+    }
 
     @PrePersist
     public void onPrePersist() {

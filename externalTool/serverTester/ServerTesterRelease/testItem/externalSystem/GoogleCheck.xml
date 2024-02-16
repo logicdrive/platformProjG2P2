@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>ExternalSystem</group>
+        <title>엔드포인트 그룹 테스트: Google</title>
+        <help>Google 엔드포인트 그룹의 정상 작동 여부를 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>GenerateSearchImage 엔드포인트 체크(GenerateSearchImage)</title>
+            <help>쿼리를 통해서 이미지를 생성하고, S3에 저장된 fileUrl을 얻습니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8095</baseUrl>
+            <resourceUrl>google/generateSearchImage</resourceUrl>
+            <headers></headers>
+            <data>{"query":"python"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>

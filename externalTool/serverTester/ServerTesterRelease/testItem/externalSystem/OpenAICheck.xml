@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>ExternalSystem</group>
+        <title>엔드포인트 그룹 테스트: OpenAI</title>
+        <help>OpenAI 엔드포인트 그룹의 정상 작동 여부를 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>GenerateTags 엔드포인트 체크(GenerateTags)</title>
+            <help>쿼리를 통해서 생성된 태그들을 얻습니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8095</baseUrl>
+            <resourceUrl>openai/generateTags</resourceUrl>
+            <headers></headers>
+            <data>{"query":"testTag"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>GenerateIndexes 엔드포인트 체크(GenerateIndexes)</title>
+            <help>쿼리를 통해서 생성된 인덱스들을 얻습니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8095</baseUrl>
+            <resourceUrl>openai/generateIndexes</resourceUrl>
+            <headers></headers>
+            <data>{"query":"testIndex"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>GenerateContent 엔드포인트 체크(GenerateContent)</title>
+            <help>쿼리를 통해서 생성된 인덱스들을 얻습니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8095</baseUrl>
+            <resourceUrl>openai/generateContent</resourceUrl>
+            <headers></headers>
+            <data>{"query":"testContent"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>GenerateProblems 엔드포인트 체크(GenerateProblems)</title>
+            <help>쿼리를 통해서 생성된 인덱스들을 얻습니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8095</baseUrl>
+            <resourceUrl>openai/generateProblems</resourceUrl>
+            <headers></headers>
+            <data>{"query":"testProblem"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>

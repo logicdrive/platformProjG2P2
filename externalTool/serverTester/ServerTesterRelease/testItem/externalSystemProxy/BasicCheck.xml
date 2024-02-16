@@ -116,5 +116,21 @@
                 <check type="status">2.*</check>
             </checks>
         </test>
+
+
+        <test>
+            <title>ExternalSystem Echo 통신 확인(ExternalSystemEchoCheck)</title>
+            <help>ExternalSystemd에 Echo를 통해서 통신이 가능한지 확인합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8092</baseUrl>
+            <resourceUrl>sanityCheck/externalSystemEchoCheck</resourceUrl>
+            <headers></headers>
+            <data>{"message": "testMessage"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
     </tests>
 </root>

@@ -12,10 +12,11 @@ import javax.transaction.Transactional;
 import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
-
+import bookGenerator._global.event.BookShelfDeleted;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.domain.BookShelf;
+import bookGenerator.domain.BookShelfManageService;
 
 
 @Data
@@ -41,22 +42,27 @@ class DeleteBookShelfResDto {
 public class DeleteBookShelfEndPoints {
 
     @PutMapping("/deleteBookShelf")
-    public ResponseEntity<Void> deleteBookShelf(@RequestBody DeleteBookShelfReqDto reqDto) {
+    public ResponseEntity<DeleteBookShelfResDto> deleteBookShelf(@RequestBody DeleteBookShelfReqDto reqDto) {
         try {
-
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
             // [1] reqDto.bookShelfId로 BookShelf 객체를 찾음
+            BookShelf bookShelfToDelete = BookShelfManageService.getInstance().findByIdOrThrow(reqDto.getBookShelfId());
 
             // [2] BookShelf 객체를 삭제
+            BookShelf.repository().delete(bookShelfToDelete);
 
             // [3] BookShelfDeleted 이벤트를 찾은 BookShelf 객체로 발생시킴
-            
-            // [4] 찾은 BookShelf 객체의 ID를 반환
-                
-            CustomLogger.debug(CustomLoggerType.EXIT);
+            (new BookShelfDeleted(bookShelfToDelete)).publish();            
 
-            return ResponseEntity.status(HttpStatus.OK).build();
+            // [4] 찾은 BookShelf 객체의 ID를 반환
+            DeleteBookShelfResDto resDto = new DeleteBookShelfResDto(bookShelfToDelete);
+            
+            CustomLogger.debugObject(CustomLoggerType.EXIT, resDto);
+
+            return ResponseEntity.ok(resDto);
+
+            // Fin
 
         } catch(Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
