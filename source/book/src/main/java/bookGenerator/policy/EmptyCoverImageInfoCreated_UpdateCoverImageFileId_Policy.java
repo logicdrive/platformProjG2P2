@@ -43,7 +43,7 @@ public class EmptyCoverImageInfoCreated_UpdateCoverImageFileId_Policy {
             }
 
             // [2] Book 객체의 coverImageFileId를 업데이트
-            book.setCoverImageFileId(emptyCoverImageInfoCreated.getBookId());
+            book.setCoverImageFileId(emptyCoverImageInfoCreated.getId());
 
             // [3] Book 객체로 CoverImageFileIdUpdated 이벤트를 발생시킴
             Book coverImageFile = Book.repository().save(book);
