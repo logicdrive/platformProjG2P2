@@ -6,6 +6,7 @@ import lombok.NoArgsConstructor;
 
 import bookGenerator._global.eventBase.EventNameAnnotation;
 import bookGenerator._global.eventBase.FileEvent;
+import bookGenerator.domain.File;
 
 @Data
 @NoArgsConstructor
@@ -13,6 +14,11 @@ import bookGenerator._global.eventBase.FileEvent;
 @EventNameAnnotation(eventName="CoverImageGenerationRequestedByFile")
 public class CoverImageUpdateRequestedByFile extends FileEvent {
     private String imageUrl;
+
+    public CoverImageUpdateRequestedByFile(File file, String imageUrl) {
+        super(file);
+        this.imageUrl = imageUrl;
+    }
 
     public String toString() {
         return String.format("%s(super=%s, imageUrlLength=%d)",
