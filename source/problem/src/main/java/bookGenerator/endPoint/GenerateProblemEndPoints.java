@@ -38,6 +38,8 @@ public class GenerateProblemEndPoints {
             ProblemGenerationRequsted problemGenerationRequsted = (new ProblemGenerationRequsted());
             problemGenerationRequsted.setIndexId(reqDto.getIndexId());
             
+            // [2] ProblemGenerationRequsted 이벤트 발생
+            problemGenerationRequsted.publish();
             
             CustomLogger.debug(CustomLoggerType.EXIT);
 
