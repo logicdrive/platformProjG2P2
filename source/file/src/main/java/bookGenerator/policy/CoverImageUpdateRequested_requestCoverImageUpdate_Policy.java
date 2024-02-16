@@ -44,7 +44,7 @@ public class CoverImageUpdateRequested_requestCoverImageUpdate_Policy {
             deletingRequestedEvent.publish();
             
             // [3] File을 이용해서 CoverImageUpdateRequestedByFile 이벤트를 발생시킴
-            CoverImageUpdateRequestedByFile coverImageUpdateRequestedByFileover = new CoverImageUpdateRequestedByFile(file);
+            CoverImageUpdateRequestedByFile coverImageUpdateRequestedByFileover = new CoverImageUpdateRequestedByFile(file, null);
             coverImageUpdateRequestedByFileover.publish();
 
             CustomLogger.debug(CustomLoggerType.EXIT);
