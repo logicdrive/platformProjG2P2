@@ -1,1 +1,0 @@
-bash.exe ./sanityCheck/httpCommandCheck/example.sh
