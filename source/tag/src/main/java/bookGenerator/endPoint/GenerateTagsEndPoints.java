@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 
 import lombok.Data;
 import lombok.ToString;
-
+import bookGenerator._global.event.TagGenerationRequested;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 
@@ -33,8 +33,9 @@ public class GenerateTagsEndPoints {
         try {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
-
+            
             // [1] TagGenerationRequested 이벤트를 bookId를 기반으로 생성함
+            (new TagGenerationRequested(reqDto.getBookId())).publish();
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
