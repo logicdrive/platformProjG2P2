@@ -11,7 +11,7 @@ import javax.transaction.Transactional;
 
 import lombok.Data;
 import lombok.ToString;
-
+import bookGenerator._global.event.ProblemGenerationRequsted;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 
@@ -35,7 +35,12 @@ public class GenerateProblemEndPoints {
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
             
             // [1] ProblemGenerationRequsted 이벤트를 indexId를 기반으로 생성함
-
+            ProblemGenerationRequsted problemGenerationRequsted = (new ProblemGenerationRequsted());
+            problemGenerationRequsted.setIndexId(reqDto.getIndexId());
+            
+            // [2] ProblemGenerationRequsted 이벤트 발생
+            problemGenerationRequsted.publish();
+            
             CustomLogger.debug(CustomLoggerType.EXIT);
 
             return ResponseEntity.status(HttpStatus.OK).build();
