@@ -12,11 +12,12 @@ import javax.transaction.Transactional;
 import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
-
+import bookGenerator._global.event.CoverImageGenerationRequested;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 
 import bookGenerator.domain.Book;
+import bookGenerator.domain.BookManageService;
 
 
 @Data
@@ -24,6 +25,7 @@ import bookGenerator.domain.Book;
 class GenerateCoverImageReqDto {
     private Long bookId;
 }
+
 
 @Getter
 @ToString
@@ -49,16 +51,19 @@ public class GenerateCoverImageEndPoints {
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
             // [1] reqDto.bookId로 Book 객체를 찾음
+            Book bookToGen = BookManageService.getInstance().findByIdOrThrow(reqDto.getBookId());
 
             // [2] CoverImageGenerationRequested 이벤트를 찾은 Book 객체로 발생시킴
+            (new CoverImageGenerationRequested(bookToGen)).publish();
 
             // [3] 찾은 Book 객체의 ID를 반환
-                
+            GenerateCoverImageResDto resDto = new GenerateCoverImageResDto(bookToGen);
+
             CustomLogger.debug(CustomLoggerType.EXIT);
 
             return ResponseEntity.status(HttpStatus.OK).build();
 
-        } catch(Exception e) {
+        } catch (Exception e) {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }
