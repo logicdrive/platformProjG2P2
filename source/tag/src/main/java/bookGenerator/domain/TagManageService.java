@@ -1,5 +1,7 @@
 package bookGenerator.domain;
 
+import java.util.List;
+
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
 
@@ -22,6 +24,18 @@ public class TagManageService {
     public Tag findByIdOrThrow(Long id) {
         return Tag.repository().findById(id)
             .orElseThrow(() -> new TagNotFoundException());
+    }
+
+
+    public List<Tag> findByBookId(Long id) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'findByBookId'");
+    }
+
+
+    public void delete(Tag tag) {
+        // TODO Auto-generated method stub
+        throw new UnsupportedOperationException("Unimplemented method 'delete'");
     }
 }
 

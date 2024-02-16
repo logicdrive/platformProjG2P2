@@ -9,34 +9,38 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+import bookGenerator.domain.ContentManageService;
+import bookGenerator._global.event.ContentDeletedByFail;
 import bookGenerator._global.event.ContentGenerationFailed;
+import bookGenerator.domain.Content;
 
 @Service
 @Transactional
 public class ContentGenerationFailed_deleteContentByFail_Policy {
 
-    // 컨텐츠 생성에 실패시에 관련 컨텐츠를 삭제하고, 이벤트를 발생시키는 정책
-    @StreamListener(
-        value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='ContentGenerationFailed'"
-    )
-    public void contentGenerationFailed_deleteContentByFail_Policy(
-        @Payload ContentGenerationFailed contentGenerationFailed
-    ) {
-        try
-        {
-            
-            CustomLogger.debugObject(CustomLoggerType.ENTER, contentGenerationFailed);
+// 컨텐츠 생성에 실패시에 관련 컨텐츠를 삭제하고, 이벤트를 발생시키는 정책
+@StreamListener(
+    value = KafkaProcessor.INPUT,
+    condition = "headers['type']=='ContentGenerationFailed'"
+)
+public void contentGenerationFailed_deleteContentByFail_Policy(
+    @Payload ContentGenerationFailed contentGenerationFailed
+) {
+    try
+    {
+        CustomLogger.debugObject(CustomLoggerType.ENTER, contentGenerationFailed);
 
-            // [1] contentGenerationFailed.contentId에 해당하는 컨텐츠를 삭제한다.
+        // [1] contentGenerationFailed.contentId에 해당하는 컨텐츠를 삭제한다.
+        Content content = ContentManageService.getInstance().findByIdOrThrow(contentGenerationFailed.getContentId());
+        Content.repository().delete(content);
 
-            // [2] 삭제된 Content에 대한 ContentDeletedByFail 이벤트를 발생시킨다.
+        // [2] 삭제된 Content에 대한 ContentDeletedByFail 이벤트를 발생시킨다.
+        (new ContentDeletedByFail(content)).publish();
 
-            CustomLogger.debug(CustomLoggerType.EXIT);
+        CustomLogger.debug(CustomLoggerType.EXIT);
 
-        } catch(Exception e) {
-            CustomLogger.errorObject(e, "", contentGenerationFailed);        
-        }
+    } catch(Exception e) {
+        CustomLogger.errorObject(e, "", contentGenerationFailed);        
     }
-
+}
 }
