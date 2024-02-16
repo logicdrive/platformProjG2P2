@@ -15,8 +15,9 @@ import bookGenerator.domain.File;
 public class CoverImageUpdateRequestedByFile extends FileEvent {
     private String imageUrl;
 
-    public CoverImageUpdateRequestedByFile(File file) {
+    public CoverImageUpdateRequestedByFile(File file, String imageUrl) {
         super(file);
+        this.imageUrl = imageUrl;
     }
 
     public String toString() {
