@@ -1,1 +1,1 @@
-book-generator-collectedData
+book-generator-collected-data

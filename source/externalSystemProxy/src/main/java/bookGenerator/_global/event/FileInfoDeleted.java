@@ -1,25 +1,11 @@
 package bookGenerator._global.event;
 
-import java.util.Date;
-
-import lombok.Data;
-import lombok.EqualsAndHashCode;
-import lombok.ToString;
+import lombok.NoArgsConstructor;
 
 import bookGenerator._global.eventBase.EventNameAnnotation;
-import bookGenerator._global.infra.AbstractEvent;
+import bookGenerator._global.eventBase.FileEvent;
 
-@Data
-@ToString
-@EqualsAndHashCode(callSuper=false)
+@NoArgsConstructor
 @EventNameAnnotation(eventName="FileInfoDeleted")
-public class FileInfoDeleted extends AbstractEvent {
-	private Long id;
-	private String url;
-	private Date createdDate;
-	private Date updatedDate;
-
-    public FileInfoDeleted() {
-        super();
-    }
+public class FileInfoDeleted extends FileEvent {
 }

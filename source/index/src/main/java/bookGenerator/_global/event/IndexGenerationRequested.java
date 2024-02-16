@@ -15,9 +15,10 @@ import bookGenerator._global.infra.AbstractEvent;
 @EventNameAnnotation(eventName="IndexGenerationRequested")
 public class IndexGenerationRequested extends AbstractEvent {
     Long bookId;
+    String query;
 
-    public IndexGenerationRequested(Long bookId) {
-        super();
+    public IndexGenerationRequested(Long bookId, String query) {
         this.bookId = bookId;
+        this.query = query;
     }
 }

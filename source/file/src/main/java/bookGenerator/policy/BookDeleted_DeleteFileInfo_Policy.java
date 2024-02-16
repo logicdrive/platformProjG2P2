@@ -9,10 +9,11 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-import bookGenerator.domain.File;
-import bookGenerator.domain.FileManageService;
 import bookGenerator._global.event.BookDeleted;
 import bookGenerator._global.event.FileInfoDeleted;
+
+import bookGenerator.domain.File;
+import bookGenerator.domain.FileManageService;
 
 @Service
 @Transactional
@@ -31,15 +32,13 @@ public class BookDeleted_DeleteFileInfo_Policy {
             
             CustomLogger.debugObject(CustomLoggerType.ENTER, bookDeleted);
 
-            // [1] bookDeleted.coverImageFileId에 해당하는 File의 Id를 조회한다.
+
             File fileToDelete = FileManageService.getInstance().findByIdOrThrow(bookDeleted.getCoverImageFileId());
-            
-            // [2] 조회된 File을 삭제한다.
             File.repository().delete(fileToDelete);
 
-            // [3] 삭제된 File로 FileInfoDeleted 이벤트를 발생시킨다.
             (new FileInfoDeleted(fileToDelete)).publish();
-            
+
+
             CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {

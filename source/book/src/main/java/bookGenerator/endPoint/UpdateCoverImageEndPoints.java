@@ -12,9 +12,11 @@ import javax.transaction.Transactional;
 import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
+
 import bookGenerator._global.event.CoverImageUpdateRequested;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+
 import bookGenerator.domain.Book;
 import bookGenerator.domain.BookManageService;
 
@@ -51,22 +53,17 @@ public class UpdateCoverImageEndPoints {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
-            // [1] reqDto.bookId로 Book 객체를 찾음
-            Book bookToUpdateCover = BookManageService.getInstance().findByIdOrThrow(reqDto.getBookId());
 
-            // [2] CoverImageUpdateRequested 이벤트를 찾은 Book 객체 및 DataUrl로 발생시킴
-            (new CoverImageUpdateRequested(bookToUpdateCover, reqDto.getImageUrl())).publish();;
+            Book bookToUpdate = BookManageService.getInstance().findByIdOrThrow(reqDto.getBookId());
+            (new CoverImageUpdateRequested(bookToUpdate, reqDto.getImageUrl())).publish();
 
-            // [3] 찾은 Book 객체의 ID를 반환
-            UpdateCoverImageResDto resDto = new UpdateCoverImageResDto(bookToUpdateCover);
 
+            UpdateCoverImageResDto resDto = new UpdateCoverImageResDto(bookToUpdate);
             CustomLogger.debugObject(CustomLoggerType.EXIT, resDto);
-
             return ResponseEntity.ok(resDto);
 
-            // Fin
-
         } catch(Exception e) {
+            CustomLogger.errorObject(e, "", reqDto); 
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

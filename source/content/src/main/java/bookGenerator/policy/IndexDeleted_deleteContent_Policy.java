@@ -9,14 +9,15 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-import bookGenerator.domain.Content;
-import bookGenerator.domain.ContentManageService;
 import bookGenerator._global.event.ContentImageDeleteRequsted;
 import bookGenerator._global.event.IndexDeleted;
 
+import bookGenerator.domain.Content;
+import bookGenerator.domain.ContentManageService;
+
 @Service
 @Transactional
-public class IndexDeleted_deleteContent_Policy {   
+public class IndexDeleted_deleteContent_Policy {
 
     // Index가 삭제되었을 경우, 연관된 Content도 함께 삭제시키기 위해서
     @StreamListener(
@@ -27,16 +28,16 @@ public class IndexDeleted_deleteContent_Policy {
         @Payload IndexDeleted indexDeleted
     ) {
         try
-        {          
+        {
+            
             CustomLogger.debugObject(CustomLoggerType.ENTER, indexDeleted);
 
-            // [1] indexDeleted.id를 이용해여 Content를 찾아서 삭제한다.
-            // [!] ContentManageService 를 활용한다.
+
             Content contentToDelete = ContentManageService.getInstance().findByIndexIdOrThrow(indexDeleted.getId());
             Content.repository().delete(contentToDelete);
 
-            // [2] ContentImageDeleteRequsted 이벤트를 삭제한 Content를 기반으로 발생시킨다.
             (new ContentImageDeleteRequsted(contentToDelete)).publish();
+
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 

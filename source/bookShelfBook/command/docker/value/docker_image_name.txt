@@ -1,1 +1,1 @@
-book-generator-bookShelfBook
+book-generator-book-shelf-book

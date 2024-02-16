@@ -44,27 +44,22 @@ public class DeleteBookShelfEndPoints {
     @PutMapping("/deleteBookShelf")
     public ResponseEntity<DeleteBookShelfResDto> deleteBookShelf(@RequestBody DeleteBookShelfReqDto reqDto) {
         try {
+
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
-            // [1] reqDto.bookShelfId로 BookShelf 객체를 찾음
-            BookShelf bookShelfToDelete = BookShelfManageService.getInstance().findByIdOrThrow(reqDto.getBookShelfId());
 
-            // [2] BookShelf 객체를 삭제
+            BookShelf bookShelfToDelete = BookShelfManageService.getInstance().findByIdOrThrow(reqDto.getBookShelfId());
             BookShelf.repository().delete(bookShelfToDelete);
 
-            // [3] BookShelfDeleted 이벤트를 찾은 BookShelf 객체로 발생시킴
-            (new BookShelfDeleted(bookShelfToDelete)).publish();            
-
-            // [4] 찾은 BookShelf 객체의 ID를 반환
-            DeleteBookShelfResDto resDto = new DeleteBookShelfResDto(bookShelfToDelete);
+            (new BookShelfDeleted(bookShelfToDelete)).publish();
             
-            CustomLogger.debugObject(CustomLoggerType.EXIT, resDto);
 
+            DeleteBookShelfResDto resDto = new DeleteBookShelfResDto(bookShelfToDelete);
+            CustomLogger.debugObject(CustomLoggerType.EXIT, resDto);
             return ResponseEntity.ok(resDto);
 
-            // Fin
-
         } catch(Exception e) {
+            CustomLogger.errorObject(e, "", reqDto);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

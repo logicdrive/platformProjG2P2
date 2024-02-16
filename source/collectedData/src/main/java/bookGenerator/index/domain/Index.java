@@ -2,12 +2,18 @@ package bookGenerator.index.domain;
 
 import java.util.Date;
 
+import org.springframework.beans.BeanUtils;
+
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.PostPersist;
+import javax.persistence.PostRemove;
+import javax.persistence.PostUpdate;
 import javax.persistence.Table;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.PrePersist;
+import javax.persistence.PreRemove;
 import javax.persistence.PreUpdate;
 
 import lombok.AllArgsConstructor;
@@ -29,9 +35,9 @@ import bookGenerator._global.infra.LoggedEntity;
 public class Index extends LoggedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Long viewId;
 
-	private Long indexId;
+	private Long id;
 
 	private Long bookId;
 
@@ -43,6 +49,8 @@ public class Index extends LoggedEntity {
     
     private Date updatedDate;
 
+    private String status;
+
 
     public static IndexRepository repository() {
         return BootApplication.applicationContext.getBean(
@@ -50,19 +58,26 @@ public class Index extends LoggedEntity {
         );
     }
 
+    public void copyAllProperties(Object source) {
+        BeanUtils.copyProperties(source, this);
+    }
+
 
     @PrePersist
-    public void onPrePersist() {
-        this.createdDate = new Date();
-        this.updatedDate = new Date();
+    public void onPrePersist() {super.onPrePersist();}
 
-        super.onPrePersist();
-    }
+    @PostPersist
+    public void onPostPersist() {super.onPostPersist();}
 
     @PreUpdate
-    public void onPreUpdate() {
-        this.updatedDate = new Date();
+    public void onPreUpdate() {super.onPreUpdate();}
 
-        super.onPreUpdate();
-    }
+    @PostUpdate
+    public void onPostUpdate() {super.onPostUpdate();}
+    
+    @PreRemove
+    public void onPreRemove() {super.onPreRemove();}
+
+    @PostRemove
+    public void onPostRemove() {super.onPostRemove();}
 }

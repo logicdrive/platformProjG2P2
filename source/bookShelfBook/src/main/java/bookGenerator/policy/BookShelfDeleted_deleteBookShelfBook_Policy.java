@@ -1,7 +1,5 @@
 package bookGenerator.policy;
 
-import java.util.List;
-
 import javax.transaction.Transactional;
 
 import org.springframework.cloud.stream.annotation.StreamListener;
@@ -11,8 +9,9 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-import bookGenerator.domain.BookShelfBook;
 import bookGenerator._global.event.BookShelfDeleted;
+
+import bookGenerator.domain.BookShelfBook;
 
 @Service
 @Transactional
@@ -28,18 +27,19 @@ public class BookShelfDeleted_deleteBookShelfBook_Policy {
     ) {
         try
         {
+            
             CustomLogger.debugObject(CustomLoggerType.ENTER, bookShelfDeleted);
 
-            // [1] bookShelfId가 일치하는 BookShelfBook들을 삭제한다.
-            List<BookShelfBook> bookShelfBookToDelete = BookShelfBook.repository().findByBookShelfId(bookShelfDeleted.getId());
-            bookShelfBookToDelete.forEach(deleteBookShelfBook -> {
-                BookShelfBook.repository().delete(deleteBookShelfBook);
+
+            BookShelfBook.repository().findByBookShelfId(bookShelfDeleted.getId()).forEach(bookShelfBook -> {
+                BookShelfBook.repository().delete(bookShelfBook);
             });
+
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
-            CustomLogger.errorObject(e, "", bookShelfDeleted);
+            CustomLogger.errorObject(e, "", bookShelfDeleted);        
         }
     }
 

@@ -1,6 +1,4 @@
 package bookGenerator.policy;
-import java.util.List;
-
 
 import javax.transaction.Transactional;
 
@@ -11,10 +9,10 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-import bookGenerator.domain.Tag;
-import bookGenerator.domain.TagManageService;
 import bookGenerator._global.event.BookDeleted;
 import bookGenerator._global.event.TagDeleted;
+
+import bookGenerator.domain.Tag;
 
 @Service
 @Transactional
@@ -28,17 +26,16 @@ public class BookDeleted_deleteTag_Policy {
     public void bookDeleted_deleteTag_Policy(
         @Payload BookDeleted bookDeleted
     ) {
-        try {
+        try
+        {
             CustomLogger.debugObject(CustomLoggerType.ENTER, bookDeleted);
 
-            // [1] 해당 책에 부여된 태그들을 삭제
-            List<Tag> tags = Tag.repository().findByBookId(bookDeleted.getId());
-            for (Tag tag : tags) {
-                Tag.repository().delete(tag);
 
-                // [2] 각각의 삭제된 태그들에 대해서 TagDeleted 이벤트를 발생시킴
+            Tag.repository().findByBookId(bookDeleted.getId()).forEach(tag -> {
+                Tag.repository().delete(tag);
                 (new TagDeleted(tag)).publish();
-            }
+            });
+
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
@@ -46,4 +43,5 @@ public class BookDeleted_deleteTag_Policy {
             CustomLogger.errorObject(e, "", bookDeleted);        
         }
     }
+
 }

@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: $k8s_service_name
+  labels:
+    app: $k8s_service_name
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: $k8s_service_name
+  template:
+    metadata:
+      labels:
+        app: $k8s_service_name
+    spec:
+      containers:
+        - name: $k8s_service_name
+          image: $k8s_image
+          ports:
+            - containerPort: $k8s_port
+          
+          env:
+            - name: AWS_ACCESS_KEY
+              value: $AWS_ACCESS_KEY_VALUE
+            - name: AWS_SECRET_ACCESS_KEY
+              value: $AWS_SECRET_ACCESS_KEY_VALUE
+            - name: AWS_BUCKET_NAME
+              value: $AWS_BUCKET_NAME_VALUE
+            - name: AWS_REGION_CODE
+              value: $AWS_REGION_CODE_VALUE
+
+            - name: GOOGLE_API_KEY
+              value: $GOOGLE_API_KEY_VALUE
+            - name: GOOGLE_PROJECT_CX
+              value: $GOOGLE_PROJECT_CX_VALUE
+
+            - name: OPENAI_API_KEY
+              value: $OPENAI_API_KEY_VALUE
