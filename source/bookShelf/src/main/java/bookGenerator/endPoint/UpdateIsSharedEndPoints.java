@@ -12,10 +12,11 @@ import javax.transaction.Transactional;
 import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
-
+import bookGenerator._global.event.BookShelfIsSharedUpdated;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.domain.BookShelf;
+import bookGenerator.domain.BookShelfManageService;
 
 
 @Data
@@ -42,24 +43,29 @@ class UpdateIsSharedResDto {
 public class UpdateIsSharedEndPoints {
 
     @PutMapping("/updateIsShared")
-    public ResponseEntity<Void> updateIsShared(@RequestBody UpdateIsSharedReqDto reqDto) {
+    public ResponseEntity<UpdateIsSharedResDto> updateIsShared(@RequestBody UpdateIsSharedReqDto reqDto) {
         try {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
             // [1] reqDto.bookShelfId로 BookShelf 객체를 찾음
+            BookShelf bookShelfToUpdate = BookShelfManageService.getInstance().findByIdOrThrow(reqDto.getBookShelfId());
 
             // [2] reqDto.isShared로 BookShelf 객체의 isShared을 변경하고 저장함
+            bookShelfToUpdate.setIsShared(reqDto.getIsShared());
 
             // [3] BookShelfIsSharedUpdated 이벤트를 BookShelf Book 객체로 발생시킴
-
+            BookShelf savedBookShelf = BookShelf.repository().save(bookShelfToUpdate);
+            
+            (new BookShelfIsSharedUpdated(savedBookShelf)).publish();
+            
             // [4] 저장한 BookShelf 객체의 ID를 반환
-                
-            CustomLogger.debug(CustomLoggerType.EXIT);
-
-            return ResponseEntity.status(HttpStatus.OK).build();
+            UpdateIsSharedResDto resDto = new UpdateIsSharedResDto(savedBookShelf);    
+            CustomLogger.debugObject(CustomLoggerType.EXIT, "",resDto);
+            return ResponseEntity.ok(resDto);
 
         } catch(Exception e) {
+            CustomLogger.errorObject(e, "", reqDto);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

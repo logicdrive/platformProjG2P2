@@ -9,6 +9,9 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+import bookGenerator.domain.Content;
+import bookGenerator.domain.ContentManageService;
+import bookGenerator._global.event.ContentDeletedByFail;
 import bookGenerator._global.event.ContentmageGenerationFailed;
 
 @Service
@@ -29,9 +32,12 @@ public class ContentImageGenerationFailed_deleteContentByFail_Policy {
             CustomLogger.debugObject(CustomLoggerType.ENTER, contentmageGenerationFailed);
 
             // [1] contentmageGenerationFailed.contentId에 해당하는 컨텐츠를 삭제한다.
-
+            Content contentToDelete = ContentManageService.getInstance().findByIdOrThrow(contentmageGenerationFailed.getContentId());
+            Content.repository().delete(contentToDelete);
+            
             // [2] 삭제된 Content에 대한 ContentDeletedByFail 이벤트를 발생시킨다.
-
+            (new ContentDeletedByFail(contentToDelete)).publish();
+            
             CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
