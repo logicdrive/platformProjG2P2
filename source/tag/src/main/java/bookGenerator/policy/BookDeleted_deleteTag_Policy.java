@@ -32,9 +32,9 @@ public class BookDeleted_deleteTag_Policy {
             CustomLogger.debugObject(CustomLoggerType.ENTER, bookDeleted);
 
             // [1] 해당 책에 부여된 태그들을 삭제
-            List<Tag> tags = TagManageService.getInstance().findByBookId(bookDeleted.getId());
+            List<Tag> tags = Tag.repository().findByBookId(bookDeleted.getId());
             for (Tag tag : tags) {
-                TagManageService.getInstance().delete(tag);
+                Tag.repository().delete(tag);
 
                 // [2] 각각의 삭제된 태그들에 대해서 TagDeleted 이벤트를 발생시킴
                 (new TagDeleted(tag)).publish();

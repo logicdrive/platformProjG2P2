@@ -28,14 +28,13 @@ public class ContentImageDeleteRequsted_DeleteFileInfo_Policy {
     ) {
         try
         {
-
             CustomLogger.debugObject(CustomLoggerType.ENTER, contentImageDeleteRequsted);
 
             // [1] contentImageDeleteRequsted.imageFileId에 해당하는 File의 Id를 조회한다.
             File file = FileManageService.getInstance().findByIdOrThrow(contentImageDeleteRequsted.getImageFileId());
 
             // [2] 조회된 File을 삭제한다.
-            FileManageService.getInstance().delete(file);
+            File.repository().delete(file);
 
             // [3] 삭제된 File로 FileInfoDeleted 이벤트를 발생시킨다.
             (new FileInfoDeleted(file)).publish();

@@ -54,8 +54,7 @@ public class UpdateCommentEndPoints {
 
             // [2] reqDto.content로 Comment 객체의 내용을 변경하고 저장함
             comment.setContent(reqDto.getContent());
-            CommentManageService.getInstance().saveOrUpdate(comment);
-
+            Comment.repository().save(comment);
 
             // [3] CommentUpdated 이벤트를 저장한 Comment 객체로 발생시킴
             (new CommentUpdated(comment)).publish();

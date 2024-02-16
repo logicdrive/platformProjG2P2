@@ -28,12 +28,11 @@ public void contentGenerationFailed_deleteContentByFail_Policy(
 ) {
     try
     {
-        
         CustomLogger.debugObject(CustomLoggerType.ENTER, contentGenerationFailed);
 
         // [1] contentGenerationFailed.contentId에 해당하는 컨텐츠를 삭제한다.
         Content content = ContentManageService.getInstance().findByIdOrThrow(contentGenerationFailed.getContentId());
-        ContentManageService.getInstance().delete(content);
+        Content.repository().delete(content);
 
         // [2] 삭제된 Content에 대한 ContentDeletedByFail 이벤트를 발생시킨다.
         (new ContentDeletedByFail(content)).publish();

@@ -42,8 +42,7 @@ public class ProblemGenereated_createProblem_Policy {
                 .answer(problemGenereated.getAnswer())
                 .priority(problemGenereated.getPriority())
                 .build();
-            newProblem = ProblemManageService.getInstance().save(newProblem);
-            
+            newProblem = Problem.repository().save(newProblem);
             // [2] 생성된 Problem을 기반으로 ProblemCreated 이벤트를 발생시킴
             ProblemCreated problemCreatedEvent = new ProblemCreated(newProblem);
             problemCreatedEvent.publish();

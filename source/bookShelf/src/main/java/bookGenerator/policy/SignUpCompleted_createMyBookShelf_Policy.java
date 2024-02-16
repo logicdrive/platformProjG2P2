@@ -53,10 +53,7 @@ public class SignUpCompleted_createMyBookShelf_Policy {
             
 
             // [2] BookShelfCreated 이벤트를 발생시킴
-            BookShelfCreated event = new BookShelfCreated(newBookShelf);
-            eventPublisher.publishEvent(event);
-
-            
+            (new BookShelfCreated(newBookShelf)).publish();
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
