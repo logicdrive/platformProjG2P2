@@ -9,6 +9,6 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 @RepositoryRestResource(collectionResourceRel = "bookShelfBooks", path = "bookShelfBooks")
 public interface BookShelfBookRepository
     extends PagingAndSortingRepository<BookShelfBook, Long> {
-    Optional<BookShelfBook> findByBookId(Long bookId);
+    List<BookShelfBook> findByBookId(Long bookId);
     List<BookShelfBook> findByBookShelfId(Long bookShelfId);
 }
