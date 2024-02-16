@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+import bookGenerator.domain.Content;
+import bookGenerator.domain.ContentManageService;
 import bookGenerator._global.event.ContentGenerated;
+import bookGenerator._global.event.ContentImageFileIdUpdated;
+import bookGenerator._global.event.ContentUpdated;
 
 @Service
 @Transactional
@@ -29,10 +33,12 @@ public class ContentGenerated_updateContent_Policy {
             CustomLogger.debugObject(CustomLoggerType.ENTER, contentGenerated);
 
             // [1] contentGenerated.contentId를 이용하여 Content를 조회함
-
+            Content contentToFind = ContentManageService.getInstance().findByIdOrThrow(contentGenerated.getContentId());
             // [2] 조회된 Content의 content를 contentGenerated.content로 업데이트함
-
+            contentToFind.setContent(contentGenerated.getContent());
+            Content.repository().save(contentToFind);
             // [3] ContentUpdated 이벤트를 업데이트된 Content를 기반으로 발생시킴
+            (new ContentUpdated(contentToFind)).publish();
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
