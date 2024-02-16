@@ -65,6 +65,166 @@ spring:
             - AuthorizationHeaderFilter
 
 
+        - id: tagNoAuth
+          uri: http://${service.tag.domain}:${service.tag.port}
+          predicates:
+            - Path=/api/${service.tag.name}/sanityCheck,/api/${service.tag.name}/sanityCheck/logs
+          filters:
+            - RewritePath=/api/${service.tag.name}/(?<segment>.*), /${segment}
+
+        - id: tagWithAuth
+          uri: http://${service.tag.domain}:${service.tag.port}
+          predicates:
+            - Path=/api/${service.tag.name}/**
+          filters:
+            - RewritePath=/api/${service.tag.name}/(?<segment>.*), /${segment}
+            - AuthorizationHeaderFilter
+
+
+        - id: indexNoAuth
+          uri: http://${service.index.domain}:${service.index.port}
+          predicates:
+            - Path=/api/${service.index.name}/sanityCheck,/api/${service.index.name}/sanityCheck/logs
+          filters:
+            - RewritePath=/api/${service.index.name}/(?<segment>.*), /${segment}
+
+        - id: indexWithAuth
+          uri: http://${service.index.domain}:${service.index.port}
+          predicates:
+            - Path=/api/${service.index.name}/**
+          filters:
+            - RewritePath=/api/${service.index.name}/(?<segment>.*), /${segment}
+            - AuthorizationHeaderFilter
+
+
+        - id: contentNoAuth
+          uri: http://${service.content.domain}:${service.content.port}
+          predicates:
+            - Path=/api/${service.content.name}/sanityCheck,/api/${service.content.name}/sanityCheck/logs
+          filters:
+            - RewritePath=/api/${service.content.name}/(?<segment>.*), /${segment}
+
+        - id: contentWithAuth
+          uri: http://${service.content.domain}:${service.content.port}
+          predicates:
+            - Path=/api/${service.content.name}/**
+          filters:
+            - RewritePath=/api/${service.content.name}/(?<segment>.*), /${segment}
+            - AuthorizationHeaderFilter
+
+
+        - id: problemNoAuth
+          uri: http://${service.problem.domain}:${service.problem.port}
+          predicates:
+            - Path=/api/${service.problem.name}/sanityCheck,/api/${service.problem.name}/sanityCheck/logs
+          filters:
+            - RewritePath=/api/${service.problem.name}/(?<segment>.*), /${segment}
+
+        - id: problemWithAuth
+          uri: http://${service.problem.domain}:${service.problem.port}
+          predicates:
+            - Path=/api/${service.problem.name}/**
+          filters:
+            - RewritePath=/api/${service.problem.name}/(?<segment>.*), /${segment}
+            - AuthorizationHeaderFilter
+        
+
+        - id: commentNoAuth
+          uri: http://${service.comment.domain}:${service.comment.port}
+          predicates:
+            - Path=/api/${service.comment.name}/sanityCheck,/api/${service.comment.name}/sanityCheck/logs
+          filters:
+            - RewritePath=/api/${service.comment.name}/(?<segment>.*), /${segment}
+        
+        - id: commentWithAuth
+          uri: http://${service.comment.domain}:${service.comment.port}
+          predicates:
+            - Path=/api/${service.comment.name}/**
+          filters:
+            - RewritePath=/api/${service.comment.name}/(?<segment>.*), /${segment}
+            - AuthorizationHeaderFilter
+        
+
+        - id: bookShelfNoAuth
+          uri: http://${service.bookShelf.domain}:${service.bookShelf.port}
+          predicates:
+            - Path=/api/${service.bookShelf.name}/sanityCheck,/api/${service.bookShelf.name}/sanityCheck/logs
+          filters:
+            - RewritePath=/api/${service.bookShelf.name}/(?<segment>.*), /${segment}
+        
+        - id: bookShelfWithAuth
+          uri: http://${service.bookShelf.domain}:${service.bookShelf.port}
+          predicates:
+            - Path=/api/${service.bookShelf.name}/**
+          filters:
+            - RewritePath=/api/${service.bookShelf.name}/(?<segment>.*), /${segment}
+            - AuthorizationHeaderFilter
+          
+
+        - id: bookShelfBookNoAuth
+          uri: http://${service.bookShelfBook.domain}:${service.bookShelfBook.port}
+          predicates:
+            - Path=/api/${service.bookShelfBook.name}/sanityCheck,/api/${service.bookShelfBook.name}/sanityCheck/logs
+          filters:
+            - RewritePath=/api/${service.bookShelfBook.name}/(?<segment>.*), /${segment}
+        
+        - id: bookShelfBookWithAuth
+          uri: http://${service.bookShelfBook.domain}:${service.bookShelfBook.port}
+          predicates:
+            - Path=/api/${service.bookShelfBook.name}/**
+          filters:
+            - RewritePath=/api/${service.bookShelfBook.name}/(?<segment>.*), /${segment}
+            - AuthorizationHeaderFilter
+        
+
+        - id: fileNoAuth
+          uri: http://${service.file.domain}:${service.file.port}
+          predicates:
+            - Path=/api/${service.file.name}/sanityCheck,/api/${service.file.name}/sanityCheck/logs
+          filters:
+            - RewritePath=/api/${service.file.name}/(?<segment>.*), /${segment}
+        
+        - id: fileWithAuth
+          uri: http://${service.file.domain}:${service.file.port}
+          predicates:
+            - Path=/api/${service.file.name}/**
+          filters:
+            - RewritePath=/api/${service.file.name}/(?<segment>.*), /${segment}
+            - AuthorizationHeaderFilter
+        
+
+        - id: externalSystemProxyNoAuth
+          uri: http://${service.externalSystemProxy.domain}:${service.externalSystemProxy.port}
+          predicates:
+            - Path=/api/${service.externalSystemProxy.name}/sanityCheck,/api/${service.externalSystemProxy.name}/sanityCheck/logs
+          filters:
+            - RewritePath=/api/${service.externalSystemProxy.name}/(?<segment>.*), /${segment}
+        
+        - id: externalSystemProxyWithAuth
+          uri: http://${service.externalSystemProxy.domain}:${service.externalSystemProxy.port}
+          predicates:
+            - Path=/api/${service.externalSystemProxy.name}/**
+          filters:
+            - RewritePath=/api/${service.externalSystemProxy.name}/(?<segment>.*), /${segment}
+            - AuthorizationHeaderFilter
+          
+        
+        - id: externalSystemNoAuth
+          uri: http://${service.externalSystem.domain}:${service.externalSystem.port}
+          predicates:
+            - Path=/api/${service.externalSystem.name}/sanityCheck,/api/${service.externalSystem.name}/sanityCheck/logs
+          filters:
+            - RewritePath=/api/${service.externalSystem.name}/(?<segment>.*), /${segment}
+        
+        - id: externalSystemWithAuth
+          uri: http://${service.externalSystem.domain}:${service.externalSystem.port}
+          predicates:
+            - Path=/api/${service.externalSystem.name}/**
+          filters:
+            - RewritePath=/api/${service.externalSystem.name}/(?<segment>.*), /${segment}
+            - AuthorizationHeaderFilter
+
+
         - id: frontend
           uri: http://${service.frontend.domain}:${service.frontend.port}
           predicates:
@@ -83,11 +243,18 @@ jwt:
   public.key: classpath:rsa.public.key
 
 service:
-  user:
-    name: user
-  
-  book:
-    name: book
+  user.name: user
+  book.name: book
+  tag.name: tag
+  index.name: index
+  content.name: content
+  problem.name: problem
+  comment.name: comment
+  bookShelf.name: bookShelf
+  bookShelfBook.name: bookShelfBook
+  file.name: file
+  externalSystemProxy.name: externalSystemProxy
+  externalSystem.name: externalSystem
 
 ---
 
@@ -102,6 +269,46 @@ service:
   book:
     domain: localhost
     port: 8083
+  
+  tag:
+    domain: localhost
+    port: 8084
+
+  index:
+    domain: localhost
+    port: 8085
+
+  content:
+    domain: localhost
+    port: 8086
+
+  problem:
+    domain: localhost
+    port: 8087
+  
+  comment:
+    domain: localhost
+    port: 8089
+  
+  bookShelf:
+    domain: localhost
+    port: 8097
+  
+  bookShelfBook:
+    domain: localhost
+    port: 8091
+  
+  file:
+    domain: localhost
+    port: 8094
+
+  externalSystemProxy:
+    domain: localhost
+    port: 8092
+  
+  externalSystem:
+    domain: localhost
+    port: 8095
 
   frontend:
     domain: localhost
@@ -121,6 +328,46 @@ service:
     domain: host.docker.internal
     port: 8083
 
+  tag:
+    domain: host.docker.internal
+    port: 8084
+
+  index:
+    domain: host.docker.internal
+    port: 8085
+
+  content:
+    domain: host.docker.internal
+    port: 8086
+
+  problem:
+    domain: host.docker.internal
+    port: 8087
+
+  comment:
+    domain: host.docker.internal
+    port: 8089
+  
+  bookShelf:
+    domain: host.docker.internal
+    port: 8097
+  
+  bookShelfBook:
+    domain: host.docker.internal
+    port: 8091
+  
+  file:
+    domain: host.docker.internal
+    port: 8094
+
+  externalSystemProxy:
+    domain: host.docker.internal
+    port: 8092
+  
+  externalSystem:
+    domain: host.docker.internal
+    port: 8095
+
   frontend:
     domain: host.docker.internal
     port: 3000
@@ -137,6 +384,46 @@ service:
   
   book:
     domain: book
+    port: 8080
+
+  tag:
+    domain: tag
+    port: 8080
+
+  index:
+    domain: index
+    port: 8080
+
+  content:
+    domain: content
+    port: 8080
+
+  problem:
+    domain: problem
+    port: 8080
+
+  comment:
+    domain: comment
+    port: 8080
+  
+  bookShelf:
+    domain: book-shelf
+    port: 8080
+  
+  bookShelfBook:
+    domain: book-shelf-book
+    port: 8080
+  
+  file:
+    domain: file
+    port: 8080
+  
+  externalSystemProxy:
+    domain: external-system-proxy
+    port: 8080
+  
+  externalSystem:
+    domain: external-system
     port: 8080
 
   frontend:

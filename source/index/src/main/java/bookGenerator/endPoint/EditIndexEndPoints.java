@@ -1,7 +1,5 @@
 package bookGenerator.endPoint;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.context.ApplicationEventPublisher;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -14,12 +12,13 @@ import javax.transaction.Transactional;
 import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
-import bookGenerator._global.event.BookDeleted;
+
 import bookGenerator._global.event.IndexEdited;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+
 import bookGenerator.domain.Index;
-import bookGenerator.domain.IndexRepository;
+import bookGenerator.domain.IndexManageService;
 
 
 @Data
@@ -46,36 +45,27 @@ class EditIndexResDto {
 @RequestMapping("/indexes")
 public class EditIndexEndPoints {
 
-    @Autowired
-    private IndexRepository indexRepository;
-
     @PutMapping("/editIndex")
     public ResponseEntity<EditIndexResDto> editIndex(@RequestBody EditIndexReqDto reqDto) {
         try {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
-            // [1] indexId에 해당하는 Index 객체를 찾음
-            Index index = indexRepository.findById(reqDto.getIndexId()).orElse(null);
-            if (index == null) {
-                return ResponseEntity.status(HttpStatus.NOT_FOUND).body(null);
-            }
 
-            // [2] Index 객체의 name, priority을 변경함
-            index.setName(reqDto.getIndexName());
-            index.setPriority(reqDto.getIndexPriority());
+            Index indexToUpdate = IndexManageService.getInstance().findByIdOrThrow(reqDto.getIndexId());
+            indexToUpdate.setName(reqDto.getIndexName());
+            indexToUpdate.setPriority(reqDto.getIndexPriority());
+            Index savedIndex = Index.repository().save(indexToUpdate);
 
-            // [3] 저장된 Index를 기반으로 IndexEdited 이벤트를 발생시킴
-            (new IndexEdited(index)).publish();
+            (new IndexEdited(savedIndex)).publish();
 
-            // [4] 저장된 Index Id를 반환함
-            EditIndexResDto responseDto = new EditIndexResDto(index);
 
-            CustomLogger.debug(CustomLoggerType.EXIT);
-
-            return ResponseEntity.ok().body(responseDto);
+            EditIndexResDto resDto = new EditIndexResDto(savedIndex);
+            CustomLogger.debugObject(CustomLoggerType.EXIT, resDto);
+            return ResponseEntity.ok(resDto);
 
         } catch(Exception e) {
+            CustomLogger.errorObject(e, "", reqDto); 
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

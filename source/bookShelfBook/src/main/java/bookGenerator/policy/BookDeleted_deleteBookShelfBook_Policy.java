@@ -10,6 +10,10 @@ import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator._global.event.BookDeleted;
+import bookGenerator._global.event.BookShelfBookDeleted;
+
+import bookGenerator.domain.BookShelfBook;
+import bookGenerator.domain.BookShelfBookManageService;
 
 @Service
 @Transactional
@@ -28,9 +32,12 @@ public class BookDeleted_deleteBookShelfBook_Policy {
             
             CustomLogger.debugObject(CustomLoggerType.ENTER, bookDeleted);
 
-            // [1] bookId가 일치하는 BookShelfBook을 삭제한다.
 
-            // [2] BookShelfBookDeleted 이벤트를 삭제된 BookShelfBook을 이용해서 발생시킨다.
+            BookShelfBook bookShelfBookToDelete = BookShelfBookManageService.getInstance().findByBookIdOrThrow(bookDeleted.getId());
+            BookShelfBook.repository().delete(bookShelfBookToDelete);
+            
+            (new BookShelfBookDeleted(bookShelfBookToDelete)).publish();
+
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 

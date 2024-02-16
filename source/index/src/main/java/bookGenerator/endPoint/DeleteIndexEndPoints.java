@@ -47,23 +47,19 @@ public class DeleteIndexEndPoints {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
-            // [1] reqDto.indexId로 Index 객체를 찾음
-            Index indexToDelete = IndexManageService.getInstance().findByIdOrThrow(reqDto.getIndexId());
 
-            // [2] Index 객체를 삭제
+            Index indexToDelete = IndexManageService.getInstance().findByIdOrThrow(reqDto.getIndexId());
             Index.repository().delete(indexToDelete);
 
-            // [3] IndexDeleted 이벤트를 찾은 Index 객체로 발생시킴
             (new IndexDeleted(indexToDelete)).publish();
             
-            // [4] 찾은 Index 객체의 ID를 반환
-            DeleteIndexResDto resDto = new DeleteIndexResDto(indexToDelete);
-                
-            CustomLogger.debug(CustomLoggerType.EXIT);
 
+            DeleteIndexResDto resDto = new DeleteIndexResDto(indexToDelete);
+            CustomLogger.debugObject(CustomLoggerType.EXIT, resDto);
             return ResponseEntity.ok(resDto);
 
         } catch(Exception e) {
+            CustomLogger.errorObject(e, "", reqDto); 
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

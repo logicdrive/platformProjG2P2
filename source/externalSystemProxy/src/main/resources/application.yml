@@ -64,14 +64,26 @@ spring:
 
 server.port: ${global.host_port}
 
+externalSystem:
+  ip: localhost
+  port: 8095
+
 ---
 
 spring:
   profiles: docker
   cloud.stream.kafka.binder.brokers: host.docker.internal:9092
 
+externalSystem:
+  ip: host.docker.internal
+  port: 8095
+
 ---
 
 spring:
   profiles: kubernates
   cloud.stream.kafka.binder.brokers: my-kafka:9092
+
+externalSystem:
+  ip: external-system
+  port: 8080

@@ -23,12 +23,6 @@ public class FileManageService {
         return File.repository().findById(id)
             .orElseThrow(() -> new FileNotFoundException());
     }
-
-
-    public void delete(File file) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
-    }
 }
 
 @Getter

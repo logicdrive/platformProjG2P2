@@ -9,7 +9,9 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+import bookGenerator._global.event.IndexCreated;
 import bookGenerator._global.event.IndexGenereated;
+import bookGenerator.domain.Index;
 
 @Service
 @Transactional
@@ -28,12 +30,19 @@ public class IndexGenereated_createIndex_Policy {
             
             CustomLogger.debugObject(CustomLoggerType.ENTER, indexGenereated);
             
-            // [1] 새로운 Index 객체를 생성
-            // [!] bookId, name, priority만 초기화시키면 되며, 다른 변수들은 자동으로 초기화됨
 
-            // [2] IndexCreated 이벤트를 발생시킴
+            Index savedIndex = Index.repository().save(
+                Index.builder()
+                    .bookId(indexGenereated.getBookId())
+                    .name(indexGenereated.getIndexName())
+                    .priority(indexGenereated.getPriority())
+                    .build()
+            );
+            (new IndexCreated(savedIndex)).publish();
+
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", indexGenereated);        
         }

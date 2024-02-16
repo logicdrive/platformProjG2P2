@@ -4,6 +4,7 @@ import java.util.Date;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.PostPersist;
 import javax.persistence.PostRemove;
 import javax.persistence.PostUpdate;
@@ -37,8 +38,10 @@ public class Problem extends LoggedEntity {
 
 	private Long indexId;
 
+    @Lob
 	private String content;
 
+    @Lob
 	private String answer;
 
 	private Long priority;

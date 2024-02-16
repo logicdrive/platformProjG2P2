@@ -28,12 +28,6 @@ public class ContentManageService {
         return Content.repository().findByIndexId(indexId)
             .orElseThrow(() -> new ContentNotFoundException());
     }
-
-
-    public void delete(Content content) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'delete'");
-    }
 }
 
 @Getter

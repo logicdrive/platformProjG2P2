@@ -9,48 +9,44 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-import bookGenerator.domain.Problem;
-import bookGenerator.domain.ProblemManageService;
-import bookGenerator._global.event.ProblemGenereated;
 import bookGenerator._global.event.ProblemCreated;
+import bookGenerator._global.event.ProblemGenerated;
+
+import bookGenerator.domain.Problem;
 
 @Service
 @Transactional
 public class ProblemGenereated_createProblem_Policy {
 
     // AI 기반 문제 생성을 요청해서 문제 생성 이벤트가 발생했을 경우, 해당 이벤트를 기반으로 문제를 새로 생성시키기 위한 정책
-    /**
-     * @param problemGenereated
-     */
     @StreamListener(
         value = KafkaProcessor.INPUT,
-        condition = "headers['type']=='ProblemGenereated'"
+        condition = "headers['type']=='ProblemGenerated'"
     )
     public void problemGenereated_createProblem_Policy(
-        @Payload ProblemGenereated problemGenereated
+        @Payload ProblemGenerated problemGenerated
     ) {
         try
         {
 
-            CustomLogger.debugObject(CustomLoggerType.ENTER, problemGenereated);
+            CustomLogger.debugObject(CustomLoggerType.ENTER, problemGenerated);
             
-            // [1] 새로운 Problem 객체를 생성
-            // [!] indexId, content, answer, priority만 초기화시키면 되며, 다른 변수들은 자동으로 초기화됨
-            Problem newProblem = Problem.builder()
-                .indexId(problemGenereated.getIndexId())
-                .content(problemGenereated.getContent())
-                .answer(problemGenereated.getAnswer())
-                .priority(problemGenereated.getPriority())
-                .build();
-            newProblem = Problem.repository().save(newProblem);
-            // [2] 생성된 Problem을 기반으로 ProblemCreated 이벤트를 발생시킴
-            ProblemCreated problemCreatedEvent = new ProblemCreated(newProblem);
-            problemCreatedEvent.publish();
+
+            Problem savedProblem = Problem.repository().save(
+                Problem.builder()
+                    .indexId(problemGenerated.getIndexId())
+                    .content(problemGenerated.getContent())
+                    .answer(problemGenerated.getAnswer())
+                    .priority(problemGenerated.getPriority())
+                    .build()
+            );
+            (new ProblemCreated(savedProblem)).publish();
+
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
-            CustomLogger.errorObject(e, "", problemGenereated);        
+            CustomLogger.errorObject(e, "", problemGenerated);        
         }
     }
 

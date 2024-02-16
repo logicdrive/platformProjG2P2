@@ -23,12 +23,6 @@ public class ProblemManageService {
         return Problem.repository().findById(id)
             .orElseThrow(() -> new ProblemNotFoundException());
     }
-
-
-    public Problem save(Problem newProblem) {
-        // TODO Auto-generated method stub
-        throw new UnsupportedOperationException("Unimplemented method 'save'");
-    }
 }
 
 @Getter

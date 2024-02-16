@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+import bookGenerator._global.event.CoverImageInfoUpdated;
 import bookGenerator._global.event.CoverImageUploaded;
+
+import bookGenerator.domain.File;
+import bookGenerator.domain.FileManageService;
 
 @Service
 @Transactional
@@ -28,11 +32,13 @@ public class CoverImageUploaded_updateCoverImageInfo_Policy {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, coverImageUploaded);
 
-            // [1] fileId에 해당하는 File 정보를 조회함
 
-            // [2] 조회된 File 객체의 url을 coverImageUploaded.fileUrl로 변경하고 저장함
+            File searchedFile = FileManageService.getInstance().findByIdOrThrow(coverImageUploaded.getFileId());
+            searchedFile.setUrl(coverImageUploaded.getFileUrl());
+            File.repository().save(searchedFile);
 
-            // [3] 조회된 File 객체로 CoverImageInfoUpdated 이벤트를 발생시킴
+            (new CoverImageInfoUpdated(searchedFile)).publish();
+
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 

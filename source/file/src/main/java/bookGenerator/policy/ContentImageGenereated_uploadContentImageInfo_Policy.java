@@ -9,9 +9,10 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-import bookGenerator.domain.File;
 import bookGenerator._global.event.ContentImageGenereated;
 import bookGenerator._global.event.ContentImageInfoUploaded;
+
+import bookGenerator.domain.File;
 
 @Service
 @Transactional
@@ -27,22 +28,19 @@ public class ContentImageGenereated_uploadContentImageInfo_Policy {
     ) {
         try
         {
+            
             CustomLogger.debugObject(CustomLoggerType.ENTER, contentImageGenereated);
 
-            // [1] contentImageGenereated.fileUrl로 새로운 File 객체 생성
-            // [!] url만 초기화시키면 되며, 다른 변수들은 자동으로 초기화됨
-            File urlFile = File.repository().save(
+
+            File savedFile = File.repository().save(
                 File.builder()
-                .url(contentImageGenereated.getFileUrl())
-                .build()
+                    .url(contentImageGenereated.getFileUrl())
+                    .build()
             );
+            (new ContentImageInfoUploaded(savedFile, contentImageGenereated.getContentId())).publish();
 
-            // [2] ContentImageInfoUploaded 이벤트를 생성된 File 객체와 contentImageGenereated.contentId로 발생시킨다
-            (new ContentImageInfoUploaded(urlFile, contentImageGenereated.getContentId())).publish();
-            
+
             CustomLogger.debug(CustomLoggerType.EXIT);
-
-            // Fin
 
         } catch(Exception e) {
             CustomLogger.errorObject(e, "", contentImageGenereated);        

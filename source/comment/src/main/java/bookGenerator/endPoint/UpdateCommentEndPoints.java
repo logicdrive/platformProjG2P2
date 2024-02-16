@@ -12,9 +12,11 @@ import javax.transaction.Transactional;
 import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
+
 import bookGenerator._global.event.CommentUpdated;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+
 import bookGenerator.domain.Comment;
 import bookGenerator.domain.CommentManageService;
 
@@ -49,23 +51,20 @@ public class UpdateCommentEndPoints {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
           
-            // [1] reqDto.commentId로 Comment 객체를 찾음
-            Comment comment = CommentManageService.getInstance().findByIdOrThrow(reqDto.getCommentId());
 
-            // [2] reqDto.content로 Comment 객체의 내용을 변경하고 저장함
-            comment.setContent(reqDto.getContent());
-            Comment.repository().save(comment);
+            Comment commentToUpdate = CommentManageService.getInstance().findByIdOrThrow(reqDto.getCommentId());
+            commentToUpdate.setContent(reqDto.getContent());
+            Comment.repository().save(commentToUpdate);
 
-            // [3] CommentUpdated 이벤트를 저장한 Comment 객체로 발생시킴
-            (new CommentUpdated(comment)).publish();
+            (new CommentUpdated(commentToUpdate)).publish();
 
-            // [4] 저장한 Comment 객체의 ID를 반환
-            UpdateCommentResDto updateCommentResDto = new UpdateCommentResDto(comment);
-            CustomLogger.debugObject(CustomLoggerType.EXIT, updateCommentResDto);
 
-            return ResponseEntity.ok(updateCommentResDto);
-            
+            UpdateCommentResDto resDto = new UpdateCommentResDto(commentToUpdate);
+            CustomLogger.debugObject(CustomLoggerType.EXIT, resDto);
+            return ResponseEntity.ok(resDto);
+
         } catch(Exception e) {
+            CustomLogger.errorObject(e, "", reqDto);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

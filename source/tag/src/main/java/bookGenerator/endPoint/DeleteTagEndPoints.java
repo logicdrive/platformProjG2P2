@@ -46,25 +46,20 @@ public class DeleteTagEndPoints {
         try {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
+                
 
-            // [1] reqDto.tagId로 Tag 객체를 찾음
             Tag tagToDelete = TagManageService.getInstance().findByIdOrThrow(reqDto.getTagId());
-
-            // [2] Tag 객체를 삭제
             Tag.repository().delete(tagToDelete);
 
-            // [3] TagDeleted 이벤트를 찾은 Tag 객체로 발생시킴
             (new TagDeleted(tagToDelete)).publish();
             
-            // [4] 찾은 Tag 객체의 ID를 반환
+
             DeleteTagResDto resDto = new DeleteTagResDto(tagToDelete);
-
             CustomLogger.debugObject(CustomLoggerType.EXIT, resDto);
-
             return ResponseEntity.ok(resDto);
-            // Fin
 
         } catch(Exception e) {
+            CustomLogger.errorObject(e, "", reqDto); 
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

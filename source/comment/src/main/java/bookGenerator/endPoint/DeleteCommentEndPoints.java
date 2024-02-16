@@ -12,9 +12,11 @@ import javax.transaction.Transactional;
 import lombok.Data;
 import lombok.Getter;
 import lombok.ToString;
+
 import bookGenerator._global.event.CommentDeleted;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+
 import bookGenerator.domain.Comment;
 import bookGenerator.domain.CommentManageService;
 
@@ -47,22 +49,19 @@ public class DeleteCommentEndPoints {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
-            // [1] reqDto.commentId로 Comment 객체를 찾음
-            Comment comment = CommentManageService.getInstance().findByIdOrThrow(reqDto.getCommentId());
 
-            // [2] Comment 객체를 삭제
-            Comment.repository().delete(comment);
+            Comment commentToDelete = CommentManageService.getInstance().findByIdOrThrow(reqDto.getCommentId());
+            Comment.repository().delete(commentToDelete);
 
-            // [3] CommentDeleted 이벤트를 찾은 Comment 객체로 발생시킴
-            (new CommentDeleted(comment)).publish();
+            (new CommentDeleted(commentToDelete)).publish();
             
-            // [4] 찾은 Comment 객체의 ID를 반환
-            DeleteCommentResDto deleteCommentResDto = new DeleteCommentResDto(comment);
-            CustomLogger.debugObject(CustomLoggerType.EXIT,deleteCommentResDto);
 
-            return ResponseEntity.ok(deleteCommentResDto);
-            
+            DeleteCommentResDto resDto = new DeleteCommentResDto(commentToDelete);
+            CustomLogger.debugObject(CustomLoggerType.EXIT, resDto);
+            return ResponseEntity.ok(resDto);
+
         } catch(Exception e) {
+            CustomLogger.errorObject(e, "", reqDto);
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

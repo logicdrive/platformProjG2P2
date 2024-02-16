@@ -1,1 +1,1 @@
-externalSystemProxy
+external-system-proxy

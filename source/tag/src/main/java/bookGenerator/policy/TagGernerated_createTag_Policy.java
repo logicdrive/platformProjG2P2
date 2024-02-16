@@ -9,9 +9,10 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-import bookGenerator.domain.Tag;
 import bookGenerator._global.event.TagCreated;
 import bookGenerator._global.event.TagGernerated;
+
+import bookGenerator.domain.Tag;
 
 @Service
 @Transactional
@@ -30,17 +31,15 @@ public class TagGernerated_createTag_Policy {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, tagGernerated);
             
-            // [1] 새로운 Tag 객체를 생성
-            // [!] bookId, name만 초기화시키면 되며, 다른 변수들은 자동으로 초기화됨
-            Tag tag = Tag.builder()
-                .bookId(tagGernerated.getBookId())
-                .name(tagGernerated.getTagName())
-                .build();
-            tag = Tag.repository().save(tag);
 
-            // [2] TagCreated 이벤트를 발생시킴
-            TagCreated tagCreatedEvent = new TagCreated(tag);
-            tagCreatedEvent.publish();
+            Tag savedTag = Tag.repository().save(
+                Tag.builder()
+                    .bookId(tagGernerated.getBookId())
+                    .name(tagGernerated.getTagName())
+                    .build()
+            );
+            (new TagCreated(savedTag)).publish();
+
 
             CustomLogger.debug(CustomLoggerType.EXIT);
 

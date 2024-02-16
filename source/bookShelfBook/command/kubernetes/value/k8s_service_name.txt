@@ -1,1 +1,1 @@
-bookShelfBook
+book-shelf-book

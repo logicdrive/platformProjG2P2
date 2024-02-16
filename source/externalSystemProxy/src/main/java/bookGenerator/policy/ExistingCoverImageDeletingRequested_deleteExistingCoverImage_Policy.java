@@ -9,7 +9,11 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+import bookGenerator._global.event.ExistingCoverImageDeleted;
 import bookGenerator._global.event.ExistingCoverImageDeletingRequested;
+import bookGenerator._global.event.ExistingCoverImageDeleteFailed;
+import bookGenerator._global.externalSystemProxy.s3.removeFile.ExternalSystemProxy_RemoveFile;
+import bookGenerator._global.externalSystemProxy.s3.removeFile.RemoveFileReqDto;
 
 @Service
 @Transactional
@@ -25,11 +29,22 @@ public class ExistingCoverImageDeletingRequested_deleteExistingCoverImage_Policy
     ) {
         try
         {
-            
-            CustomLogger.debugObject(CustomLoggerType.ENTER_EXIT, "ExistingCoverImageDeletingRequested", existingCoverImageDeletingRequested);
+
+            CustomLogger.debugObject(CustomLoggerType.ENTER, existingCoverImageDeletingRequested);
+
+
+            RemoveFileReqDto reqDto = new RemoveFileReqDto(existingCoverImageDeletingRequested.getUrl());
+            ExternalSystemProxy_RemoveFile.getInstance().externalSystemProxy_RemoveFile(reqDto);
+
+            (new ExistingCoverImageDeleted(existingCoverImageDeletingRequested.getId())).publish();
+
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch(Exception e) {
-            CustomLogger.errorObject(e, "", existingCoverImageDeletingRequested);        
+            CustomLogger.errorObject(e, "", existingCoverImageDeletingRequested);
+            
+            (new ExistingCoverImageDeleteFailed(existingCoverImageDeletingRequested.getId())).publish();
         }
     }
 

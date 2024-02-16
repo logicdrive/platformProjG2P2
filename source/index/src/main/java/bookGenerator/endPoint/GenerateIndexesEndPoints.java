@@ -11,6 +11,7 @@ import javax.transaction.Transactional;
 
 import lombok.Data;
 import lombok.ToString;
+
 import bookGenerator._global.event.IndexGenerationRequested;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
@@ -20,6 +21,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 @ToString
 class GenerateIndexesReqDto {
     private Long bookId;
+    private String query;
 }
 
 
@@ -34,14 +36,15 @@ public class GenerateIndexesEndPoints {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
-            // [1] IndexGenerationRequested 이벤트를 bookId를 기반으로 생성함
-            (new IndexGenerationRequested(reqDto.getBookId())).publish();
-                
-            CustomLogger.debug(CustomLoggerType.EXIT);
 
+            (new IndexGenerationRequested(reqDto.getBookId(), reqDto.getQuery())).publish();
+                
+            
+            CustomLogger.debug(CustomLoggerType.EXIT);
             return ResponseEntity.status(HttpStatus.OK).build();
 
         } catch(Exception e) {
+            CustomLogger.errorObject(e, "", reqDto); 
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

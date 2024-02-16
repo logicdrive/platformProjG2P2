@@ -50,24 +50,20 @@ public class UpdateBookTitleEndPoints {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, reqDto);
 
-            // [1] reqDto.bookId로 Book 객체를 찾음
-            Book bookToUpdate = BookManageService.getInstance().findByIdOrThrow(reqDto.getBookId());
 
-            // [2] reqDto.bookTitle로 Book 객체의 제목을 변경하고 저장함
+            Book bookToUpdate = BookManageService.getInstance().findByIdOrThrow(reqDto.getBookId());
             bookToUpdate.setTitle(reqDto.getBookTitle());
-            
-            // [3] BookTitleUpdated 이벤트를 저장한 Book 객체로 발생시킴
             Book savedBook = Book.repository().save(bookToUpdate);
-            
+
             (new BookTitleUpdated(savedBook)).publish();
 
-            // [4] 저장한 Book 객체의 ID를 반환
+
             UpdateBookTitleResDto resDto = new UpdateBookTitleResDto(savedBook);
-            CustomLogger.debugObject(CustomLoggerType.EXIT, "", resDto);
+            CustomLogger.debugObject(CustomLoggerType.EXIT, resDto);
             return ResponseEntity.ok(resDto);
 
         } catch(Exception e) {
-            CustomLogger.errorObject(e, "", reqDto);
+            CustomLogger.errorObject(e, "", reqDto); 
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).body(null);
         }
     }

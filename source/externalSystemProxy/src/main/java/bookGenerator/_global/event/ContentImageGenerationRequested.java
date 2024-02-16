@@ -1,27 +1,18 @@
 package bookGenerator._global.event;
 
-import java.util.Date;
-
 import lombok.Data;
 import lombok.EqualsAndHashCode;
+import lombok.NoArgsConstructor;
 import lombok.ToString;
 
+import bookGenerator._global.eventBase.ContentEvent;
 import bookGenerator._global.eventBase.EventNameAnnotation;
-import bookGenerator._global.infra.AbstractEvent;
 
 @Data
-@ToString
+@NoArgsConstructor
+@ToString(callSuper=true)
 @EqualsAndHashCode(callSuper=false)
 @EventNameAnnotation(eventName="ContentImageGenerationRequested")
-public class ContentImageGenerationRequested extends AbstractEvent {
-	private Long id;
-	private Long imageFileId;
-	private Long indexId;
-	private String content;
-	private Date createdDate;
-	private Date updatedDate;
-
-    public ContentImageGenerationRequested() {
-        super();
-    }
+public class ContentImageGenerationRequested extends ContentEvent {
+    String query;
 }

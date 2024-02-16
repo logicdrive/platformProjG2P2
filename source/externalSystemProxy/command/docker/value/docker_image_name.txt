@@ -1,1 +1,1 @@
-book-generator-externalSystemProxy
+book-generator-external-system-proxy
