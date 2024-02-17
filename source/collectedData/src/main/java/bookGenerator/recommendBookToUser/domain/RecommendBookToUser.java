@@ -24,7 +24,6 @@ import lombok.NoArgsConstructor;
 
 import bookGenerator.BootApplication;
 import bookGenerator._global.infra.LoggedEntity;
-import bookGenerator.recommenedBookToBook.domain.RecommenedBookToBook;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
