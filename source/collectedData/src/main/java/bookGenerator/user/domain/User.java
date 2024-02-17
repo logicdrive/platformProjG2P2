@@ -35,9 +35,9 @@ import bookGenerator._global.infra.LoggedEntity;
 public class User extends LoggedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long viewId;
+    private Long id;
 
-	private Long id;
+	private Long userId;
 
     private String email;
 
@@ -59,11 +59,17 @@ public class User extends LoggedEntity {
     }
 
     public static User createWithObject(Object source) {
-        return (new User()).copyAllProperties(source);
+        User userToCreate = (new User());
+
+        BeanUtils.copyProperties(source, userToCreate);
+        userToCreate.setUserId(userToCreate.getId());
+        userToCreate.setId(null);
+        
+        return userToCreate;
     }
 
     public User copyAllProperties(Object source) {
-        BeanUtils.copyProperties(source, this);
+        BeanUtils.copyProperties(source, this, "id", "userId");
         return this;
     }
 

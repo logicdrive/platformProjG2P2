@@ -18,10 +18,10 @@ public class UserManageService {
         );
     }
 
-    
-    public User findByIdOrThrow(Long id) {
-        return User.repository().findById(id)
-            .orElseThrow(() -> new UserNotFoundException());
+
+    public User findByUserIdOrThrow(Long userId) {
+        return User.repository().findByUserId(userId)
+            .orElseThrow(UserNotFoundException::new);
     }
 }
 

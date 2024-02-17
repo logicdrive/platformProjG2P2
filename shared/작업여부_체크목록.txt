@@ -19,19 +19,19 @@ frontend:
 ---
 
 * collectedData
-User
+User: O
 
-Book
-LikeHistory
-Tag
-Index
-Content
-Problem
-Comment
+Book: 
+LikeHistory: 
+Tag: 
+Index: 
+Content: 
+Problem: 
+Comment: 
 
-BookShelf
-BookShelfBook
-File
+BookShelf: 
+BookShelfBook: 
+File: 
 
-RecommendBookToUser
-RecommendBookToBook
+RecommendBookToUser: 
+RecommendBookToBook: 
