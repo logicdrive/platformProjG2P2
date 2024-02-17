@@ -30,7 +30,7 @@ Problem: O
 Comment: O
 
 BookShelf: O
-BookShelfBook: 
+BookShelfBook: O
 File: 
 
 RecommendBookToUser: 

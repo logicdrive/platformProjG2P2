@@ -39,6 +39,8 @@ public class BookShelfBook extends LoggedEntity {
 
 	private Long bookShelfBookId;
 
+    private Long bookShelfId;
+
 	private Long bookId;
 
     private Date createdDate;
