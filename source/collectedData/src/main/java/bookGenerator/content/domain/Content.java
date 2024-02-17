@@ -6,6 +6,7 @@ import org.springframework.beans.BeanUtils;
 
 import javax.persistence.Entity;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.PostPersist;
 import javax.persistence.PostRemove;
 import javax.persistence.PostUpdate;
@@ -39,8 +40,11 @@ public class Content extends LoggedEntity {
 
 	private Long contentId;
 
-	private Long iundexId;
+    private Long imageFileId;
 
+	private Long indexId;
+
+    @Lob
 	private String content;
 
     private Date createdDate;
