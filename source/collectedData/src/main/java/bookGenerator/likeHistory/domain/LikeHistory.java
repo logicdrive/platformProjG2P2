@@ -55,14 +55,15 @@ public class LikeHistory extends LoggedEntity {
     public static LikeHistory createWithObject(Object source) {
         LikeHistory likeHistoryToCreate = (new LikeHistory());
 
-        BeanUtils.copyProperties(source, likeHistoryToCreate);
+        BeanUtils.copyProperties(source, likeHistoryToCreate, "createdDate", "updatedDate");
+        likeHistoryToCreate.setBookId(likeHistoryToCreate.getId());
         likeHistoryToCreate.setId(null);
         
         return likeHistoryToCreate;
     }
 
     public LikeHistory copyAllProperties(Object source) {
-        BeanUtils.copyProperties(source, this, "id");
+        BeanUtils.copyProperties(source, this, "id", "createdDate", "updatedDate");
         return this;
     }
 

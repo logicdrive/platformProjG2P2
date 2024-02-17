@@ -22,7 +22,7 @@ frontend:
 User: O
 
 Book: O
-LikeHistory: 
+LikeHistory: O
 Tag: 
 Index: 
 Content: 
