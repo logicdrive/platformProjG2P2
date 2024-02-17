@@ -19,9 +19,9 @@ public class ContentManageService {
     }
 
     
-    public Content findByIdOrThrow(Long id) {
-        return Content.repository().findById(id)
-            .orElseThrow(() -> new ContentNotFoundException());
+    public Content findByContentId(Long contentId) {
+        return Content.repository().findByContentId(contentId)
+            .orElseThrow(ContentNotFoundException::new);
     }
 }
 

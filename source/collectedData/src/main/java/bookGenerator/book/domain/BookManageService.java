@@ -19,9 +19,9 @@ public class BookManageService {
     }
 
     
-    public Book findByIdOrThrow(Long id) {
-        return Book.repository().findById(id)
-            .orElseThrow(() -> new BookNotFoundException());
+    public Book findByBookId(Long bookId) {
+        return Book.repository().findByBookId(bookId)
+            .orElseThrow(BookNotFoundException::new);
     }
 }
 

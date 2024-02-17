@@ -35,9 +35,9 @@ import bookGenerator._global.infra.LoggedEntity;
 public class Tag extends LoggedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long viewId;
+    private Long id;
 
-	private Long id;
+	private Long tagId;
 
 	private Long bookId;
 
@@ -55,11 +55,17 @@ public class Tag extends LoggedEntity {
     }
 
     public static Tag createWithObject(Object source) {
-        return (new Tag()).copyAllProperties(source);
+        Tag tagToCreate = (new Tag());
+
+        BeanUtils.copyProperties(source, tagToCreate);
+        tagToCreate.setTagId(tagToCreate.getId());
+        tagToCreate.setId(null);
+        
+        return tagToCreate;
     }
 
     public Tag copyAllProperties(Object source) {
-        BeanUtils.copyProperties(source, this);
+        BeanUtils.copyProperties(source, this, "id", "tagId");
         return this;
     }
 

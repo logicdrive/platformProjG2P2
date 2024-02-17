@@ -35,7 +35,7 @@ import bookGenerator._global.infra.LoggedEntity;
 public class RecommenedBookToBook extends LoggedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long viewId;
+    private Long id;
 
 	private Long bookId;
 
@@ -55,11 +55,16 @@ public class RecommenedBookToBook extends LoggedEntity {
     }
 
     public static RecommenedBookToBook createWithObject(Object source) {
-        return (new RecommenedBookToBook()).copyAllProperties(source);
+        RecommenedBookToBook recommenedBookToBookToCreate = (new RecommenedBookToBook());
+
+        BeanUtils.copyProperties(source, recommenedBookToBookToCreate);
+        recommenedBookToBookToCreate.setId(null);
+        
+        return recommenedBookToBookToCreate;
     }
 
     public RecommenedBookToBook copyAllProperties(Object source) {
-        BeanUtils.copyProperties(source, this);
+        BeanUtils.copyProperties(source, this, "id");
         return this;
     }
 

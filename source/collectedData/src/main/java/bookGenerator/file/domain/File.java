@@ -35,9 +35,9 @@ import bookGenerator._global.infra.LoggedEntity;
 public class File extends LoggedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long viewId;
+    private Long id;
 
-	private Long id;
+	private Long fileId;
 
 	private String url;
 
@@ -53,11 +53,17 @@ public class File extends LoggedEntity {
     }
 
     public static File createWithObject(Object source) {
-        return (new File()).copyAllProperties(source);
+        File fileToCreate = (new File());
+
+        BeanUtils.copyProperties(source, fileToCreate);
+        fileToCreate.setFileId(fileToCreate.getId());
+        fileToCreate.setId(null);
+        
+        return fileToCreate;
     }
 
     public File copyAllProperties(Object source) {
-        BeanUtils.copyProperties(source, this);
+        BeanUtils.copyProperties(source, this, "id", "fileId");
         return this;
     }
 

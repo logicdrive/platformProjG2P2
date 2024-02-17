@@ -35,9 +35,9 @@ import bookGenerator._global.infra.LoggedEntity;
 public class BookShelfBook extends LoggedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long viewId;
+    private Long id;
 
-	private Long id;
+	private Long bookShelfBookId;
 
 	private Long bookId;
 
@@ -53,11 +53,17 @@ public class BookShelfBook extends LoggedEntity {
     }
 
     public static BookShelfBook createWithObject(Object source) {
-        return (new BookShelfBook()).copyAllProperties(source);
+        BookShelfBook bookShelfBookToCreate = (new BookShelfBook());
+
+        BeanUtils.copyProperties(source, bookShelfBookToCreate);
+        bookShelfBookToCreate.setBookShelfBookId(bookShelfBookToCreate.getId());
+        bookShelfBookToCreate.setId(null);
+        
+        return bookShelfBookToCreate;
     }
 
     public BookShelfBook copyAllProperties(Object source) {
-        BeanUtils.copyProperties(source, this);
+        BeanUtils.copyProperties(source, this, "id", "bookShelfBookId");
         return this;
     }
 

@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 
 import bookGenerator.BootApplication;
 import bookGenerator._global.infra.LoggedEntity;
+import bookGenerator.bookShelfBook.domain.BookShelfBook;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
@@ -35,9 +36,9 @@ import bookGenerator._global.infra.LoggedEntity;
 public class BookShelf extends LoggedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long viewId;
+    private Long id;
 
-	private Long id;
+	private Long bookShelfId;
 
 	private Long createrId;
 
@@ -61,11 +62,17 @@ public class BookShelf extends LoggedEntity {
     }
 
     public static BookShelf createWithObject(Object source) {
-        return (new BookShelf()).copyAllProperties(source);
+        BookShelf bookShelfToCreate = (new BookShelf());
+
+        BeanUtils.copyProperties(source, bookShelfToCreate);
+        bookShelfToCreate.setBookShelfId(bookShelfToCreate.getId());
+        bookShelfToCreate.setId(null);
+        
+        return bookShelfToCreate;
     }
 
     public BookShelf copyAllProperties(Object source) {
-        BeanUtils.copyProperties(source, this);
+        BeanUtils.copyProperties(source, this, "id", "bookShelfId");
         return this;
     }
 

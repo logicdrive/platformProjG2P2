@@ -19,9 +19,9 @@ public class ProblemManageService {
     }
 
     
-    public Problem findByIdOrThrow(Long id) {
-        return Problem.repository().findById(id)
-            .orElseThrow(() -> new ProblemNotFoundException());
+    public Problem findByProblemId(Long problemId) {
+        return Problem.repository().findByProblemId(problemId)
+            .orElseThrow(ProblemNotFoundException::new);
     }
 }
 

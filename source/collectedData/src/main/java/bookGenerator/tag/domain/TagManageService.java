@@ -19,9 +19,9 @@ public class TagManageService {
     }
 
     
-    public Tag findByIdOrThrow(Long id) {
-        return Tag.repository().findById(id)
-            .orElseThrow(() -> new TagNotFoundException());
+    public Tag findByTagId(Long tagId) {
+        return Tag.repository().findByTagId(tagId)
+            .orElseThrow(TagNotFoundException::new);
     }
 }
 

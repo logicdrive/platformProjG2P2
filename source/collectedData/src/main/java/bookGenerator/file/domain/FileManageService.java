@@ -19,9 +19,9 @@ public class FileManageService {
     }
 
     
-    public File findByIdOrThrow(Long id) {
-        return File.repository().findById(id)
-            .orElseThrow(() -> new FileNotFoundException());
+    public File findByFileId(Long fileId) {
+        return File.repository().findByFileId(fileId)
+            .orElseThrow(FileNotFoundException::new);
     }
 }
 

@@ -19,9 +19,9 @@ public class CommentManageService {
     }
 
     
-    public Comment findByIdOrThrow(Long id) {
-        return Comment.repository().findById(id)
-            .orElseThrow(() -> new CommentNotFoundException());
+    public Comment findByCommentId(Long commentId) {
+        return Comment.repository().findByCommentId(commentId)
+            .orElseThrow(CommentNotFoundException::new);
     }
 }
 

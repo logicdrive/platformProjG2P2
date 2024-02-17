@@ -35,9 +35,9 @@ import bookGenerator._global.infra.LoggedEntity;
 public class Index extends LoggedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long viewId;
+    private Long id;
 
-	private Long id;
+	private Long indexId;
 
 	private Long bookId;
 
@@ -57,14 +57,20 @@ public class Index extends LoggedEntity {
     }
 
     public static Index createWithObject(Object source) {
-        return (new Index()).copyAllProperties(source);
+        Index indexToCreate = (new Index());
+
+        BeanUtils.copyProperties(source, indexToCreate);
+        indexToCreate.setIndexId(indexToCreate.getId());
+        indexToCreate.setId(null);
+        
+        return indexToCreate;
     }
 
     public Index copyAllProperties(Object source) {
-        BeanUtils.copyProperties(source, this);
+        BeanUtils.copyProperties(source, this, "id", "indexId");
         return this;
     }
-
+    
 
     @PrePersist
     public void onPrePersist() {super.onPrePersist();}

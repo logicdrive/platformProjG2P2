@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 
 import bookGenerator.BootApplication;
 import bookGenerator._global.infra.LoggedEntity;
+import bookGenerator.recommendBookToUser.domain.RecommendBookToUser;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
@@ -35,7 +36,7 @@ import bookGenerator._global.infra.LoggedEntity;
 public class LikeHistory extends LoggedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long viewId;
+    private Long id;
 
 	private Long userId;
 
@@ -53,11 +54,16 @@ public class LikeHistory extends LoggedEntity {
     }
 
     public static LikeHistory createWithObject(Object source) {
-        return (new LikeHistory()).copyAllProperties(source);
+        LikeHistory likeHistoryToCreate = (new LikeHistory());
+
+        BeanUtils.copyProperties(source, likeHistoryToCreate);
+        likeHistoryToCreate.setId(null);
+        
+        return likeHistoryToCreate;
     }
 
     public LikeHistory copyAllProperties(Object source) {
-        BeanUtils.copyProperties(source, this);
+        BeanUtils.copyProperties(source, this, "id");
         return this;
     }
 

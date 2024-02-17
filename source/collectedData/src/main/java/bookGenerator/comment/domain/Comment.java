@@ -36,9 +36,9 @@ import bookGenerator._global.infra.LoggedEntity;
 public class Comment extends LoggedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long viewId;
+    private Long id;
 
-	private Long id;
+	private Long commentId;
 
 	private Long createrId;
 
@@ -58,11 +58,17 @@ public class Comment extends LoggedEntity {
     }
 
     public static Comment createWithObject(Object source) {
-        return (new Comment()).copyAllProperties(source);
+        Comment commentToCreate = (new Comment());
+
+        BeanUtils.copyProperties(source, commentToCreate);
+        commentToCreate.setCommentId(commentToCreate.getId());
+        commentToCreate.setId(null);
+        
+        return commentToCreate;
     }
 
     public Comment copyAllProperties(Object source) {
-        BeanUtils.copyProperties(source, this);
+        BeanUtils.copyProperties(source, this, "id", "commentId");
         return this;
     }
 

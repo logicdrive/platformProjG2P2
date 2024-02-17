@@ -19,9 +19,9 @@ public class IndexManageService {
     }
 
     
-    public Index findByIdOrThrow(Long id) {
-        return Index.repository().findById(id)
-            .orElseThrow(() -> new IndexNotFoundException());
+    public Index findByIndexId(Long indexId) {
+        return Index.repository().findByIndexId(indexId)
+            .orElseThrow(IndexNotFoundException::new);
     }
 }
 

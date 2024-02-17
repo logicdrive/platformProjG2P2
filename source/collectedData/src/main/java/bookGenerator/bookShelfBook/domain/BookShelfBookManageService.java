@@ -19,9 +19,9 @@ public class BookShelfBookManageService {
     }
 
     
-    public BookShelfBook findByIdOrThrow(Long id) {
-        return BookShelfBook.repository().findById(id)
-            .orElseThrow(() -> new BookShelfBookNotFoundException());
+    public BookShelfBook findByBookShelfBookId(Long bookShelfBookId) {
+        return BookShelfBook.repository().findByBookShelfBookId(bookShelfBookId)
+            .orElseThrow(BookShelfBookNotFoundException::new);
     }
 }
 

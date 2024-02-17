@@ -35,9 +35,9 @@ import bookGenerator._global.infra.LoggedEntity;
 public class Problem extends LoggedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long viewId;
+    private Long id;
 
-	private Long id;
+	private Long problemId;
 
 	private Long indexId;
 
@@ -59,11 +59,17 @@ public class Problem extends LoggedEntity {
     }
 
     public static Problem createWithObject(Object source) {
-        return (new Problem()).copyAllProperties(source);
+        Problem problemToCreate = (new Problem());
+
+        BeanUtils.copyProperties(source, problemToCreate);
+        problemToCreate.setProblemId(problemToCreate.getId());
+        problemToCreate.setId(null);
+        
+        return problemToCreate;
     }
 
     public Problem copyAllProperties(Object source) {
-        BeanUtils.copyProperties(source, this);
+        BeanUtils.copyProperties(source, this, "id", "problemId");
         return this;
     }
 

@@ -35,9 +35,9 @@ import bookGenerator._global.infra.LoggedEntity;
 public class Content extends LoggedEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long viewId;
+    private Long id;
 
-	private Long id;
+	private Long contentId;
 
 	private Long iundexId;
 
@@ -55,14 +55,20 @@ public class Content extends LoggedEntity {
     }
 
     public static Content createWithObject(Object source) {
-        return (new Content()).copyAllProperties(source);
+        Content contentToCreate = (new Content());
+
+        BeanUtils.copyProperties(source, contentToCreate);
+        contentToCreate.setContentId(contentToCreate.getId());
+        contentToCreate.setId(null);
+        
+        return contentToCreate;
     }
 
     public Content copyAllProperties(Object source) {
-        BeanUtils.copyProperties(source, this);
+        BeanUtils.copyProperties(source, this, "id", "contentId");
         return this;
     }
-
+    
 
     @PrePersist
     public void onPrePersist() {super.onPrePersist();}
