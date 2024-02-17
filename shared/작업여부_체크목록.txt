@@ -24,7 +24,7 @@ User: O
 Book: O
 LikeHistory: O
 Tag: O
-Index: 
+Index: O
 Content: 
 Problem: 
 Comment: 
