@@ -67,6 +67,20 @@
         </test>
 
         <test>
+            <title>Mock BookIsSharedUpdated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 BookIsSharedUpdated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/BookIsSharedUpdated</resourceUrl>
+            <headers></headers>
+            <data>{"id":1,"createrId":2,"coverImageFileId":1,"title":"Updated Title","isShared":true,"createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
             <title>Mock BookTitleUpdated 이벤트 생성</title>
             <help>테스트를 위해서 강제로 BookTitleUpdated 이벤트를 생성합니다.</help>
 
