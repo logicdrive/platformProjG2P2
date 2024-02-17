@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 
 import bookGenerator.BootApplication;
 import bookGenerator._global.infra.LoggedEntity;
+import bookGenerator.bookShelf.domain.BookShelf;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
@@ -53,8 +54,6 @@ public class Book extends LoggedEntity {
     
     private Date updatedDate;
 
-    private String status;
-
 
     public static BookRepository repository() {
         return BootApplication.applicationContext.getBean(
@@ -62,8 +61,13 @@ public class Book extends LoggedEntity {
         );
     }
 
-    public void copyAllProperties(Object source) {
+    public static Book createWithObject(Object source) {
+        return (new Book()).copyAllProperties(source);
+    }
+
+    public Book copyAllProperties(Object source) {
         BeanUtils.copyProperties(source, this);
+        return this;
     }
 
 

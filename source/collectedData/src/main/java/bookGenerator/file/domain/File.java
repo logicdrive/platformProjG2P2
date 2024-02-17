@@ -45,8 +45,6 @@ public class File extends LoggedEntity {
     
     private Date updatedDate;
 
-    private String status;
-
 
     public static FileRepository repository() {
         return BootApplication.applicationContext.getBean(
@@ -54,8 +52,13 @@ public class File extends LoggedEntity {
         );
     }
 
-    public void copyAllProperties(Object source) {
+    public static File createWithObject(Object source) {
+        return (new File()).copyAllProperties(source);
+    }
+
+    public File copyAllProperties(Object source) {
         BeanUtils.copyProperties(source, this);
+        return this;
     }
 
 

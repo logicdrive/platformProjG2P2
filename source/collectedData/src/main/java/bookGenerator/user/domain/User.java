@@ -51,8 +51,6 @@ public class User extends LoggedEntity {
     
     private Date updatedDate;
 
-    private String status;
-
 
     public static UserRepository repository() {
         return BootApplication.applicationContext.getBean(
@@ -60,8 +58,13 @@ public class User extends LoggedEntity {
         );
     }
 
-    public void copyAllProperties(Object source) {
+    public static User createWithObject(Object source) {
+        return (new User()).copyAllProperties(source);
+    }
+
+    public User copyAllProperties(Object source) {
         BeanUtils.copyProperties(source, this);
+        return this;
     }
 
 

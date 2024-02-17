@@ -54,8 +54,13 @@ public class RecommenedBookToBook extends LoggedEntity {
         );
     }
 
-    public void copyAllProperties(Object source) {
+    public static RecommenedBookToBook createWithObject(Object source) {
+        return (new RecommenedBookToBook()).copyAllProperties(source);
+    }
+
+    public RecommenedBookToBook copyAllProperties(Object source) {
         BeanUtils.copyProperties(source, this);
+        return this;
     }
 
 

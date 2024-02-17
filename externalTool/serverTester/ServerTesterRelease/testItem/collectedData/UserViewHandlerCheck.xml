@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>CollectedData</group>
+        <title>View Handler 검증: User</title>
+        <help>User 관련 View Handler의 정상 작동 여부를 검증하기 위한 엔드포인트들입니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>통신 확인(SanityCheck)</title>
+            <help>CollectedData 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>모든 유저 목록 얻기(UserAll)</title>
+            <help>모든 유저 목록을 얻습니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>users</resourceUrl>
+            <headers></headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>Mock SignUpCompleted 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 SignUpCompleted 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/SignUpCompleted</resourceUrl>
+            <headers></headers>
+            <data>{"id":1,"email":"test1@gmail.com","password":"testPassword1","name":"testName1","role":"User","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>

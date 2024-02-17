@@ -2,6 +2,11 @@ package bookGenerator._global.sanityCheck;
 
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+
+import java.util.Dictionary;
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -20,12 +25,16 @@ public class MockEventsEndPoints {
     @Value("${global.package_name}")
     private String globalPackageName;
 
+    private Map<String, String> eventPackageMap = new HashMap<String, String>() {{
+        put("SignUpCompleted", "user.event");
+    }};
     
+
     @PostMapping("/mock/{eventName}")
     public void mockEvents(@PathVariable String eventName, @RequestBody String jsonData) {
         try {
-            
-            Class<?> eventClass = Class.forName(String.format("%s._global.event.%s", this.globalPackageName, eventName));
+
+            Class<?> eventClass = Class.forName(String.format("%s.%s.%s", this.globalPackageName, this.eventPackageMap.get(eventName), eventName));
             AbstractEvent event = (AbstractEvent)((new ObjectMapper()).readValue(jsonData, eventClass));
             event.publish();
 

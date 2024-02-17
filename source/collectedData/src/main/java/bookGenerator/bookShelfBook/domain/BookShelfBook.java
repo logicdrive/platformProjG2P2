@@ -45,8 +45,6 @@ public class BookShelfBook extends LoggedEntity {
     
     private Date updatedDate;
 
-    private String status;
-
 
     public static BookShelfBookRepository repository() {
         return BootApplication.applicationContext.getBean(
@@ -54,8 +52,13 @@ public class BookShelfBook extends LoggedEntity {
         );
     }
 
-    public void copyAllProperties(Object source) {
+    public static BookShelfBook createWithObject(Object source) {
+        return (new BookShelfBook()).copyAllProperties(source);
+    }
+
+    public BookShelfBook copyAllProperties(Object source) {
         BeanUtils.copyProperties(source, this);
+        return this;
     }
 
 

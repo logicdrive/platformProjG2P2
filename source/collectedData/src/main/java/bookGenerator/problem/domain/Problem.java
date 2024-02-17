@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 
 import bookGenerator.BootApplication;
 import bookGenerator._global.infra.LoggedEntity;
+import bookGenerator.recommendBookToUser.domain.RecommendBookToUser;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
@@ -50,8 +51,6 @@ public class Problem extends LoggedEntity {
     private Date createdDate;
     
     private Date updatedDate;
-    
-    private String status;
 
 
     public static ProblemRepository repository() {
@@ -60,8 +59,13 @@ public class Problem extends LoggedEntity {
         );
     }
 
-    public void copyAllProperties(Object source) {
+    public static Problem createWithObject(Object source) {
+        return (new Problem()).copyAllProperties(source);
+    }
+
+    public Problem copyAllProperties(Object source) {
         BeanUtils.copyProperties(source, this);
+        return this;
     }
 
 

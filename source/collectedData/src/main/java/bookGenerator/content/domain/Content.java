@@ -47,8 +47,6 @@ public class Content extends LoggedEntity {
     
     private Date updatedDate;
 
-    private String status;
-
 
     public static ContentRepository repository() {
         return BootApplication.applicationContext.getBean(
@@ -56,8 +54,13 @@ public class Content extends LoggedEntity {
         );
     }
 
-    public void copyAllProperties(Object source) {
+    public static Content createWithObject(Object source) {
+        return (new Content()).copyAllProperties(source);
+    }
+
+    public Content copyAllProperties(Object source) {
         BeanUtils.copyProperties(source, this);
+        return this;
     }
 
 

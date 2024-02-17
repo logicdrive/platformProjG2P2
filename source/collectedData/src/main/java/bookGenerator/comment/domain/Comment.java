@@ -50,8 +50,6 @@ public class Comment extends LoggedEntity {
     
     private Date updatedDate;
 
-    private String status;
-
 
     public static CommentRepository repository() {
         return BootApplication.applicationContext.getBean(
@@ -59,8 +57,13 @@ public class Comment extends LoggedEntity {
         );
     }
 
-    public void copyAllProperties(Object source) {
+    public static Comment createWithObject(Object source) {
+        return (new Comment()).copyAllProperties(source);
+    }
+
+    public Comment copyAllProperties(Object source) {
         BeanUtils.copyProperties(source, this);
+        return this;
     }
 
 

@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 
 import bookGenerator.BootApplication;
 import bookGenerator._global.infra.LoggedEntity;
+import bookGenerator.likeHistory.domain.LikeHistory;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
@@ -49,8 +50,6 @@ public class Index extends LoggedEntity {
     
     private Date updatedDate;
 
-    private String status;
-
 
     public static IndexRepository repository() {
         return BootApplication.applicationContext.getBean(
@@ -58,8 +57,13 @@ public class Index extends LoggedEntity {
         );
     }
 
-    public void copyAllProperties(Object source) {
+    public static Index createWithObject(Object source) {
+        return (new Index()).copyAllProperties(source);
+    }
+
+    public Index copyAllProperties(Object source) {
         BeanUtils.copyProperties(source, this);
+        return this;
     }
 
 

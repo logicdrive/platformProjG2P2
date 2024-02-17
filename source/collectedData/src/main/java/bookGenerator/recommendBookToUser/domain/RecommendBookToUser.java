@@ -24,6 +24,7 @@ import lombok.NoArgsConstructor;
 
 import bookGenerator.BootApplication;
 import bookGenerator._global.infra.LoggedEntity;
+import bookGenerator.recommenedBookToBook.domain.RecommenedBookToBook;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
@@ -54,8 +55,13 @@ public class RecommendBookToUser extends LoggedEntity {
         );
     }
 
-    public void copyAllProperties(Object source) {
+    public static RecommendBookToUser createWithObject(Object source) {
+        return (new RecommendBookToUser()).copyAllProperties(source);
+    }
+
+    public RecommendBookToUser copyAllProperties(Object source) {
         BeanUtils.copyProperties(source, this);
+        return this;
     }
 
 

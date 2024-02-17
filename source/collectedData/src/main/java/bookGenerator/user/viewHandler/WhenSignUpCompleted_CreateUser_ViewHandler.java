@@ -1,7 +1,5 @@
 package bookGenerator.user.viewHandler;
 
-import java.util.Optional;
-
 import org.springframework.cloud.stream.annotation.StreamListener;
 import org.springframework.messaging.handler.annotation.Payload;
 import org.springframework.stereotype.Service;
@@ -9,6 +7,7 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
+import bookGenerator.user.domain.User;
 import bookGenerator.user.event.SignUpCompleted;
 import lombok.RequiredArgsConstructor;
 
@@ -27,22 +26,13 @@ public class WhenSignUpCompleted_CreateUser_ViewHandler {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, signUpCompleted);
 
-            CustomLogger.debug(CustomLoggerType.ENTER, "", String.format("{%s: %s}", commentCreated.getClass().getSimpleName(), commentCreated.toString()));
-            if (!commentCreated.validate()) return;
 
-            Comment savedComment = this.commentRepository.save(
-                Comment.builder()
-                    .commentId(commentCreated.getId())
-                    .createrId(commentCreated.getCreaterId())
-                    .musicId(commentCreated.getMusicId())
-                    .content(commentCreated.getContent())
-                    .createdDate(commentCreated.getCreatedDate())
-                    .updatedDate(commentCreated.getUpdatedDate())
-                    .status("CommentCreated")
-                    .build()
+            User.repository().save(
+                User.createWithObject(signUpCompleted)
             );
 
-            CustomLogger.debugObject(CustomLoggerType.EXIT, signUpCompleted);
+
+            CustomLogger.debug(CustomLoggerType.EXIT);
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, signUpCompleted);
