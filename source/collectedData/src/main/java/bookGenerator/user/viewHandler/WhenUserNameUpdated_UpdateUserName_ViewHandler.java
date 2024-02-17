@@ -10,10 +10,8 @@ import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.user.domain.User;
 import bookGenerator.user.domain.UserManageService;
 import bookGenerator.user.event.UserNameUpdated;
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class WhenUserNameUpdated_UpdateUserName_ViewHandler {
 
     @StreamListener(

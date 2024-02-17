@@ -24,7 +24,6 @@ import lombok.NoArgsConstructor;
 
 import bookGenerator.BootApplication;
 import bookGenerator._global.infra.LoggedEntity;
-import bookGenerator.bookShelf.domain.BookShelf;
 
 @Data
 @EqualsAndHashCode(callSuper=false)
@@ -45,8 +44,6 @@ public class Book extends LoggedEntity {
 	private Long coverImageFileId;
 
 	private String title;
-
-	private Long likes;
 
 	private Boolean isShared;
 

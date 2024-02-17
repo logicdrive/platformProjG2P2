@@ -9,10 +9,8 @@ import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.user.domain.User;
 import bookGenerator.user.event.SignUpCompleted;
-import lombok.RequiredArgsConstructor;
 
 @Service
-@RequiredArgsConstructor
 public class WhenSignUpCompleted_CreateUser_ViewHandler {
 
     @StreamListener(
