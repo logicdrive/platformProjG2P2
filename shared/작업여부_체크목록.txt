@@ -27,7 +27,7 @@ Tag: O
 Index: O
 Content: O
 Problem: O
-Comment: 
+Comment: O
 
 BookShelf: 
 BookShelfBook: 
