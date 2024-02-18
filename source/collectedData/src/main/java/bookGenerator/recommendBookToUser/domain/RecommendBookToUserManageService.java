@@ -17,12 +17,6 @@ public class RecommendBookToUserManageService {
             RecommendBookToUserManageService.class
         );
     }
-
-    
-    public RecommendBookToUser findByIdOrThrow(Long id) {
-        return RecommendBookToUser.repository().findById(id)
-            .orElseThrow(() -> new RecommendBookToUserNotFoundException());
-    }
 }
 
 @Getter

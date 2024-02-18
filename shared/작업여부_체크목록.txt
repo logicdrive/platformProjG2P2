@@ -33,5 +33,5 @@ BookShelf: O
 BookShelfBook: O
 File: O
 
-RecommendBookToUser: 
-RecommendBookToBook: 
+RecommendBookToUser: O
+RecommendBookToBook: O
