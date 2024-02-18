@@ -3,10 +3,12 @@ package bookGenerator.user.domain;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
+import java.util.List;
 import java.util.Optional;
 
 @RepositoryRestResource(collectionResourceRel = "users", path = "users")
 public interface UserRepository
     extends PagingAndSortingRepository<User, Long> {
     Optional<User> findByUserId(Long userId);
+    List<User> findByNameContainingIgnoreCase(String name);
 }

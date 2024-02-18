@@ -9,4 +9,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface ContentRepository
     extends PagingAndSortingRepository<Content, Long> {
     Optional<Content> findByContentId(Long contentId);
+    Optional<Content> findByIndexId(Long indexId);
 }
