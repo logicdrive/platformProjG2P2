@@ -239,6 +239,22 @@ spring:
           filters:
             - RewritePath=/api/${service.externalSystem.name}/(?<segment>.*), /${segment}
             - AuthorizationHeaderFilter
+        
+
+        - id: recommendCalcSystemNoAuth
+          uri: http://${service.recommendCalcSystem.domain}:${service.recommendCalcSystem.port}
+          predicates:
+            - Path=/api/${service.recommendCalcSystem.name}/sanityCheck,/api/${service.recommendCalcSystem.name}/sanityCheck/logs
+          filters:
+            - RewritePath=/api/${service.recommendCalcSystem.name}/(?<segment>.*), /${segment}
+        
+        - id: recommendCalcSystemWithAuth
+          uri: http://${service.recommendCalcSystem.domain}:${service.recommendCalcSystem.port}
+          predicates:
+            - Path=/api/${service.recommendCalcSystem.name}/**
+          filters:
+            - RewritePath=/api/${service.recommendCalcSystem.name}/(?<segment>.*), /${segment}
+            - AuthorizationHeaderFilter
 
 
         - id: frontend
@@ -272,6 +288,7 @@ service:
   externalSystemProxy.name: externalSystemProxy
   collectedData.name: collectedData
   externalSystem.name: externalSystem
+  recommendCalcSystem.name: recommendCalcSystem
 
 ---
 
@@ -330,6 +347,10 @@ service:
   externalSystem:
     domain: localhost
     port: 8095
+  
+  recommendCalcSystem:
+    domain: localhost
+    port: 8096
 
   frontend:
     domain: localhost
@@ -392,6 +413,10 @@ service:
   externalSystem:
     domain: host.docker.internal
     port: 8095
+  
+  recommendCalcSystem:
+    domain: host.docker.internal
+    port: 8096
 
   frontend:
     domain: host.docker.internal
@@ -454,6 +479,10 @@ service:
   externalSystem:
     domain: external-system
     port: 8095
+  
+  recommendCalcSystem:
+    domain: recommend-calc-system
+    port: 8096
 
   frontend:
     domain: frontend

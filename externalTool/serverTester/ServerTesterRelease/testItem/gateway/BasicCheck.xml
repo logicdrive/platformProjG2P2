@@ -429,5 +429,20 @@
                 <check type="status">2.*</check>
             </checks>
         </test>
+
+        <test>
+            <title>RecommendCalcSystem 서비스 통신 확인(SanityCheck)</title>
+            <help>RecommendCalcSystem 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/recommendCalcSystem/sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
     </tests>
 </root>
