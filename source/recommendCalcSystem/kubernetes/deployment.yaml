@@ -19,3 +19,9 @@ spec:
           image: $k8s_image
           ports:
             - containerPort: $k8s_port
+          
+          env:
+            - name: COLLECTED_DATA_HOST
+              value: $COLLECTED_DATA_HOST_VALUE
+            - name: COLLECTED_DATA_PORT
+              value: $COLLECTED_DATA_PORT_VALUE

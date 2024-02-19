@@ -8,4 +8,6 @@ DOCKER_IMAGE_PORT=`cat ./command/docker/value/docker_image_port.txt`
 
 
 docker run --name ${DOCKER_IMAGE_NAME}_con \
+    -e COLLECTED_DATA_HOST=host.docker.internal \
+    -e COLLECTED_DATA_PORT=8093 \
     -p $DOCKER_IMAGE_PORT:$DOCKER_APP_PORT $DOCKER_USER_NAME/$DOCKER_IMAGE_NAME:$DOCKER_VERSION

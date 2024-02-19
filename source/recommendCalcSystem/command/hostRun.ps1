@@ -1,6 +1,7 @@
 .\venv\Scripts\activate
 
-
+$env:COLLECTED_DATA_HOST = "localhost"
+$env:COLLECTED_DATA_PORT = "8093"
 cp envs/development.env .flaskenv
 
 

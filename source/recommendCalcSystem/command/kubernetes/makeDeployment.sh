@@ -9,4 +9,6 @@ sed "s/\$k8s_image/$K8S_IMAGE_USERNAME\/$K8S_IMAGE_NAME:$K8S_IMAGE_VERSION/g" ./
 sed "s/\$k8s_port/$K8S_PORT/g" |\
 sed "s/\$k8s_service_name/$K8S_SERVICE_NAME/g" |\
 sed "s/\$k8s_target_port/$K8S_TARGET_PORT/g" |\
+sed "s/\$COLLECTED_DATA_HOST_VALUE/collected-data/g" |\
+sed "s/\$COLLECTED_DATA_PORT_VALUE/8080/g" |\
 kubectl apply -f -
