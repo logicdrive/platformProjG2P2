@@ -10,4 +10,5 @@ public interface RecommenedBookToBookRepository
     extends PagingAndSortingRepository<RecommenedBookToBook, Long> {
     List<RecommenedBookToBook> findByBookIdOrderByPriority(Long bookId);
     void deleteByBookId(Long bookId);
+    void deleteByRecommendedBookId(Long recommendedBookId);
 }
