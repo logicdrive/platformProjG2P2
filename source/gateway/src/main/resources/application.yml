@@ -207,6 +207,22 @@ spring:
           filters:
             - RewritePath=/api/${service.externalSystemProxy.name}/(?<segment>.*), /${segment}
             - AuthorizationHeaderFilter
+        
+
+        - id: collectedDataNoAuth
+          uri: http://${service.collectedData.domain}:${service.collectedData.port}
+          predicates:
+            - Path=/api/${service.collectedData.name}/sanityCheck,/api/${service.collectedData.name}/sanityCheck/logs
+          filters:
+            - RewritePath=/api/${service.collectedData.name}/(?<segment>.*), /${segment}
+        
+        - id: collectedDataWithAuth
+          uri: http://${service.collectedData.domain}:${service.collectedData.port}
+          predicates:
+            - Path=/api/${service.collectedData.name}/**
+          filters:
+            - RewritePath=/api/${service.collectedData.name}/(?<segment>.*), /${segment}
+            - AuthorizationHeaderFilter
           
         
         - id: externalSystemNoAuth
@@ -254,6 +270,7 @@ service:
   bookShelfBook.name: bookShelfBook
   file.name: file
   externalSystemProxy.name: externalSystemProxy
+  collectedData.name: collectedData
   externalSystem.name: externalSystem
 
 ---
@@ -306,6 +323,10 @@ service:
     domain: localhost
     port: 8092
   
+  collectedData:
+    domain: localhost
+    port: 8093
+
   externalSystem:
     domain: localhost
     port: 8095
@@ -364,6 +385,10 @@ service:
     domain: host.docker.internal
     port: 8092
   
+  collectedData:
+    domain: host.docker.internal
+    port: 8093
+
   externalSystem:
     domain: host.docker.internal
     port: 8095
@@ -422,10 +447,14 @@ service:
     domain: external-system-proxy
     port: 8080
   
+  collectedData:
+    domain: collected-data
+    port: 8080
+
   externalSystem:
     domain: external-system
-    port: 8080
+    port: 8095
 
   frontend:
     domain: frontend
-    port: 8080
+    port: 3000
