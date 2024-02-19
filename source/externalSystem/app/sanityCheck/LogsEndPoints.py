@@ -14,8 +14,7 @@ class LogsReqDto:
         self.__regFilter:str = request.args.get("regFilter") or ""
 
     def __str__(self) :
-        return "<{} lineLength: {}, regFilter: {}>".format(self.__class__.__name__, 
-                    self.__lineLength, self.__regFilter)
+        return "<{}>".format(self.__class__.__name__)
 
 
     @property
@@ -59,6 +58,8 @@ def logs() -> LogsResDto :
         readLogs:list[str] = []
         with open(logFilePath, 'r') as f:
             for readline in f.readlines() :
+                if "GET /sanityCheck/logs" in readline : continue
+
                 if reqDto.regFilter : 
                     if re.match(reqDto.regFilter, readline) : readLogs.append(readline)
                 else : 
