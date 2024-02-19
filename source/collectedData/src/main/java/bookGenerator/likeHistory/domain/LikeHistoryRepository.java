@@ -9,4 +9,5 @@ import java.util.List;
 public interface LikeHistoryRepository
     extends PagingAndSortingRepository<LikeHistory, Long> {
     List<LikeHistory> findByBookId(Long bookId);
+    List<LikeHistory> findByUserId(Long userId);
 }

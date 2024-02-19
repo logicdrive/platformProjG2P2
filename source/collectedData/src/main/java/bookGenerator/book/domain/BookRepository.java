@@ -14,4 +14,5 @@ public interface BookRepository
     List<Book> findByIsSharedOrderByCreatedDateDesc(Boolean isShared);
     List<Book> findByIsSharedAndTitleContainingIgnoreCaseOrderByCreatedDateDesc(Boolean isShared, String title);
     List<Book> findByIsSharedAndCreaterIdOrderByCreatedDateDesc(Boolean isShared, Long createrId);
+    List<Book> findByCreaterId(Long createrId);
 }
