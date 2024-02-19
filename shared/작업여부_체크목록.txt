@@ -13,7 +13,7 @@ collectedData: O >
 externalSystemProxy: O / D
 externalSystem: O / D
 recommendCalcSystem: 
-gateway: 
+gateway: O
 frontend: 
 
 ---
