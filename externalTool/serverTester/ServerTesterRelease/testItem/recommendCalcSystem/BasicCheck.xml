@@ -21,6 +21,21 @@
                 <check type="status">2.*</check>
             </checks>
         </test>
+
+        <test>
+            <title>CollectedData에 관환 통신 확인(CollectedDataSanityCheck)</title>
+            <help>RecommendCalcSystem 서비스를 통해서 Collected Data 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8096</baseUrl>
+            <resourceUrl>sanityCheck/collectedDataSanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
         
 
         <test>

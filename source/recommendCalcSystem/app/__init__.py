@@ -4,6 +4,7 @@ from flask import Flask
 from ._global.logger import LoggingConfig
 
 from .sanityCheck import _AddSanityCheckBluePrints
+from .recommendCalc import _AddRecommendCalcBluePrints
 
 dirPathsToCreate = ["./log", "./workDir"]
 
@@ -17,5 +18,6 @@ def create_app():
     LoggingConfig.setupLoggingConfig()
 
     _AddSanityCheckBluePrints.addSanityCheckBluePrints(app)
+    _AddRecommendCalcBluePrints.addRecommendCalcBluePrints(app)
     
     return app

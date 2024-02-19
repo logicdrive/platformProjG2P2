@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>RecommendCalcSystem</group>
+        <title>엔드포인트 테스트: UpdateRecommendBookToBook</title>
+        <help>UpdateRecommendBookToBook 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>통신 확인(SanityCheck)</title>
+            <help>RecommendCalcSystem 서비스에 sanityCheck 요청을 보냅니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8096</baseUrl>
+            <resourceUrl>sanityCheck</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>책과 연관된 책 추천 목록 업데이트 요청(UpdateRecommendBookToBook)</title>
+            <help>책과 연관된 책 추천 목록을 업데이트하기 위한 요청을 보냅니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8096</baseUrl>
+            <resourceUrl>recommendCalc/updateRecommendBookToBook</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>
