@@ -46,7 +46,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":1,"bookId":1,"name":"A","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":1,"bookId":1,"name":"Apple","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -60,7 +60,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":2,"bookId":1,"name":"B","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":2,"bookId":1,"name":"Banana","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -74,7 +74,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":3,"bookId":1,"name":"C","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":3,"bookId":1,"name":"Candy","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -104,7 +104,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":4,"bookId":2,"name":"B","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":4,"bookId":2,"name":"Banana","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -118,7 +118,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":5,"bookId":2,"name":"C","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":5,"bookId":2,"name":"Candy","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -132,7 +132,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":6,"bookId":2,"name":"D","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":6,"bookId":2,"name":"Description","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -162,7 +162,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":7,"bookId":3,"name":"E","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":7,"bookId":3,"name":"Elastic","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -176,7 +176,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":8,"bookId":3,"name":"F","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":8,"bookId":3,"name":"Flask","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -190,7 +190,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":9,"bookId":3,"name":"G","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":9,"bookId":3,"name":"Google","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -220,7 +220,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":10,"bookId":4,"name":"A","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":10,"bookId":4,"name":"Apple","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -234,7 +234,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":11,"bookId":4,"name":"B","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":11,"bookId":4,"name":"Banana","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -248,7 +248,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":12,"bookId":4,"name":"C","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":12,"bookId":4,"name":"Candy","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -278,7 +278,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":13,"bookId":5,"name":"E","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":13,"bookId":5,"name":"Elastic","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -292,7 +292,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":14,"bookId":5,"name":"F","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":14,"bookId":5,"name":"Flask","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -306,7 +306,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":15,"bookId":5,"name":"G","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":15,"bookId":5,"name":"Google","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
