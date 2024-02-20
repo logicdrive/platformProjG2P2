@@ -10,6 +10,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.user.domain.User;
 import bookGenerator.user.domain.UserManageService;
 import bookGenerator.user.event.UserNameUpdated;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenUserNameUpdated_UpdateUserName_ViewHandler {
@@ -33,6 +34,9 @@ public class WhenUserNameUpdated_UpdateUserName_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                userNameUpdated.getId(), "UserNameUpdated", userNameUpdated.getName()
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, userNameUpdated);

@@ -19,7 +19,7 @@ frontend:
 ---
 
 * collectedData
-User: O >
+User: O > S
 
 Book: O >
 LikeHistory: O >
