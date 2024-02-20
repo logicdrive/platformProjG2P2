@@ -12,7 +12,7 @@ file: O / T / D
 collectedData: O >
 externalSystemProxy: O / D
 externalSystem: O / D
-recommendCalcSystem: 
+recommendCalcSystem: O / D 
 gateway: O
 frontend: 
 
