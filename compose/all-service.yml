@@ -134,6 +134,14 @@ services:
       GOOGLE_API_KEY: ${GOOGLE_API_KEY}
       GOOGLE_PROJECT_CX: ${GOOGLE_PROJECT_CX}
       OPENAI_API_KEY: ${OPENAI_API_KEY}
+  
+  book-generator-external-calc-system:
+    image: sinsung6722/book-generator-external-calc-system:v1
+    ports:
+      - "8096:8096"
+    environment:
+        COLLECTED_DATA_HOST: host.docker.internal
+        COLLECTED_DATA_PORT: 8093
 
 
   book-generator-gateway:
