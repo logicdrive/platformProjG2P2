@@ -314,6 +314,178 @@
 
 
         <test>
+            <title>Book 6: Mock EmptyBookCreated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 EmptyBookCreated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/EmptyBookCreated</resourceUrl>
+            <headers></headers>
+            <data>{"id":6,"createrId":7,"coverImageFileId":6,"title":"Book 6","isShared":false,"createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 6-1: Mock TagCreated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 TagCreated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
+            <headers></headers>
+            <data>{"id":16,"bookId":6,"name":"Apple","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 6-2: Mock TagCreated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 TagCreated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
+            <headers></headers>
+            <data>{"id":17,"bookId":6,"name":"Banana","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 6-3: Mock TagCreated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 TagCreated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
+            <headers></headers>
+            <data>{"id":18,"bookId":6,"name":"Candy","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>Book 7: Mock EmptyBookCreated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 EmptyBookCreated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/EmptyBookCreated</resourceUrl>
+            <headers></headers>
+            <data>{"id":7,"createrId":8,"coverImageFileId":7,"title":"Book 7","isShared":false,"createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 7-1: Mock TagCreated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 TagCreated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
+            <headers></headers>
+            <data>{"id":19,"bookId":7,"name":"Google","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 7-2: Mock TagCreated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 TagCreated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
+            <headers></headers>
+            <data>{"id":20,"bookId":7,"name":"Apple","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 7-3: Mock TagCreated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 TagCreated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
+            <headers></headers>
+            <data>{"id":21,"bookId":7,"name":"Elastic","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>Book 8: Mock EmptyBookCreated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 EmptyBookCreated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/EmptyBookCreated</resourceUrl>
+            <headers></headers>
+            <data>{"id":8,"createrId":9,"coverImageFileId":8,"title":"Book 8","isShared":false,"createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 8-1: Mock TagCreated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 TagCreated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
+            <headers></headers>
+            <data>{"id":22,"bookId":8,"name":"Candy","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 8-2: Mock TagCreated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 TagCreated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
+            <headers></headers>
+            <data>{"id":23,"bookId":8,"name":"Apple","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 8-3: Mock TagCreated 이벤트 생성</title>
+            <help>테스트를 위해서 강제로 TagCreated 이벤트를 생성합니다.</help>
+
+            <method>POST</method>
+            <baseUrl>http://localhost:8093</baseUrl>
+            <resourceUrl>sanityCheck/mock/TagCreated</resourceUrl>
+            <headers></headers>
+            <data>{"id":24,"bookId":8,"name":"Description","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+
+        <test>
             <title>Like 1: Mock BookLiked 이벤트 생성</title>
             <help>테스트를 위해서 강제로 BookLiked 이벤트를 생성합니다.</help>
 
@@ -409,7 +581,7 @@
 
             <method>GET</method>
             <baseUrl>http://localhost:8093</baseUrl>
-            <resourceUrl>tags</resourceUrl>
+            <resourceUrl>tags?size=50</resourceUrl>
             <headers></headers>
             <data></data>
             
