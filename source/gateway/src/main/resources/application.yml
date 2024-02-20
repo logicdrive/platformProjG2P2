@@ -223,6 +223,13 @@ spring:
           filters:
             - RewritePath=/api/${service.collectedData.name}/(?<segment>.*), /${segment}
             - AuthorizationHeaderFilter
+
+        - id: collectedDataSocket
+          uri: ws://${service.collectedData.domain}:${service.collectedData.port}
+          predicates:
+            - Path=/socket/${service.collectedData.name}/**
+          filters:
+            - RewritePath=/socket/${service.collectedData.name}/(?<segment>.*), /socket/${segment}
           
         
         - id: externalSystemNoAuth
