@@ -15,3 +15,19 @@ externalSystem: O / D / E
 recommendCalcSystem: O / D / E 
 gateway: O / D / E
 frontend: 
+
+---
+
+* frontend
+
+UserSignUpPage: 
+UserSignInPage: 
+
+BookMyListPage: 
+BookSharedListPage: 
+BookInfoPage: 
+BookReadPage: 
+BookManagePage: 
+
+BookShelfMyListPage: 
+BookShelfSharedListPage: 

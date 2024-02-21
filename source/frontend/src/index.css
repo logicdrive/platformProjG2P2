@@ -14,15 +14,15 @@ code {
 
 @font-face {
   font-family: "BMDfont";
-  src: url("./fonts/BMDOHYEON_ttf.ttf");
+  src: url("./_global/fonts/BMDOHYEON_ttf.ttf");
 }
 
 @font-face {
   font-family: "BMHfont";
-  src: url("./fonts/BMHANNAAir_ttf.ttf");
+  src: url("./_global/fonts/BMHANNAAir_ttf.ttf");
 }
 
 @font-face {
   font-family: "Ubuntufont";
-  src: url("./fonts/UbuntuMono-B.ttf");
+  src: url("./_global/fonts/UbuntuMono-B.ttf");
 }

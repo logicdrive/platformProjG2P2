@@ -10,6 +10,15 @@ import AlertPopUpList from './_global/provider/alertPopUp/AlertPopUpList';
 import UserSignInPage from './user/signIn/UserSignInPage';
 import UserSignUpPage from './user/signUp/UserSignUpPage';
 
+import BookMyListPage from './book/myList/BookMyListPage';
+import BookSharedListPage from './book/sharedList/BookSharedListPage';
+import BookInfoPage from './book/info/BookInfoPage';
+import BookReadPage from './book/read/BookReadPage';
+import BookManagePage from './book/manage/BookManagePage';
+
+import BookShelfMyListPage from './bookShelf/myList/BookShelfMyListPage';
+import BookShelfSharedListPage from './bookShelf/sharedList/BookShelfSharedListPage';
+
 function App() {
   return (
     <AlertPopupProvider>
@@ -21,6 +30,15 @@ function App() {
 
                     <Route path="/user/signIn" element={<UserSignInPage/>}/>
                     <Route path="/user/signUp" element={<UserSignUpPage/>}/>
+
+                    <Route path="/book/myList" element={<BookMyListPage/>}/>
+                    <Route path="/book/sharedList" element={<BookSharedListPage/>}/>
+                    <Route path="/book/info" element={<BookInfoPage/>}/>
+                    <Route path="/book/read" element={<BookReadPage/>}/>
+                    <Route path="/book/manage" element={<BookManagePage/>}/>
+                    
+                    <Route path="/bookShelf/myList" element={<BookShelfMyListPage/>}/>
+                    <Route path="/bookShelf/sharedList" element={<BookShelfSharedListPage/>}/>
                 </Routes>
             </Router>
             <AlertPopUpList/>
