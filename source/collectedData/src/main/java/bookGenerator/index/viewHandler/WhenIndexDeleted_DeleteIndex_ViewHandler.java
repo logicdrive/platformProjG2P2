@@ -34,11 +34,17 @@ public class WhenIndexDeleted_DeleteIndex_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
-            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
-                BookManageService.getInstance().findByBookId(indexDeleted.getBookId()).getCreaterId(), 
-                "IndexDeleted", 
-                String.format("{\"indexId\": %d}", indexDeleted.getId())
-            );
+            try {
+
+                WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                    BookManageService.getInstance().findByBookId(indexDeleted.getBookId()).getCreaterId(), 
+                    "IndexDeleted", 
+                    String.format("{\"indexId\": %d}", indexDeleted.getId())
+                );
+
+            } catch (Exception e) {
+                CustomLogger.debug(CustomLoggerType.EFFECT, e.getMessage());
+            }
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, indexDeleted);

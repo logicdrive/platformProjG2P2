@@ -34,11 +34,17 @@ public class WhenTagDeleted_DeleteTag_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
-            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
-                BookManageService.getInstance().findByBookId(tagDeleted.getBookId()).getCreaterId(), 
-                "tagDeleted", 
-                String.format("{\"tagId\": %d}", tagDeleted.getId())
-            );
+            try {
+
+                WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                    BookManageService.getInstance().findByBookId(tagDeleted.getBookId()).getCreaterId(), 
+                    "tagDeleted", 
+                    String.format("{\"tagId\": %d}", tagDeleted.getId())
+                );
+
+            } catch (Exception e) {
+                CustomLogger.debug(CustomLoggerType.EFFECT, e.getMessage());
+            }
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, tagDeleted);

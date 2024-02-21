@@ -34,16 +34,21 @@ public class WhenProblemDeletedByFail_DeleteProblem_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
-            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
-                BookManageService.getInstance().findByBookId(
-                    IndexManageService.getInstance().findByIndexId(
-                        problemToDelete.getIndexId()
-                    ).getBookId()
-                ).getCreaterId(), 
-                "ProblemDeletedByFail", 
-                String.format("{\"problemId\": %d}", problemDeletedByFail.getProblemId())
-            );
+            try {
 
+                WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                    BookManageService.getInstance().findByBookId(
+                        IndexManageService.getInstance().findByIndexId(
+                            problemToDelete.getIndexId()
+                        ).getBookId()
+                    ).getCreaterId(), 
+                    "ProblemDeletedByFail", 
+                    String.format("{\"problemId\": %d}", problemDeletedByFail.getProblemId())
+                );
+
+            } catch (Exception e) {
+                CustomLogger.debug(CustomLoggerType.EFFECT, e.getMessage());
+            }
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, problemDeletedByFail);

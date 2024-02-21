@@ -35,13 +35,19 @@ public class WhenContentImageDeleteRequsted_DeleteContent_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
-            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
-                BookManageService.getInstance().findByBookId(
-                    IndexManageService.getInstance().findByIndexId(contentImageDeleteRequsted.getIndexId()).getBookId()
-                ).getCreaterId(), 
-                "ContentImageDeleteRequsted", 
-                String.format("{\"contentId\": %d}", contentImageDeleteRequsted.getId())
-            );
+            try {
+
+                WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                    BookManageService.getInstance().findByBookId(
+                        IndexManageService.getInstance().findByIndexId(contentImageDeleteRequsted.getIndexId()).getBookId()
+                    ).getCreaterId(), 
+                    "ContentImageDeleteRequsted", 
+                    String.format("{\"contentId\": %d}", contentImageDeleteRequsted.getId())
+                );
+
+            } catch (Exception e) {
+                CustomLogger.debug(CustomLoggerType.EFFECT, e.getMessage());
+            }
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, contentImageDeleteRequsted);

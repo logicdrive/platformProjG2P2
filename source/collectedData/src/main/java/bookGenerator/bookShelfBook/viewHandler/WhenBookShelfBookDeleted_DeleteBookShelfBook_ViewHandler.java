@@ -34,13 +34,19 @@ public class WhenBookShelfBookDeleted_DeleteBookShelfBook_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
-            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
-                BookShelfManageService.getInstance().findByBookShelfId(
-                    bookShelfBookDeleted.getBookShelfId()
-                ).getCreaterId(),
-                "BookShelfBookDeleted", 
-                String.format("{\"bookShelfBookId\": %d}", bookShelfBookDeleted.getId())
-            );
+            try {
+
+                WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                    BookShelfManageService.getInstance().findByBookShelfId(
+                        bookShelfBookDeleted.getBookShelfId()
+                    ).getCreaterId(),
+                    "BookShelfBookDeleted", 
+                    String.format("{\"bookShelfBookId\": %d}", bookShelfBookDeleted.getId())
+                );
+
+            } catch (Exception e) {
+                CustomLogger.debug(CustomLoggerType.EFFECT, e.getMessage());
+            }
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, bookShelfBookDeleted);
