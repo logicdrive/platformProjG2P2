@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-
+import bookGenerator.bookShelf.domain.BookShelfManageService;
 import bookGenerator.bookShelfBook.domain.BookShelfBook;
 import bookGenerator.bookShelfBook.domain.BookShelfBookManageService;
 import bookGenerator.bookShelfBook.event.BookShelfBookDeleted;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenBookShelfBookDeleted_DeleteBookShelfBook_ViewHandler {
@@ -33,6 +34,13 @@ public class WhenBookShelfBookDeleted_DeleteBookShelfBook_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                BookShelfManageService.getInstance().findByBookShelfId(
+                    bookShelfBookDeleted.getBookShelfId()
+                ).getCreaterId(),
+                "BookShelfBookDeleted", 
+                String.format("{\"bookShelfBookId\": %d}", bookShelfBookDeleted.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, bookShelfBookDeleted);

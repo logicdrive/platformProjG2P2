@@ -29,8 +29,8 @@ Content: O > S
 Problem: O > S
 Comment: O > S
 
-BookShelf: O >
-BookShelfBook: O >
+BookShelf: O > S
+BookShelfBook: O > S
 File: O >
 
 RecommendBookToUser: O >

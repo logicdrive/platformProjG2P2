@@ -11,6 +11,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.bookShelf.domain.BookShelf;
 import bookGenerator.bookShelf.domain.BookShelfManageService;
 import bookGenerator.bookShelf.event.BookShelfTitleUpdated;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenBookShelfTitleUpdated_UpdateTitle_ViewHandler  {
@@ -34,6 +35,11 @@ public class WhenBookShelfTitleUpdated_UpdateTitle_ViewHandler  {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                bookShelfTitleUpdated.getCreaterId(),
+                "BookShelfTitleUpdated", 
+                String.format("{\"bookShelfId\": %d}", bookShelfTitleUpdated.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, bookShelfTitleUpdated);

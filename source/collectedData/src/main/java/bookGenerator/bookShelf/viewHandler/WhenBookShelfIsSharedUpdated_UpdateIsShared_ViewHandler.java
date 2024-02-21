@@ -11,6 +11,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.bookShelf.domain.BookShelf;
 import bookGenerator.bookShelf.domain.BookShelfManageService;
 import bookGenerator.bookShelf.event.BookShelfIsSharedUpdated;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenBookShelfIsSharedUpdated_UpdateIsShared_ViewHandler {
@@ -34,6 +35,11 @@ public class WhenBookShelfIsSharedUpdated_UpdateIsShared_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                bookShelfIsSharedUpdated.getCreaterId(),
+                "BookShelfIsSharedUpdated", 
+                String.format("{\"bookShelfId\": %d}", bookShelfIsSharedUpdated.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, bookShelfIsSharedUpdated);

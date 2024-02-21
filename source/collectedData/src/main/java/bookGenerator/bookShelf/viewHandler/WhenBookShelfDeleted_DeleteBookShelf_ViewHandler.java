@@ -11,6 +11,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.bookShelf.domain.BookShelf;
 import bookGenerator.bookShelf.domain.BookShelfManageService;
 import bookGenerator.bookShelf.event.BookShelfDeleted;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenBookShelfDeleted_DeleteBookShelf_ViewHandler {
@@ -33,6 +34,11 @@ public class WhenBookShelfDeleted_DeleteBookShelf_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                bookShelfDeleted.getCreaterId(),
+                "BookShelfDeleted", 
+                String.format("{\"bookShelfId\": %d}", bookShelfDeleted.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, bookShelfDeleted);

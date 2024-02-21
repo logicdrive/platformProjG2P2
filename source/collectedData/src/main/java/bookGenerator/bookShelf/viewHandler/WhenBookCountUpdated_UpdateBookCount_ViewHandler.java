@@ -11,6 +11,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.bookShelf.domain.BookShelf;
 import bookGenerator.bookShelf.domain.BookShelfManageService;
 import bookGenerator.bookShelf.event.BookCountUpdated;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenBookCountUpdated_UpdateBookCount_ViewHandler  {
@@ -34,6 +35,12 @@ public class WhenBookCountUpdated_UpdateBookCount_ViewHandler  {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                bookCountUpdated.getCreaterId(),
+                "BookCountUpdated", 
+                String.format("{\"bookShelfId\": %d}", bookCountUpdated.getId())
+            );
+
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, bookCountUpdated);

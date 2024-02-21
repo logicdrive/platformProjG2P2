@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-
+import bookGenerator.bookShelf.domain.BookShelfManageService;
 import bookGenerator.bookShelfBook.domain.BookShelfBook;
 import bookGenerator.bookShelfBook.event.BookShelfBookAdded;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenBookShelfBookAdded_CreateBookShelfBook_ViewHandler {
@@ -32,6 +33,13 @@ public class WhenBookShelfBookAdded_CreateBookShelfBook_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                BookShelfManageService.getInstance().findByBookShelfId(
+                    bookShelfBookAdded.getBookShelfId()
+                ).getCreaterId(),
+                "BookShelfBookAdded", 
+                String.format("{\"bookShelfBookId\": %d}", bookShelfBookAdded.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, bookShelfBookAdded);
