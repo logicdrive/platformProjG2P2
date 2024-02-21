@@ -1,36 +1,23 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <root>
     <description>
-        <group>Problem</group>
-        <title>엔드포인트 테스트: GenerateProblem</title>
-        <help>GenerateProblem 단일 엔드포인트의 정상 작동 여부를 확인합니다.</help>
+        <group>_통합 테스트</group>
+        <title>6. 문제 서비스 통합 테스트</title>
+        <help>문제 서비스의 엔드포인트들이 통합적으로 잘 동작하는지 확인합니다.</help>
     </description>
 
     <tests>
-        <test>
-            <title>통신 확인(SanityCheck)</title>
-            <help>Problem 서비스에 sanityCheck 요청을 보냅니다.</help>
-
-            <method>GET</method>
-            <baseUrl>http://localhost:8087</baseUrl>
-            <resourceUrl>sanityCheck</resourceUrl>
-            <headers></headers>
-            <data></data>
-
-            <checks>
-                <check type="status">2.*</check>
-            </checks>
-        </test>
-
-
         <test>
             <title>AI 기반 문제 생성 요청</title>
             <help>AI를 기반으로 특정 문제 생성에 관해서 요청합니다.</help>
 
             <method>PUT</method>
-            <baseUrl>http://localhost:8087</baseUrl>
-            <resourceUrl>problems/generateProblem</resourceUrl>
-            <headers></headers>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/problem/problems/generateProblem</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
             <data>{"indexId":1,"query":"Python: Introduction to Python\n\nPython is a powerful and versatile programming language that is widely used in various fields such as web development, data analysis, artificial intelligence, and more. It is known for its simplicity and readability, making it an excellent choice for beginners.\nOne of the key features of Python is its easy-to-understand syntax, which resembles plain English. This makes it easier for newcomers to learn and understand the code. Python also has a large community of developers, so finding help and resources online is readily available.\nPython has a vast standard library that provides numerous modules and functions for various tasks, reducing the need to write complex code from scratch. Additionally, Python supports third-party libraries such as NumPy, Pandas, and TensorFlow, which further enhance its capabilities in specific domains.\nPython is an interpreted language, meaning that you can write and run your code interactively without the need to compile it beforehand. This allows for quick and efficient development and testing of programs.\nIn conclusion, Python is an accessible, versatile, and powerful programming language that is ideal for beginners and professionals alike. Its simplicity, extensive library support, and large community make it a popular language for a wide range of applications."}</data>
 
             <checks>
@@ -39,18 +26,20 @@
         </test>
 
         <test>
-            <title>ProblemGenerationRequsted 이벤트 발행 확인(Logs)</title>
-            <help>ProblemGenerationRequsted 이벤트 발행 여부를 확인합니다.</help>
+            <title>문제 생성 여부 확인(ProblemAll)</title>
+            <help>문제가 실제로 잘 생성되었는지 확인합니다.</help>
 
             <method>GET</method>
-            <baseUrl>http://localhost:8087</baseUrl>
-            <resourceUrl>sanityCheck/logs?regFilter=.*Publish event.*ProblemGenerationRequsted.*</resourceUrl>
-            <headers></headers>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/collectedData/problems</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
             <data></data>
             
             <checks>
                 <check type="status">2.*</check>
-                <check type="data">Publish event.*ProblemGenerationRequsted.*</check>
             </checks>
         </test>
     </tests>

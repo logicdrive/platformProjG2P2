@@ -31,7 +31,7 @@
             <baseUrl>http://localhost:8086</baseUrl>
             <resourceUrl>contents/generateContent</resourceUrl>
             <headers></headers>
-            <data>{"indexId":1}</data>
+            <data>{"indexId":1,"query":"Python: Introduction to Python"}</data>
 
             <checks>
                 <check type="status">2.*</check>

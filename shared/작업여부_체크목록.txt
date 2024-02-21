@@ -3,8 +3,8 @@ user: O / D / E
 book: O / T / D / E
 tag: O / T / D / E
 index: O / T / D / E
-content: O / T / D
-problem: O / T / D
+content: O / T / D / E
+problem: O / T / D / E
 comment: O / T / D
 bookShelf: O / T / D
 bookShelfBook: O / T / D
