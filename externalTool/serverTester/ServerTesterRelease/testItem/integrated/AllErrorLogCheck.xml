@@ -1,0 +1,234 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>_통합 테스트</group>
+        <title>_모든 서비스 에러 여부 체크</title>
+        <help>모든 서비스들을 대상으로 에러 여부를 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>User 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>User 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/user/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>Book 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>Tag 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Index 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>Index 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/index/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Content 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>Content 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/content/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Problem 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>Problem 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/problem/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Comment 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>Comment 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/comment/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>BookShelf 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>BookShelf 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/bookShelf/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+        
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>BookShelfBook 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>BookShelfBook 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/bookShelfBook/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>File 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>File 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/file/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>ExternalSystemProxy 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>ExternalSystemProxy 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/externalSystemProxy/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>CollectedData 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>CollectedData 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/collectedData/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>ExternalSystem 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>ExternalSystem 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/externalSystem/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>RecommendCalcSystem 서비스 에러 로그 여부 확인(ErrorLogs)</title>
+            <help>RecommendCalcSystem 서비스에 에러 로그가 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/recommendCalcSystem/sanityCheck/logs?regFilter=.*ERROR.*</resourceUrl>
+            <headers></headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+                <check type="data">"logs"[ ]*:[ ]*\[[ ]*\]</check>
+            </checks>
+        </test>
+    </tests>
+</root>
