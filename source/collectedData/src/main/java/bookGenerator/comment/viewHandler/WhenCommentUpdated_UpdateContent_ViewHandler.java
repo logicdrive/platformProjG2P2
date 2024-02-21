@@ -11,6 +11,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.comment.domain.Comment;
 import bookGenerator.comment.domain.CommentManageService;
 import bookGenerator.comment.event.CommentUpdated;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenCommentUpdated_UpdateContent_ViewHandler {
@@ -34,6 +35,11 @@ public class WhenCommentUpdated_UpdateContent_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                commentUpdated.getCreaterId(),
+                "CommentUpdated", 
+                String.format("{\"commentId\": %d}", commentUpdated.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, commentUpdated);

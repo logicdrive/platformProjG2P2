@@ -46,7 +46,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/CommentCreated</resourceUrl>
             <headers></headers>
-            <data>{"id":1,"createrId":1,"bookId":1,"content":"testContent","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":1,"createrId":2,"bookId":1,"content":"testContent","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -60,7 +60,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/CommentUpdated</resourceUrl>
             <headers></headers>
-            <data>{"id":1,"createrId":1,"bookId":1,"content":"updatedTestContent","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":1,"createrId":2,"bookId":1,"content":"updatedTestContent","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>
@@ -74,7 +74,7 @@
             <baseUrl>http://localhost:8093</baseUrl>
             <resourceUrl>sanityCheck/mock/CommentDeleted</resourceUrl>
             <headers></headers>
-            <data>{"id":1,"createrId":1,"bookId":1,"content":"updatedTestContent","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
+            <data>{"id":1,"createrId":2,"bookId":1,"content":"updatedTestContent","createdDate":"2024-01-19T13:00:00.000+09:00","updatedDate":"2024-01-19T13:00:00.000+09:00"}</data>
             <checks>
                 <check type="status">2.*</check>
             </checks>

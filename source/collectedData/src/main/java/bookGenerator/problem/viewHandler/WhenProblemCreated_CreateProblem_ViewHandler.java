@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-
+import bookGenerator.book.domain.BookManageService;
+import bookGenerator.index.domain.IndexManageService;
 import bookGenerator.problem.domain.Problem;
 import bookGenerator.problem.event.ProblemCreated;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenProblemCreated_CreateProblem_ViewHandler {
@@ -32,6 +34,13 @@ public class WhenProblemCreated_CreateProblem_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                BookManageService.getInstance().findByBookId(
+                    IndexManageService.getInstance().findByIndexId(problemCreated.getIndexId()).getBookId()
+                ).getCreaterId(), 
+                "ProblemCreated", 
+                String.format("{\"problemId\": %d}", problemCreated.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, problemCreated);

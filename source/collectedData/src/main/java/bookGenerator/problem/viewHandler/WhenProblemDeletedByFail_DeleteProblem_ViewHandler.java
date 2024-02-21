@@ -7,10 +7,12 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-
+import bookGenerator.book.domain.BookManageService;
+import bookGenerator.index.domain.IndexManageService;
 import bookGenerator.problem.domain.Problem;
 import bookGenerator.problem.domain.ProblemManageService;
 import bookGenerator.problem.event.ProblemDeletedByFail;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenProblemDeletedByFail_DeleteProblem_ViewHandler {
@@ -27,12 +29,21 @@ public class WhenProblemDeletedByFail_DeleteProblem_ViewHandler {
             CustomLogger.debugObject(CustomLoggerType.ENTER, problemDeletedByFail);
 
 
-            Problem.repository().delete(
-                ProblemManageService.getInstance().findByProblemId(problemDeletedByFail.getProblemId())
-            );
+            Problem problemToDelete = ProblemManageService.getInstance().findByProblemId(problemDeletedByFail.getProblemId());
+            Problem.repository().delete(problemToDelete);
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                BookManageService.getInstance().findByBookId(
+                    IndexManageService.getInstance().findByIndexId(
+                        problemToDelete.getIndexId()
+                    ).getBookId()
+                ).getCreaterId(), 
+                "ProblemDeletedByFail", 
+                String.format("{\"problemId\": %d}", problemDeletedByFail.getProblemId())
+            );
+
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, problemDeletedByFail);

@@ -26,8 +26,8 @@ LikeHistory: O > S
 Tag: O > S
 Index: O > S
 Content: O > S
-Problem: O >
-Comment: O >
+Problem: O > S
+Comment: O > S
 
 BookShelf: O >
 BookShelfBook: O >

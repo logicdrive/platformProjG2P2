@@ -11,6 +11,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.comment.domain.Comment;
 import bookGenerator.comment.domain.CommentManageService;
 import bookGenerator.comment.event.CommentDeleted;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenCommentDeleted_DeleteComment_ViewHandler {
@@ -33,6 +34,11 @@ public class WhenCommentDeleted_DeleteComment_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                commentDeleted.getCreaterId(),
+                "CommentDeleted", 
+                String.format("{\"commentId\": %d}", commentDeleted.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, commentDeleted);
