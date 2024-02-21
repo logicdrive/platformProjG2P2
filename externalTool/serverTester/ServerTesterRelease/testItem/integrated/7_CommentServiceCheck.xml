@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>_통합 테스트</group>
+        <title>7. 코멘트 서비스 통합 테스트</title>
+        <help>코멘트 서비스의 엔드포인트들이 통합적으로 잘 동작하는지 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>새로운 Comment 생성(CreateComment)</title>
+            <help>새로운 코멘트를 생성합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/comment/comments/createComment</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":1, "content":"testContent"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>코멘트 생성 여부 확인(CommentAll)</title>
+            <help>코멘트가 실제로 잘 생성되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/collectedData/comments</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>Comment 내용 변경(UpdateComment)</title>
+            <help>Comment의 내용을 변경시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/comment/comments/updateComment</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"commentId":1,"content":"updatedTestContent"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>코멘트 변경 여부 확인(CommentAll)</title>
+            <help>코멘트가 실제로 잘 변경되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/collectedData/comments</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>Comment를 삭제함(DeleteComment)</title>
+            <help>Comment를 삭제시키는 요청을 수행합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/comment/comments/deleteComment</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"commentId":1}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>코멘트 삭제 여부 확인(CommentAll)</title>
+            <help>코멘트가 실제로 잘 삭제되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/collectedData/comments</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>

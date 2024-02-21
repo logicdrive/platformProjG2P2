@@ -25,7 +25,7 @@
 
         <test>
             <title>새로운 Comment 생성(CreateComment)</title>
-            <help>비어있는 E-Book을 생성합니다.</help>
+            <help>새로운 코멘트를 생성합니다.</help>
 
             <method>PUT</method>
             <baseUrl>http://localhost:8089</baseUrl>
