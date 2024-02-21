@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-
+import bookGenerator.book.domain.BookManageService;
 import bookGenerator.index.domain.Index;
 import bookGenerator.index.domain.IndexManageService;
 import bookGenerator.index.event.IndexEdited;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenIndexEdited_UpdateName_ViewHandler {
@@ -34,6 +35,11 @@ public class WhenIndexEdited_UpdateName_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                BookManageService.getInstance().findByBookId(indexEdited.getBookId()).getCreaterId(), 
+                "IndexEdited", 
+                String.format("{\"indexId\": %d}", indexEdited.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, indexEdited);

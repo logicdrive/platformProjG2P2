@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-
+import bookGenerator.book.domain.BookManageService;
 import bookGenerator.index.domain.Index;
 import bookGenerator.index.domain.IndexManageService;
 import bookGenerator.index.event.IndexDeleted;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenIndexDeleted_DeleteIndex_ViewHandler {
@@ -33,6 +34,11 @@ public class WhenIndexDeleted_DeleteIndex_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                BookManageService.getInstance().findByBookId(indexDeleted.getBookId()).getCreaterId(), 
+                "IndexDeleted", 
+                String.format("{\"indexId\": %d}", indexDeleted.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, indexDeleted);

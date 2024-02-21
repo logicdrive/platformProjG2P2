@@ -24,8 +24,8 @@ User: O > S
 Book: O > S
 LikeHistory: O > S
 Tag: O > S
-Index: O >
-Content: O >
+Index: O > S
+Content: O > S
 Problem: O >
 Comment: O >
 

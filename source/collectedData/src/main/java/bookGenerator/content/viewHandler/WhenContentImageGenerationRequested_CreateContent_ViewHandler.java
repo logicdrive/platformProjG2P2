@@ -7,9 +7,11 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-
+import bookGenerator.book.domain.BookManageService;
 import bookGenerator.content.domain.Content;
 import bookGenerator.content.event.ContentImageGenerationRequested;
+import bookGenerator.index.domain.IndexManageService;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenContentImageGenerationRequested_CreateContent_ViewHandler {
@@ -32,6 +34,13 @@ public class WhenContentImageGenerationRequested_CreateContent_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                BookManageService.getInstance().findByBookId(
+                    IndexManageService.getInstance().findByIndexId(contentImageGenerationRequested.getIndexId()).getBookId()
+                ).getCreaterId(), 
+                "ContentImageGenerationRequested", 
+                String.format("{\"contentId\": %d}", contentImageGenerationRequested.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, contentImageGenerationRequested);
