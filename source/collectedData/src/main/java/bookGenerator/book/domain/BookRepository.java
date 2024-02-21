@@ -10,6 +10,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface BookRepository
     extends PagingAndSortingRepository<Book, Long> {
     Optional<Book> findByBookId(Long bookId);
+    Optional<Book> findByCoverImageFileId(Long coverImageFileId);
     List<Book> findByCreaterIdOrderByCreatedDateDesc(Long createrId);
     List<Book> findByIsSharedOrderByCreatedDateDesc(Boolean isShared);
     List<Book> findByIsSharedAndTitleContainingIgnoreCaseOrderByCreatedDateDesc(Boolean isShared, String title);

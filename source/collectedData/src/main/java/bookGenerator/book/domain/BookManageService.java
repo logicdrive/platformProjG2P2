@@ -23,6 +23,11 @@ public class BookManageService {
         return Book.repository().findByBookId(bookId)
             .orElseThrow(BookNotFoundException::new);
     }
+
+    public Book findByCoverImageFileId(Long coverImageFileId) {
+        return Book.repository().findByCoverImageFileId(coverImageFileId)
+            .orElseThrow(BookNotFoundException::new);
+    }
 }
 
 @Getter

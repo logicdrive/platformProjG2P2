@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-
+import bookGenerator.book.domain.BookManageService;
 import bookGenerator.file.domain.File;
 import bookGenerator.file.domain.FileManageService;
 import bookGenerator.file.event.CoverImageInfoUpdated;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenCoverImageInfoUpdated_UpdateUrl_ViewHandler {
@@ -34,6 +35,11 @@ public class WhenCoverImageInfoUpdated_UpdateUrl_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                BookManageService.getInstance().findByCoverImageFileId(coverImageInfoUpdated.getId()).getCreaterId(), 
+                "CoverImageInfoUpdated", 
+                String.format("{\"fileId\": %d}", coverImageInfoUpdated.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, coverImageInfoUpdated);

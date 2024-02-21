@@ -31,7 +31,7 @@ Comment: O > S
 
 BookShelf: O > S
 BookShelfBook: O > S
-File: O >
+File: O > S
 
 RecommendBookToUser: O >
 RecommendBookToBook: O >
