@@ -10,7 +10,7 @@ bp = Blueprint(__name__.split(".")[-1], __name__, url_prefix="/sanityCheck")
 
 class LogsReqDto:
     def __init__(self, request) :
-        self.__lineLength:int = request.args.get("lineLength") or 10
+        self.__lineLength:int = int(request.args.get("lineLength")) or 10
         self.__regFilter:str = request.args.get("regFilter") or ""
 
     def __str__(self) :
