@@ -1,5 +1,5 @@
 * 서비스 작업 여부
-user: O / D
+user: O / D / E
 book: O / T / D
 tag: O / T / D
 index: O / T / D

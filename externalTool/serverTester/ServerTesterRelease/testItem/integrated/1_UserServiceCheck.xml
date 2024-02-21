@@ -1,0 +1,95 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>_통합 테스트</group>
+        <title>1. 유저 서비스 통합 테스트</title>
+        <help>유저 서비스의 엔드포인트들이 통합적으로 잘 동작하는지 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>회원 가입(SignUp)</title>
+            <help>회원가입 요청을 보냅니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/user/users/signUp</resourceUrl>
+            <headers></headers>
+            <data>{"email":"testemail1@gmail.com","password":"testpassword1","name":"testname1"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>회원 가입 여부 확인(UserAll)</title>
+            <help>회원 가입된 유저가 실제로 존재하는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/collectedData/users</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>로그인(SignIn)</title>
+            <help>로그인 요청을 보냅니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/user/users/signIn</resourceUrl>
+            <headers></headers>
+            <data>{"email":"testemail1@gmail.com","password":"testpassword1"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>유저명 변경(UpdateName)</title>
+            <help>유저 이름 변경 요청을 보냅니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/user/users/updateName</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"name":"changedTestName1"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>유저명 변경 여부 확인(UserAll)</title>
+            <help>유저명이 실제로 변경되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/collectedData/users</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>
