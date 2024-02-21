@@ -35,7 +35,8 @@ public class WhenUserNameUpdated_UpdateUserName_ViewHandler {
 
             CustomLogger.debug(CustomLoggerType.EXIT);
             WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
-                userNameUpdated.getId(), "UserNameUpdated", userNameUpdated.getName()
+                userNameUpdated.getId(), "UserNameUpdated", 
+                String.format("{\"userId\": %d}", userNameUpdated.getId())
             );
 
         } catch (Exception e) {

@@ -10,6 +10,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 
 import bookGenerator.book.domain.Book;
 import bookGenerator.book.event.EmptyBookCreated;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenEmptyBookCreated_CreateBook_ViewHandler {
@@ -32,6 +33,10 @@ public class WhenEmptyBookCreated_CreateBook_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                emptyBookCreated.getCreaterId(), "EmptyBookCreated", 
+                String.format("{\"bookId\": %d}", emptyBookCreated.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, emptyBookCreated);

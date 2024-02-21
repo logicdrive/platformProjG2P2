@@ -21,7 +21,7 @@ frontend:
 * collectedData
 User: O > S
 
-Book: O >
+Book: O > S
 LikeHistory: O >
 Tag: O >
 Index: O >

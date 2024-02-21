@@ -11,6 +11,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 import bookGenerator.book.domain.Book;
 import bookGenerator.book.domain.BookManageService;
 import bookGenerator.book.event.CoverImageFileIdUpdated;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenCoverImageFileIdUpdated_UpdateFileId_ViewHandler {
@@ -34,6 +35,10 @@ public class WhenCoverImageFileIdUpdated_UpdateFileId_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                coverImageFileIdUpdated.getCreaterId(), "CoverImageFileIdUpdated", 
+                String.format("{\"bookId\": %d}", coverImageFileIdUpdated.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, coverImageFileIdUpdated);
