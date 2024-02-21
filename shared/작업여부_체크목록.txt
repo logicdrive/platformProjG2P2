@@ -5,13 +5,13 @@ tag: O / T / D / E
 index: O / T / D / E
 content: O / T / D / E
 problem: O / T / D / E
-comment: O / T / D
-bookShelf: O / T / D
-bookShelfBook: O / T / D
-file: O / T / D
-collectedData: O / S / D
-externalSystemProxy: O / D
-externalSystem: O / D
-recommendCalcSystem: O / D 
-gateway: O / D
+comment: O / T / D / E
+bookShelf: O / T / D / E
+bookShelfBook: O / T / D / E
+file: O / T / D / E
+collectedData: O / S / D / E
+externalSystemProxy: O / D / E
+externalSystem: O / D / E
+recommendCalcSystem: O / D / E 
+gateway: O / D / E
 frontend: 

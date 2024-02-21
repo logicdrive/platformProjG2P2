@@ -1,0 +1,121 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>_통합 테스트</group>
+        <title>9. 책장 책 서비스 통합 테스트</title>
+        <help>책장 책 서비스의 엔드포인트들이 통합적으로 잘 동작하는지 확인합니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>BookShelfBook 생성 요청(CreateBookShelfBook)</title>
+            <help>BookShelfBook을 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/bookShelfBook/bookShelfBooks/addBookShelfBook</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookShelfId":2,"bookId":1}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>책장 책 생성 여부 확인(BookShelfBookAll)</title>
+            <help>책장 책이 실제로 잘 생성되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/collectedData/bookShelfBooks</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>책장 수량 변경 여부 확인(BookShelfAll)</title>
+            <help>책장이 수량이 실제로 잘 변경되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/collectedData/bookShelfs</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+        <test>
+            <title>BookShelfBook 삭제 요청(DeleteBookShelfBook)</title>
+            <help>BookShelfBook을 삭제시키는 요청을 수행합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/bookShelfBook/bookShelfBooks/deleteBookShelfBook</resourceUrl>
+            <resourceUrl>api/collectedData/bookShelfs</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookShelfBookId":1}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>책장 책 삭제 여부 확인(BookShelfBookAll)</title>
+            <help>책장 책이 실제로 잘 삭제되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/collectedData/bookShelfBooks</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>책장 수량 변경 여부 확인(BookShelfAll)</title>
+            <help>책장이 수량이 실제로 잘 변경되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/collectedData/bookShelfs</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+    </tests>
+</root>
