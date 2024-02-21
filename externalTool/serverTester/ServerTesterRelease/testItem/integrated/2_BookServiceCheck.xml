@@ -317,5 +317,43 @@
                 <check type="status">2.*</check>
             </checks>
         </test>
+
+
+        <test>
+            <title>연쇄 삭제 테스트를 위해서 Book을 삭제함(DeleteBook)</title>
+            <help>연쇄 삭제 테스트를 위해서 Book을 삭제시키는 요청을 수행합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/books/deleteBook</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":1}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>책 삭제 여부 확인(BookAll)</title>
+            <help>책이 성공적으로 삭제되었는지 확인합니다.</help>
+
+            <method>GET</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/collectedData/books</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+            
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
     </tests>
 </root>
