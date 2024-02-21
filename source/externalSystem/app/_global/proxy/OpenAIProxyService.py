@@ -69,7 +69,7 @@ lambda answer : answer.find("1. ") != -1
 def generateTagsByUsingGPT(query:str, maxTagCount:int=5) -> list[str] :
     CustomLogger.debug(CustomLoggerType.EFFECT, "Try to get tags by using ChatGPT", "<query: {}>".format(query))
 
-    GPT_ANSWER:list[str] = getChatGptAnswerWithSystemRoleWithRetry(
+    GPT_ANSWER:str = getChatGptAnswerWithSystemRoleWithRetry(
 """When I give you the title and indexes, You should extract the five most related tags for searching.
 Please follow the print format below.
 \"\"\"
@@ -80,7 +80,7 @@ lambda answer : (answer.find("Tags: ") != -1) and (answer.find(", ") != -1)
     )
 
     CustomLogger.debug(CustomLoggerType.EFFECT, "Lastly acquired answer", "<answer: {}>".format(GPT_ANSWER))
-    return GPT_ANSWER[6:].split(", ")[:maxTagCount]
+    return re.sub('[^A-Za-z0-9, ]+', '', GPT_ANSWER.replace("Tags: ", "")).split(", ")[:maxTagCount]
 
 # 주어진 쿼리에 대한 컨텐츠를 GPT를 통해서 생성하기 위해서
 def generateContentByUsingGPT(query:str) -> str :

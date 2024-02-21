@@ -15,7 +15,7 @@
             <baseUrl>http://localhost:8095</baseUrl>
             <resourceUrl>openai/generateTags</resourceUrl>
             <headers></headers>
-            <data>{"query":"testTag"}</data>
+            <data>{"query":"Title: python\nIndexes\n1. Introduction to Python\n2. Python Syntax and Variables\n3. Data Types in Python\n4. Control Flow in Python\n5. Functions in Python"}</data>
 
             <checks>
                 <check type="status">2.*</check>
