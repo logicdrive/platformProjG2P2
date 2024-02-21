@@ -1,0 +1,160 @@
+version: "3.8"
+services:
+  zookeeper:
+    image: confluentinc/cp-zookeeper:latest
+    environment:
+      ZOOKEEPER_CLIENT_PORT: 2181
+      ZOOKEEPER_TICK_TIME: 2000
+    ports:
+      - 22181:2181
+
+  kafka:
+    image: confluentinc/cp-kafka:latest
+    depends_on:
+      - zookeeper
+    ports:
+      - 9092:9092
+    environment:
+      KAFKA_BROKER_ID: 1
+      KAFKA_ZOOKEEPER_CONNECT: zookeeper:2181
+      KAFKA_ADVERTISED_LISTENERS: PLAINTEXT://kafka:29092,PLAINTEXT_HOST://host.docker.internal:9092
+      KAFKA_LISTENER_SECURITY_PROTOCOL_MAP: PLAINTEXT:PLAINTEXT,PLAINTEXT_HOST:PLAINTEXT
+      KAFKA_INTER_BROKER_LISTENER_NAME: PLAINTEXT
+      KAFKA_OFFSETS_TOPIC_REPLICATION_FACTOR: 1
+
+
+  book-generator-user:
+    image: sinsung6722/book-generator-user:v1
+    depends_on:
+      - kafka
+    ports:
+      - "8082:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+  book-generator-book:
+    image: sinsung6722/book-generator-book:v1
+    depends_on:
+      - kafka
+    ports:
+      - "8083:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+  book-generator-tag:
+    image: sinsung6722/book-generator-tag:v1
+    depends_on:
+      - kafka
+    ports:
+      - "8084:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+  book-generator-index:
+    image: sinsung6722/book-generator-index:v1
+    depends_on:
+      - kafka
+    ports:
+      - "8085:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+  book-generator-content:
+    image: sinsung6722/book-generator-content:v1
+    depends_on:
+      - kafka
+    ports:
+      - "8086:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+  book-generator-problem:
+    image: sinsung6722/book-generator-problem:v1
+    depends_on:
+      - kafka
+    ports:
+      - "8087:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+  book-generator-comment:
+    image: sinsung6722/book-generator-comment:v1
+    depends_on:
+      - kafka
+    ports:
+      - "8089:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+  
+  book-generator-book-shelf:
+    image: sinsung6722/book-generator-book-shelf:v1
+    depends_on:
+      - kafka
+    ports:
+      - "8097:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+  
+  book-generator-book-shelf-book:
+    image: sinsung6722/book-generator-book-shelf-book:v1
+    depends_on:
+      - kafka
+    ports:
+      - "8091:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+  
+  book-generator-file:
+    image: sinsung6722/book-generator-file:v1
+    depends_on:
+      - kafka
+    ports:
+      - "8094:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+  book-generator-collected-data:
+    image: sinsung6722/book-generator-collected-data:v1
+    ports:
+      - "8093:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+  
+  book-generator-external-system-proxy:
+    image: sinsung6722/book-generator-external-system-proxy:v1
+    depends_on:
+      - kafka
+    ports:
+      - "8092:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
+  book-generator-external-system:
+    image: sinsung6722/book-generator-external-system:v1
+    ports:
+      - "8095:8095"
+    environment:
+      AWS_ACCESS_KEY: ${AWS_ACCESS_KEY}
+      AWS_SECRET_ACCESS_KEY: ${AWS_SECRET_ACCESS_KEY}
+      AWS_BUCKET_NAME: "book-generator"
+      AWS_REGION_CODE: "ap-northeast-2"
+      GOOGLE_API_KEY: ${GOOGLE_API_KEY}
+      GOOGLE_PROJECT_CX: ${GOOGLE_PROJECT_CX}
+      OPENAI_API_KEY: ${OPENAI_API_KEY}
+  
+  book-generator-external-calc-system:
+    image: sinsung6722/book-generator-external-calc-system:v1
+    ports:
+      - "8096:8096"
+    environment:
+        COLLECTED_DATA_HOST: host.docker.internal
+        COLLECTED_DATA_PORT: 8093
+
+
+  book-generator-gateway:
+    image: sinsung6722/book-generator-gateway:v1
+    ports:
+      - "8088:8088"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
