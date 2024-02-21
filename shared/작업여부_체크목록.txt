@@ -22,8 +22,8 @@ frontend:
 User: O > S
 
 Book: O > S
-LikeHistory: O >
-Tag: O >
+LikeHistory: O > S
+Tag: O > S
 Index: O >
 Content: O >
 Problem: O >

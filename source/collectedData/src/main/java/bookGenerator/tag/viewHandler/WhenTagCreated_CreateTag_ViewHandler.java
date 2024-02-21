@@ -7,9 +7,10 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-
+import bookGenerator.book.domain.BookManageService;
 import bookGenerator.tag.domain.Tag;
 import bookGenerator.tag.event.TagCreated;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenTagCreated_CreateTag_ViewHandler {
@@ -32,6 +33,11 @@ public class WhenTagCreated_CreateTag_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                BookManageService.getInstance().findByBookId(tagCreated.getBookId()).getCreaterId(), 
+                "TagCreated", 
+                String.format("{\"tagId\": %d}", tagCreated.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, tagCreated);

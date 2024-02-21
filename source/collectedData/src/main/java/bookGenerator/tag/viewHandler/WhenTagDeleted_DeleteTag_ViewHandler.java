@@ -7,10 +7,11 @@ import org.springframework.stereotype.Service;
 import bookGenerator._global.config.kafka.KafkaProcessor;
 import bookGenerator._global.logger.CustomLogger;
 import bookGenerator._global.logger.CustomLoggerType;
-
+import bookGenerator.book.domain.BookManageService;
 import bookGenerator.tag.domain.Tag;
 import bookGenerator.tag.domain.TagManageService;
 import bookGenerator.tag.event.TagDeleted;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenTagDeleted_DeleteTag_ViewHandler {
@@ -33,6 +34,11 @@ public class WhenTagDeleted_DeleteTag_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                BookManageService.getInstance().findByBookId(tagDeleted.getBookId()).getCreaterId(), 
+                "tagDeleted", 
+                String.format("{\"tagId\": %d}", tagDeleted.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, tagDeleted);

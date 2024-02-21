@@ -10,6 +10,7 @@ import bookGenerator._global.logger.CustomLoggerType;
 
 import bookGenerator.likeHistory.domain.LikeHistory;
 import bookGenerator.likeHistory.event.BookLiked;
+import bookGenerator.webSocket.WebSocketEventHandler;
 
 @Service
 public class WhenBookLiked_CreateLikeHistory_ViewHandler {
@@ -32,6 +33,11 @@ public class WhenBookLiked_CreateLikeHistory_ViewHandler {
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);
+            WebSocketEventHandler.getInstance().notifyEventsToSpecificUser(
+                bookLiked.getUserId(),
+                "BookLiked", 
+                String.format("{\"bookId\": %d}", bookLiked.getId())
+            );
 
         } catch (Exception e) {
             CustomLogger.errorObject(e, bookLiked);
