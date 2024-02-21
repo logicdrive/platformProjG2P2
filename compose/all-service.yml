@@ -158,3 +158,9 @@ services:
       - "8088:8088"
     environment:
       SPRING_PROFILES_ACTIVE: docker
+  
+
+  book-generator-frontend:
+    image: sinsung6722/book-generator-frontend:v1
+    ports:
+      - "3000:3000"

@@ -10,7 +10,7 @@ tmp
 **/target
 
 # Frontend
-frontend/node_modules
+**/node_modules
 
 # Mock
 **/__pycache__
