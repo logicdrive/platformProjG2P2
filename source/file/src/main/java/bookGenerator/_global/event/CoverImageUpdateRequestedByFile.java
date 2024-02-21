@@ -11,7 +11,7 @@ import bookGenerator.domain.File;
 @Data
 @NoArgsConstructor
 @EqualsAndHashCode(callSuper=false)
-@EventNameAnnotation(eventName="CoverImageGenerationRequestedByFile")
+@EventNameAnnotation(eventName="CoverImageUpdateRequestedByFile")
 public class CoverImageUpdateRequestedByFile extends FileEvent {
     private String imageUrl;
 
