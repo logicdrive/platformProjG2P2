@@ -31,6 +31,10 @@ public class FileInfoDeleted_deleteExistingImage_Policy {
         {
 
             CustomLogger.debugObject(CustomLoggerType.ENTER, fileInfoDeleted);
+            if(fileInfoDeleted.getUrl() == null || fileInfoDeleted.getUrl().isEmpty()) {
+                CustomLogger.debug(CustomLoggerType.EXIT);
+                return;
+            }
 
 
             RemoveFileReqDto reqDto = new RemoveFileReqDto(fileInfoDeleted.getUrl());
