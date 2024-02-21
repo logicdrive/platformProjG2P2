@@ -2,7 +2,7 @@
 user: O / D / E
 book: O / T / D / E
 tag: O / T / D / E
-index: O / T / D
+index: O / T / D / E
 content: O / T / D
 problem: O / T / D
 comment: O / T / D

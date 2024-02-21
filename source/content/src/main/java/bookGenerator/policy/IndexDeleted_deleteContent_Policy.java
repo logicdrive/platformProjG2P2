@@ -13,7 +13,6 @@ import bookGenerator._global.event.ContentImageDeleteRequsted;
 import bookGenerator._global.event.IndexDeleted;
 
 import bookGenerator.domain.Content;
-import bookGenerator.domain.ContentManageService;
 
 @Service
 @Transactional
@@ -33,10 +32,12 @@ public class IndexDeleted_deleteContent_Policy {
             CustomLogger.debugObject(CustomLoggerType.ENTER, indexDeleted);
 
 
-            Content contentToDelete = ContentManageService.getInstance().findByIndexIdOrThrow(indexDeleted.getId());
-            Content.repository().delete(contentToDelete);
-
-            (new ContentImageDeleteRequsted(contentToDelete)).publish();
+            Content.repository().findByIndexId(indexDeleted.getId()).ifPresent(contentToDelete -> {
+                
+                Content.repository().delete(contentToDelete);
+                (new ContentImageDeleteRequsted(contentToDelete)).publish();
+                
+            });
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);

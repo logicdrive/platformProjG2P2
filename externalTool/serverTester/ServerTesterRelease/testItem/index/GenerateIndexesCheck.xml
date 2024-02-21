@@ -31,7 +31,7 @@
             <baseUrl>http://localhost:8085</baseUrl>
             <resourceUrl>indexes/generateIndexes</resourceUrl>
             <headers></headers>
-            <data>{"bookId":1}</data>
+            <data>{"bookId":1,"query":"python"}</data>
 
             <checks>
                 <check type="status">2.*</check>
