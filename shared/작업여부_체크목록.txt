@@ -9,29 +9,9 @@ comment: O / T / D
 bookShelf: O / T / D
 bookShelfBook: O / T / D
 file: O / T / D
-collectedData: O >
+collectedData: O / S / D
 externalSystemProxy: O / D
 externalSystem: O / D
 recommendCalcSystem: O / D 
-gateway: O
+gateway: O / D
 frontend: 
-
----
-
-* collectedData
-User: O > S
-
-Book: O > S
-LikeHistory: O > S
-Tag: O > S
-Index: O > S
-Content: O > S
-Problem: O > S
-Comment: O > S
-
-BookShelf: O > S
-BookShelfBook: O > S
-File: O > S
-
-RecommendBookToUser: O >
-RecommendBookToBook: O >

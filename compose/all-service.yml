@@ -112,6 +112,14 @@ services:
       - "8094:8080"
     environment:
       SPRING_PROFILES_ACTIVE: docker
+
+  book-generator-collected-data:
+    image: sinsung6722/book-generator-collected-data:v1
+    ports:
+      - "8093:8080"
+    environment:
+      SPRING_PROFILES_ACTIVE: docker
+
   
   book-generator-external-system-proxy:
     image: sinsung6722/book-generator-external-system-proxy:v1
