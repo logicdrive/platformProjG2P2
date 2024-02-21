@@ -95,7 +95,7 @@ lambda answer : answer.find("[END]") != -1
     )
 
     CustomLogger.debug(CustomLoggerType.EFFECT, "Lastly acquired answer", "<answer: {}>".format(GPT_ANSWER))
-    return GPT_ANSWER.split("[END]")[0]
+    return GPT_ANSWER.split("[END]")[0].strip()
 
 # 주어진 쿼리에 대한 문제와 정답들을 GPT를 통해서 생성하기 위해서
 def generateProblemsByUsingGPT(query:str, maxProblemCount:int=3) -> tuple[list[str], list[str]] :
