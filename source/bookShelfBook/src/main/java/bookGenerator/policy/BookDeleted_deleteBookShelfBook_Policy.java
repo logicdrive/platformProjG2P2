@@ -13,7 +13,6 @@ import bookGenerator._global.event.BookDeleted;
 import bookGenerator._global.event.BookShelfBookDeleted;
 
 import bookGenerator.domain.BookShelfBook;
-import bookGenerator.domain.BookShelfBookManageService;
 
 @Service
 @Transactional
@@ -32,11 +31,11 @@ public class BookDeleted_deleteBookShelfBook_Policy {
             
             CustomLogger.debugObject(CustomLoggerType.ENTER, bookDeleted);
 
-
-            BookShelfBook bookShelfBookToDelete = BookShelfBookManageService.getInstance().findByBookIdOrThrow(bookDeleted.getId());
-            BookShelfBook.repository().delete(bookShelfBookToDelete);
             
-            (new BookShelfBookDeleted(bookShelfBookToDelete)).publish();
+            BookShelfBook.repository().findByBookId(bookDeleted.getId()).forEach(bookShelfBookToDelete -> {
+                BookShelfBook.repository().delete(bookShelfBookToDelete);
+                (new BookShelfBookDeleted(bookShelfBookToDelete)).publish();
+            });
 
 
             CustomLogger.debug(CustomLoggerType.EXIT);

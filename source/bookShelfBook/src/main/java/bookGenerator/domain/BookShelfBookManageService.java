@@ -23,11 +23,6 @@ public class BookShelfBookManageService {
         return BookShelfBook.repository().findById(id)
             .orElseThrow(() -> new BookShelfBookNotFoundException());
     }
-
-    public BookShelfBook findByBookIdOrThrow(Long bookId) {
-        return BookShelfBook.repository().findByBookId(bookId)
-            .orElseThrow(() -> new BookShelfBookNotFoundException());
-    }
 }
 
 @Getter
