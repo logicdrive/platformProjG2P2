@@ -1,4 +1,4 @@
-FROM sinsung6722/music-streaming-frontend-base:v1
+FROM sinsung6722/book-generator-frontend-base:v1
 
 
 WORKDIR /root
