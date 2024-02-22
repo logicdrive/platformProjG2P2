@@ -9,7 +9,7 @@ import YesNoButton from '../../_global/components/button/YesNoButton';
 import IconButton from '../../_global/components/button/IconButton';
 import IconNavigationButton from '../../_global/components/button/IconNavigationButton';
 import NavText from '../../_global/components/text/NavText';
-import BoldText from '../../_global/components/text/BoldText';
+import BookSubAppBar from '../_global/BookSubAppBar';
 
 const BookMyListPage = () => {
     return (
@@ -34,11 +34,7 @@ const BookMyListPage = () => {
                 </YesNoButton>
             </TopAppBar>
 
-            <Box sx={{width: "100%", height: "50px", padding: "10px", marginTop: "5px"}}>
-                <BoldText sx={{float: "left", fontSize: "15px", backgroundColor: "royalblue", width: "100px", height: "30px", paddingLeft: "10px", paddingRight: "7px", paddingTop: "10px", borderRadius: "5px", color: "white", cursor: "pointer", "&:hover": {opacity: 0.80}}}>내가 생성한 책</BoldText>
-                <BoldText sx={{float: "left", marginLeft: "5px", fontSize: "15px", width: "100px", height: "30px", paddingLeft: "10px", paddingRight: "7px", paddingTop: "10px", borderRadius: "5px", color: "black", cursor: "pointer", "&:hover": {opacity: 0.80}}}>공유된 책</BoldText>
-                <BoldText sx={{float: "right", marginLeft: "5px", fontSize: "15px", width: "100px", height: "30px", paddingLeft: "10px", paddingRight: "7px", paddingTop: "10px", borderRadius: "5px", color: "black", cursor: "pointer", "&:hover": {opacity: 0.80}}}>책 생성하기</BoldText>
-            </Box>
+            <BookSubAppBar focusedIndex={0}/>
         </>
     )
 }
