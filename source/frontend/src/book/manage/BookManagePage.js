@@ -1,9 +1,11 @@
 import React from 'react';
-  
+
+import MainNavAppBar from '../../_global/components/MainNavAppBar';
+
 const BookManagePage = () => {
     return (
         <>
-            BookManagePage
+            <MainNavAppBar focusedIndex={0} backArrowUrl="/book/myList"/>
         </>
     )
 }
