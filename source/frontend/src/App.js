@@ -18,6 +18,7 @@ import BookManagePage from './book/manage/BookManagePage';
 
 import BookShelfMyListPage from './bookShelf/myList/BookShelfMyListPage';
 import BookShelfSharedListPage from './bookShelf/sharedList/BookShelfSharedListPage';
+import BookShelfInfoPage from './bookShelf/info/BookShelfInfoPage';
 
 function App() {
   return (
@@ -39,6 +40,7 @@ function App() {
                     
                     <Route path="/bookShelf/myList" element={<BookShelfMyListPage/>}/>
                     <Route path="/bookShelf/sharedList" element={<BookShelfSharedListPage/>}/>
+                    <Route path="/bookShelf/info/:bookShelfId" element={<BookShelfInfoPage/>}/>
                 </Routes>
             </Router>
             <AlertPopUpList/>
