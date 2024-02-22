@@ -1,9 +1,11 @@
 import React from 'react';
-  
+
+import MainNavAppBar from '../../_global/components/MainNavAppBar';
+
 const BookReadPage = () => {
     return (
         <>
-            BookReadPage
+            <MainNavAppBar focusedIndex={0} backArrowUrl={-1}/>
         </>
     )
 }
