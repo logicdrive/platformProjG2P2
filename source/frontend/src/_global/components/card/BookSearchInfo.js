@@ -1,12 +1,15 @@
 import React from 'react';
+import { useNavigate } from "react-router-dom";
 import { Card, CardContent, Box, IconButton } from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
 import BoldText from '../text/BoldText';
 
-const BookSearchInfo = ({bookId, bookTitle, bookCreater, bookCreateDate, bookLikeCount, bookTags}) => {
+const BookSearchInfo = ({bookId, bookTitle, bookCreater, bookCreateDate, bookLikeCount, bookTags, onClickCardUrl}) => {
+    const navigate = useNavigate()
+
     return (
-        <Card sx={{width: "380px", height: "220px"}} onClick={()=>{alert("AAA")}}>
+        <Card sx={{width: "380px", height: "220px"}} onClick={()=>{navigate(onClickCardUrl)}}>
             <CardContent sx={{padding: "10px"}}>
                 <Box sx={{float: "left", cursor: "pointer"}}>
                     <Box
