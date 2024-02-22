@@ -15,8 +15,8 @@ const BookMyListPage = () => {
         <>
             <TopAppBar title="BOOKGEN" titleLink="/book/myList">
                 <IconNavigationButton url="/book/myList" sx={{marginLeft: "20px", marginBottom: "10px"}} buttonSx={{width: "75px"}} textSx={{width: "75px"}}>
-                    <BookIcon sx={{float: "left"}}/>
-                    <NavText sx={{width: "75px", marginTop: "2px"}}>전자책</NavText>
+                    <BookIcon sx={{float: "left", color: "cornflowerblue"}}/>
+                    <NavText sx={{width: "75px", marginTop: "2px", color: "cornflowerblue"}}>전자책</NavText>
                 </IconNavigationButton>
 
                 <IconNavigationButton url="/bookShelf/myList" sx={{marginLeft: "15px", marginBottom: "10px"}} buttonSx={{width: "60px"}} textSx={{width: "60px"}}>

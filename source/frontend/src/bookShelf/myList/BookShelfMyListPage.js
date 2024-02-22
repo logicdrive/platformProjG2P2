@@ -18,8 +18,8 @@ const BookShelfMyListPage = () => {
                 </IconNavigationButton>
 
                 <IconNavigationButton url="/bookShelf/myList" sx={{marginLeft: "15px", marginBottom: "10px"}} buttonSx={{width: "60px"}} textSx={{width: "60px"}}>
-                    <CollectionsBookmarkIcon sx={{float: "left"}}/>
-                    <NavText sx={{width: "60px", marginTop: "2px"}}>책장</NavText>
+                    <CollectionsBookmarkIcon sx={{float: "left", color: "cornflowerblue"}}/>
+                    <NavText sx={{width: "60px", marginTop: "2px", color: "cornflowerblue"}}>책장</NavText>
                 </IconNavigationButton>
 
 
