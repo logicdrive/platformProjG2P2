@@ -3,7 +3,7 @@ import { styled } from '@mui/system';
 
 const StyledContainedButton = styled(Button)({
     "&&&": {
-        backgroundColor: "blueviolet",
+        backgroundColor: "midnightblue",
         color: "white"
     }
 });

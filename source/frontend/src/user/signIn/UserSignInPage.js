@@ -55,9 +55,9 @@ const UserSignInPage = () => {
     setTestAutomationCommands(setSignInInfo)
     return (
         <>
-            <TopAppBar title="로그인"></TopAppBar>
+            <TopAppBar title="BOOKGEN" titleLink="/user/signIn"></TopAppBar>
 
-            <Card variant="outlined" sx={{ marginTop: 3, textAlign: "center"}}>
+            <Card variant="outlined" sx={{ marginX: "auto", marginTop: 3, textAlign: "center", width: "500px" }}>
                 <Stack>
                     <BoldText sx={{fontSize: 25, marginTop: 5}}>로그인</BoldText>
 

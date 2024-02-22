@@ -3,12 +3,12 @@ import { styled } from '@mui/system';
 
 const StyledTextField = styled(TextField)({
     "& label.Mui-focused": {
-        color: "blueviolet",
+        color: "midnightblue",
     },
 
     "& .MuiOutlinedInput-root": {
         "&.Mui-focused fieldset": {
-            borderColor: "blueviolet",
+            borderColor: "midnightblue",
         },
     }
 });

@@ -23,7 +23,7 @@ function App() {
   return (
     <AlertPopupProvider>
       <JwtTokenProvider>
-        <Container maxWidth="sm">
+        <Container maxWidth="lg">
             <Router>
               <Routes>
                     <Route path="/" element={<UserSignInPage/>}/>

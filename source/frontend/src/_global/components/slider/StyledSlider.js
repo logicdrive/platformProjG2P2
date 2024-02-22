@@ -3,7 +3,7 @@ import { styled } from '@mui/system';
 
 const StyledSlider = styled(Slider)({
     "&&&": {
-        "color": "blueviolet"
+        "color": "midnightblue"
     },
 
 
