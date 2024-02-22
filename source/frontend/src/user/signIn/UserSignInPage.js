@@ -20,7 +20,7 @@ const UserSignInPage = () => {
 
     useEffect(() => {
         if(jwtTokenState.jwtToken !== null) {
-            navigate("/music/list");
+            navigate("/book/myList");
         }
     }, [jwtTokenState.jwtToken, navigate])
 

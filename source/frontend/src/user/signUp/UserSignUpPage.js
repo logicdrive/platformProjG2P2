@@ -58,6 +58,8 @@ const UserSignUpPage = () => {
     return (
         <>
             <TopAppBar title="BOOKGEN" titleLink="/user/signIn">
+                <Box sx={{flexGrow: 1}}></Box>
+                
                 <IconNavigationButton url="/user/signIn">
                     <ArrowBackIcon sx={{fontSize: 40}}/>
                 </IconNavigationButton>
