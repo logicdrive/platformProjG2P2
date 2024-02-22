@@ -37,7 +37,7 @@ const BookSubAppBar = ({focusedIndex, handleOnSubmit, sx, ...props}) => {
                         <MenuItem value="bookTitle">책 제목</MenuItem>
                     </Select>
 
-                    <InputBase sx={{marginLeft: "10px"}} value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
+                    <InputBase sx={{marginLeft: "10px", width: "217px"}} value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>
                     <Box onClick={()=>{handleOnSubmit(searchText, searchType)}} 
                         sx={{
                             marginLeft: "10px", float:"right", height: "35px", minHeight: "35px", width: "35px", minWidth: "35px",
