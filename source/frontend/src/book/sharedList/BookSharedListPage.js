@@ -1,9 +1,13 @@
 import React from 'react';
-  
+
+import MainNavAppBar from '../../_global/components/MainNavAppBar';
+import BookSubAppBar from '../_global/BookSubAppBar';
+
 const BookSharedListPage = () => {
     return (
         <>
-            BookSharedListPage
+            <MainNavAppBar focusedIndex={0}/>
+            <BookSubAppBar focusedIndex={1}/>
         </>
     )
 }
