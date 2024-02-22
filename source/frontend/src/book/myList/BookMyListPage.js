@@ -3,7 +3,7 @@ import { Box, Stack, Pagination } from '@mui/material';
 
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BookSubAppBar from '../_global/BookSubAppBar';
-import BookSearchInfo from '../_global/BookSearchInfo';
+import BookSearchInfo from '../../_global/components/card/BookSearchInfo';
 
 const BookMyListPage = () => {
     return (

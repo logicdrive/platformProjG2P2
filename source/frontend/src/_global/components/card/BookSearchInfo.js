@@ -2,7 +2,7 @@ import React from 'react';
 import { Card, CardContent, Box, IconButton } from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 
-import BoldText from '../../_global/components/text/BoldText';
+import BoldText from '../text/BoldText';
 
 const BookSearchInfo = ({bookId, bookTitle, bookCreater, bookCreateDate, bookLikeCount, bookTags}) => {
     return (
