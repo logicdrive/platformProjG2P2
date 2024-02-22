@@ -16,7 +16,7 @@ const BookMyListPage = () => {
                 <Stack direction="row" spacing={2}>
                     <Card sx={{width: "380px", height: "220px"}} onClick={()=>{alert("AAA")}}>
                         <CardContent sx={{padding: "10px"}}>
-                            <Box sx={{float: "left"}}>
+                            <Box sx={{float: "left", cursor: "pointer"}}>
                                 <Box
                                     component="img"
                                     sx={{
@@ -32,9 +32,9 @@ const BookMyListPage = () => {
                                 />
                             </Box>
                             <Box sx={{float: "left", marginLeft: "10px"}}>
-                                <BoldText sx={{fontSize: "18px"}}>점프 투 파이썬</BoldText>
-                                <BoldText sx={{fontSize: "15px", color:"lightgray"}}>작성자: TestCreater</BoldText>
-                                <BoldText sx={{fontSize: "15px", color:"lightgray"}}>작성일: 2024-02-22 12:47</BoldText>
+                                <BoldText sx={{fontSize: "18px", cursor: "pointer"}}>점프 투 파이썬</BoldText>
+                                <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성자: TestCreater</BoldText>
+                                <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성일: 2024-02-22 12:47</BoldText>
                                 
                                 <IconButton onClick={(e)=>{e.stopPropagation(); alert("BBB")}} sx={{padding: "0px", borderRadius: "5px"}}>
                                     <ThumbUpIcon sx={{fontSize: "20px"}}/> 
@@ -42,10 +42,10 @@ const BookMyListPage = () => {
                                 </IconButton>
 
                                 <Box sx={{display: "flex", flexDirection: "row", width: "215px", flexWrap: "wrap-reverse", marginTop: "80px", marginLeft: "-3px"}}>
-                                    <BoldText sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", margin: "2px"}}>AAAAA</BoldText>
-                                    <BoldText sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", margin: "2px"}}>BBBBB</BoldText>
-                                    <BoldText sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", margin: "2px"}}>CCCCC</BoldText>
-                                    <BoldText sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", margin: "2px"}}>DDDDD</BoldText>
+                                    <BoldText sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", margin: "2px", cursor: "context-menu"}}>AAAAA</BoldText>
+                                    <BoldText sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", margin: "2px", cursor: "context-menu"}}>BBBBB</BoldText>
+                                    <BoldText sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", margin: "2px", cursor: "context-menu"}}>CCCCC</BoldText>
+                                    <BoldText sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", margin: "2px", cursor: "context-menu"}}>DDDDD</BoldText>
                                 </Box>
                             </Box>
                         </CardContent>

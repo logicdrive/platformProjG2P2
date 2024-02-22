@@ -2,7 +2,6 @@
 
 import React from 'react';
 import { Link, Button, Box } from '@mui/material';
-import NavText from '../text/NavText';
 
 const IconButton = ({children, onClick, sx, buttonSx, textSx, ...props}) => {
     return (
