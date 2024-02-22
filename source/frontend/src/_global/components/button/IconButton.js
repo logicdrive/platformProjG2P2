@@ -1,7 +1,7 @@
 // Nav에 대한 통합적인 버튼 형식
 
 import React from 'react';
-import { Link, Button } from '@mui/material';
+import { Link, Button, Box } from '@mui/material';
 import NavText from '../text/NavText';
 
 const IconButton = ({children, onClick, sx, buttonSx, textSx, ...props}) => {
@@ -11,9 +11,9 @@ const IconButton = ({children, onClick, sx, buttonSx, textSx, ...props}) => {
                 width: "50px", minWidth: "50px", height: "50px", minHeight: "50px", backgroundColor: "darkblue", ...buttonSx,
                 "&:hover": {opacity: 0.80}
                 }}>
-                <NavText sx={{position: "relative", top: "4px", ...textSx}}>
+                <Box sx={{position: "relative", top: "4px", color: "white", fontWeight: "bolder", fontFamily: "BMDfont", ...textSx}}>
                     {children}
-                </NavText>
+                </Box>
             </Button>
         </Link>
     );

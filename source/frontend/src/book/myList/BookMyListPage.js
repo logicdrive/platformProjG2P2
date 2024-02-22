@@ -36,9 +36,9 @@ const BookMyListPage = () => {
                                 <BoldText sx={{fontSize: "15px", color:"lightgray"}}>작성자: TestCreater</BoldText>
                                 <BoldText sx={{fontSize: "15px", color:"lightgray"}}>작성일: 2024-02-22 12:47</BoldText>
                                 
-                                <IconButton sx={{padding: "0px", borderRadius: "5px"}}>
+                                <IconButton onClick={(e)=>{e.stopPropagation(); alert("BBB")}} sx={{padding: "0px", borderRadius: "5px"}}>
                                     <ThumbUpIcon sx={{fontSize: "20px"}}/> 
-                                    <BoldText onClick={(e)=>{e.stopPropagation(); alert("BBB")}} sx={{marginTop: "3px", marginLeft: "3px", fontSize: "15px", color: "gray"}}>10 LIKES</BoldText>
+                                    <BoldText sx={{marginTop: "3px", marginLeft: "3px", fontSize: "15px", color: "gray"}}>10 LIKES</BoldText>
                                 </IconButton>
 
                                 <Box sx={{display: "flex", flexDirection: "row", width: "215px", flexWrap: "wrap-reverse", marginTop: "80px", marginLeft: "-3px"}}>
