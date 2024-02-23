@@ -26,6 +26,7 @@ const BookSharedListPage = () => {
                         isShared={false}
 
                         onClickCardUrl={"/book/info/1"}
+                        bookImageUrl={""}
                     />
                 </Stack>
                 

@@ -5,7 +5,7 @@ import ShareIcon from '@mui/icons-material/Share';
 
 import BoldText from '../../_global/components/text/BoldText';
 
-const BookShelfSearchInfo = ({bookShelfId, bookShelfTitle, bookShelfBookCount, bookShelfCreater, bookShelfCreateDate, bookShelfTags, isShared, onClickCardUrl}) => {
+const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookShelfBookCount, bookShelfCreater, bookShelfCreateDate, bookShelfTags, isShared, onClickCardUrl}) => {
     const navigate = useNavigate()
 
     return (
@@ -23,7 +23,7 @@ const BookShelfSearchInfo = ({bookShelfId, bookShelfTitle, bookShelfBookCount, b
 
                         }}
                         alt="업로드된 이미지가 표시됩니다."
-                        src="/src/NoImage.jpg"
+                        src={(bookImageUrls && bookImageUrls.length === 1) ? bookImageUrls[0] : "/src/NoImage.jpg"}
                     />
                 </Box>
                 <Stack sx={{float: "left", marginLeft: "10px", width: "238px"}}>
@@ -44,7 +44,7 @@ const BookShelfSearchInfo = ({bookShelfId, bookShelfTitle, bookShelfBookCount, b
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성자: {bookShelfCreater}</BoldText>
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성일: {bookShelfCreateDate}</BoldText>
                     
-                    <Box sx={{display: "flex", flexDirection: "row", width: "215px", flexWrap: "wrap-reverse", marginTop: "75px", marginLeft: "-3px"}}>
+                    <Box sx={{display: "flex", flexDirection: "row", width: "215px", flexWrap: "wrap-reverse", marginTop: "78px", marginLeft: "-3px"}}>
                         {
                             bookShelfTags.map((tag, index) => {
                                 return (

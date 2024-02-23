@@ -24,6 +24,7 @@ const BookShelfMyListPage = () => {
                         isShared={false}
 
                         onClickCardUrl={"/book/info/1"}
+                        bookImageUrls={[]}
                     />
                 </Stack>
 

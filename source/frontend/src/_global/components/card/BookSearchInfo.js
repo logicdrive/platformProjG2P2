@@ -6,7 +6,7 @@ import ShareIcon from '@mui/icons-material/Share';
 
 import BoldText from '../text/BoldText';
 
-const BookSearchInfo = ({bookId, bookTitle, bookCreater, bookCreateDate, bookLikeCount, bookTags, isShared, onClickCardUrl}) => {
+const BookSearchInfo = ({bookId, bookImageUrl, bookTitle, bookCreater, bookCreateDate, bookLikeCount, bookTags, isShared, onClickCardUrl}) => {
     const navigate = useNavigate()
 
     return (
@@ -24,7 +24,7 @@ const BookSearchInfo = ({bookId, bookTitle, bookCreater, bookCreateDate, bookLik
 
                         }}
                         alt="업로드된 이미지가 표시됩니다."
-                        src="/src/NoImage.jpg"
+                        src={(bookImageUrl) ? bookImageUrl : "/src/NoImage.jpg"}
                     />
                 </Box>
                 <Stack sx={{float: "left", marginLeft: "10px", width: "238px"}}>
@@ -44,7 +44,7 @@ const BookSearchInfo = ({bookId, bookTitle, bookCreater, bookCreateDate, bookLik
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성자: {bookCreater}</BoldText>
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성일: {bookCreateDate}</BoldText>
                     
-                    <IconButton onClick={(e)=>{e.stopPropagation(); alert("BBB")}} sx={{paddingY: "0px", borderRadius: "5px", marginLeft: "-120px"}}>
+                    <IconButton onClick={(e)=>{e.stopPropagation(); alert("BBB")}} sx={{paddingY: "0px", borderRadius: "5px", marginLeft: "-150px"}}>
                         <ThumbUpIcon sx={{fontSize: "20px"}}/> 
                         <BoldText sx={{marginTop: "3px", marginLeft: "3px", fontSize: "15px", color: "gray"}}>{bookLikeCount} LIKES</BoldText>
                     </IconButton>
