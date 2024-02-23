@@ -9,7 +9,9 @@ const BookMyListPage = () => {
     return (
         <>
             <MainNavAppBar focusedIndex={0}/>
-            <BookSubAppBar focusedIndex={0}/>
+            <BookSubAppBar focusedIndex={0} 
+                searchTypes={[{type: "bookTitle", name: "책 제목"}]}
+            />
 
             <Stack>
                 <Stack direction="row" spacing={2}>

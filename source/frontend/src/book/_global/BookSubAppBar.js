@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import BoldText from '../../_global/components/text/BoldText';
 
-const BookSubAppBar = ({focusedIndex, handleOnSubmit, sx, ...props}) => {
+const BookSubAppBar = ({focusedIndex, handleOnSubmit, searchTypes, sx, ...props}) => {
     const navigate = useNavigate()
 
     let commonSx = {fontSize: "15px", height: "30px", paddingX: "10px", paddingTop: "10px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}
@@ -13,7 +13,7 @@ const BookSubAppBar = ({focusedIndex, handleOnSubmit, sx, ...props}) => {
     let normalSx = {color: "black", ...commonSx}
 
     const [searchText, setSearchText] = useState("")
-    const [searchType, setSearchType] = useState("bookTitle")
+    const [searchType, setSearchType] = useState(searchTypes[0].type)
 
     return (
         <>
@@ -34,7 +34,11 @@ const BookSubAppBar = ({focusedIndex, handleOnSubmit, sx, ...props}) => {
                         disableUnderline={true}
                         variant="standard"
                     >
-                        <MenuItem value="bookTitle">책 제목</MenuItem>
+                        {
+                            searchTypes.map((searchType, index) => {
+                                return <MenuItem key={index} value={searchType.type}>{searchType.name}</MenuItem>
+                            })
+                        }
                     </Select>
 
                     <InputBase sx={{marginLeft: "10px", width: "217px"}} value={searchText} onChange={(e)=>{setSearchText(e.target.value)}}/>

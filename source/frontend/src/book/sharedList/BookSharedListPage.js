@@ -7,7 +7,10 @@ const BookSharedListPage = () => {
     return (
         <>
             <MainNavAppBar focusedIndex={0}/>
-            <BookSubAppBar focusedIndex={1}/>
+            <BookSubAppBar focusedIndex={1}
+                searchTypes={[{type: "bookTitle", name: "책 제목"},
+                              {type: "bookCreater", name: "책 작성자"}]}
+            />
         </>
     )
 }
