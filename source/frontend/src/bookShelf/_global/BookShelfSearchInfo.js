@@ -11,20 +11,110 @@ const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookSh
     return (
         <Card sx={{width: "380px", height: "220px"}} onClick={()=>{navigate(onClickCardUrl)}}>
             <CardContent sx={{padding: "10px"}}>
-                <Box sx={{float: "left", cursor: "pointer"}}>
-                    <Box
-                        component="img"
-                        sx={{
-                            height: 200,
-                            width: 110,
-                            backgroundColor: "lightgray",
-                            borderRadius: 3,
-                            border: "1px solid lightgray",
+                <Box sx={{float: "left", cursor: "pointer", height: 200, width: 110}}>
+                {(() => {
+                    if(bookImageUrls && bookImageUrls.length === 3) {
+                        return (
+                            <>
+                            <Box
+                                component="img"
+                                sx={{
+                                    height: 160,
+                                    width: 70,
+                                    backgroundColor: "lightgray",
+                                    borderRadius: 3,
+                                    border: "1px solid lightgray",
+                                }}
+                                alt="업로드된 이미지가 표시됩니다."
+                                src={bookImageUrls[0]}
+                            />
 
-                        }}
-                        alt="업로드된 이미지가 표시됩니다."
-                        src={(bookImageUrls && bookImageUrls.length === 1) ? bookImageUrls[0] : "/src/NoImage.jpg"}
-                    />
+                            <Box
+                                component="img"
+                                sx={{
+                                    height: 160,
+                                    width: 70,
+                                    backgroundColor: "lightgray",
+                                    borderRadius: 3,
+                                    border: "1px solid lightgray",
+                                    zIndex: 2,
+                                    position: "absolute",
+                                    marginLeft: "-57.5px",
+                                    marginTop: "20px"
+                                }}
+                                alt="업로드된 이미지가 표시됩니다."
+                                src={bookImageUrls[1]}
+                            />
+
+                            <Box
+                                component="img"
+                                sx={{
+                                    height: 160,
+                                    width: 70,
+                                    backgroundColor: "lightgray",
+                                    borderRadius: 3,
+                                    border: "1px solid lightgray",
+                                    zIndex: 2,
+                                    position: "absolute",
+                                    marginLeft: "-40px",
+                                    marginTop: "40px"
+                                }}
+                                alt="업로드된 이미지가 표시됩니다."
+                                src={bookImageUrls[2]}
+                            />
+                            </>
+                        )
+                    }else if(bookImageUrls && bookImageUrls.length === 2) {
+                        return (
+                            <>
+                            <Box
+                                component="img"
+                                sx={{
+                                    height: 180,
+                                    width: 90,
+                                    backgroundColor: "lightgray",
+                                    borderRadius: 3,
+                                    border: "1px solid lightgray",
+                                }}
+                                alt="업로드된 이미지가 표시됩니다."
+                                src={bookImageUrls[0]}
+                            />
+
+                            <Box
+                                component="img"
+                                sx={{
+                                    height: 180,
+                                    width: 90,
+                                    backgroundColor: "lightgray",
+                                    borderRadius: 3,
+                                    border: "1px solid lightgray",
+                                    zIndex: 2,
+                                    position: "absolute",
+                                    marginLeft: "-80px",
+                                    marginTop: "20px"
+                                }}
+                                alt="업로드된 이미지가 표시됩니다."
+                                src={bookImageUrls[1]}
+                            />
+                            </>
+                        )
+                    } else {
+                        return (
+                            <Box
+                                component="img"
+                                sx={{
+                                    height: 200,
+                                    width: 110,
+                                    backgroundColor: "lightgray",
+                                    borderRadius: 3,
+                                    border: "1px solid lightgray",
+                                }}
+                                alt="업로드된 이미지가 표시됩니다."
+                                src={(bookImageUrls && bookImageUrls.length >= 1) ? bookImageUrls[0] : "/src/NoImage.jpg"}
+                            />
+                        )
+                    } 
+                })()}
                 </Box>
                 <Stack sx={{float: "left", marginLeft: "10px", width: "238px"}}>
                     <Box>
