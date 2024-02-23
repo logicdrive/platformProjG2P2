@@ -13,7 +13,7 @@ const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookSh
             <CardContent sx={{padding: "10px"}}>
                 <Box sx={{float: "left", cursor: "pointer", height: 200, width: 110}}>
                 {(() => {
-                    if(bookImageUrls && bookImageUrls.length === 3) {
+                    if(bookImageUrls && bookImageUrls.length >= 3) {
                         return (
                             <>
                             <Box
