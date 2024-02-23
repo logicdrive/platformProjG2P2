@@ -68,7 +68,21 @@ const BookManagePage = () => {
                     </Stack>
 
                     <Divider orientation="vertical" flexItem/>
-                    <Stack sx={{float: "left", flex: "1 0 auto", paddingX: "5px"}}>
+                    <Stack sx={{float: "left", flex: "1 0 auto", paddingY: "5px", paddingLeft: "5px"}}>
+                        <Box>
+                            <BoldText sx={{float: "left", fontSize: "25px", marginTop: "5px"}}>제목: KKKKK</BoldText>
+
+                            <Box onClick={()=>{alert("Gen")}} sx={{float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
+                                <SmartToyIcon sx={{float: "left", color: "white"}}/>
+                                <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>생성</NavText>
+                            </Box>
+
+                            <Box onClick={()=>{alert("Edit")}} sx={{marginRight: "5px", float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
+                                <EditIcon sx={{float: "left", color: "white"}}/>
+                                <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>편집</NavText>
+                            </Box>    
+                        </Box>
+                        <Divider sx={{marginTop: "5px"}}/>
 
                     </Stack>
                 </Box>
