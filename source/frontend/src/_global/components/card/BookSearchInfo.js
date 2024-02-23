@@ -30,7 +30,7 @@ const BookSearchInfo = ({bookId, bookImageUrl, bookTitle, bookCreater, bookCreat
                 <Stack sx={{float: "left", marginLeft: "10px", width: "238px"}}>
                     <Box>
                         <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookTitle}</BoldText>
-                        <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer"}}>
+                        <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
                             {
                                 (isShared) ? (
                                     <ShareIcon sx={{color: "black"}}/>
