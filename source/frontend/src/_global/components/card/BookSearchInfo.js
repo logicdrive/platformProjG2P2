@@ -45,7 +45,7 @@ const BookSearchInfo = ({bookId, bookImageUrl, bookTitle, bookCreater, bookCreat
                                     }
                                     </BoldText>
 
-                                    <IconButton sx={{position: "relative", bottom: "5px", position: "relative", left: "9px"}} onClick={(e)=>{e.stopPropagation(); alert("Edit")}}>
+                                    <IconButton sx={{position: "relative", bottom: "5px", left: "9px"}} onClick={(e)=>{e.stopPropagation(); alert("Edit")}}>
                                         <EditIcon sx={{fontSize: "22px"}}/> 
                                     </IconButton>
                                 </Stack>
