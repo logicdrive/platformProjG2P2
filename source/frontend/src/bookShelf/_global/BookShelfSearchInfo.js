@@ -117,12 +117,12 @@ const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookSh
                     } 
                 })()}
                 </Box>
-                <Stack sx={{float: "left", marginLeft: "10px", width: "238px"}}>
+                <Stack sx={{float: "left", marginLeft: "12px", width: "238px"}}>
                     <Box sx={{height: "30px"}}>
                         <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookShelfTitle}</BoldText>
                         {
                             (isEditIconVisible) ? (
-                                <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
+                                <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}, position: "relative", left: "3px"}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
                                     {
                                         (isShared) ? (
                                             <ShareIcon sx={{color: "black"}}/>

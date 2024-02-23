@@ -3,6 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Card, CardContent, Box, IconButton, Stack } from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ShareIcon from '@mui/icons-material/Share';
+import EditIcon from '@mui/icons-material/Edit';
 
 import BoldText from '../text/BoldText';
 
@@ -33,7 +34,8 @@ const BookSearchInfo = ({bookId, bookImageUrl, bookTitle, bookCreater, bookCreat
                         <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookTitle}</BoldText>
                         {
                             (isEditIconVisible) ? (
-                                <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
+                                <Stack sx={{float: "right"}}>
+                                    <BoldText sx={{fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}, position: "relative", left: "15px"}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
                                     {
                                         (isShared) ? (
                                             <ShareIcon sx={{color: "black"}}/>
@@ -41,7 +43,12 @@ const BookSearchInfo = ({bookId, bookImageUrl, bookTitle, bookCreater, bookCreat
                                             <ShareIcon sx={{color: "lightgray"}}/>
                                         )
                                     }
-                                </BoldText>
+                                    </BoldText>
+
+                                    <IconButton sx={{position: "relative", bottom: "5px", position: "relative", left: "9px"}} onClick={(e)=>{e.stopPropagation(); alert("Edit")}}>
+                                        <EditIcon sx={{fontSize: "22px"}}/> 
+                                    </IconButton>
+                                </Stack>
                             ) : (null)
                         }
                     </Box>
