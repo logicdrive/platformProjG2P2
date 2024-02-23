@@ -107,9 +107,9 @@ const BookManagePage = () => {
 
                         <Box sx={{display: "flex", flexDirection: "row", width: "630px", flexWrap: "wrap", marginTop: "10px", marginLeft: "-3px"}}>
                             <Box sx={{margin: "5px", backgroundColor: "lightgray", padding: "5px", borderRadius: "5px"}}>
-                                <BoldText sx={{fontSize: "20px", display: "inline-block", color: "gray", borderRadius: "5px", marginTop: "4px", marginLeft: "4px", cursor: "context-menu"}}>IT</BoldText>
+                                <BoldText sx={{fontSize: "20px", display: "inline-block", color: "black", borderRadius: "5px", marginTop: "4px", marginLeft: "4px", cursor: "context-menu"}}>IT</BoldText>
 
-                                <Box onClick={()=>{alert("Delete")}} sx={{marginLeft: "10px", marginTop: "5px", float: "right", width: "25px", height: "25px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
+                                <Box onClick={()=>{alert("Delete")}} sx={{marginTop: "5px", float: "right", width: "25px", height: "25px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
                                     <DeleteIcon sx={{float: "left", color: "gray"}}/>
                                 </Box>
                                 <Box onClick={()=>{alert("Edit")}} sx={{marginLeft: "20px", marginTop: "5px", float: "right", width: "25px", height: "25px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
@@ -135,6 +135,23 @@ const BookManagePage = () => {
                         <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>추가</NavText>
                     </Box>
                 </Box>
+                <Stack sx={{width: "100%", marginTop: "16px"}}>
+                    <Box sx={{backgroundColor: "lightgray", borderRadius: "5px", padding: "5px"}}>
+                        <BoldText sx={{fontSize: "20px", float: "left", marginTop: "2px", marginLeft: "3px"}}>Python</BoldText>
+                        
+                        <Box sx={{marginTop: "3px"}}>
+                            <Box onClick={()=>{alert("Delete")}} sx={{float: "right", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
+                                <DeleteIcon sx={{color: "gray"}}/>
+                            </Box>
+                            <Box onClick={()=>{alert("Edit")}} sx={{float: "right", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
+                                <EditIcon sx={{color: "gray"}}/>
+                            </Box>
+                            <Box onClick={()=>{alert("Gen")}} sx={{float: "right", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
+                                <SmartToyIcon sx={{color: "gray"}}/>
+                            </Box>
+                        </Box>
+                    </Box>
+                </Stack>
             </Container>
         </>
     )
