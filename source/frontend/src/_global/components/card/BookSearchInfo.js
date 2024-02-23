@@ -1,11 +1,12 @@
 import React from 'react';
 import { useNavigate } from "react-router-dom";
-import { Card, CardContent, Box, IconButton } from '@mui/material';
+import { Card, CardContent, Box, IconButton, Stack } from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
+import ShareIcon from '@mui/icons-material/Share';
 
 import BoldText from '../text/BoldText';
 
-const BookSearchInfo = ({bookId, bookTitle, bookCreater, bookCreateDate, bookLikeCount, bookTags, onClickCardUrl}) => {
+const BookSearchInfo = ({bookId, bookTitle, bookCreater, bookCreateDate, bookLikeCount, bookTags, isShared, onClickCardUrl}) => {
     const navigate = useNavigate()
 
     return (
@@ -26,17 +27,29 @@ const BookSearchInfo = ({bookId, bookTitle, bookCreater, bookCreateDate, bookLik
                         src="/src/NoImage.jpg"
                     />
                 </Box>
-                <Box sx={{float: "left", marginLeft: "10px"}}>
-                    <BoldText sx={{fontSize: "18px", cursor: "pointer"}}>{bookTitle}</BoldText>
+                <Stack sx={{float: "left", marginLeft: "10px", width: "238px"}}>
+                    <Box>
+                        <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookTitle}</BoldText>
+                        <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer"}}>
+                            {
+                                (isShared) ? (
+                                    <ShareIcon sx={{color: "black"}}/>
+                                ) : (
+                                    <ShareIcon sx={{color: "lightgray"}}/>
+                                )
+                            }
+                        </BoldText>
+                    </Box>
+
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성자: {bookCreater}</BoldText>
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성일: {bookCreateDate}</BoldText>
                     
-                    <IconButton onClick={(e)=>{e.stopPropagation(); alert("BBB")}} sx={{padding: "0px", borderRadius: "5px"}}>
+                    <IconButton onClick={(e)=>{e.stopPropagation(); alert("BBB")}} sx={{paddingY: "0px", borderRadius: "5px", marginLeft: "-120px"}}>
                         <ThumbUpIcon sx={{fontSize: "20px"}}/> 
                         <BoldText sx={{marginTop: "3px", marginLeft: "3px", fontSize: "15px", color: "gray"}}>{bookLikeCount} LIKES</BoldText>
                     </IconButton>
 
-                    <Box sx={{display: "flex", flexDirection: "row", width: "215px", flexWrap: "wrap-reverse", marginTop: "80px", marginLeft: "-3px"}}>
+                    <Box sx={{display: "flex", flexDirection: "row", width: "215px", flexWrap: "wrap-reverse", marginTop: "75px", marginLeft: "-3px"}}>
                         {
                             bookTags.map((tag, index) => {
                                 return (
@@ -45,7 +58,7 @@ const BookSearchInfo = ({bookId, bookTitle, bookCreater, bookCreateDate, bookLik
                             })
                         }
                     </Box>
-                </Box>
+                </Stack>
             </CardContent>
         </Card>
     )

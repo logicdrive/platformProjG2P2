@@ -22,6 +22,7 @@ const BookMyListPage = () => {
                         bookCreateDate={"2024-02-22 12:47"}
                         bookLikeCount={10}
                         bookTags={["AAAAA", "BBBBB", "CCCCC", "DDDDD"]}
+                        isShared={false}
 
                         onClickCardUrl={"/book/info/1"}
                     />
