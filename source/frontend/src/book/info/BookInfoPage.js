@@ -1,10 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useParams } from 'react-router-dom';
-import { Container, Divider, Stack, Box, IconButton } from "@mui/material";
+import { Container, Divider, Stack, Box, IconButton, Paper, InputBase, Pagination } from "@mui/material";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import SendIcon from '@mui/icons-material/Send';
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
@@ -14,6 +17,8 @@ import NavText from '../../_global/components/text/NavText';
 const BookInfoPage = () => {
     const {bookId} = useParams()
     console.log("BookId :", bookId)
+
+    const [commentText, setCommentText] = useState("")
 
     return (
         <>
@@ -74,7 +79,47 @@ const BookInfoPage = () => {
                     </Box>
                     <Divider sx={{marginTop: "5px", marginBottom: "5px", width: "100%"}}/>
 
+                    <Paper component="form" sx={{width: "100%", height: "35px", marginTop: "2px",}}>
+                        <InputBase sx={{marginLeft: "10px", width: "797px"}} value={commentText} onChange={(e)=>{setCommentText(e.target.value)}}/>
+                        <Box onClick={()=>{}} 
+                            sx={{
+                                marginLeft: "10px", float:"right", height: "35px", minHeight: "35px", width: "35px", minWidth: "35px",
+                                borderRadius: "0px 5px 5px 0px", backgroundColor: "cornflowerblue", "&:hover": {opacity: 0.80}, color: "white",
+                                cursor: "pointer"
+                        }}>
+                            <SendIcon sx={{
+                                    float:"right", height: "30px", minHeight: "30px", width: "30px", minWidth: "30px",
+                                    marginTop: "2.5px", marginRight: "2.5px"
+                            }}></SendIcon>
+                        </Box>
+                    </Paper>
 
+                    <Stack
+                        divider={<Divider flexItem/>}
+                        spacing={3}
+                        sx={{marginTop: "20px"}}
+                    >
+                        <Stack>
+                            <Box>
+                                <BoldText sx={{float: "left", fontSize: "15px"}}>TestCreater</BoldText>
+                                
+                                
+                                <IconButton sx={{float: "right", position: "relative", bottom: "5px"}} onClick={(e)=>{e.stopPropagation(); alert("Delete")}}>
+                                    <DeleteIcon sx={{fontSize: "15px"}}/> 
+                                </IconButton>
+                                <IconButton sx={{float: "right", position: "relative", bottom: "5px"}} onClick={(e)=>{e.stopPropagation(); alert("Edit")}}>
+                                    <EditIcon sx={{fontSize: "15px"}}/> 
+                                </IconButton>
+                                <NormalText sx={{float: "right", fontSize: "15px"}}>2024-02-23 11:46</NormalText>
+                            </Box>
+
+                            <NormalText sx={{fontSize: "15px"}}>댓글내용입니다.</NormalText>
+                        </Stack>
+                    </Stack>
+                    
+                    <Box sx={{width: "100%", marginTop: "10px", display: "flex", justifyContent: "center"}}>
+                        <Pagination sx={{padding: "auto", margin: "0 auto"}} count={10}/>
+                    </Box>
                 </Stack>
             </Container>
         </>
