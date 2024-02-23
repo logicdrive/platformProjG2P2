@@ -1,5 +1,5 @@
 import React, {useState} from 'react';
-import { useParams } from 'react-router-dom';
+import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Divider, Stack, Box, IconButton, Paper, InputBase, Pagination } from "@mui/material";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
@@ -17,6 +17,8 @@ import NavText from '../../_global/components/text/NavText';
 const BookInfoPage = () => {
     const {bookId} = useParams()
     console.log("BookId :", bookId)
+
+    const navigate = useNavigate()
 
     const [commentText, setCommentText] = useState("")
 
@@ -60,7 +62,7 @@ const BookInfoPage = () => {
 
                             <Divider sx={{marginTop: "5px", marginBottom: "5px"}}/>
                             <Box sx={{marginTop: "88px"}}>
-                                <Box sx={{float: "left", backgroundColor: "cornflowerblue", width: "85px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
+                                <Box onClick={()=>{navigate("/book/read/1/1")}}sx={{float: "left", backgroundColor: "cornflowerblue", width: "85px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
                                     <AutoStoriesIcon sx={{float: "left", color: "white"}}/>
                                     <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>책 읽기</NavText>
                                 </Box>
