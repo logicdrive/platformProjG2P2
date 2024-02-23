@@ -23,7 +23,7 @@ frontend:
 UserSignUpPage: U
 UserSignInPage: U
 
-BookMyListPage: 
+BookMyListPage: U
 BookSharedListPage: 
 BookInfoPage: 
 BookReadPage: 
@@ -31,3 +31,4 @@ BookManagePage:
 
 BookShelfMyListPage: 
 BookShelfSharedListPage: 
+BookShelfInfoPage: 
