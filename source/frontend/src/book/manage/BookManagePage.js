@@ -16,6 +16,7 @@ import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
 import NavText from '../../_global/components/text/NavText';
 import TagInfo from './TagInfo';
+import IndexInfo from './IndexInfo';
 
 const BookManagePage = () => {
     const navigate = useNavigate()
@@ -126,21 +127,7 @@ const BookManagePage = () => {
                     </Box>
                 </Box>
                 <Stack sx={{width: "100%", marginTop: "16px"}}>
-                    <Box sx={{backgroundColor: "lightgray", borderRadius: "5px", padding: "5px"}}>
-                        <BoldText sx={{fontSize: "20px", float: "left", marginTop: "2px", marginLeft: "3px"}}>Python</BoldText>
-                        
-                        <Box sx={{marginTop: "3px"}}>
-                            <Box onClick={()=>{alert("Delete")}} sx={{float: "right", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                                <DeleteIcon sx={{color: "gray"}}/>
-                            </Box>
-                            <Box onClick={()=>{alert("Edit")}} sx={{float: "right", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                                <EditIcon sx={{color: "gray"}}/>
-                            </Box>
-                            <Box onClick={()=>{alert("Gen")}} sx={{float: "right", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                                <SmartToyIcon sx={{color: "gray"}}/>
-                            </Box>
-                        </Box>
-                    </Box>
+                    <IndexInfo indexId={1} indexName="Python"/>
                 </Stack>
             </Container>
         </>
