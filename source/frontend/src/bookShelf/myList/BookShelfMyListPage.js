@@ -26,6 +26,7 @@ const BookShelfMyListPage = () => {
   
                         bookShelfTags={["AAAAA", "BBBBB", "CCCCC", "DDDDD"]}
                         isShared={false}
+                        isSharedIconVisible={true}
 
                         onClickCardUrl={"/bookShelf/info/1"}
                         bookImageUrls={["/src/NoImage.jpg", "/src/NoImage.jpg", "/src/NoImage.jpg"]}

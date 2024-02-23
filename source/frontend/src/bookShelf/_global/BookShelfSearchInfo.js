@@ -5,7 +5,8 @@ import ShareIcon from '@mui/icons-material/Share';
 
 import BoldText from '../../_global/components/text/BoldText';
 
-const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookShelfBookCount, bookShelfCreater, bookShelfCreateDate, bookShelfTags, isShared, onClickCardUrl}) => {
+const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookShelfBookCount, bookShelfCreater, bookShelfCreateDate, bookShelfTags, isShared, onClickCardUrl,
+                              isSharedIconVisible}) => {
     const navigate = useNavigate()
 
     return (
@@ -117,17 +118,21 @@ const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookSh
                 })()}
                 </Box>
                 <Stack sx={{float: "left", marginLeft: "10px", width: "238px"}}>
-                    <Box>
+                    <Box sx={{height: "30px"}}>
                         <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookShelfTitle}</BoldText>
-                        <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
-                            {
-                                (isShared) ? (
-                                    <ShareIcon sx={{color: "black"}}/>
-                                ) : (
-                                    <ShareIcon sx={{color: "lightgray"}}/>
-                                )
-                            }
-                        </BoldText>
+                        {
+                            (isSharedIconVisible) ? (
+                                <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
+                                    {
+                                        (isShared) ? (
+                                            <ShareIcon sx={{color: "black"}}/>
+                                        ) : (
+                                            <ShareIcon sx={{color: "lightgray"}}/>
+                                        )
+                                    }
+                                </BoldText>
+                            ) : (null)
+                        }
                     </Box>
                     
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>보관된 책 개수: {bookShelfBookCount}</BoldText>
