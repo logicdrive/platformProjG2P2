@@ -44,7 +44,7 @@ const BookSearchInfo = ({bookId, bookImageUrl, bookTitle, bookCreater, bookCreat
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성자: {bookCreater}</BoldText>
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성일: {bookCreateDate}</BoldText>
                     
-                    <IconButton onClick={(e)=>{e.stopPropagation(); alert("BBB")}} sx={{paddingY: "0px", borderRadius: "5px", marginLeft: "-150px"}}>
+                    <IconButton onClick={(e)=>{e.stopPropagation(); alert("BBB")}} sx={{paddingY: "0px", borderRadius: "5px", marginLeft: "-10px", width: "110px"}}>
                         <ThumbUpIcon sx={{fontSize: "20px"}}/> 
                         <BoldText sx={{marginTop: "3px", marginLeft: "3px", fontSize: "15px", color: "gray"}}>{bookLikeCount} LIKES</BoldText>
                     </IconButton>
