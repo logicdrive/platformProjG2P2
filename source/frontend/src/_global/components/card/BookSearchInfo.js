@@ -6,7 +6,8 @@ import ShareIcon from '@mui/icons-material/Share';
 
 import BoldText from '../text/BoldText';
 
-const BookSearchInfo = ({bookId, bookImageUrl, bookTitle, bookCreater, bookCreateDate, bookLikeCount, bookTags, isShared, onClickCardUrl}) => {
+const BookSearchInfo = ({bookId, bookImageUrl, bookTitle, bookCreater, bookCreateDate, bookLikeCount, bookTags, isShared, onClickCardUrl,
+                         isSharedIconVisible}) => {
     const navigate = useNavigate()
 
     return (
@@ -28,17 +29,21 @@ const BookSearchInfo = ({bookId, bookImageUrl, bookTitle, bookCreater, bookCreat
                     />
                 </Box>
                 <Stack sx={{float: "left", marginLeft: "10px", width: "238px"}}>
-                    <Box>
+                    <Box sx={{height: "30px"}}>
                         <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookTitle}</BoldText>
-                        <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
-                            {
-                                (isShared) ? (
-                                    <ShareIcon sx={{color: "black"}}/>
-                                ) : (
-                                    <ShareIcon sx={{color: "lightgray"}}/>
-                                )
-                            }
-                        </BoldText>
+                        {
+                            (isSharedIconVisible) ? (
+                                <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
+                                    {
+                                        (isShared) ? (
+                                            <ShareIcon sx={{color: "black"}}/>
+                                        ) : (
+                                            <ShareIcon sx={{color: "lightgray"}}/>
+                                        )
+                                    }
+                                </BoldText>
+                            ) : (null)
+                        }
                     </Box>
 
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성자: {bookCreater}</BoldText>
