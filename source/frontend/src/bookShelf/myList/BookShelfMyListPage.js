@@ -9,7 +9,11 @@ const BookShelfMyListPage = () => {
     return (
         <>
             <MainNavAppBar focusedIndex={1}/>
-            <BookShelfSubAppBar focusedIndex={0}/>
+            <BookShelfSubAppBar focusedIndex={0}
+                searchTypes={[
+                    {type: "bookShelfTitle", name: "책장 제목"},
+                ]}
+            />
 
             <Stack>
                 <Stack direction="row" spacing={2}>

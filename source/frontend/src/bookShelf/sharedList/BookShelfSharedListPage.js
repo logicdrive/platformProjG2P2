@@ -7,7 +7,12 @@ const BookShelfSharedListPage = () => {
     return (
         <>
             <MainNavAppBar focusedIndex={1}/>
-            <BookShelfSubAppBar focusedIndex={1}/>
+            <BookShelfSubAppBar focusedIndex={1}
+                searchTypes={[
+                    {type: "bookShelfTitle", name: "책장 제목"},
+                    {type: "bookShelfCreater", name: "책장 제작자"}
+                ]}
+            />
         </>
     )
 }
