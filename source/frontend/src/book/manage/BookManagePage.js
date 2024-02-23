@@ -72,7 +72,7 @@ const BookManagePage = () => {
                     <Divider orientation="vertical" flexItem/>
                     <Stack sx={{float: "left", flex: "1 0 auto", paddingY: "5px", paddingLeft: "5px"}}>
                         <Box>
-                            <BoldText sx={{float: "left", fontSize: "25px", marginTop: "5px"}}>제목: KKKKK</BoldText>
+                            <BoldText sx={{float: "left", fontSize: "20px", marginTop: "10px"}}>제목: KKKKK</BoldText>
 
                             <Box onClick={()=>{alert("Gen")}} sx={{float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
                                 <SmartToyIcon sx={{float: "left", color: "white"}}/>
@@ -87,7 +87,7 @@ const BookManagePage = () => {
                         <Divider sx={{marginTop: "5px"}}/>
                         
                         <Box sx={{marginTop: "5px"}}>
-                            <BoldText sx={{float: "left", fontSize: "25px"}}>태그</BoldText>
+                            <BoldText sx={{float: "left", fontSize: "20px"}}>태그</BoldText>
 
                             <Box onClick={()=>{alert("Gen")}} sx={{float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
                                 <SmartToyIcon sx={{float: "left", color: "white"}}/>
@@ -102,7 +102,7 @@ const BookManagePage = () => {
 
                         <Box sx={{display: "flex", flexDirection: "row", width: "630px", flexWrap: "wrap", marginTop: "10px", marginLeft: "-3px"}}>
                             <Box sx={{margin: "5px", backgroundColor: "lightgray", padding: "5px", borderRadius: "5px"}}>
-                                <BoldText sx={{fontSize: "25px", display: "inline-block", color: "gray", borderRadius: "5px", margin: "2px", cursor: "context-menu"}}>1111111111</BoldText>
+                                <BoldText sx={{fontSize: "20px", display: "inline-block", color: "gray", borderRadius: "5px", marginTop: "4px", marginLeft: "4px", cursor: "context-menu"}}>IT</BoldText>
 
                                 <Box onClick={()=>{alert("Delete")}} sx={{marginLeft: "10px", marginTop: "5px", float: "right", width: "25px", height: "25px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
                                     <DeleteIcon sx={{float: "left", color: "gray"}}/>
