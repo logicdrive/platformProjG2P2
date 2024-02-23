@@ -36,7 +36,7 @@ function App() {
                     <Route path="/book/sharedList" element={<BookSharedListPage/>}/>
                     <Route path="/book/info/:bookId" element={<BookInfoPage/>}/>
                     <Route path="/book/read/:bookId/:indexId" element={<BookReadPage/>}/>
-                    <Route path="/book/manage" element={<BookManagePage/>}/>
+                    <Route path="/book/manage/:bookId" element={<BookManagePage/>}/>
                     
                     <Route path="/bookShelf/myList" element={<BookShelfMyListPage/>}/>
                     <Route path="/bookShelf/sharedList" element={<BookShelfSharedListPage/>}/>

@@ -21,7 +21,7 @@ const BookSubAppBar = ({focusedIndex, handleOnSubmit, searchTypes, sx, ...props}
                 <BoldText onClick={()=>{navigate("/book/myList")}} sx={(focusedIndex === 0) ? ({float: "left", ...focusedSx}) : ({float: "left", ...normalSx})}>내가 생성한 책</BoldText>
                 <BoldText onClick={()=>{navigate("/book/sharedList")}} sx={(focusedIndex === 1) ? ({float: "left", marginLeft: "5px", ...focusedSx}) : ({float: "left", marginLeft: "5px", ...normalSx})}>공유된 책</BoldText>
                 
-                <BoldText onClick={()=>{navigate("/book/manage")}} sx={(focusedIndex === 2) ? ({float: "right", marginRight: "10px", ...focusedSx}) : ({float: "right", marginRight: "10px", ...normalSx})}>책 생성하기</BoldText>
+                <BoldText onClick={()=>{navigate("/book/manage/1")}} sx={(focusedIndex === 2) ? ({float: "right", marginRight: "10px", ...focusedSx}) : ({float: "right", marginRight: "10px", ...normalSx})}>책 생성하기</BoldText>
                 <Paper component="form" sx={{float:"right", width: "397px", height: "35px", marginLeft: "5px", marginTop: "2px", ...sx}} {...props}>
                     <Select
                         sx={{
