@@ -8,6 +8,9 @@ import SmartToyIcon from '@mui/icons-material/SmartToy';
 import ImageIcon from '@mui/icons-material/Image';
 import AddIcon from '@mui/icons-material/Add';
 import DeleteIcon from '@mui/icons-material/Delete';
+import ListIcon from '@mui/icons-material/List';
+import LabelIcon from '@mui/icons-material/Label';
+import TitleIcon from '@mui/icons-material/Title';
 
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
@@ -72,6 +75,7 @@ const BookManagePage = () => {
                     <Divider orientation="vertical" flexItem/>
                     <Stack sx={{float: "left", flex: "1 0 auto", paddingY: "5px", paddingLeft: "5px"}}>
                         <Box>
+                            <TitleIcon sx={{float: "left", color: "black", fontSize: "27px", marginTop: "10px"}}/>
                             <BoldText sx={{float: "left", fontSize: "20px", marginTop: "10px"}}>제목: KKKKK</BoldText>
 
                             <Box onClick={()=>{alert("Gen")}} sx={{float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
@@ -87,7 +91,8 @@ const BookManagePage = () => {
                         <Divider sx={{marginTop: "5px"}}/>
                         
                         <Box sx={{marginTop: "5px"}}>
-                            <BoldText sx={{float: "left", fontSize: "20px"}}>태그</BoldText>
+                            <LabelIcon sx={{float: "left", color: "black", fontSize: "27px", marginTop: "-1px"}}/>
+                            <BoldText sx={{float: "left", fontSize: "20px", marginLeft: "2px"}}>태그</BoldText>
 
                             <Box onClick={()=>{alert("Gen")}} sx={{float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
                                 <SmartToyIcon sx={{float: "left", color: "white"}}/>
@@ -115,6 +120,21 @@ const BookManagePage = () => {
                     </Stack>
                 </Box>
                 <Divider sx={{width: "100%"}}/>
+
+                <Box sx={{width: "100%", height: "30px", marginTop: "5px"}}>
+                    <ListIcon sx={{float: "left", marginTop: "5px"}}/>
+                    <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px", marginLeft: "5px"}}>목차</BoldText>
+
+                    <Box onClick={()=>{alert("Gen")}} sx={{float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
+                        <SmartToyIcon sx={{float: "left", color: "white"}}/>
+                        <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>생성</NavText>
+                    </Box>
+
+                    <Box onClick={()=>{alert("Add")}} sx={{marginRight: "5px", float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
+                        <AddIcon sx={{float: "left", color: "white"}}/>
+                        <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>추가</NavText>
+                    </Box>
+                </Box>
             </Container>
         </>
     )
