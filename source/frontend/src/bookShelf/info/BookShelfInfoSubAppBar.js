@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import { Box, Paper, InputBase, MenuItem, Select, IconButton } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
+import ShareIcon from '@mui/icons-material/Share';
 
 import BoldText from '../../_global/components/text/BoldText';
 
@@ -17,7 +19,12 @@ const BookShelfInfoSubAppBar = ({bookShelfTitle, handleOnSubmit, searchTypes, sx
                         <EditIcon sx={{fontSize: "20px"}}/> 
                 </IconButton>
 
-                
+                <IconButton sx={{float: "right"}} onClick={(e)=>{e.stopPropagation(); alert("Delete")}}>
+                    <DeleteIcon sx={{fontSize: "20px"}}/> 
+                </IconButton>
+                <IconButton sx={{float: "right"}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
+                    <ShareIcon sx={{fontSize: "20px"}}/> 
+                </IconButton>
                 <Paper component="form" sx={{float:"right", width: "397px", height: "35px", marginLeft: "5px", marginTop: "2px", ...sx}} {...props}>
                     <Select
                         sx={{
