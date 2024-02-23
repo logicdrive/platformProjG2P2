@@ -24,7 +24,7 @@ const BookSharedListPage = () => {
                         bookLikeCount={10}
                         bookTags={["AAAAA", "BBBBB", "CCCCC", "DDDDD"]}
                         isShared={false}
-                        isSharedIconVisible={false}
+                        isEditIconVisible={false}
 
                         onClickCardUrl={"/book/info/1"}
                         bookImageUrl={""}

@@ -6,7 +6,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import BoldText from '../../_global/components/text/BoldText';
 
 const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookShelfBookCount, bookShelfCreater, bookShelfCreateDate, bookShelfTags, isShared, onClickCardUrl,
-                              isSharedIconVisible}) => {
+                              isEditIconVisible}) => {
     const navigate = useNavigate()
 
     return (
@@ -121,7 +121,7 @@ const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookSh
                     <Box sx={{height: "30px"}}>
                         <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookShelfTitle}</BoldText>
                         {
-                            (isSharedIconVisible) ? (
+                            (isEditIconVisible) ? (
                                 <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
                                     {
                                         (isShared) ? (
