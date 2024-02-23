@@ -15,6 +15,7 @@ import TitleIcon from '@mui/icons-material/Title';
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
 import NavText from '../../_global/components/text/NavText';
+import TagInfo from './TagInfo';
 
 const BookManagePage = () => {
     const navigate = useNavigate()
@@ -104,19 +105,8 @@ const BookManagePage = () => {
                                 <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>추가</NavText>
                             </Box>
                         </Box>
-
-                        <Box sx={{display: "flex", flexDirection: "row", width: "630px", flexWrap: "wrap", marginTop: "10px", marginLeft: "-3px"}}>
-                            <Box sx={{margin: "5px", backgroundColor: "lightgray", padding: "5px", borderRadius: "5px"}}>
-                                <BoldText sx={{fontSize: "20px", display: "inline-block", color: "black", borderRadius: "5px", marginTop: "4px", marginLeft: "4px", cursor: "context-menu"}}>IT</BoldText>
-
-                                <Box onClick={()=>{alert("Delete")}} sx={{marginTop: "5px", float: "right", width: "25px", height: "25px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                                    <DeleteIcon sx={{float: "left", color: "gray"}}/>
-                                </Box>
-                                <Box onClick={()=>{alert("Edit")}} sx={{marginLeft: "20px", marginTop: "5px", float: "right", width: "25px", height: "25px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                                    <EditIcon sx={{float: "left", color: "gray"}}/>
-                                </Box>
-                            </Box>
-                        </Box>
+                        
+                        <TagInfo tagId={1} tagName="IT"/>
                     </Stack>
                 </Box>
                 <Divider sx={{width: "100%"}}/>
