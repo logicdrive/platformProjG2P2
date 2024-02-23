@@ -6,7 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import BoldText from '../../_global/components/text/BoldText';
 
-const IndexInfo = ({indexId, indexName}) => {
+const IndexInfo = ({indexId, indexName, isGeneated}) => {
     return (
         <Box sx={{backgroundColor: "lightgray", borderRadius: "5px", padding: "5px"}}>
             <BoldText sx={{fontSize: "20px", float: "left", marginTop: "2px", marginLeft: "3px"}}>{indexName}</BoldText>
@@ -19,7 +19,7 @@ const IndexInfo = ({indexId, indexName}) => {
                     <EditIcon sx={{color: "gray"}}/>
                 </Box>
                 <Box onClick={()=>{alert("Gen")}} sx={{float: "right", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                    <SmartToyIcon sx={{color: "gray"}}/>
+                    <SmartToyIcon sx={((isGeneated) ? {color: "gray"} : {color: "white"})}/>
                 </Box>
             </Box>
         </Box>

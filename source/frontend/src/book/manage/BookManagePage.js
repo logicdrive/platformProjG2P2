@@ -7,7 +7,6 @@ import UploadIcon from '@mui/icons-material/Upload';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import ImageIcon from '@mui/icons-material/Image';
 import AddIcon from '@mui/icons-material/Add';
-import DeleteIcon from '@mui/icons-material/Delete';
 import ListIcon from '@mui/icons-material/List';
 import LabelIcon from '@mui/icons-material/Label';
 import TitleIcon from '@mui/icons-material/Title';
@@ -127,7 +126,7 @@ const BookManagePage = () => {
                     </Box>
                 </Box>
                 <Stack sx={{width: "100%", marginTop: "16px"}}>
-                    <IndexInfo indexId={1} indexName="Python"/>
+                    <IndexInfo indexId={1} indexName="Python" isGeneated={true}/>
                 </Stack>
             </Container>
         </>
