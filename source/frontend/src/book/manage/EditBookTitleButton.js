@@ -16,7 +16,7 @@ const EditBookTitleButton = ({onClickEditButton, defaultTitle, ...props}) => {
 
   return (
     <>
-    <Box onClick={()=>{setIsDialogOpend(true);setTitle(defaultTitle)}} sx={{marginRight: "5px", float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}} {...props}>
+    <Box onClick={()=>{setIsDialogOpend(true);setTitle(defaultTitle)}} sx={{float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}} {...props}>
         <EditIcon sx={{float: "left", color: "white"}}/>
         <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>편집</NavText>
     </Box> 

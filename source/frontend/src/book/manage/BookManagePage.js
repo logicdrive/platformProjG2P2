@@ -21,6 +21,7 @@ import YesNoButton from '../../_global/components/button/YesNoButton';
 import EditBookTitleButton from './EditBookTitleButton';
 import AddTagNameButton from './AddTagNameButton';
 import AddIndexNameButton from './AddIndexNameButton';
+import GenerateTagsButton from './GenerateTagsButton';
 
 const BookManagePage = () => {
     const navigate = useNavigate()
@@ -40,6 +41,11 @@ const BookManagePage = () => {
     const onClickAddTagButton = (title) => {
         alert("Add : "+ title)
     }
+
+    const onClickGenerateTagsButton = (query) => {
+        alert("Generate : "+ query)
+    }
+
 
     const onClickAddIndexButton = (title) => {
         alert("Add : "+ title)
@@ -111,11 +117,6 @@ const BookManagePage = () => {
                             <TitleIcon sx={{float: "left", color: "black", fontSize: "27px", marginTop: "10px"}}/>
                             <BoldText sx={{float: "left", fontSize: "20px", marginTop: "10px"}}>제목: KKKKK</BoldText>
 
-                            <Box onClick={()=>{alert("Gen")}} sx={{float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                                <SmartToyIcon sx={{float: "left", color: "white"}}/>
-                                <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>생성</NavText>
-                            </Box>
-
                             <EditBookTitleButton onClickEditButton={onClickEditBookTitleButton} defaultTitle={"KKKKK"}/>   
                         </Box>
                         <Divider sx={{marginTop: "5px"}}/>
@@ -124,11 +125,7 @@ const BookManagePage = () => {
                             <LabelIcon sx={{float: "left", color: "black", fontSize: "27px", marginTop: "-1px"}}/>
                             <BoldText sx={{float: "left", fontSize: "20px", marginLeft: "2px"}}>태그</BoldText>
 
-                            <Box onClick={()=>{alert("Gen")}} sx={{float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                                <SmartToyIcon sx={{float: "left", color: "white"}}/>
-                                <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>생성</NavText>
-                            </Box>
-
+                            <GenerateTagsButton onClickGenerateButton={onClickGenerateTagsButton} defaultQuery={"tagQuery"}/>
                             <AddTagNameButton onClickAddButton={onClickAddTagButton}/>
                         </Box>
                         
