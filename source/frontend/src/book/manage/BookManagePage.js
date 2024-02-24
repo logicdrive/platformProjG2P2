@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import { Box, IconButton, Divider, Container, Stack } from "@mui/material";
@@ -23,12 +23,20 @@ import AddIndexNameButton from './AddIndexNameButton';
 import GenerateTagsButton from './GenerateTagsButton';
 import GenerateIndexesButton from './GenerateIndexesButton';
 import GenerateCoverImageButton from './GenerateCoverImageButton';
+import FileUploadButton from '../../_global/components/button/FileUploadButton';
 
 const BookManagePage = () => {
     const navigate = useNavigate()
     const {bookId} = useParams()
     console.log("BookId :", bookId)
 
+    const [coverImageUrl, setCoverImageUrl] = useState("")
+
+
+    const onClickCoverImageUploadButton = (fileName, dataUrl) => {
+        alert("Upload : "+ fileName + " / " + dataUrl.length)
+        setCoverImageUrl(dataUrl)
+    }
 
     const onClickGenerateCoverImageButton = (query) => {
         alert("Generate : "+ query)
@@ -105,16 +113,18 @@ const BookManagePage = () => {
                                 marginTop: "5px"
                             }}
                             alt="업로드된 이미지가 표시됩니다."
-                            src={"/src/NoImage.jpg"}
+                            src={(coverImageUrl && coverImageUrl.length > 0) ? coverImageUrl : "/src/NoImage.jpg"}
                         />
                         
                         <Box sx={{marginTop: "5px", marginLeft: "18px", marginBottom: "5px"}}>
                             <GenerateCoverImageButton onClickGenerateButton={onClickGenerateCoverImageButton} defaultQuery={"CoverImageQuery"}/>
 
-                            <Box onClick={()=>{alert("Upload")}} sx={{marginLeft: "5px", float: "left", backgroundColor: "cornflowerblue", width: "82px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                                <UploadIcon sx={{float: "left", color: "white"}}/>
-                                <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>업로드</NavText>
-                            </Box>
+                            <FileUploadButton accept="image/*" onUploadFile={onClickCoverImageUploadButton}>
+                                <Box sx={{marginLeft: "5px", float: "left", backgroundColor: "cornflowerblue", width: "82px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
+                                    <UploadIcon sx={{float: "left", color: "white"}}/>
+                                    <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>업로드</NavText>
+                                </Box>
+                            </FileUploadButton>
                         </Box>
                     </Stack>
 
