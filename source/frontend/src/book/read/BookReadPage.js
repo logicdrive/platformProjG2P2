@@ -8,7 +8,7 @@ import QuizIcon from '@mui/icons-material/Quiz';
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
 import NormalText from '../../_global/components/text/NormalText';
-import QuestionInfo from './QuestionInfo';
+import QuestionInfoBox from './QuestionInfoBox';
 import IndexesInfoBox from './IndexesInfoBox';
 import ContentInfoBox from './ContentInfoBox';
 import IndexMoveButtons from './IndexMoveButtons';
@@ -65,8 +65,13 @@ const BookReadPage = () => {
                         <Stack
                             spacing={2}
                         >
-                            <QuestionInfo/>
-                            <QuestionInfo/>
+                            <QuestionInfoBox rawProblemInfo={
+                                {
+                                    id: 1,
+                                    content: "Q1. What is the Python?\n\nA. Python is a programming language.\nB. Python is a snake.\nC. Python is a food.",
+                                    answer: "A. Python is a programming language."
+                                }
+                            }/>
                         </Stack>
                     </Stack>
                     <Divider sx={{marginY: "5px"}}/>
