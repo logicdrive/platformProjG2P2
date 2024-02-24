@@ -8,7 +8,6 @@ import EditIcon from '@mui/icons-material/Edit';
 import UploadIcon from '@mui/icons-material/Upload';
 import SmartToyIcon from '@mui/icons-material/SmartToy';
 import ImageIcon from '@mui/icons-material/Image';
-import AddIcon from '@mui/icons-material/Add';
 import ListIcon from '@mui/icons-material/List';
 import LabelIcon from '@mui/icons-material/Label';
 import TitleIcon from '@mui/icons-material/Title';
@@ -20,6 +19,8 @@ import TagInfoBox from './TagInfoBox';
 import IndexInfoBox from './IndexInfoBox';
 import YesNoButton from '../../_global/components/button/YesNoButton';
 import EditBookTitleButton from './EditBookTitleButton';
+import AddTagNameButton from './AddTagNameButton';
+import AddIndexNameButton from './AddIndexNameButton';
 
 const BookManagePage = () => {
     const navigate = useNavigate()
@@ -33,6 +34,15 @@ const BookManagePage = () => {
 
     const onClickEditBookTitleButton = (title) => {
         alert("Edit : "+ title)
+    }
+
+    
+    const onClickAddTagButton = (title) => {
+        alert("Add : "+ title)
+    }
+
+    const onClickAddIndexButton = (title) => {
+        alert("Add : "+ title)
     }
 
 
@@ -119,10 +129,7 @@ const BookManagePage = () => {
                                 <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>생성</NavText>
                             </Box>
 
-                            <Box onClick={()=>{alert("Add")}} sx={{marginRight: "5px", float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                                <AddIcon sx={{float: "left", color: "white"}}/>
-                                <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>추가</NavText>
-                            </Box>
+                            <AddTagNameButton onClickAddButton={onClickAddTagButton}/>
                         </Box>
                         
                         <TagInfoBox rawTagInfo={{
@@ -141,11 +148,8 @@ const BookManagePage = () => {
                         <SmartToyIcon sx={{float: "left", color: "white"}}/>
                         <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>생성</NavText>
                     </Box>
-
-                    <Box onClick={()=>{alert("Add")}} sx={{marginRight: "5px", float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                        <AddIcon sx={{float: "left", color: "white"}}/>
-                        <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>추가</NavText>
-                    </Box>
+                    
+                    <AddIndexNameButton onClickAddButton={onClickAddIndexButton}/>
                 </Box>
                 <Stack sx={{width: "100%", marginTop: "16px"}}>
                     <IndexInfoBox rawIndexInfo={{

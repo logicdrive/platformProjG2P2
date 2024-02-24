@@ -1,26 +1,28 @@
 import React, {useState} from 'react';
 
 import { Button, Dialog, DialogTitle, DialogContent, DialogActions, Stack, Box } from '@mui/material';
-import EditIcon from '@mui/icons-material/Edit';
+import AddIcon from '@mui/icons-material/Add';
 
 import StyledTextField from '../../_global/components/textField/StyledTextField';
+import NavText from '../../_global/components/text/NavText';
 
-const EditTagNameButton = ({onClickEditButton, defaultTitle, ...props}) => {
+const AddTagNameButton = ({onClickAddButton, defaultTitle, ...props}) => {
   const [isDialogOpend, setIsDialogOpend] = useState(false);
   const [title, setTitle] = useState(defaultTitle)
 
-  const onClickEditButtonHandle = () => {
-    onClickEditButton(title);
+  const onClickAddButtonHandle = () => {
+    onClickAddButton(title);
   }
 
   return (
     <>
-    <Box onClick={()=>{setIsDialogOpend(true);setTitle(defaultTitle)}} sx={{marginLeft: "20px", marginTop: "5px", float: "right", width: "25px", height: "25px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-        <EditIcon sx={{float: "left", color: "gray"}}/>
+    <Box onClick={()=>{setIsDialogOpend(true);setTitle(defaultTitle)}} sx={{marginRight: "5px", float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
+        <AddIcon sx={{float: "left", color: "white"}}/>
+        <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>추가</NavText>
     </Box>
 
     <Dialog open={isDialogOpend} onClose={()=>{setIsDialogOpend(false);}}>
-      <DialogTitle sx={{color: "black", fontWeight: "bolder", fontFamily: "BMDfont"}}>태그 내용 편집</DialogTitle>
+      <DialogTitle sx={{color: "black", fontWeight: "bolder", fontFamily: "BMDfont"}}>태그 추가</DialogTitle>
       <DialogContent>
         <Stack>
             <StyledTextField
@@ -43,13 +45,13 @@ const EditTagNameButton = ({onClickEditButton, defaultTitle, ...props}) => {
             setIsDialogOpend(false);
           }} sx={{color: "black", fontWeight: "bolder", fontFamily: "BMDfont"}}>닫기</Button>
           <Button onClick={() => {
-            onClickEditButtonHandle();
+            onClickAddButtonHandle();
             setIsDialogOpend(false);
-          }} sx={{color: "black", fontWeight: "bolder", fontFamily: "BMDfont"}}>편집</Button>
+          }} sx={{color: "black", fontWeight: "bolder", fontFamily: "BMDfont"}}>추가</Button>
       </DialogActions>
     </Dialog>
     </>
   )
 }
 
-export default EditTagNameButton;
+export default AddTagNameButton;
