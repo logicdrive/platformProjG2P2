@@ -4,7 +4,7 @@ import { Box, Stack, Pagination } from '@mui/material';
 
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BookShelfInfoSubAppBar from './BookShelfInfoSubAppBar';
-import BookShelfBookSearchInfo from './BookShelfBookSearchInfo';
+import BookShelfBookSearchInfos from './BookShelfBookSearchInfos';
 
 const BookShelfInfoPage = () => {
     const {bookShelfId} = useParams()
@@ -34,8 +34,9 @@ const BookShelfInfoPage = () => {
 
             <Stack>
                 <Stack direction="row" spacing={2}>
-                    <BookShelfBookSearchInfo
-                        rawBookInfo={{
+                    <BookShelfBookSearchInfos
+                        rawBookInfos={[
+                        {
                             id: 1,
                             title: "점프 투 파이썬",
                             creator: "TestCreater",
@@ -43,7 +44,7 @@ const BookShelfInfoPage = () => {
                             likeCount: 10,
                             tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
                             imageUrl: ""
-                        }}
+                        }]}
                     />
                 </Stack>
                 
