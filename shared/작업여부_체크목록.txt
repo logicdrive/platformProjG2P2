@@ -27,8 +27,11 @@ BookMyListPage: U+
 BookSharedListPage: U+
 BookInfoPage: U+
 BookReadPage: U+
-BookManagePage: U
+BookManagePage: U+
 
 BookShelfMyListPage: U+
 BookShelfSharedListPage: U+
 BookShelfInfoPage: U+
+
+RecommandUser: 
+RecommandBook: 
