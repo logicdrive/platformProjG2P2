@@ -1,25 +1,21 @@
 import React from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
 import { Divider, Box, Stack } from "@mui/material";
 import ListIcon from '@mui/icons-material/List';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import QuizIcon from '@mui/icons-material/Quiz';
-import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
-import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
 import NormalText from '../../_global/components/text/NormalText';
-import NavText from '../../_global/components/text/NavText';
 import QuestionInfo from './QuestionInfo';
 import IndexesInfoBox from './IndexesInfoBox';
 import ContentInfoBox from './ContentInfoBox';
+import IndexMoveButtons from './IndexMoveButtons';
 
 const BookReadPage = () => {
     const {bookId, indexId} = useParams()
     console.log("BookId :", bookId, "IndexId :", indexId)
-
-    const navigate = useNavigate();
 
     return (
         <>
@@ -75,17 +71,7 @@ const BookReadPage = () => {
                     </Stack>
                     <Divider sx={{marginY: "5px"}}/>
 
-                    <Box sx={{"display": "center", "justifyContent": "center"}}>
-                        <Box onClick={()=>{navigate("/book/read/1/1")}}sx={{float: "left", backgroundColor: "cornflowerblue", width: "100px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                            <ArrowBackIosIcon sx={{float: "left", color: "white"}}/>
-                            <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>이전 목차</NavText>
-                        </Box>
-
-                        <Box onClick={()=>{navigate("/book/read/1/1")}}sx={{marginLeft: "10px", float: "left", backgroundColor: "cornflowerblue", width: "105px", height: "25px", paddingY: "8px", paddingLeft: "12px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                            <NavText sx={{float: "left", marginTop: "2px", marginRight: "10px"}}>다음 목차</NavText>
-                            <ArrowForwardIosIcon sx={{float: "left", color: "white"}}/>
-                        </Box>
-                    </Box>
+                    <IndexMoveButtons bookId={bookId} indexId={indexId} indexCount={2}/>
                 </Stack>
             </Box>
         </>
