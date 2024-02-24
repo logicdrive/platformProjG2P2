@@ -4,6 +4,7 @@ import { Box, Paper, InputBase, MenuItem, Select } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
 import BoldText from '../../_global/components/text/BoldText';
+import CreateBookShelfButton from './CreateBookShelfButton';
 
 const BookShelfSubAppBar = ({focusedIndex, searchTypes, handleOnSubmit, sx, ...props}) => {
     const navigate = useNavigate()
@@ -15,13 +16,19 @@ const BookShelfSubAppBar = ({focusedIndex, searchTypes, handleOnSubmit, sx, ...p
     const [searchText, setSearchText] = useState("")
     const [searchType, setSearchType] = useState(searchTypes[0].type)
 
+
+    const onClickCreateButton = (title) => {
+        alert("생성할 책장 제목: " + title)
+    }
+
+
     return (
         <>
             <Box sx={{width: "100%", height: "50px", padding: "10px", marginTop: "5px", ...sx}} {...props}>
                 <BoldText onClick={()=>{navigate("/bookShelf/myList")}} sx={(focusedIndex === 0) ? ({float: "left", ...focusedSx}) : ({float: "left", ...normalSx})}>내가 생성한 책장</BoldText>
                 <BoldText onClick={()=>{navigate("/bookShelf/sharedList")}} sx={(focusedIndex === 1) ? ({float: "left", marginLeft: "5px", ...focusedSx}) : ({float: "left", marginLeft: "5px", ...normalSx})}>공유된 책장</BoldText>
                 
-                <BoldText onClick={()=>{}} sx={(focusedIndex === 2) ? ({float: "right", marginRight: "10px", ...focusedSx}) : ({float: "right", marginRight: "10px", ...normalSx})}>책장 생성하기</BoldText>
+                <CreateBookShelfButton onClickCreateButton={onClickCreateButton} defaultTitle=""/>
                 <Paper component="form" sx={{float:"right", width: "397px", height: "35px", marginLeft: "5px", marginTop: "2px", ...sx}} {...props}>
                     <Select
                         sx={{

@@ -29,6 +29,6 @@ BookInfoPage: U
 BookReadPage: U
 BookManagePage: U
 
-BookShelfMyListPage: U
-BookShelfSharedListPage: U
+BookShelfMyListPage: U+
+BookShelfSharedListPage: U+
 BookShelfInfoPage: U
