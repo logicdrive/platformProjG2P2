@@ -136,7 +136,7 @@ const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible}) => {
                         <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookShelfInfo.title}</BoldText>
                         {
                             (isEditIconVisible) ? (
-                                <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}, position: "relative", left: "1px"}} onClick={(e)=>{e.stopPropagation();}}>
+                                <Box sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}, position: "relative", left: "1px"}} onClick={(e)=>{e.stopPropagation();}}>
                                     {
                                         (bookShelfInfo.isShared) ? (
                                             <YesNoButton onClickYes={()=>{onClickSharedButton(false)}} title="해당 책장의 공유를 취소하시겠습니까?">
@@ -148,7 +148,7 @@ const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible}) => {
                                             </YesNoButton>
                                         )
                                     }
-                                </BoldText>
+                                </Box>
                             ) : (null)
                         }
                     </Box>

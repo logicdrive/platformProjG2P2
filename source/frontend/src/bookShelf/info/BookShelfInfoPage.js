@@ -21,7 +21,7 @@ const BookShelfInfoPage = () => {
     return (
         <>
             <MainNavAppBar focusedIndex={1} backArrowUrl={-1}/>
-            <BookShelfInfoSubAppBar bookShelfTitle={"My BookShelf"}
+            <BookShelfInfoSubAppBar
                 searchTypes={[{type: "bookTitle", name: "책 제목"},
                               {type: "bookCreater", name: "책 작성자"}
                 ]}
