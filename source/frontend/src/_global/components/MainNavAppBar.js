@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Box } from "@mui/material";
 import LogoutIcon from '@mui/icons-material/Logout';
 import BookIcon from '@mui/icons-material/Book';
@@ -10,6 +11,7 @@ import YesNoButton from '../../_global/components/button/YesNoButton';
 import IconButton from '../../_global/components/button/IconButton';
 import IconNavigationButton from '../../_global/components/button/IconNavigationButton';
 import NavText from '../../_global/components/text/NavText';
+import UserManageButton from './button/UserManageButton';
 
 const MainNavAppBar = ({focusedIndex, backArrowUrl, ...props}) => {
     return (
@@ -26,6 +28,8 @@ const MainNavAppBar = ({focusedIndex, backArrowUrl, ...props}) => {
 
 
             <Box sx={{flexGrow: 1}}></Box>
+            
+            <UserManageButton/>
             {
                 (backArrowUrl) ? (
                     <IconNavigationButton url={backArrowUrl}>
