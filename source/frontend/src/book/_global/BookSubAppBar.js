@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import { useNavigate } from "react-router-dom";
+
 import { Box, Paper, InputBase, MenuItem, Select } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
 import BoldText from '../../_global/components/text/BoldText';
 
-const BookSubAppBar = ({focusedIndex, handleOnSubmit, searchTypes, sx, ...props}) => {
+const BookSubAppBar = ({focusedIndex, searchTypes, handleOnSubmit, sx, ...props}) => {
     const navigate = useNavigate()
 
     let commonSx = {fontSize: "15px", height: "30px", paddingX: "10px", paddingTop: "10px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}

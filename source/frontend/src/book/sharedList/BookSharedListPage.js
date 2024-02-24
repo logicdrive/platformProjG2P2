@@ -18,16 +18,7 @@ const BookSharedListPage = () => {
                 <Stack direction="row" spacing={2}>
                     <BookSearchInfo
                         bookId={1}
-                        bookTitle={"점프 투 파이썬"}
-                        bookCreater={"TestCreater"}
-                        bookCreateDate={"2024-02-22 12:47"}
-                        bookLikeCount={10}
-                        bookTags={["AAAAA", "BBBBB", "CCCCC", "DDDDD"]}
-                        isShared={false}
                         isEditIconVisible={false}
-
-                        onClickCardUrl={"/book/info/1"}
-                        bookImageUrl={""}
                     />
                 </Stack>
                 

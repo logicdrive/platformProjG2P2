@@ -20,10 +20,10 @@ frontend: U
 
 * frontend
 
-UserSignUpPage: U
-UserSignInPage: U
+UserSignUpPage: U+
+UserSignInPage: U+
 
-BookMyListPage: U
+BookMyListPage: U+
 BookSharedListPage: U
 BookInfoPage: U
 BookReadPage: U
