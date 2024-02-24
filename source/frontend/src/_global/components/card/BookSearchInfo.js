@@ -8,17 +8,17 @@ import EditIcon from '@mui/icons-material/Edit';
 
 import BoldText from '../text/BoldText';
 
-const BookSearchInfo = ({bookId, isEditIconVisible}) => {
+const BookSearchInfo = ({rawBookInfo, isEditIconVisible}) => {
     const navigate = useNavigate()
     const [bookInfo] = useState({
-        id: bookId,
-        title: "점프 투 파이썬",
-        creater: "TestCreater",
-        createDate: "2024-02-22 12:47",
-        likeCount: 10,
-        tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
-        isShared: false,
-        imageUrl: ""
+        id: rawBookInfo.id,
+        title: rawBookInfo.title,
+        creator: rawBookInfo.creator,
+        createdDate: rawBookInfo.createdDate,
+        likeCount: rawBookInfo.likeCount,
+        tags: rawBookInfo.tags,
+        isShared: rawBookInfo.isShared,
+        imageUrl: rawBookInfo.imageUrl
     })
 
 
@@ -75,8 +75,8 @@ const BookSearchInfo = ({bookId, isEditIconVisible}) => {
                     </Box>
 
 
-                    <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성자: {bookInfo.creater}</BoldText>
-                    <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성일: {bookInfo.createDate}</BoldText>
+                    <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성자: {bookInfo.creator}</BoldText>
+                    <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성일: {bookInfo.createdDate}</BoldText>
                     
                     <IconButton onClick={(e)=>{e.stopPropagation();onClickLikeButton()}} sx={{paddingY: "0px", borderRadius: "5px", marginLeft: "-10px", width: "110px"}}>
                         <ThumbUpIcon sx={{fontSize: "20px"}}/> 
