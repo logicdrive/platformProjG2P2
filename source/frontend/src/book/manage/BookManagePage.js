@@ -6,7 +6,6 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 import EditIcon from '@mui/icons-material/Edit';
 import UploadIcon from '@mui/icons-material/Upload';
-import SmartToyIcon from '@mui/icons-material/SmartToy';
 import ImageIcon from '@mui/icons-material/Image';
 import ListIcon from '@mui/icons-material/List';
 import LabelIcon from '@mui/icons-material/Label';
@@ -22,12 +21,19 @@ import EditBookTitleButton from './EditBookTitleButton';
 import AddTagNameButton from './AddTagNameButton';
 import AddIndexNameButton from './AddIndexNameButton';
 import GenerateTagsButton from './GenerateTagsButton';
+import GenerateIndexesButton from './GenerateIndexesButton';
+import GenerateCoverImageButton from './GenerateCoverImageButton';
 
 const BookManagePage = () => {
     const navigate = useNavigate()
     const {bookId} = useParams()
     console.log("BookId :", bookId)
 
+
+    const onClickGenerateCoverImageButton = (query) => {
+        alert("Generate : "+ query)
+    }
+    
 
     const onClickDeleteBookButton = () => {
         alert("Delete")
@@ -49,6 +55,10 @@ const BookManagePage = () => {
 
     const onClickAddIndexButton = (title) => {
         alert("Add : "+ title)
+    }
+
+    const onClickGenerateIndexesButton = (query) => {
+        alert("Generate : "+ query)
     }
 
 
@@ -99,10 +109,7 @@ const BookManagePage = () => {
                         />
                         
                         <Box sx={{marginTop: "5px", marginLeft: "18px", marginBottom: "5px"}}>
-                            <Box onClick={()=>{alert("Gen")}} sx={{float: "left", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                                <SmartToyIcon sx={{float: "left", color: "white"}}/>
-                                <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>생성</NavText>
-                            </Box>
+                            <GenerateCoverImageButton onClickGenerateButton={onClickGenerateCoverImageButton} defaultQuery={"CoverImageQuery"}/>
 
                             <Box onClick={()=>{alert("Upload")}} sx={{marginLeft: "5px", float: "left", backgroundColor: "cornflowerblue", width: "82px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
                                 <UploadIcon sx={{float: "left", color: "white"}}/>
@@ -141,11 +148,7 @@ const BookManagePage = () => {
                     <ListIcon sx={{float: "left", marginTop: "5px"}}/>
                     <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px", marginLeft: "5px"}}>목차</BoldText>
 
-                    <Box onClick={()=>{alert("Gen")}} sx={{float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                        <SmartToyIcon sx={{float: "left", color: "white"}}/>
-                        <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>생성</NavText>
-                    </Box>
-                    
+                    <GenerateIndexesButton onClickGenerateButton={onClickGenerateIndexesButton} defaultQuery={"indexQuery"}/>
                     <AddIndexNameButton onClickAddButton={onClickAddIndexButton}/>
                 </Box>
                 <Stack sx={{width: "100%", marginTop: "16px"}}>

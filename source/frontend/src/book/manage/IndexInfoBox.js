@@ -1,11 +1,11 @@
 import React, { useState } from 'react';
 import { Box } from "@mui/material";
-import SmartToyIcon from '@mui/icons-material/SmartToy';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import BoldText from '../../_global/components/text/BoldText';
 import YesNoButton from '../../_global/components/button/YesNoButton';
 import EditIndexNameButton from './EditIndexNameButton';
+import GenerateContentButton from './GenerateContentButton';
 
 const IndexInfoBox = ({rawIndexInfo}) => {
     const [indexInfo] = useState({
@@ -22,6 +22,10 @@ const IndexInfoBox = ({rawIndexInfo}) => {
         alert("Edit :" + title)
     }
 
+    const onClickGenerateContentButton = (query) => {
+        alert("Generate : " + query)
+    }
+
 
     return (
         <Box sx={{backgroundColor: "lightgray", borderRadius: "5px", padding: "5px"}}>
@@ -35,9 +39,7 @@ const IndexInfoBox = ({rawIndexInfo}) => {
                 </Box>
                 
                 <EditIndexNameButton onClickEditButton={onClickEditButton} defaultTitle={indexInfo.name}/>
-                <Box onClick={()=>{alert("Gen")}} sx={{float: "right", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                    <SmartToyIcon sx={((indexInfo.isGenerated) ? {color: "gray"} : {color: "white"})}/>
-                </Box>
+                <GenerateContentButton isGenerated={indexInfo.isGenerated} onClickGenerateButton={onClickGenerateContentButton} defaultQuery={"contentQuery"}/>
             </Box>
         </Box>
     )
