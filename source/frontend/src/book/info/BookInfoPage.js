@@ -2,7 +2,6 @@ import React, {useState} from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 import { Container, Divider, Stack, Box, IconButton, Paper, InputBase, Pagination } from "@mui/material";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import SendIcon from '@mui/icons-material/Send';
@@ -13,14 +12,19 @@ import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
 import NormalText from '../../_global/components/text/NormalText';
 import NavText from '../../_global/components/text/NavText';
+import AddToBookShelfButton from './AddToBookShelfButton';
 
 const BookInfoPage = () => {
     const {bookId} = useParams()
     console.log("BookId :", bookId)
 
     const navigate = useNavigate()
-
     const [commentText, setCommentText] = useState("")
+
+    const onClickAddToBookShelfButton = (selectedBookShelfId) => {
+        alert("Add to BookShelf Button Clicked! Selected BookShelf Id: " + selectedBookShelfId)
+    }
+
 
     return (
         <>
@@ -67,10 +71,7 @@ const BookInfoPage = () => {
                                     <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>책 읽기</NavText>
                                 </Box>
 
-                                <Box sx={{float: "left", marginLeft: "5px", backgroundColor: "cornflowerblue", width: "118px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                                    <CollectionsBookmarkIcon sx={{float: "left", color: "white"}}/>
-                                    <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>책장에 추가</NavText>
-                                </Box>
+                                <AddToBookShelfButton onClickAddButton={onClickAddToBookShelfButton}/>
                             </Box>
                         </Stack>
                     </Box>
