@@ -13,6 +13,7 @@ import NormalText from '../../_global/components/text/NormalText';
 import NavText from '../../_global/components/text/NavText';
 import QuestionInfo from './QuestionInfo';
 import IndexesInfoBox from './IndexesInfoBox';
+import ContentInfoBox from './ContentInfoBox';
 
 const BookReadPage = () => {
     const {bookId, indexId} = useParams()
@@ -50,26 +51,12 @@ const BookReadPage = () => {
                             <AutoStoriesIcon sx={{float: "left", paddingTop: "2px"}}/>
                             <NormalText sx={{fontSize: "20px", float: "left", marginLeft: "2px"}}>학습</NormalText>
                         </Box>
-                        
-                        <Box
-                                component="img"
-                                sx={{
-                                    height: 250,
-                                    width: 500,
-                                    backgroundColor: "lightgray",
-                                    borderRadius: 3,
-                                    border: "1px solid lightgray",
-                                    float:"left",
-                                    marginX: "auto"
 
-                                }}
-                                alt="업로드된 이미지가 표시됩니다."
-                                src={"/src/NoImage.jpg"}
-                            />
-                            
-                            <NormalText sx={{width: "840px", fontSize: "15px", marginTop: "5px", textOverflow: "ellipsis"}}>
-                                Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is 
-                            </NormalText>
+                        <ContentInfoBox rawContentInfo={{
+                            id: 1,
+                            imageUrl: "/src/NoImage.jpg",
+                            content: "Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is "
+                        }}/>
                     </Stack>
                     <Divider sx={{marginY: "5px"}}/>
 
