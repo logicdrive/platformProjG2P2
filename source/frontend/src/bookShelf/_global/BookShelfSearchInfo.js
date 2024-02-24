@@ -1,20 +1,29 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, Box, Stack } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
 
 import BoldText from '../../_global/components/text/BoldText';
 
-const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookShelfBookCount, bookShelfCreater, bookShelfCreateDate, bookShelfTags, isShared, onClickCardUrl,
-                              isEditIconVisible}) => {
+const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible}) => {
     const navigate = useNavigate()
+    const [bookShelfInfo] = useState({
+        id: rawBookShelfInfo.id,
+        title: rawBookShelfInfo.title,
+        creator: rawBookShelfInfo.creator,
+        createdDate: rawBookShelfInfo.createdDate,
+        bookCount: rawBookShelfInfo.bookCount,
+        tags: rawBookShelfInfo.tags,
+        isShared: rawBookShelfInfo.isShared,
+        imageUrls: rawBookShelfInfo.imageUrls
+    })
 
     return (
-        <Card sx={{width: "380px", height: "220px"}} onClick={()=>{navigate(onClickCardUrl)}}>
+        <Card sx={{width: "380px", height: "220px"}} onClick={()=>{navigate(`/bookShelf/info/${bookShelfInfo.id}`)}}>
             <CardContent sx={{padding: "10px"}}>
                 <Box sx={{float: "left", cursor: "pointer", height: 200, width: 110}}>
                 {(() => {
-                    if(bookImageUrls && bookImageUrls.length >= 3) {
+                    if(bookShelfInfo.imageUrls && bookShelfInfo.imageUrls.length >= 3) {
                         return (
                             <>
                             <Box
@@ -27,7 +36,7 @@ const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookSh
                                     border: "1px solid lightgray",
                                 }}
                                 alt="업로드된 이미지가 표시됩니다."
-                                src={bookImageUrls[0]}
+                                src={bookShelfInfo.imageUrls[0]}
                             />
 
                             <Box
@@ -44,7 +53,7 @@ const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookSh
                                     marginTop: "20px"
                                 }}
                                 alt="업로드된 이미지가 표시됩니다."
-                                src={bookImageUrls[1]}
+                                src={bookShelfInfo.imageUrls[1]}
                             />
 
                             <Box
@@ -61,11 +70,11 @@ const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookSh
                                     marginTop: "40px"
                                 }}
                                 alt="업로드된 이미지가 표시됩니다."
-                                src={bookImageUrls[2]}
+                                src={bookShelfInfo.imageUrls[2]}
                             />
                             </>
                         )
-                    }else if(bookImageUrls && bookImageUrls.length === 2) {
+                    }else if(bookShelfInfo.imageUrls && bookShelfInfo.imageUrls.length === 2) {
                         return (
                             <>
                             <Box
@@ -78,7 +87,7 @@ const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookSh
                                     border: "1px solid lightgray",
                                 }}
                                 alt="업로드된 이미지가 표시됩니다."
-                                src={bookImageUrls[0]}
+                                src={bookShelfInfo.imageUrls[0]}
                             />
 
                             <Box
@@ -95,7 +104,7 @@ const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookSh
                                     marginTop: "20px"
                                 }}
                                 alt="업로드된 이미지가 표시됩니다."
-                                src={bookImageUrls[1]}
+                                src={bookShelfInfo.imageUrls[1]}
                             />
                             </>
                         )
@@ -111,7 +120,7 @@ const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookSh
                                     border: "1px solid lightgray",
                                 }}
                                 alt="업로드된 이미지가 표시됩니다."
-                                src={(bookImageUrls && bookImageUrls.length >= 1) ? bookImageUrls[0] : "/src/NoImage.jpg"}
+                                src={(bookShelfInfo.imageUrls && bookShelfInfo.imageUrls.length >= 1) ? bookShelfInfo.imageUrls[0] : "/src/NoImage.jpg"}
                             />
                         )
                     } 
@@ -119,12 +128,12 @@ const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookSh
                 </Box>
                 <Stack sx={{float: "left", marginLeft: "12px", width: "238px"}}>
                     <Box sx={{height: "30px"}}>
-                        <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookShelfTitle}</BoldText>
+                        <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookShelfInfo.title}</BoldText>
                         {
                             (isEditIconVisible) ? (
                                 <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}, position: "relative", left: "3px"}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
                                     {
-                                        (isShared) ? (
+                                        (bookShelfInfo.isShared) ? (
                                             <ShareIcon sx={{color: "black"}}/>
                                         ) : (
                                             <ShareIcon sx={{color: "lightgray"}}/>
@@ -135,13 +144,13 @@ const BookShelfSearchInfo = ({bookShelfId, bookImageUrls, bookShelfTitle, bookSh
                         }
                     </Box>
                     
-                    <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>보관된 책 개수: {bookShelfBookCount}</BoldText>
-                    <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성자: {bookShelfCreater}</BoldText>
-                    <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성일: {bookShelfCreateDate}</BoldText>
+                    <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>보관된 책 개수: {bookShelfInfo.bookCount}</BoldText>
+                    <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성자: {bookShelfInfo.creator}</BoldText>
+                    <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성일: {bookShelfInfo.createdDate}</BoldText>
                     
                     <Box sx={{display: "flex", flexDirection: "row", width: "215px", flexWrap: "wrap-reverse", marginTop: "78px", marginLeft: "-3px"}}>
                         {
-                            bookShelfTags.map((tag, index) => {
+                            bookShelfInfo.tags.map((tag, index) => {
                                 return (
                                     <BoldText key={index} sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", margin: "2px", cursor: "context-menu"}}>{tag}</BoldText>
                                 )

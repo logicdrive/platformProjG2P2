@@ -5,7 +5,7 @@ import SearchIcon from '@mui/icons-material/Search';
 
 import BoldText from '../../_global/components/text/BoldText';
 
-const BookShelfSubAppBar = ({focusedIndex, handleOnSubmit, searchTypes, sx, ...props}) => {
+const BookShelfSubAppBar = ({focusedIndex, searchTypes, handleOnSubmit, sx, ...props}) => {
     const navigate = useNavigate()
 
     let commonSx = {fontSize: "15px", height: "30px", paddingX: "10px", paddingTop: "10px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}

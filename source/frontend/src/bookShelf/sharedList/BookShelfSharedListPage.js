@@ -6,6 +6,15 @@ import BookShelfSubAppBar from '../_global/BookShelfSubAppBar';
 import BookShelfSearchInfo from '../_global/BookShelfSearchInfo';
 
 const BookShelfSharedListPage = () => {
+
+    const onClickSearchButton = (searchText, searchType) => {
+        alert("검색어: " + searchText + ", 검색 대상: " + searchType)
+    }
+
+    const onClickPageNumber = (_, page) => {
+        alert("페이지 번호: " + page)
+    }
+
     return (
         <>
             <MainNavAppBar focusedIndex={1}/>
@@ -14,28 +23,28 @@ const BookShelfSharedListPage = () => {
                     {type: "bookShelfTitle", name: "책장 제목"},
                     {type: "bookShelfCreater", name: "책장 제작자"}
                 ]}
+                handleOnSubmit={onClickSearchButton}
             />
 
             <Stack>
                 <Stack direction="row" spacing={2}>
                     <BookShelfSearchInfo
-                        bookShelfId={1}
-                        bookShelfTitle={"My BookShelf"}
-                        bookShelfBookCount={3}
-                        bookShelfCreater={"TestCreater"}
-                        bookShelfCreateDate={"2024-02-22 12:47"}
-  
-                        bookShelfTags={["AAAAA", "BBBBB", "CCCCC", "DDDDD"]}
-                        isShared={false}
+                        rawBookShelfInfo={{
+                            id: 1,
+                            title: "My BookShelf",
+                            creator: "TestCreater",
+                            createdDate: "2024-02-22 12:47",
+                            bookCount: 3,
+                            tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
+                            isShared: false,
+                            imageUrls: ["/src/NoImage.jpg", "/src/NoImage.jpg", "/src/NoImage.jpg"]
+                        }}
                         isEditIconVisible={false}
-
-                        onClickCardUrl={"/bookShelf/info/1"}
-                        bookImageUrls={["/src/NoImage.jpg", "/src/NoImage.jpg", "/src/NoImage.jpg"]}
                     />
                 </Stack>
 
                 <Box sx={{width: "100%", marginTop: "10px", display: "flex", justifyContent: "center"}}>
-                    <Pagination sx={{padding: "auto", margin: "0 auto"}} count={10}/>
+                    <Pagination count={10} onChange={onClickPageNumber} sx={{padding: "auto", margin: "0 auto"}}/>
                 </Box>
             </Stack>
         </>
