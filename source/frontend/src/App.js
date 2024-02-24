@@ -15,6 +15,7 @@ import BookSharedListPage from './book/sharedList/BookSharedListPage';
 import BookInfoPage from './book/info/BookInfoPage';
 import BookReadPage from './book/read/BookReadPage';
 import BookManagePage from './book/manage/BookManagePage';
+import BookRecommendPage from './book/recommend/BookRecommendPage';
 
 import BookShelfMyListPage from './bookShelf/myList/BookShelfMyListPage';
 import BookShelfSharedListPage from './bookShelf/sharedList/BookShelfSharedListPage';
@@ -37,6 +38,7 @@ function App() {
                     <Route path="/book/info/:bookId" element={<BookInfoPage/>}/>
                     <Route path="/book/read/:bookId/:indexId" element={<BookReadPage/>}/>
                     <Route path="/book/manage/:bookId" element={<BookManagePage/>}/>
+                    <Route path="/book/recommend" element={<BookRecommendPage/>}/>
                     
                     <Route path="/bookShelf/myList" element={<BookShelfMyListPage/>}/>
                     <Route path="/bookShelf/sharedList" element={<BookShelfSharedListPage/>}/>
