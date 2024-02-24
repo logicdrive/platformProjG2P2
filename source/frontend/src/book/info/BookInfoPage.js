@@ -3,12 +3,14 @@ import { useParams } from 'react-router-dom';
 
 import { Container, Divider, Stack, Box, Pagination } from "@mui/material";
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
+import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
 import BookInfoBox from './BookInfoBox';
 import CommentsInfosBox from './CommentsInfosBox';
 import AddCommentForm from './AddCommentForm';
+import BookSearchInfo from '../../_global/components/card/BookSearchInfo';
 
 const BookInfoPage = () => {
     const {bookId} = useParams()
@@ -43,6 +45,43 @@ const BookInfoPage = () => {
                         likeCount: 10
                     }}/>
 
+
+                    <Box sx={{marginTop: "15px"}}>
+                        <CollectionsBookmarkIcon sx={{float: "left", color: "gray"}}/>
+                        <BoldText sx={{float: "left", fontSize: "17px", marginLeft: "5px", color: "gray"}}>비슷한 책 목록</BoldText>
+                    </Box>
+                    <Divider sx={{marginTop: "5px", marginBottom: "5px", width: "100%"}}/>
+                    <Box sx={{display: "flex", justifyContent: "center"}}>
+                        <BookSearchInfo
+                            rawBookInfo={{
+                                id: 1,
+                                title: "점프 투 파이썬",
+                                creator: "TestCreater",
+                                createdDate: "2024-02-22 12:47",
+                                likeCount: 10,
+                                tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
+                                isShared: false,
+                                imageUrl: ""
+                            }}
+                            isEditIconVisible={true}
+                            sx={{margin: "5px"}}
+                        />
+
+                        <BookSearchInfo
+                            rawBookInfo={{
+                                id: 1,
+                                title: "점프 투 파이썬",
+                                creator: "TestCreater",
+                                createdDate: "2024-02-22 12:47",
+                                likeCount: 10,
+                                tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
+                                isShared: false,
+                                imageUrl: ""
+                            }}
+                            isEditIconVisible={true}
+                            sx={{margin: "5px"}}
+                        />
+                    </Box>
 
 
                     <Box sx={{marginTop: "15px"}}>

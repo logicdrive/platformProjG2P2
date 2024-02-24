@@ -34,4 +34,4 @@ BookShelfSharedListPage: U+
 BookShelfInfoPage: U+
 
 RecommandUser: U+
-RecommandBook: 
+RecommandBook: U+

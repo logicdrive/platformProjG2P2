@@ -9,7 +9,7 @@ import EditIcon from '@mui/icons-material/Edit';
 import BoldText from '../text/BoldText';
 import YesNoButton from '../button/YesNoButton';
 
-const BookSearchInfo = ({rawBookInfo, isEditIconVisible}) => {
+const BookSearchInfo = ({rawBookInfo, isEditIconVisible, ...props}) => {
     const navigate = useNavigate()
     const [bookInfo] = useState({
         id: rawBookInfo.id,
@@ -33,7 +33,7 @@ const BookSearchInfo = ({rawBookInfo, isEditIconVisible}) => {
 
 
     return (
-        <Card sx={{width: "380px", height: "220px"}} onClick={()=>{navigate(`/book/info/${bookInfo.id}`)}}>
+        <Card sx={{width: "380px", height: "220px"}} onClick={()=>{navigate(`/book/info/${bookInfo.id}`)}} {...props}>
             <CardContent sx={{padding: "10px"}}>
                 <Box sx={{float: "left", cursor: "pointer"}}>
                     <Box
