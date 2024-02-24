@@ -1,16 +1,14 @@
 import React, {useState} from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Container, Divider, Stack, Box, IconButton, Paper, InputBase, Pagination } from "@mui/material";
+import { Container, Divider, Stack, Box, Paper, InputBase, Pagination } from "@mui/material";
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import SendIcon from '@mui/icons-material/Send';
-import EditIcon from '@mui/icons-material/Edit';
-import DeleteIcon from '@mui/icons-material/Delete';
 
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
-import NormalText from '../../_global/components/text/NormalText';
 import BookInfoBox from './BookInfoBox';
+import CommentsInfosBox from './CommentsInfosBox';
 
 const BookInfoPage = () => {
     const {bookId} = useParams()
@@ -37,7 +35,9 @@ const BookInfoPage = () => {
                         indexCount: 5,
                         likeCount: 10
                     }}/>
-                    
+
+
+
                     <Box sx={{marginTop: "15px"}}>
                         <ChatBubbleIcon sx={{float: "left", color: "gray"}}/>
                         <BoldText sx={{float: "left", fontSize: "17px", marginLeft: "5px", color: "gray"}}>댓글: 5개</BoldText>
@@ -59,29 +59,16 @@ const BookInfoPage = () => {
                         </Box>
                     </Paper>
 
-                    <Stack
-                        divider={<Divider flexItem/>}
-                        spacing={3}
-                        sx={{marginTop: "20px"}}
-                    >
-                        <Stack>
-                            <Box>
-                                <BoldText sx={{float: "left", fontSize: "15px"}}>TestCreater</BoldText>
-                                
-                                
-                                <IconButton sx={{float: "right", position: "relative", bottom: "5px"}} onClick={(e)=>{e.stopPropagation(); alert("Delete")}}>
-                                    <DeleteIcon sx={{fontSize: "15px"}}/> 
-                                </IconButton>
-                                <IconButton sx={{float: "right", position: "relative", bottom: "5px"}} onClick={(e)=>{e.stopPropagation(); alert("Edit")}}>
-                                    <EditIcon sx={{fontSize: "15px"}}/> 
-                                </IconButton>
-                                <NormalText sx={{float: "right", fontSize: "15px"}}>2024-02-23 11:46</NormalText>
-                            </Box>
 
-                            <NormalText sx={{fontSize: "15px"}}>댓글내용입니다.</NormalText>
-                        </Stack>
-                    </Stack>
-                    
+                    <CommentsInfosBox rawCommandInfos={[
+                        {
+                            id: 1,
+                            creator: "TestCreater",
+                            createdDate: "2024-02-23 11:46",
+                            content: "TestContent"
+                        }
+                    ]}/>
+
                     <Box sx={{width: "100%", marginTop: "10px", display: "flex", justifyContent: "center"}}>
                         <Pagination sx={{padding: "auto", margin: "0 auto"}} count={10}/>
                     </Box>
