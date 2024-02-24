@@ -31,4 +31,4 @@ BookManagePage: U
 
 BookShelfMyListPage: U+
 BookShelfSharedListPage: U+
-BookShelfInfoPage: U
+BookShelfInfoPage: U+

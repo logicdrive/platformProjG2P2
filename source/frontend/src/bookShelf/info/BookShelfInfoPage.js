@@ -10,14 +10,22 @@ const BookShelfInfoPage = () => {
     const {bookShelfId} = useParams()
     console.log("bookShelfId :", bookShelfId)
 
+    const onClickSearchButton = (searchText, searchType) => {
+        alert("검색어: " + searchText + ", 검색 대상: " + searchType)
+    }
+    
+    const onClickPageNumber = (_, page) => {
+        alert("페이지 번호: " + page)
+    }
+
     return (
         <>
             <MainNavAppBar focusedIndex={1} backArrowUrl={-1}/>
             <BookShelfInfoSubAppBar bookShelfTitle={"My BookShelf"}
-                searchTypes={[
-                    {type: "bookShelfTitle", name: "책장 제목"},
-                    {type: "bookCreater", name: "책 작성자"}
+                searchTypes={[{type: "bookTitle", name: "책 제목"},
+                              {type: "bookCreater", name: "책 작성자"}
                 ]}
+                handleOnSubmit={onClickSearchButton}
                 rawBookShelfInfo={{
                     title: "My BookShelf",
                     isShared: false
@@ -40,7 +48,7 @@ const BookShelfInfoPage = () => {
                 </Stack>
                 
                 <Box sx={{width: "100%", marginTop: "10px", display: "flex", justifyContent: "center"}}>
-                    <Pagination sx={{padding: "auto", margin: "0 auto"}} count={10}/>
+                    <Pagination count={10} onChange={onClickPageNumber} sx={{padding: "auto", margin: "0 auto"}}/>
                 </Box>
             </Stack>
         </>

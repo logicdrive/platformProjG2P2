@@ -8,7 +8,7 @@ import BoldText from '../../_global/components/text/BoldText';
 import EditBookShelfTitleButton from './EditBookShelfTitleButton';
 import YesNoButton from '../../_global/components/button/YesNoButton';
 
-const BookShelfInfoSubAppBar = ({rawBookShelfInfo, handleOnSubmit, searchTypes, sx, ...props}) => {
+const BookShelfInfoSubAppBar = ({rawBookShelfInfo, searchTypes, handleOnSubmit, sx, ...props}) => {
     const [searchText, setSearchText] = useState("")
     const [searchType, setSearchType] = useState(searchTypes[0].type)
     
@@ -39,7 +39,7 @@ const BookShelfInfoSubAppBar = ({rawBookShelfInfo, handleOnSubmit, searchTypes, 
 
                 <Box sx={{float: "right", cursor: "pointer", "&:hover": {opacity: 0.80}, padding: "8px", marginRight: "8px"}}>
                     <YesNoButton onClickYes={onClickDeleteButton} title="해당 책장을 삭제하시겠습니까?">
-                        <DeleteIcon sx={{fontSize: "20px"}}/> 
+                        <DeleteIcon sx={{fontSize: "20px", color: "gray"}}/> 
                     </YesNoButton>
                 </Box>
                 <Box sx={{float: "right", cursor: "pointer", "&:hover": {opacity: 0.80}, padding: "8px", marginRight: "-8px"}}>
