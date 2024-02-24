@@ -39,6 +39,7 @@ const BookMyListPage = () => {
                             imageUrl: ""
                         }
                     ]}
+                    isEditIconVisible={true}
                 />
                 
                 <Box sx={{width: "100%", marginTop: "10px", display: "flex", justifyContent: "center"}}>
