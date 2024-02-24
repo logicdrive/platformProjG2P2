@@ -6,6 +6,7 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import BoldText from '../../_global/components/text/BoldText';
+import YesNoButton from '../../_global/components/button/YesNoButton';
 
 const BookShelfBookSearchInfo = ({rawBookInfo}) => {
     const navigate = useNavigate()
@@ -19,6 +20,12 @@ const BookShelfBookSearchInfo = ({rawBookInfo}) => {
         imageUrl: rawBookInfo.imageUrl
     })
 
+
+    const onClickDeleteButton = () => {
+        alert("Deleted")
+    }
+
+    
     return (
         <Card sx={{width: "380px", height: "220px"}} onClick={()=>{navigate(`/book/info/${bookInfo.id}`)}}>
             <CardContent sx={{padding: "10px"}}>
@@ -40,9 +47,14 @@ const BookShelfBookSearchInfo = ({rawBookInfo}) => {
                 <Stack sx={{float: "left", marginLeft: "10px", width: "238px"}}>
                     <Box>
                         <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookInfo.title}</BoldText>
-                        <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}}} onClick={(e)=>{e.stopPropagation(); alert("Deleted")}}>
-                            <DeleteIcon sx={{color: "gray"}}/>
-                        </BoldText>
+                        
+                        <Box onClick={(e)=>{e.stopPropagation()}}>
+                            <YesNoButton onClickYes={()=>{onClickDeleteButton(false)}} title="해당 책을 책장에서 삭제하시겠습니까?">
+                                <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
+                                    <DeleteIcon sx={{color: "gray"}}/>
+                                </BoldText>
+                            </YesNoButton>
+                        </Box>
                     </Box>
 
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성자: {bookInfo.creator}</BoldText>
