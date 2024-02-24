@@ -1,23 +1,27 @@
 import React, {useState} from 'react';
 import { Box, Paper, InputBase, MenuItem, Select, IconButton } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ShareIcon from '@mui/icons-material/Share';
 
 import BoldText from '../../_global/components/text/BoldText';
+import EditBookShelfTitleButton from './EditBookShelfTitleButton';
 
 const BookShelfInfoSubAppBar = ({bookShelfTitle, handleOnSubmit, searchTypes, sx, ...props}) => {
     const [searchText, setSearchText] = useState("")
     const [searchType, setSearchType] = useState(searchTypes[0].type)
 
+
+    const onClickBookShelfTitleEditButton = (title) => {
+        alert("Edit: " + title);
+    }
+
+
     return (
         <>
             <Box sx={{width: "100%", height: "50px", padding: "10px", marginTop: "5px", ...sx}} {...props}>
                 <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px"}}>책장: {bookShelfTitle}</BoldText>
-                <IconButton onClick={(e)=>{e.stopPropagation(); alert("Edit")}}>
-                        <EditIcon sx={{fontSize: "20px"}}/> 
-                </IconButton>
+                <EditBookShelfTitleButton onClickEditButton={onClickBookShelfTitleEditButton} defaultTitle={bookShelfTitle}/>
 
                 <IconButton sx={{float: "right"}} onClick={(e)=>{e.stopPropagation(); alert("Delete")}}>
                     <DeleteIcon sx={{fontSize: "20px"}}/> 
