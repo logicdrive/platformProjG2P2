@@ -3,7 +3,7 @@ import React from 'react';
 import { Divider, Stack } from "@mui/material";
 import CommentInfoBox from './CommentInfoBox';
 
-const CommentsInfosBox = ({rawCommandInfos}) => {
+const CommentsInfosBox = ({rawCommentInfos}) => {
     return (
         <>
             <Stack
@@ -12,7 +12,7 @@ const CommentsInfosBox = ({rawCommandInfos}) => {
                 sx={{marginTop: "20px"}}
             >
                 {
-                    rawCommandInfos.map((rawCommentInfo, index) => {
+                    rawCommentInfos.map((rawCommentInfo, index) => {
                         return (
                             <CommentInfoBox key={index} rawCommentInfo={rawCommentInfo}/>   
                         )

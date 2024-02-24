@@ -85,7 +85,7 @@ const BookInfoPage = () => {
                     <AddCommentForm onClickAddCommentButton={onClickAddCommentButton}/>
 
 
-                    <CommentsInfosBox rawCommandInfos={[
+                    <CommentsInfosBox rawCommentInfos={[
                         {
                             id: 1,
                             creator: "TestCreater",
