@@ -14,24 +14,24 @@ externalSystemProxy: O / D / E
 externalSystem: O / D / E
 recommendCalcSystem: O / D / E 
 gateway: O / D / E
-frontend: U
+frontend: U++
 
 ---
 
 * frontend
 
-UserSignUpPage: U+
-UserSignInPage: U+
+UserSignUpPage: U++
+UserSignInPage: U++
 
-BookMyListPage: U+
-BookSharedListPage: U+
-BookInfoPage: U+
-BookReadPage: U+
-BookManagePage: U+
+BookMyListPage: U++
+BookSharedListPage: U++
+BookInfoPage: U++
+BookReadPage: U++
+BookManagePage: U++
 
-BookShelfMyListPage: U+
+BookShelfMyListPage: U++
 BookShelfSharedListPage: U+
-BookShelfInfoPage: U+
+BookShelfInfoPage: U++
 
-RecommandUser: U+
-RecommandBook: U+
+RecommandUser: U++
+RecommandBook: U++
