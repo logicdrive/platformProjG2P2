@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState } from 'react';
 
 import { Box, Stack, Pagination } from '@mui/material';
 
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BookSubAppBar from '../_global/BookSubAppBar';
 import BookSearchInfos from '../../_global/components/card/BookSearchInfos';
+import SubscribeMessageCreatedSocket from '../../_global/socket/EventHandlerSocket';
 
 const BookMyListPage = () => {
 
@@ -15,6 +16,14 @@ const BookMyListPage = () => {
     const onClickPageNumber = (_, page) => {
         alert("페이지 번호: " + page)
     }
+
+
+    SubscribeMessageCreatedSocket(useState(() => {
+        return (eventName, value) => {
+            console.log(`[CALLBACK] Notified created message status by socket: <event:${eventName}, value:${value}>`)
+            console.log(JSON.parse(value))
+        }
+    })[0])
 
 
     return (
