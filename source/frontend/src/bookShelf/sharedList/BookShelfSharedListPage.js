@@ -3,7 +3,7 @@ import { Box, Stack, Pagination } from '@mui/material';
 
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BookShelfSubAppBar from '../_global/BookShelfSubAppBar';
-import BookShelfSearchInfo from '../_global/BookShelfSearchInfo';
+import BookShelfSearchInfos from '../_global/BookShelfSearchInfos';
 
 const BookShelfSharedListPage = () => {
 
@@ -28,8 +28,8 @@ const BookShelfSharedListPage = () => {
 
             <Stack>
                 <Stack direction="row" spacing={2}>
-                    <BookShelfSearchInfo
-                        rawBookShelfInfo={{
+                    <BookShelfSearchInfos
+                        rawBookShelfInfos={[{
                             id: 1,
                             title: "My BookShelf",
                             creator: "TestCreater",
@@ -38,7 +38,7 @@ const BookShelfSharedListPage = () => {
                             tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
                             isShared: false,
                             imageUrls: ["/src/NoImage.jpg", "/src/NoImage.jpg", "/src/NoImage.jpg"]
-                        }}
+                        }]}
                         isEditIconVisible={false}
                     />
                 </Stack>
