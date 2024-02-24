@@ -4,6 +4,7 @@ import { Card, CardContent, Box, Stack } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
 
 import BoldText from '../../_global/components/text/BoldText';
+import YesNoButton from '../../_global/components/button/YesNoButton';
 
 const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible}) => {
     const navigate = useNavigate()
@@ -17,6 +18,10 @@ const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible}) => {
         isShared: rawBookShelfInfo.isShared,
         imageUrls: rawBookShelfInfo.imageUrls
     })
+
+    const onClickSharedButton = (isShared) => {
+        alert("Shared: " + isShared)
+    }
 
     return (
         <Card sx={{width: "380px", height: "220px"}} onClick={()=>{navigate(`/bookShelf/info/${bookShelfInfo.id}`)}}>
@@ -131,12 +136,16 @@ const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible}) => {
                         <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookShelfInfo.title}</BoldText>
                         {
                             (isEditIconVisible) ? (
-                                <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}, position: "relative", left: "3px"}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
+                                <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}, position: "relative", left: "3px"}} onClick={(e)=>{e.stopPropagation();}}>
                                     {
                                         (bookShelfInfo.isShared) ? (
-                                            <ShareIcon sx={{color: "black"}}/>
+                                            <YesNoButton onClickYes={()=>{onClickSharedButton(false)}} title="해당 책장의 공유를 취소하시겠습니까?">
+                                                <ShareIcon sx={{color: "black"}}/>
+                                            </YesNoButton>
                                         ) : (
-                                            <ShareIcon sx={{color: "lightgray"}}/>
+                                            <YesNoButton onClickYes={(e)=>{onClickSharedButton(true)}} title="해당 책장을 공유시겠습니까?">
+                                                <ShareIcon sx={{color: "lightgray"}}/>
+                                            </YesNoButton>
                                         )
                                     }
                                 </BoldText>
