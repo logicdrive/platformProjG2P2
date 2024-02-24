@@ -18,6 +18,10 @@ const BookShelfInfoPage = () => {
                     {type: "bookShelfTitle", name: "책장 제목"},
                     {type: "bookCreater", name: "책 작성자"}
                 ]}
+                rawBookShelfInfo={{
+                    title: "My BookShelf",
+                    isShared: false
+                }}
             />
 
             <Stack>

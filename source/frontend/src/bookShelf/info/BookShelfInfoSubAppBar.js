@@ -1,34 +1,61 @@
-import React, {useState} from 'react';
-import { Box, Paper, InputBase, MenuItem, Select, IconButton } from "@mui/material";
+import React, { useState } from 'react';
+import { Box, Paper, InputBase, MenuItem, Select } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ShareIcon from '@mui/icons-material/Share';
 
 import BoldText from '../../_global/components/text/BoldText';
 import EditBookShelfTitleButton from './EditBookShelfTitleButton';
+import YesNoButton from '../../_global/components/button/YesNoButton';
 
-const BookShelfInfoSubAppBar = ({bookShelfTitle, handleOnSubmit, searchTypes, sx, ...props}) => {
+const BookShelfInfoSubAppBar = ({rawBookShelfInfo, handleOnSubmit, searchTypes, sx, ...props}) => {
     const [searchText, setSearchText] = useState("")
     const [searchType, setSearchType] = useState(searchTypes[0].type)
+    
+    const [bookShelfInfo] = useState({
+        title: rawBookShelfInfo.title,
+        isShared: rawBookShelfInfo.isShared
+    })
 
 
     const onClickBookShelfTitleEditButton = (title) => {
         alert("Edit: " + title);
     }
 
+    const onClickSharedButton = (isShared) => {
+        alert("Shared: " + isShared)
+    }
+
+    const onClickDeleteButton = () => {
+        alert("Delete")
+    }
+
 
     return (
         <>
             <Box sx={{width: "100%", height: "50px", padding: "10px", marginTop: "5px", ...sx}} {...props}>
-                <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px"}}>책장: {bookShelfTitle}</BoldText>
-                <EditBookShelfTitleButton onClickEditButton={onClickBookShelfTitleEditButton} defaultTitle={bookShelfTitle}/>
+                <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px"}}>책장: {bookShelfInfo.title}</BoldText>
+                <EditBookShelfTitleButton onClickEditButton={onClickBookShelfTitleEditButton} defaultTitle={bookShelfInfo.title}/>
 
-                <IconButton sx={{float: "right"}} onClick={(e)=>{e.stopPropagation(); alert("Delete")}}>
-                    <DeleteIcon sx={{fontSize: "20px"}}/> 
-                </IconButton>
-                <IconButton sx={{float: "right"}} onClick={(e)=>{e.stopPropagation(); alert("Shared")}}>
-                    <ShareIcon sx={{fontSize: "20px"}}/> 
-                </IconButton>
+                <Box sx={{float: "right", cursor: "pointer", "&:hover": {opacity: 0.80}, padding: "8px", marginRight: "8px"}}>
+                    <YesNoButton onClickYes={onClickDeleteButton} title="해당 책장을 삭제하시겠습니까?">
+                        <DeleteIcon sx={{fontSize: "20px"}}/> 
+                    </YesNoButton>
+                </Box>
+                <Box sx={{float: "right", cursor: "pointer", "&:hover": {opacity: 0.80}, padding: "8px", marginRight: "-8px"}}>
+                {
+                    (bookShelfInfo.isShared) ? (
+                        <YesNoButton onClickYes={()=>{onClickSharedButton(false)}} title="해당 책장의 공유를 취소하시겠습니까?">
+                            <ShareIcon sx={{fontSize: "20px", color: "black"}}/>
+                        </YesNoButton>
+                    ) : (
+                        <YesNoButton onClickYes={(e)=>{onClickSharedButton(true)}} title="해당 책장을 공유시겠습니까?">
+                            <ShareIcon sx={{fontSize: "20px", color: "lightgray"}}/>
+                        </YesNoButton>
+                    )
+                }
+                </Box>
+
                 <Paper component="form" sx={{float:"right", width: "397px", height: "35px", marginLeft: "5px", marginTop: "2px", ...sx}} {...props}>
                     <Select
                         sx={{
