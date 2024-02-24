@@ -12,6 +12,7 @@ import BoldText from '../../_global/components/text/BoldText';
 import NormalText from '../../_global/components/text/NormalText';
 import NavText from '../../_global/components/text/NavText';
 import QuestionInfo from './QuestionInfo';
+import IndexesInfoBox from './IndexesInfoBox';
 
 const BookReadPage = () => {
     const {bookId, indexId} = useParams()
@@ -33,13 +34,13 @@ const BookReadPage = () => {
                         <NormalText sx={{fontSize: "20px", float: "left"}}>목차</NormalText>
                     </Box>
                     
-                    <Stack
-                        spacing={0.5}
-                        sx={{marginTop: "1px", marginLeft: "10px"}}
-                    >
-                        <NormalText onClick={()=>{navigate("/book/read/1/1")}} sx={{fontSize: "15px", "&:hover": {opacity: 0.50}, cursor: "pointer", color: "cornflowerblue"}}>1. Python 소개</NormalText>
-                        <NormalText onClick={()=>{navigate("/book/read/1/2")}} sx={{fontSize: "15px", "&:hover": {opacity: 0.50}, cursor: "pointer"}}>2. Python 기초 문법</NormalText>
-                    </Stack>
+                    <IndexesInfoBox 
+                        bookId={bookId} 
+                        rawIndexInfos={[
+                            {id: 1, title: "Python 소개"},
+                            {id: 2, title: "Python 기초 문법"}]}
+                        focusedIndex={indexId}
+                    />
                 </Stack>
 
                 <Divider orientation="vertical" flexItem/>
