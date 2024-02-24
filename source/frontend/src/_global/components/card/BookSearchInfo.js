@@ -7,6 +7,7 @@ import ShareIcon from '@mui/icons-material/Share';
 import EditIcon from '@mui/icons-material/Edit';
 
 import BoldText from '../text/BoldText';
+import YesNoButton from '../button/YesNoButton';
 
 const BookSearchInfo = ({rawBookInfo, isEditIconVisible}) => {
     const navigate = useNavigate()
@@ -26,8 +27,8 @@ const BookSearchInfo = ({rawBookInfo, isEditIconVisible}) => {
         alert("Liked")
     }
 
-    const onClickSharedButton = () => {
-        alert("Shared")
+    const onClickSharedButton = (isShared) => {
+        alert("Shared: " + isShared)
     }
 
 
@@ -56,15 +57,19 @@ const BookSearchInfo = ({rawBookInfo, isEditIconVisible}) => {
                         {
                             (isEditIconVisible) ? (
                                 <Stack sx={{float: "right"}}>
-                                    <BoldText sx={{fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}, position: "relative", left: "15px"}} onClick={(e)=>{e.stopPropagation(); onClickSharedButton()}}>
+                                    <Box sx={{fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}, position: "relative", left: "15px"}} onClick={(e)=>{e.stopPropagation()}}>
                                     {
                                         (bookInfo.isShared) ? (
-                                            <ShareIcon sx={{color: "black"}}/>
+                                            <YesNoButton onClickYes={()=>{onClickSharedButton(false)}} title="해당 책의 공유를 취소하시겠습니까?">
+                                                <ShareIcon sx={{color: "black"}}/>
+                                            </YesNoButton>
                                         ) : (
-                                            <ShareIcon sx={{color: "lightgray"}}/>
+                                            <YesNoButton onClickYes={(e)=>{onClickSharedButton(true)}} title="해당 책을 공유시겠습니까?">
+                                                <ShareIcon sx={{color: "lightgray"}}/>
+                                            </YesNoButton>
                                         )
                                     }
-                                    </BoldText>
+                                    </Box>
 
                                     <IconButton sx={{position: "relative", bottom: "5px", left: "9px"}} onClick={(e)=>{e.stopPropagation();navigate(`/book/manage/${bookInfo.id}`)}}>
                                         <EditIcon sx={{fontSize: "22px"}}/> 
