@@ -19,6 +19,10 @@ const BookInfoPage = () => {
         alert(commentText)
     }
 
+    const onClickCommentPageNumber = (_, page) => {
+        alert("페이지 번호: " + page)
+    }
+
     
     return (
         <>
@@ -60,7 +64,7 @@ const BookInfoPage = () => {
                     ]}/>
 
                     <Box sx={{width: "100%", marginTop: "10px", display: "flex", justifyContent: "center"}}>
-                        <Pagination sx={{padding: "auto", margin: "0 auto"}} count={10}/>
+                        <Pagination count={10} onChange={onClickCommentPageNumber} sx={{padding: "auto", margin: "0 auto"}}/>
                     </Box>
                 </Stack>
             </Container>

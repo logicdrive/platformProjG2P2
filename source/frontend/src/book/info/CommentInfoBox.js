@@ -6,6 +6,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import BoldText from '../../_global/components/text/BoldText';
 import NormalText from '../../_global/components/text/NormalText';
 import EditCommentButton from './EditCommentButton';
+import YesNoButton from '../../_global/components/button/YesNoButton';
 
 const CommentInfoBox = ({rawCommentInfo}) => {
     const [commentInfo] = useState({
@@ -19,15 +20,21 @@ const CommentInfoBox = ({rawCommentInfo}) => {
         alert(comment)
     }
 
+    const onClickDeleteCommentButton = () => {
+        alert("Delete")
+    }
+
     return (
         <Stack>
             <Box>
                 <BoldText sx={{float: "left", fontSize: "15px"}}>{commentInfo.creator}</BoldText>
                 
                 
-                <IconButton sx={{float: "right", position: "relative", bottom: "5px"}} onClick={(e)=>{e.stopPropagation(); alert("Delete")}}>
-                    <DeleteIcon sx={{fontSize: "15px"}}/> 
-                </IconButton>
+                <YesNoButton onClickYes={onClickDeleteCommentButton} title="해당 댓글을 삭제하시겠습니까?">
+                    <IconButton sx={{float: "right", position: "relative", bottom: "5px"}}>
+                        <DeleteIcon sx={{fontSize: "15px"}}/> 
+                    </IconButton>
+                </YesNoButton>
                 <EditCommentButton onClickEditButton={onClickEditCommentButton} defaultComment={commentInfo.content}/>
 
                 <NormalText sx={{float: "right", fontSize: "15px"}}>{commentInfo.createdDate}</NormalText>
