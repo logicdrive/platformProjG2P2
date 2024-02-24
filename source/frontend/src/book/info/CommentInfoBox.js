@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 
 import { Stack, Box, IconButton } from "@mui/material";
-import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
 
 import BoldText from '../../_global/components/text/BoldText';
 import NormalText from '../../_global/components/text/NormalText';
+import EditCommentButton from './EditCommentButton';
 
 const CommentInfoBox = ({rawCommentInfo}) => {
     const [commentInfo] = useState({
@@ -14,6 +14,10 @@ const CommentInfoBox = ({rawCommentInfo}) => {
         createdDate: rawCommentInfo.createdDate,
         content: rawCommentInfo.content
     })
+
+    const onClickEditCommentButton = (comment) => {
+        alert(comment)
+    }
 
     return (
         <Stack>
@@ -24,9 +28,8 @@ const CommentInfoBox = ({rawCommentInfo}) => {
                 <IconButton sx={{float: "right", position: "relative", bottom: "5px"}} onClick={(e)=>{e.stopPropagation(); alert("Delete")}}>
                     <DeleteIcon sx={{fontSize: "15px"}}/> 
                 </IconButton>
-                <IconButton sx={{float: "right", position: "relative", bottom: "5px"}} onClick={(e)=>{e.stopPropagation(); alert("Edit")}}>
-                    <EditIcon sx={{fontSize: "15px"}}/> 
-                </IconButton>
+                <EditCommentButton onClickEditButton={onClickEditCommentButton} defaultComment={commentInfo.content}/>
+
                 <NormalText sx={{float: "right", fontSize: "15px"}}>{commentInfo.createdDate}</NormalText>
             </Box>
 
