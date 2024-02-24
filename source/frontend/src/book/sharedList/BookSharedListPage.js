@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { Box, Stack, Pagination } from '@mui/material';
 
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
@@ -6,12 +7,22 @@ import BookSubAppBar from '../_global/BookSubAppBar';
 import BookSearchInfo from '../../_global/components/card/BookSearchInfo';
 
 const BookSharedListPage = () => {
+
+    const onClickSearchButton = (searchText, searchType) => {
+        alert("검색어: " + searchText + ", 검색 대상: " + searchType)
+    }
+
+    const onClickPageNumber = (_, page) => {
+        alert("페이지 번호: " + page)
+    }
+
     return (
         <>
             <MainNavAppBar focusedIndex={0}/>
             <BookSubAppBar focusedIndex={1}
                 searchTypes={[{type: "bookTitle", name: "책 제목"},
                               {type: "bookCreater", name: "책 작성자"}]}
+                handleOnSubmit={onClickSearchButton}
             />
 
             <Stack>
@@ -32,7 +43,7 @@ const BookSharedListPage = () => {
                 </Stack>
                 
                 <Box sx={{width: "100%", marginTop: "10px", display: "flex", justifyContent: "center"}}>
-                    <Pagination sx={{padding: "auto", margin: "0 auto"}} count={10}/>
+                    <Pagination count={10} onChange={onClickPageNumber} sx={{padding: "auto", margin: "0 auto"}}/>
                 </Box>
             </Stack>
         </>
