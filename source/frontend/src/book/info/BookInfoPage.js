@@ -10,7 +10,7 @@ import BoldText from '../../_global/components/text/BoldText';
 import BookInfoBox from './BookInfoBox';
 import CommentsInfosBox from './CommentsInfosBox';
 import AddCommentForm from './AddCommentForm';
-import BookSearchInfo from '../../_global/components/card/BookSearchInfo';
+import RelatedBookInfosBox from './RelatedBookInfosBox';
 
 const BookInfoPage = () => {
     const {bookId} = useParams()
@@ -51,37 +51,29 @@ const BookInfoPage = () => {
                         <BoldText sx={{float: "left", fontSize: "17px", marginLeft: "5px", color: "gray"}}>비슷한 책 목록</BoldText>
                     </Box>
                     <Divider sx={{marginTop: "5px", marginBottom: "5px", width: "100%"}}/>
-                    <Box sx={{display: "flex", justifyContent: "center"}}>
-                        <BookSearchInfo
-                            rawBookInfo={{
-                                id: 1,
-                                title: "점프 투 파이썬",
-                                creator: "TestCreater",
-                                createdDate: "2024-02-22 12:47",
-                                likeCount: 10,
-                                tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
-                                isShared: false,
-                                imageUrl: ""
-                            }}
-                            isEditIconVisible={true}
-                            sx={{margin: "5px"}}
-                        />
+                    <RelatedBookInfosBox rawBookInfos={[
+                        {
+                            id: 1,
+                            title: "점프 투 파이썬",
+                            creator: "TestCreater",
+                            createdDate: "2024-02-22 12:47",
+                            likeCount: 10,
+                            tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
+                            isShared: false,
+                            imageUrl: ""
+                        },
 
-                        <BookSearchInfo
-                            rawBookInfo={{
-                                id: 1,
-                                title: "점프 투 파이썬",
-                                creator: "TestCreater",
-                                createdDate: "2024-02-22 12:47",
-                                likeCount: 10,
-                                tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
-                                isShared: false,
-                                imageUrl: ""
-                            }}
-                            isEditIconVisible={true}
-                            sx={{margin: "5px"}}
-                        />
-                    </Box>
+                        {
+                            id: 1,
+                            title: "점프 투 파이썬",
+                            creator: "TestCreater",
+                            createdDate: "2024-02-22 12:47",
+                            likeCount: 10,
+                            tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
+                            isShared: false,
+                            imageUrl: ""
+                        }
+                    ]}/>
 
 
                     <Box sx={{marginTop: "15px"}}>
