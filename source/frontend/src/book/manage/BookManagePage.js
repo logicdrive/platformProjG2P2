@@ -16,8 +16,8 @@ import TitleIcon from '@mui/icons-material/Title';
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
 import NavText from '../../_global/components/text/NavText';
-import TagInfo from './TagInfo';
-import IndexInfo from './IndexInfo';
+import TagInfoBox from './TagInfoBox';
+import IndexInfoBox from './IndexInfoBox';
 
 const BookManagePage = () => {
     const navigate = useNavigate()
@@ -114,7 +114,10 @@ const BookManagePage = () => {
                             </Box>
                         </Box>
                         
-                        <TagInfo tagId={1} tagName="IT"/>
+                        <TagInfoBox rawTagInfo={{
+                            id: 1,
+                            name: "IT"
+                        }}/>
                     </Stack>
                 </Box>
                 <Divider sx={{width: "100%"}}/>
@@ -134,7 +137,11 @@ const BookManagePage = () => {
                     </Box>
                 </Box>
                 <Stack sx={{width: "100%", marginTop: "16px"}}>
-                    <IndexInfo indexId={1} indexName="Python" isGeneated={true}/>
+                    <IndexInfoBox rawIndexInfo={{
+                        id: 1,
+                        name: "Python 소개",
+                        isGenerated: true
+                    }}/>
                 </Stack>
             </Container>
         </>
