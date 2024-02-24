@@ -1,8 +1,7 @@
 import React, {useState} from 'react';
-import { useParams, useNavigate } from 'react-router-dom';
+import { useParams } from 'react-router-dom';
+
 import { Container, Divider, Stack, Box, IconButton, Paper, InputBase, Pagination } from "@mui/material";
-import ThumbUpIcon from '@mui/icons-material/ThumbUp';
-import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import SendIcon from '@mui/icons-material/Send';
 import EditIcon from '@mui/icons-material/Edit';
@@ -11,20 +10,14 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
 import NormalText from '../../_global/components/text/NormalText';
-import NavText from '../../_global/components/text/NavText';
-import AddToBookShelfButton from './AddToBookShelfButton';
+import BookInfoBox from './BookInfoBox';
 
 const BookInfoPage = () => {
     const {bookId} = useParams()
     console.log("BookId :", bookId)
 
-    const navigate = useNavigate()
+    
     const [commentText, setCommentText] = useState("")
-
-    const onClickAddToBookShelfButton = (selectedBookShelfId) => {
-        alert("Add to BookShelf Button Clicked! Selected BookShelf Id: " + selectedBookShelfId)
-    }
-
 
     return (
         <>
@@ -35,46 +28,15 @@ const BookInfoPage = () => {
                     <BoldText sx={{fontSize: "25px"}}>Python</BoldText>
                     <Divider sx={{marginTop: "5px"}}/>
 
-                    <Box sx={{marginTop: "15px", padding: "10px"}}>
-                        <Box
-                                component="img"
-                                sx={{
-                                    height: 300,
-                                    width: 200,
-                                    backgroundColor: "lightgray",
-                                    borderRadius: 3,
-                                    border: "1px solid lightgray",
-                                    float:"left"
-
-                                }}
-                                alt="업로드된 이미지가 표시됩니다."
-                                src={"/src/NoImage.jpg"}
-                            />
-                        <Stack sx={{float: "left", marginLeft: "10px"}}>
-                            <NormalText sx={{fontSize: "20px"}}>작성자: TestCreater</NormalText>
-                            <Divider sx={{marginTop: "5px", marginBottom: "5px", width: "620px"}}/>
-
-                            <NormalText sx={{fontSize: "20px"}}>작성일: 2024-02-23 11:46</NormalText>
-                            <NormalText sx={{fontSize: "20px"}}>수정일: 2024-02-25 11:46</NormalText>
-                            <NormalText sx={{fontSize: "20px"}}>목차수: 5</NormalText>
-                            
-                            <Divider sx={{marginTop: "5px", marginBottom: "5px"}}/>
-                            <IconButton onClick={(e)=>{e.stopPropagation(); alert("LIKE")}} sx={{paddingY: "0px", borderRadius: "5px", marginLeft: "-10px", width: "120px"}}>
-                                <ThumbUpIcon sx={{fontSize: "20px"}}/> 
-                                <BoldText sx={{marginTop: "3px", marginLeft: "3px", fontSize: "15px", color: "gray"}}>25 LIKES</BoldText>
-                            </IconButton>
-
-                            <Divider sx={{marginTop: "5px", marginBottom: "5px"}}/>
-                            <Box sx={{marginTop: "88px"}}>
-                                <Box onClick={()=>{navigate("/book/read/1/1")}}sx={{float: "left", backgroundColor: "cornflowerblue", width: "85px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                                    <AutoStoriesIcon sx={{float: "left", color: "white"}}/>
-                                    <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>책 읽기</NavText>
-                                </Box>
-
-                                <AddToBookShelfButton onClickAddButton={onClickAddToBookShelfButton}/>
-                            </Box>
-                        </Stack>
-                    </Box>
+                    <BookInfoBox rawBookInfo={{
+                        id: 1,
+                        imageUrl: "/src/NoImage.jpg",
+                        creator: "TestCreater",
+                        createdDate: "2024-02-23 11:46",
+                        editedDate: "2024-02-23 11:46",
+                        indexCount: 5,
+                        likeCount: 10
+                    }}/>
                     
                     <Box sx={{marginTop: "15px"}}>
                         <ChatBubbleIcon sx={{float: "left", color: "gray"}}/>
