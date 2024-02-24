@@ -18,11 +18,17 @@ import BoldText from '../../_global/components/text/BoldText';
 import NavText from '../../_global/components/text/NavText';
 import TagInfoBox from './TagInfoBox';
 import IndexInfoBox from './IndexInfoBox';
+import YesNoButton from '../../_global/components/button/YesNoButton';
 
 const BookManagePage = () => {
     const navigate = useNavigate()
     const {bookId} = useParams()
     console.log("BookId :", bookId)
+
+
+    const onClickDeleteButton = () => {
+        alert("Delete")
+    }
 
     return (
         <>
@@ -39,10 +45,12 @@ const BookManagePage = () => {
                         <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px"}}>완료</BoldText>
                     </IconButton>
 
-                    <IconButton sx={{float: "right", marginTop: "-8px", marginRight: "-5px"}} onClick={(e)=>{e.stopPropagation(); alert("Delete")}}>
-                        <DeleteIcon sx={{fontSize: "30px", color: "black"}}/>
-                        <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px"}}>삭제</BoldText>
-                    </IconButton>
+                    <YesNoButton onClickYes={onClickDeleteButton} title="해당 책을 삭제시키겠습니까?">
+                        <IconButton sx={{float: "right", marginTop: "-8px", marginRight: "-5px"}}>
+                            <DeleteIcon sx={{fontSize: "30px", color: "black"}}/>
+                            <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px"}}>삭제</BoldText>
+                        </IconButton>
+                    </YesNoButton>
                 </Box>
                 <Divider sx={{width: "100%"}}/>
 
