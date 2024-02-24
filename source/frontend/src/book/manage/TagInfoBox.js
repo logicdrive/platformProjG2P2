@@ -5,6 +5,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import BoldText from '../../_global/components/text/BoldText';
 import YesNoButton from '../../_global/components/button/YesNoButton';
+import EditTagNameButton from './EditTagNameButton';
 
 const TagInfoBox = ({rawTagInfo}) => {
     const [tagInfo] = useState({
@@ -12,9 +13,15 @@ const TagInfoBox = ({rawTagInfo}) => {
         name: rawTagInfo.name
     })
 
+
     const onClickDeleteButton = () => {
         alert("Delete")
     }
+    
+    const onClickEditButton = (title) => {
+        alert("Edit :" + title)
+    }
+
 
     return (
         <Box sx={{display: "flex", flexDirection: "row", width: "630px", flexWrap: "wrap", marginTop: "10px", marginLeft: "-3px"}}>
@@ -26,9 +33,7 @@ const TagInfoBox = ({rawTagInfo}) => {
                             <DeleteIcon sx={{float: "left", color: "gray"}}/>
                     </YesNoButton>
                 </Box>
-                <Box onClick={()=>{alert("Edit")}} sx={{marginLeft: "20px", marginTop: "5px", float: "right", width: "25px", height: "25px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                    <EditIcon sx={{float: "left", color: "gray"}}/>
-                </Box>
+                <EditTagNameButton onClickEditButton={onClickEditButton} defaultTitle={tagInfo.name}/>
             </Box>
         </Box>
     )

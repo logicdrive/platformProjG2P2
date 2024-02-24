@@ -19,6 +19,7 @@ import NavText from '../../_global/components/text/NavText';
 import TagInfoBox from './TagInfoBox';
 import IndexInfoBox from './IndexInfoBox';
 import YesNoButton from '../../_global/components/button/YesNoButton';
+import EditBookTitleButton from './EditBookTitleButton';
 
 const BookManagePage = () => {
     const navigate = useNavigate()
@@ -26,9 +27,14 @@ const BookManagePage = () => {
     console.log("BookId :", bookId)
 
 
-    const onClickDeleteButton = () => {
+    const onClickDeleteBookButton = () => {
         alert("Delete")
     }
+
+    const onClickEditBookTitleButton = (title) => {
+        alert("Edit : "+ title)
+    }
+
 
     return (
         <>
@@ -45,7 +51,7 @@ const BookManagePage = () => {
                         <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px"}}>완료</BoldText>
                     </IconButton>
 
-                    <YesNoButton onClickYes={onClickDeleteButton} title="해당 책을 삭제시키겠습니까?">
+                    <YesNoButton onClickYes={onClickDeleteBookButton} title="해당 책을 삭제시키겠습니까?">
                         <IconButton sx={{float: "right", marginTop: "-8px", marginRight: "-5px"}}>
                             <DeleteIcon sx={{fontSize: "30px", color: "black"}}/>
                             <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px"}}>삭제</BoldText>
@@ -100,10 +106,7 @@ const BookManagePage = () => {
                                 <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>생성</NavText>
                             </Box>
 
-                            <Box onClick={()=>{alert("Edit")}} sx={{marginRight: "5px", float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                                <EditIcon sx={{float: "left", color: "white"}}/>
-                                <NavText sx={{float: "left", marginTop: "2px", marginLeft: "5px"}}>편집</NavText>
-                            </Box>    
+                            <EditBookTitleButton onClickEditButton={onClickEditBookTitleButton} defaultTitle={"KKKKK"}/>   
                         </Box>
                         <Divider sx={{marginTop: "5px"}}/>
                         
