@@ -49,7 +49,7 @@ const BookShelfBookSearchInfo = ({rawBookInfo}) => {
                         <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookInfo.title}</BoldText>
                         
                         <Box onClick={(e)=>{e.stopPropagation()}}>
-                            <YesNoButton onClickYes={()=>{onClickDeleteButton(false)}} title="해당 책을 책장에서 삭제하시겠습니까?">
+                            <YesNoButton onClickYes={()=>{onClickDeleteButton()}} title="해당 책을 책장에서 삭제하시겠습니까?">
                                 <BoldText sx={{float: "right", fontSize: "18px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
                                     <DeleteIcon sx={{color: "gray"}}/>
                                 </BoldText>
