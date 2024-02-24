@@ -1,6 +1,8 @@
 import React from 'react';
-import { Box, IconButton, Divider, Container, Stack } from "@mui/material";
 import { useParams, useNavigate } from 'react-router-dom';
+
+import { Box, IconButton, Divider, Container, Stack } from "@mui/material";
+import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 import EditIcon from '@mui/icons-material/Edit';
 import UploadIcon from '@mui/icons-material/Upload';
@@ -31,9 +33,15 @@ const BookManagePage = () => {
                     <EditIcon sx={{float: "left", marginTop: "5px"}}/>
                     <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px", marginLeft: "5px"}}>책 편집</BoldText>
 
+
                     <IconButton sx={{float: "right", marginTop: "-8px", marginRight: "-5px"}} onClick={(e)=>{e.stopPropagation(); navigate("/book/myList")}}>
                         <DoneIcon sx={{fontSize: "30px", color: "black"}}/>
                         <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px"}}>완료</BoldText>
+                    </IconButton>
+
+                    <IconButton sx={{float: "right", marginTop: "-8px", marginRight: "-5px"}} onClick={(e)=>{e.stopPropagation(); alert("Delete")}}>
+                        <DeleteIcon sx={{fontSize: "30px", color: "black"}}/>
+                        <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px"}}>삭제</BoldText>
                     </IconButton>
                 </Box>
                 <Divider sx={{width: "100%"}}/>
