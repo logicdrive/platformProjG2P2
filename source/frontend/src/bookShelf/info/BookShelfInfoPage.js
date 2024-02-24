@@ -23,15 +23,15 @@ const BookShelfInfoPage = () => {
             <Stack>
                 <Stack direction="row" spacing={2}>
                     <BookShelfBookSearchInfo
-                        bookId={1}
-                        bookTitle={"점프 투 파이썬"}
-                        bookCreater={"TestCreater"}
-                        bookCreateDate={"2024-02-22 12:47"}
-                        bookLikeCount={10}
-                        bookTags={["AAAAA", "BBBBB", "CCCCC", "DDDDD"]}
-
-                        onClickCardUrl={"/book/info/1"}
-                        bookImageUrl={""}
+                        rawBookInfo={{
+                            id: 1,
+                            title: "점프 투 파이썬",
+                            creator: "TestCreater",
+                            createdDate: "2024-02-22 12:47",
+                            likeCount: 10,
+                            tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
+                            imageUrl: ""
+                        }}
                     />
                 </Stack>
                 
