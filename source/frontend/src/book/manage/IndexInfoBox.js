@@ -25,8 +25,17 @@ const IndexInfoBox = ({rawIndexInfo, priority, setIsBackdropOpened}) => {
     }, [rawIndexInfo, priority])
     
 
-    const onClickDeleteButton = () => {
-        alert("Delete")
+    const onClickDeleteButton = async () => {
+        try {
+
+            setIsBackdropOpened(true)
+            await IndexProxy.deleteIndex(indexInfo.id)
+    
+          } catch(error) {
+            addAlertPopUp("인덱스를 삭제하는 도중에 오류가 발생했습니다!", "error")
+            console.error("인덱스를 삭제하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     const onClickEditButton = async (title) => {

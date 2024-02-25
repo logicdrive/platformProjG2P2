@@ -144,6 +144,7 @@ const BookManagePage = () => {
 
             else if(eventName === "IndexCreated") successLog = "인덱스가 추가되었습니다."
             else if(eventName === "IndexEdited") successLog = "인덱스가 수정되었습니다."
+            else if(eventName === "IndexDeleted") successLog = "인덱스가 삭제되었습니다."
 
 
             addAlertPopUp(successLog, "success")

@@ -22,6 +22,13 @@ class IndexProxy {
             "indexPriority": indexPriority
         })
     }
+
+
+    static async deleteIndex(indexId) {
+        await ServerProxy.request("put", "index", "indexes/deleteIndex", {
+            "indexId": indexId
+        })
+    }
 }
 
 export default IndexProxy
