@@ -211,6 +211,8 @@ const indexQuery = rawBookInfo.title
             else if(eventName === "IndexEdited") successLog = "인덱스가 수정되었습니다."
             else if(eventName === "IndexDeleted") successLog = "인덱스가 삭제되었습니다."
 
+            else if(eventName === "ContentUpdated") successLog = "인덱스 내용이 정상적으로 수정되었습니다."
+            else if(eventName === "ProblemCreated") successLog = "문제가 정상적으로 생성되었습니다."
 
             if(successLog.length > 0)
             {
@@ -321,7 +323,7 @@ const indexQuery = rawBookInfo.title
                 <Stack sx={{width: "100%", marginTop: "16px"}} spacing={1}>
                     {
                         bookInfo.rawIndexInfos.map((rawIndexInfo, index) => {
-                            return <IndexInfoBox key={index} rawIndexInfo={rawIndexInfo} priority={index+1} setIsBackdropOpened={setIsBackdropOpened}/>
+                            return <IndexInfoBox key={index} rawIndexInfo={rawIndexInfo} priority={index+1} bookTitle={bookInfo.title} setIsBackdropOpened={setIsBackdropOpened}/>
                         })
                     }
                 </Stack>

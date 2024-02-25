@@ -27,7 +27,7 @@ BookMyListPage: U++
 BookSharedListPage: U++
 BookInfoPage: U++
 BookReadPage: U++
-BookManagePage: U++
+BookManagePage: U++ E
 
 BookShelfMyListPage: U++
 BookShelfSharedListPage: U+
