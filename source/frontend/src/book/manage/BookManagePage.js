@@ -48,12 +48,21 @@ const BookManagePage = () => {
                 const rawIndexInfos = (await IndexProxy.searchIndexAllByBookId(rawBookInfo.bookId))._embedded.indexes
                 const fileData = await FileProxy.searchFileOneByFileId(rawBookInfo.bookId)
     
+const tagQuery = `Title: ${rawBookInfo.title}
+Indexes
+${rawIndexInfos.map((rawIndexInfo, index) => {
+    return `${index+1}. ${rawIndexInfo.name}`
+  }).join("\n")}
+`
+
                 setBookInfo({
                     id: rawBookInfo.bookId,
                     title: rawBookInfo.title,
                     imageUrl: fileData.url,
                     rawTagInfos: rawTagInfos,
-                    rawIndexInfos: rawIndexInfos
+                    rawIndexInfos: rawIndexInfos,
+
+                    tagQuery: tagQuery
                 })
                 setCoverImageUrl(fileData.url)
     
@@ -135,8 +144,17 @@ const BookManagePage = () => {
         }
     }
 
-    const onClickGenerateTagsButton = (query) => {
-        alert("Generate : "+ query)
+    const onClickGenerateTagsButton = async (query) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await TagProxy.generateTags(bookId, query)
+
+          } catch(error) {
+            addAlertPopUp("AI를 기반으로 태그를 생성하는 도중에 오류가 발생했습니다!", "error")
+            console.error("AI를 기반으로 태그를 생성하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
 
@@ -267,7 +285,7 @@ const BookManagePage = () => {
                             <LabelIcon sx={{float: "left", color: "black", fontSize: "27px", marginTop: "-1px"}}/>
                             <BoldText sx={{float: "left", fontSize: "20px", marginLeft: "2px"}}>태그</BoldText>
 
-                            <GenerateTagsButton onClickGenerateButton={onClickGenerateTagsButton} defaultQuery={"tagQuery"}/>
+                            <GenerateTagsButton onClickGenerateButton={onClickGenerateTagsButton} defaultQuery={bookInfo.tagQuery}/>
                             <AddTagNameButton onClickAddButton={onClickAddTagButton} defaultTitle=""/>
                         </Box>
 

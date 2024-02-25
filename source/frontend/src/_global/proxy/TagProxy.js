@@ -13,6 +13,13 @@ class TagProxy {
         })
     }
 
+    static async generateTags(bookId, query) {
+        await ServerProxy.request("put", "tag", "tags/generateTags", {
+            "bookId": bookId, 
+            "query": query
+        })
+    }
+
 
     static async editTag(tagId, tagName) {
         await ServerProxy.request("put", "tag", "tags/editTag", {
