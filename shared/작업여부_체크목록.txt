@@ -20,7 +20,7 @@ frontend: U++
 
 * frontend
 
-UserSignUpPage: U++
+UserSignUpPage: U++ E
 UserSignInPage: U++
 
 BookMyListPage: U++

@@ -1,10 +1,9 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Box, Card, Stack } from '@mui/material';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext'
-import { JwtTokenContext } from "../../_global/provider/jwtToken/JwtTokenContext";
 
 import TopAppBar from '../../_global/components/TopAppBar';
 import BoldText from '../../_global/components/text/BoldText';
@@ -17,14 +16,7 @@ import UserProxy from '../../_global/proxy/UserProxy';
 
 const UserSignUpPage = () => {
     const {addAlertPopUp} = useContext(AlertPopupContext);
-    const {jwtTokenState} = useContext(JwtTokenContext);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        if(jwtTokenState.jwtToken !== null) {
-            navigate("/book/myList");
-        }
-    }, [jwtTokenState.jwtToken, navigate])
 
 
     const [signUpInfo, setSignUpInfo] = useState({
@@ -112,12 +104,14 @@ const UserSignUpPage = () => {
 
 function setTestAutomationCommands(setSignUpInfo) {
     window.onkeydown = (e) => {
-        if((e.code === "Digit1") && e.altKey)
+        if(!e || !e.code) return
+
+        if(e.code.startsWith("Digit") && e.altKey)
         {
             setSignUpInfo({
-                "email": "testemail1@gmail.com",
-                "password": "testpassword1",
-                "name": "testname1"
+                "email": `testemail${e.code[5]}@gmail.com`,
+                "password": `testpassword${e.code[5]}`,
+                "name": `testname${e.code[5]}`
             })
         }
     }
