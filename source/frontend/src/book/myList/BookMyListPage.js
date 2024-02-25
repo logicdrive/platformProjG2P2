@@ -1,11 +1,10 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 import { Box, Stack, Pagination } from '@mui/material';
 
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BookSubAppBar from '../_global/BookSubAppBar';
 import BookSearchInfos from '../../_global/components/card/BookSearchInfos';
-import SubscribeMessageCreatedSocket from '../../_global/socket/EventHandlerSocket';
 
 const BookMyListPage = () => {
 

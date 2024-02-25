@@ -1,5 +1,5 @@
 import React, { useState, useContext } from 'react';
-import { Button, Dialog, DialogTitle, DialogContent, DialogActions, Stack } from '@mui/material';
+import { Button, Dialog, DialogTitle, DialogContent, DialogActions, Stack, Backdrop, CircularProgress } from '@mui/material';
 import ManageAccountsIcon from '@mui/icons-material/ManageAccounts';
 
 import { AlertPopupContext } from '../../provider/alertPopUp/AlertPopUpContext';
@@ -12,9 +12,10 @@ import SubscribeMessageCreatedSocket from '../../socket/EventHandlerSocket';
 import StringTool from '../../tool/StringTool';
 
 const UserManageButton = ({...props}) => {
-  const {addAlertPopUp} = useContext(AlertPopupContext);
-  const {jwtTokenState} = useContext(JwtTokenContext);
-  const [isDialogOpend, setIsDialogOpend] = useState(false);
+  const {addAlertPopUp} = useContext(AlertPopupContext)
+  const {jwtTokenState} = useContext(JwtTokenContext)
+  const [isDialogOpend, setIsDialogOpend] = useState(false)
+  const [isBackdropOpened, setIsBackdropOpened] = useState(false)
   const [userName, setUserName] = useState("")
   
 
@@ -41,11 +42,14 @@ const UserManageButton = ({...props}) => {
   const onClickSaveButton = async () => {
     try {
 
+        setIsDialogOpend(false)
+        setIsBackdropOpened(true)
         await UserProxy.updateName(userName)
 
     } catch(error) {
         addAlertPopUp("유저 정보 수정 도중에 오류가 발생했습니다!", "error")
         console.error("유저 정보 수정 도중에 오류가 발생했습니다!", error)
+        setIsBackdropOpened(false)
     }
   }
 
@@ -54,7 +58,7 @@ const UserManageButton = ({...props}) => {
         if(eventName === "UserNameUpdated")
         {
           addAlertPopUp("유저 정보가 정상적으로 수정되었습니다.", "success")
-          setIsDialogOpend(false)
+          setIsBackdropOpened(false)
         }
       }
   })[0])
@@ -95,6 +99,14 @@ const UserManageButton = ({...props}) => {
           }} sx={{color: "black", fontWeight: "bolder", fontFamily: "BMDfont"}}>저장</Button>
       </DialogActions>
     </Dialog>
+
+
+    <Backdrop
+        sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+        open={isBackdropOpened}
+    >
+        <CircularProgress color="inherit" />
+    </Backdrop>
     </>
   )
 }
