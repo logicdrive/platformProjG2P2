@@ -46,7 +46,7 @@ const BookManagePage = () => {
                 const rawBookInfo = await BookProxy.searchBookOneByBookId(bookId)
                 const rawTagInfos = (await TagProxy.searchAllTagByBookId(rawBookInfo.bookId))._embedded.tags
                 const rawIndexInfos = (await IndexProxy.searchIndexAllByBookId(rawBookInfo.bookId))._embedded.indexes
-                const fileData = await FileProxy.searchFileOneByFileId(rawBookInfo.bookId)
+                const fileData = await FileProxy.searchFileOneByFileId(rawBookInfo.coverImageFileId)
     
 const tagQuery = `Title: ${rawBookInfo.title}
 Indexes
