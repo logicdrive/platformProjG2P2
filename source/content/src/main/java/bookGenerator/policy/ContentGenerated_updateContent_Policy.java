@@ -33,7 +33,7 @@ public class ContentGenerated_updateContent_Policy {
             CustomLogger.debugObject(CustomLoggerType.ENTER, contentGenerated);
 
  
-            Content contentToUpdate = ContentManageService.getInstance().findByIndexIdOrThrow(contentGenerated.getContentId());
+            Content contentToUpdate = ContentManageService.getInstance().findByIdOrThrow(contentGenerated.getContentId());
             contentToUpdate.setContent(contentGenerated.getContent());
             Content.repository().save(contentToUpdate);
 
