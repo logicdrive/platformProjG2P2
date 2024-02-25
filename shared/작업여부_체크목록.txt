@@ -20,18 +20,17 @@ frontend: U++
 
 * frontend
 
-UserSignUpPage: U++ E
-UserSignInPage: U++ E
+UserSignUpPage: E
+UserSignInPage: E
 
-BookMyListPage: U++ E
-BookSharedListPage: U++
-BookInfoPage: U++
-BookReadPage: U++
-BookManagePage: U++ E
+BookMyListPage: E
+BookSharedListPage: 
+BookInfoPage: 
+BookReadPage: 
+BookManagePage: E
 
-BookShelfMyListPage: U++
-BookShelfSharedListPage: U+
-BookShelfInfoPage: U++
+BookShelfMyListPage: 
+BookShelfSharedListPage: 
+BookShelfInfoPage: 
 
-RecommandUser: U++
-RecommandBook: U++
+RecommandUserPage: 
