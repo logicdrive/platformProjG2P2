@@ -86,8 +86,17 @@ const BookManagePage = () => {
     }
     
 
-    const onClickDeleteBookButton = () => {
-        alert("Delete")
+    const onClickDeleteBookButton = async () => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookProxy.deleteBook(bookId)
+    
+          } catch(error) {
+            addAlertPopUp("책을 삭제하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책을 삭제하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     const onClickEditBookTitleButton = async (title) => {
@@ -145,6 +154,15 @@ const BookManagePage = () => {
         
             let successLog = ""
             if(eventName === "BookTitleUpdated") successLog = "책 제목이 정상적으로 수정되었습니다."
+            else if(eventName === "BookDeleted")
+            {
+                successLog = "책이 정상적으로 삭제되었습니다."
+                addAlertPopUp(successLog, "success")
+                setIsBackdropOpened(false)
+                navigate("/book/myList")
+                return
+            }
+
             else if(eventName === "CoverImageInfoUpdated") successLog = "책 표지 이미지가 정상적으로 수정되었습니다."
 
             else if(eventName === "TagCreated") successLog = "태그가 추가되었습니다."
