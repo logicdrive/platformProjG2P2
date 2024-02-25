@@ -21,7 +21,7 @@ frontend: U++
 * frontend
 
 UserSignUpPage: U++ E
-UserSignInPage: U++
+UserSignInPage: U++ E
 
 BookMyListPage: U++
 BookSharedListPage: U++

@@ -18,7 +18,7 @@ const SubscribeMessageCreatedSocket = (notifiedEventStatus) => {
   useEffect(() => {
       console.log(`[EFFECT] Notified created message status by socket: <event:${JSON.stringify(lastJsonMessage)}>`)
       if((lastJsonMessage !== null) && lastJsonMessage.eventName && lastJsonMessage.value)
-        notifiedEventStatus(lastJsonMessage.eventName, lastJsonMessage.value)
+        notifiedEventStatus(lastJsonMessage.eventName, ((lastJsonMessage.value) ? JSON.parse(lastJsonMessage.value) : {}))
       else if(lastJsonMessage !== null)
         console.log(`[EFFECT] Ignored Data: ${lastJsonMessage}`)
   }, [lastJsonMessage, notifiedEventStatus])

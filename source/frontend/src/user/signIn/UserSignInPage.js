@@ -1,4 +1,4 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useContext, useState } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Card, Stack } from '@mui/material';
 
@@ -15,14 +15,8 @@ import UserProxy from '../../_global/proxy/UserProxy';
   
 const UserSignInPage = () => {
     const {addAlertPopUp} = useContext(AlertPopupContext);
-    const {registerTokenValue, jwtTokenState} = useContext(JwtTokenContext);
+    const {registerTokenValue} = useContext(JwtTokenContext);
     const navigate = useNavigate();
-
-    useEffect(() => {
-        if(jwtTokenState.jwtToken !== null) {
-            navigate("/book/myList");
-        }
-    }, [jwtTokenState.jwtToken, navigate])
 
 
     const [signInInfo, setSignInInfo] = useState({
@@ -44,6 +38,8 @@ const UserSignInPage = () => {
             const jwtToken = await UserProxy.signIn(signInInfo.email, signInInfo.password);
             registerTokenValue(jwtToken);
             addAlertPopUp("로그인이 성공적으로 수행되었습니다.", "success");
+
+            navigate("/book/myList");
 
         } catch(error) {
             addAlertPopUp("로그인 도중에 오류가 발생했습니다!", "error");
@@ -93,19 +89,13 @@ const UserSignInPage = () => {
 
 function setTestAutomationCommands(setSignInInfo) {
     window.onkeydown = (e) => {
-        if((e.code === "Digit1") && e.altKey)
-        {
-            setSignInInfo({
-                "email": "testemail1@gmail.com",
-                "password": "testpassword1"
-            })
-        }
+        if(!e || !e.code) return
 
-        if((e.code === "Digit0") && e.altKey)
+        if(e.code.startsWith("Digit") && e.altKey)
         {
             setSignInInfo({
-                "email": "admin@gmail.com",
-                "password": "admin"
+                "email": `testemail${e.code[5]}@gmail.com`,
+                "password": `testpassword${e.code[5]}`
             })
         }
     }

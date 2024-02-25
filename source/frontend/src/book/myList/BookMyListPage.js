@@ -17,15 +17,6 @@ const BookMyListPage = () => {
         alert("페이지 번호: " + page)
     }
 
-
-    SubscribeMessageCreatedSocket(useState(() => {
-        return (eventName, value) => {
-            console.log(`[CALLBACK] Notified created message status by socket: <event:${eventName}, value:${value}>`)
-            console.log(JSON.parse(value))
-        }
-    })[0])
-
-
     return (
         <>
             <MainNavAppBar focusedIndex={0}/>

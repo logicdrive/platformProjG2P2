@@ -7,7 +7,7 @@ class ServerProxy {
 
     static async request(method, service, resource, data) {
         const jwtTokenValue = (localStorage.getItem("jwtToken") != null) ? `Bearer ${localStorage.getItem("jwtToken")}` : ""
-        const requestHeader = {headers: {Authorization: `Bearer ${jwtTokenValue}`}};
+        const requestHeader = {Authorization: `Bearer ${jwtTokenValue}`}
 
         console.log("[EFFECT] request : <method:" + method + ", service:" + service + ", resource:" + resource + ", data:" + JSON.stringify(data) + ">")
         const response = await axios({

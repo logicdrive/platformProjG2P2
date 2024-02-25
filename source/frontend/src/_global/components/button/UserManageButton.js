@@ -7,8 +7,9 @@ import { JwtTokenContext } from '../../provider/jwtToken/JwtTokenContext';
 
 import StyledTextField from '../textField/StyledTextField';
 import IconButton from './IconButton';
-
 import UserProxy from '../../proxy/UserProxy';
+import SubscribeMessageCreatedSocket from '../../socket/EventHandlerSocket';
+import StringTool from '../../tool/StringTool';
 
 const UserManageButton = ({...props}) => {
   const {addAlertPopUp} = useContext(AlertPopupContext);
@@ -20,30 +21,46 @@ const UserManageButton = ({...props}) => {
   const onClickDialogOpenButton = async () => {
     try {
 
-        const userDate = await UserProxy.searchUserOneByUserId(jwtTokenState.jwtToken.id, jwtTokenState);
+        if(jwtTokenState.jwtToken === null) {
+          addAlertPopUp("유저 토큰 정보가 없습니다! 다시 로그인해주세요.", "error")
+          return
+        }
 
-        setUserName(userDate.name);
+        const userData = await UserProxy.searchUserOneByUserId(jwtTokenState.jwtToken.id)
+        setUserName(userData.name);
+
         setIsDialogOpend(true);
 
       } catch(error) {
-        addAlertPopUp("유저 정보를 불러오는 도중에 오류가 발생했습니다!", "error");
-        console.error("유저 정보를 불러오는 도중에 오류가 발생했습니다!", error);
+        addAlertPopUp("유저 정보를 불러오는 도중에 오류가 발생했습니다!", "error")
+        console.error("유저 정보를 불러오는 도중에 오류가 발생했습니다!", error)
     }
   }
+
 
   const onClickSaveButton = async () => {
     try {
 
-        await UserProxy.updateName(userName, jwtTokenState);
-        addAlertPopUp("유저 정보가 정상적으로 수행되었습니다.", "success");
+        await UserProxy.updateName(userName)
 
     } catch(error) {
-        addAlertPopUp("유저 정보 수정 도중에 오류가 발생했습니다!", "error");
-        console.error("유저 정보 수정 도중에 오류가 발생했습니다!", error);
+        addAlertPopUp("유저 정보 수정 도중에 오류가 발생했습니다!", "error")
+        console.error("유저 정보 수정 도중에 오류가 발생했습니다!", error)
     }
   }
 
+  SubscribeMessageCreatedSocket(useState(() => {
+      return (eventName) => {
+        if(eventName === "UserNameUpdated")
+        {
+          addAlertPopUp("유저 정보가 정상적으로 수정되었습니다.", "success")
+          setIsDialogOpend(false)
+        }
+      }
+  })[0])
 
+
+  setTestAutomationCommands(isDialogOpend, userName, setUserName)
   return (
     <>
     <IconButton onClick={onClickDialogOpenButton} {...props}>
@@ -71,16 +88,27 @@ const UserManageButton = ({...props}) => {
 
       <DialogActions>
           <Button onClick={() => {
-            setIsDialogOpend(false);
+            setIsDialogOpend(false)
           }} sx={{color: "black", fontWeight: "bolder", fontFamily: "BMDfont"}}>닫기</Button>
           <Button onClick={() => {
-            onClickSaveButton();
-            setIsDialogOpend(false);
+            onClickSaveButton()
           }} sx={{color: "black", fontWeight: "bolder", fontFamily: "BMDfont"}}>저장</Button>
       </DialogActions>
     </Dialog>
     </>
   )
+}
+
+function setTestAutomationCommands(isDialogOpend, userName, setUserName) {
+  window.onkeydown = (e) => {
+      if(!e || !e.code) return
+      if(!isDialogOpend) return
+
+      if(e.code.startsWith("Digit") && e.altKey)
+      {
+        setUserName(`updated${StringTool.toTitle(userName)}`)
+      }
+  }
 }
 
 export default UserManageButton;
