@@ -23,17 +23,15 @@ const TagInfoBox = ({rawTagInfo}) => {
 
 
     return (
-        <Box sx={{display: "flex", flexDirection: "row", width: "630px", flexWrap: "wrap", marginTop: "10px", marginLeft: "-3px"}}>
-            <Box sx={{margin: "5px", backgroundColor: "lightgray", padding: "5px", borderRadius: "5px"}}>
-                <BoldText sx={{fontSize: "20px", display: "inline-block", color: "black", borderRadius: "5px", marginTop: "4px", marginLeft: "4px", cursor: "context-menu"}}>{tagInfo.name}</BoldText>
+        <Box sx={{margin: "5px", backgroundColor: "lightgray", padding: "5px", borderRadius: "5px"}}>
+            <BoldText sx={{fontSize: "20px", display: "inline-block", color: "black", borderRadius: "5px", marginTop: "4px", marginLeft: "4px", cursor: "context-menu"}}>{tagInfo.name}</BoldText>
 
-                <Box sx={{marginTop: "5px", float: "right", width: "25px", height: "25px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-                    <YesNoButton onClickYes={onClickDeleteButton} title="해당 태그를 삭제시키겠습니까?">
-                            <DeleteIcon sx={{float: "left", color: "gray"}}/>
-                    </YesNoButton>
-                </Box>
-                <EditTagNameButton onClickEditButton={onClickEditButton} defaultTitle={tagInfo.name}/>
+            <Box sx={{marginTop: "5px", float: "right", width: "25px", height: "25px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
+                <YesNoButton onClickYes={onClickDeleteButton} title="해당 태그를 삭제시키겠습니까?">
+                        <DeleteIcon sx={{float: "left", color: "gray"}}/>
+                </YesNoButton>
             </Box>
+            <EditTagNameButton onClickEditButton={onClickEditButton} defaultTitle={tagInfo.name}/>
         </Box>
     )
 }

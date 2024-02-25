@@ -177,12 +177,14 @@ const BookManagePage = () => {
                             <GenerateTagsButton onClickGenerateButton={onClickGenerateTagsButton} defaultQuery={"tagQuery"}/>
                             <AddTagNameButton onClickAddButton={onClickAddTagButton}/>
                         </Box>
-                        
+
+                        <Box sx={{display: "flex", flexDirection: "row", width: "630px", flexWrap: "wrap", marginTop: "10px", marginLeft: "-3px"}}>
                         {
                             bookInfo.rawTagInfos.map((rawTagInfo, index) => {
                                 return <TagInfoBox key={index} rawTagInfo={rawTagInfo}/>
                             })  
-                        }
+                        }          
+                        </Box>
                     </Stack>
                 </Box>
                 <Divider sx={{width: "100%"}}/>
