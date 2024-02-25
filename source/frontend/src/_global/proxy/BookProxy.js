@@ -6,6 +6,14 @@ class BookProxy {
     }
 
 
+    static async updateBookTitle(bookId, title) {
+        await ServerProxy.request("put", "book", "books/updateBookTitle", {
+            "bookId": bookId, 
+            "bookTitle": title
+        })
+    }
+
+
     static async searchBookAllByCreaterId(createrId, page, size=6) {
         return (await ServerProxy.request("get", "collectedData", `books/search/findByCreaterIdOrderByCreatedDateDesc?createrId=${createrId}&page=${page}&size=${size}`)).data
     }

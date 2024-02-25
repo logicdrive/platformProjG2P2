@@ -14,6 +14,7 @@ const EditBookTitleButton = ({onClickEditButton, defaultTitle, ...props}) => {
     onClickEditButton(title);
   }
 
+  setTestAutomationCommands(isDialogOpend, setTitle)
   return (
     <>
     <Box onClick={()=>{setIsDialogOpend(true);setTitle(defaultTitle)}} sx={{float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}} {...props}>
@@ -52,6 +53,18 @@ const EditBookTitleButton = ({onClickEditButton, defaultTitle, ...props}) => {
     </Dialog>
     </>
   )
+}
+
+function setTestAutomationCommands(isDialogOpend, setTitle) {
+  window.onkeydown = (e) => {
+      if(!e || !e.code) return
+      if(!isDialogOpend) return
+
+      if(e.code.startsWith("Digit1") && e.altKey)
+      {
+        setTitle("Python")
+      }
+  }
 }
 
 export default EditBookTitleButton;

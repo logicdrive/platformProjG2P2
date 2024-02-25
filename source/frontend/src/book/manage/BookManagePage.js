@@ -1,7 +1,7 @@
 import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
-import { Box, IconButton, Divider, Container, Stack } from "@mui/material";
+import { Box, IconButton, Divider, Container, Stack, Backdrop, CircularProgress } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 import DoneIcon from '@mui/icons-material/Done';
 import EditIcon from '@mui/icons-material/Edit';
@@ -29,12 +29,13 @@ import BookProxy from '../../_global/proxy/BookProxy';
 import TagProxy from '../../_global/proxy/TagProxy';
 import FileProxy from '../../_global/proxy/FileProxy';
 import IndexProxy from '../../_global/proxy/IndexProxy';
+import SubscribeMessageCreatedSocket from '../../_global/socket/EventHandlerSocket';
 
 const BookManagePage = () => {
     const navigate = useNavigate()
     const {addAlertPopUp} = useContext(AlertPopupContext)
     const {bookId} = useParams()
-    console.log("BookId :", bookId)
+    const [isBackdropOpened, setIsBackdropOpened] = useState(false)
 
     const [coverImageUrl, setCoverImageUrl] = useState("")
     const [bookInfo, setBookInfo] = useState({})
@@ -81,8 +82,17 @@ const BookManagePage = () => {
         alert("Delete")
     }
 
-    const onClickEditBookTitleButton = (title) => {
-        alert("Edit : "+ title)
+    const onClickEditBookTitleButton = async (title) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookProxy.updateBookTitle(bookId, title)
+    
+          } catch(error) {
+            addAlertPopUp("책 제목을 변경하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책 제목을 변경하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     
@@ -102,6 +112,18 @@ const BookManagePage = () => {
     const onClickGenerateIndexesButton = (query) => {
         alert("Generate : "+ query)
     }
+
+
+    SubscribeMessageCreatedSocket(useState(() => {
+        return (eventName, value) => {
+          if(eventName === "BookTitleUpdated" && Number(bookId) === value.bookId)
+          {
+            addAlertPopUp("책 제목이 정상적으로 수정되었습니다.", "success")
+            setIsBackdropOpened(false)
+            loadBookInfo()
+          }
+        }
+    })[0])
 
     
     if(!bookInfo.id) return <></>
@@ -207,6 +229,13 @@ const BookManagePage = () => {
                     }
                 </Stack>
             </Container>
+
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={isBackdropOpened}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
         </>
     )
 }
