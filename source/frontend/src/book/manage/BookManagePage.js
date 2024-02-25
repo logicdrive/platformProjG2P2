@@ -38,15 +38,15 @@ const BookManagePage = () => {
 
     const [coverImageUrl, setCoverImageUrl] = useState("")
     const [bookInfo, setBookInfo] = useState({})
-    useEffect(() => {
-        (async () => {
+    const [loadBookInfo] = useState(() => {
+        return async () => {
             try {
-
+    
                 const rawBookInfo = await BookProxy.searchBookOneByBookId(bookId)
                 const rawTagInfos = (await TagProxy.searchAllTagByBookId(rawBookInfo.bookId))._embedded.tags
                 const rawIndexInfos = (await IndexProxy.searchIndexAllByBookId(rawBookInfo.bookId))._embedded.indexes
                 const fileData = await FileProxy.searchFileOneByFileId(rawBookInfo.bookId)
-
+    
                 setBookInfo({
                     id: rawBookInfo.bookId,
                     title: rawBookInfo.title,
@@ -55,13 +55,16 @@ const BookManagePage = () => {
                     rawIndexInfos: rawIndexInfos
                 })
                 setCoverImageUrl(fileData.url)
-
+    
             } catch (error) {
                 addAlertPopUp("책 정보를 가져오는 과정에서 오류가 발생했습니다!", "error");
                 console.error("책 정보를 가져오는 과정에서 오류가 발생했습니다!", error);
             }
-        })()
-    }, [addAlertPopUp, bookId])
+        }
+    })
+    useEffect(() => {
+        loadBookInfo()
+    }, [addAlertPopUp, bookId, loadBookInfo])
 
 
     const onClickCoverImageUploadButton = (fileName, dataUrl) => {
