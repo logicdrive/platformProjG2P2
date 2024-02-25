@@ -131,7 +131,9 @@ const BookManagePage = () => {
 
             else if(eventName === "TagCreated") successLog = "태그가 추가되었습니다."
             else if(eventName === "TagEdited") successLog = "태그가 수정되었습니다."
+            else if(eventName === "tagDeleted") successLog = "태그가 삭제되었습니다."
 
+            
             addAlertPopUp(successLog, "success")
             setIsBackdropOpened(false)
             loadBookInfo()

@@ -13,11 +13,18 @@ class TagProxy {
         })
     }
 
-    
+
     static async editTag(tagId, tagName) {
         await ServerProxy.request("put", "tag", "tags/editTag", {
             "tagId": tagId, 
             "tagName": tagName
+        })
+    }
+
+
+    static async deleteTag(tagId) {
+        await ServerProxy.request("put", "tag", "tags/deleteTag", {
+            "tagId": tagId
         })
     }
 }

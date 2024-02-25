@@ -21,8 +21,17 @@ const TagInfoBox = ({rawTagInfo, setIsBackdropOpened}) => {
     }, [rawTagInfo])
 
 
-    const onClickDeleteButton = () => {
-        alert("Delete")
+    const onClickDeleteButton = async () => {
+        try {
+
+            setIsBackdropOpened(true)
+            await TagProxy.deleteTag(tagInfo.id)
+    
+          } catch(error) {
+            addAlertPopUp("태그를 삭제하는 도중에 오류가 발생했습니다!", "error")
+            console.error("태그를 삭제하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
     
     const onClickEditButton = async (title) => {
