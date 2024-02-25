@@ -1,11 +1,11 @@
 import React, {useState} from 'react';
 
 import { Button, Dialog, DialogTitle, DialogContent, DialogActions, Stack, Box } from '@mui/material';
-import ContentPasteIcon from '@mui/icons-material/ContentPaste';
+import QuestionMarkIcon from '@mui/icons-material/QuestionMark';
 
 import StyledTextField from '../../_global/components/textField/StyledTextField';
 
-const GenerateContentButton = ({isGenerated, onClickGenerateButton, defaultQuery, ...props}) => {
+const GenerateProblemButton = ({isGenerated, onClickGenerateButton, defaultQuery, ...props}) => {
   const [isDialogOpend, setIsDialogOpend] = useState(false);
   const [query, setQuery] = useState(defaultQuery)
 
@@ -16,11 +16,11 @@ const GenerateContentButton = ({isGenerated, onClickGenerateButton, defaultQuery
   return (
     <>
     <Box onClick={()=>{setIsDialogOpend(true);setQuery(defaultQuery)}} sx={{float: "right", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
-        <ContentPasteIcon sx={((isGenerated) ? {color: "gray"} : {color: "white"})}/>
+        <QuestionMarkIcon sx={((isGenerated) ? {color: "gray"} : {color: "white"})}/>
     </Box>
 
     <Dialog open={isDialogOpend} onClose={()=>{setIsDialogOpend(false);}}>
-      <DialogTitle sx={{color: "black", fontWeight: "bolder", fontFamily: "BMDfont"}}>내용 생성</DialogTitle>
+      <DialogTitle sx={{color: "black", fontWeight: "bolder", fontFamily: "BMDfont"}}>문제 생성</DialogTitle>
       <DialogContent>
         <Stack>
             <StyledTextField
@@ -54,4 +54,4 @@ const GenerateContentButton = ({isGenerated, onClickGenerateButton, defaultQuery
   )
 }
 
-export default GenerateContentButton;
+export default GenerateProblemButton;

@@ -7,6 +7,7 @@ import BoldText from '../../_global/components/text/BoldText';
 import YesNoButton from '../../_global/components/button/YesNoButton';
 import EditIndexNameButton from './EditIndexNameButton';
 import GenerateContentButton from './GenerateContentButton';
+import GenerateProblemButton from './GenerateProblemButton';
 import ContentProxy from '../../_global/proxy/ContentProxy';
 import IndexProxy from '../../_global/proxy/IndexProxy';
 import ProblemProxy from '../../_global/proxy/ProblemProxy';
@@ -16,14 +17,11 @@ const IndexInfoBox = ({rawIndexInfo, priority, setIsBackdropOpened}) => {
     const [indexInfo, setIndexInfo] = useState({})
     useEffect(() => {
         (async () => {
-            const isGenerated = (await ContentProxy.existsByIndexId(rawIndexInfo.indexId)) && (
-                (await ProblemProxy.searchProblemAllByIndexId(rawIndexInfo.indexId))._embedded.problems.length > 0
-            )
-
             setIndexInfo({
                 id: rawIndexInfo.indexId,
                 name: rawIndexInfo.name,
-                isGenerated: isGenerated,
+                isContentGenerated: (await ContentProxy.existsByIndexId(rawIndexInfo.indexId)),
+                isProblemGenerated: ((await ProblemProxy.searchProblemAllByIndexId(rawIndexInfo.indexId))._embedded.problems.length > 0),
                 priority: priority
             })
         })()
@@ -56,7 +54,12 @@ const IndexInfoBox = ({rawIndexInfo, priority, setIsBackdropOpened}) => {
         }
     }
 
+
     const onClickGenerateContentButton = (query) => {
+        alert("Generate : " + query)
+    }
+
+    const onClickGenerateProblemButton = (query) => {
         alert("Generate : " + query)
     }
 
@@ -74,7 +77,8 @@ const IndexInfoBox = ({rawIndexInfo, priority, setIsBackdropOpened}) => {
                 </Box>
                 
                 <EditIndexNameButton onClickEditButton={onClickEditButton} defaultTitle={indexInfo.name}/>
-                <GenerateContentButton isGenerated={indexInfo.isGenerated} onClickGenerateButton={onClickGenerateContentButton} defaultQuery={"contentQuery"}/>
+                <GenerateProblemButton isGenerated={indexInfo.isProblemGenerated} onClickGenerateButton={onClickGenerateProblemButton} defaultQuery={"problemQuery"}/>
+                <GenerateContentButton isGenerated={indexInfo.isContentGenerated} onClickGenerateButton={onClickGenerateContentButton} defaultQuery={"contentQuery"}/>
             </Box>
         </Box>
     )
