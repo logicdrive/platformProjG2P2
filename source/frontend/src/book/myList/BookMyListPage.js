@@ -1,5 +1,5 @@
 import React, { useEffect, useState, useContext } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, useNavigate } from 'react-router-dom';
 
 import { Box, Stack, Pagination } from '@mui/material';
 
@@ -11,10 +11,24 @@ import BookSearchInfos from '../../_global/components/card/BookSearchInfos';
 import BookProxy from '../../_global/proxy/BookProxy';
 
 const BookMyListPage = () => {
+    const navigate = useNavigate()
     const {addAlertPopUp} = useContext(AlertPopupContext)
     const {jwtTokenState} = useContext(JwtTokenContext)
     const [queryParameters] = useSearchParams()
-    
+    const [searchInfo, setSearchInfo] = useState({
+        searchType: queryParameters.get("searchType") || "",
+        searchText: queryParameters.get("searchText") || "",
+        pageNumber: Number(queryParameters.get("pageNumber")) || 1
+    })
+    useEffect(() => {
+        setSearchInfo({
+            searchType: queryParameters.get("searchType") || "",
+            searchText: queryParameters.get("searchText") || "",
+            pageNumber: Number(queryParameters.get("pageNumber")) || 1
+        })
+    }, [queryParameters])
+
+
     const [rawBookInfos, setRawBookInfos] = useState([])
     const [totalPages, setTotalPages] = useState(0)
 
@@ -24,19 +38,14 @@ const BookMyListPage = () => {
     }
 
     const onClickPageNumber = (_, page) => {
-        alert("페이지 번호: " + page)
+        navigate(`/book/myList?searchType=${searchInfo.searchType}&searchText=${searchInfo.searchText}&pageNumber=${page}`)
     }
 
 
     useEffect(() => {
         (async () => {
             try {
-                const searchInfo = {
-                    searchType: queryParameters.get("searchType") || "",
-                    searchText: queryParameters.get("searchText") || "",
-                    pageNumber: Number(queryParameters.get("pageNumber")) || 1
-                }
-
+                
                 const res = await BookProxy.searchBookAllByCreaterId(jwtTokenState.jwtToken.id, searchInfo.pageNumber-1)
                 setTotalPages(res.page.totalPages)
                 setRawBookInfos(res._embedded.books)
@@ -46,7 +55,7 @@ const BookMyListPage = () => {
                 console.error("책 정보를 가져오는 과정에서 오류가 발생했습니다!", error);
             }
         })()
-    }, [addAlertPopUp, jwtTokenState, queryParameters])
+    }, [addAlertPopUp, jwtTokenState, queryParameters, searchInfo])
 
 
     return (
