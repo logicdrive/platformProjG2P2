@@ -9,16 +9,21 @@ import EditIndexNameButton from './EditIndexNameButton';
 import GenerateContentButton from './GenerateContentButton';
 import ContentProxy from '../../_global/proxy/ContentProxy';
 import IndexProxy from '../../_global/proxy/IndexProxy';
+import ProblemProxy from '../../_global/proxy/ProblemProxy';
 
 const IndexInfoBox = ({rawIndexInfo, priority, setIsBackdropOpened}) => {
     const {addAlertPopUp} = useContext(AlertPopupContext)
     const [indexInfo, setIndexInfo] = useState({})
     useEffect(() => {
         (async () => {
+            const isGenerated = (await ContentProxy.existsByIndexId(rawIndexInfo.indexId)) && (
+                (await ProblemProxy.searchProblemAllByIndexId(rawIndexInfo.indexId))._embedded.problems.length > 0
+            )
+
             setIndexInfo({
                 id: rawIndexInfo.indexId,
                 name: rawIndexInfo.name,
-                isGenerated: (await ContentProxy.existsByIndexId(rawIndexInfo.indexId)),
+                isGenerated: isGenerated,
                 priority: priority
             })
         })()
