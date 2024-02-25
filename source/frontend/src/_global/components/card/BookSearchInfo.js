@@ -23,7 +23,7 @@ const BookSearchInfo = ({rawBookInfo, isEditIconVisible, ...props}) => {
             const createrData = await UserProxy.searchUserOneByUserId(rawBookInfo.createrId)
             const likeHistoryDatas = (await LikeHistoryProxy.searchLikeHistoryAllByBookId(rawBookInfo.bookId))._embedded.likeHistories
             const tagDatas = (await TagProxy.searchAllTagByBookId(rawBookInfo.bookId))._embedded.tags
-            const fileData = await FileProxy.searchFileOneByFileId(rawBookInfo.bookId)
+            const fileData = await FileProxy.searchFileOneByFileId(rawBookInfo.coverImageFileId)
     
             setBookInfo({
                 id: rawBookInfo.bookId,
