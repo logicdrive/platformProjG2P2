@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import { Card, CardContent, Box, IconButton, Stack } from '@mui/material';
@@ -8,19 +8,34 @@ import EditIcon from '@mui/icons-material/Edit';
 
 import BoldText from '../text/BoldText';
 import YesNoButton from '../button/YesNoButton';
+import UserProxy from '../../proxy/UserProxy';
+import LikeHistoryProxy from '../../proxy/LikeHistoryProxy';
+import TagProxy from '../../proxy/TagProxy';
+import FileProxy from '../../proxy/FileProxy';
+import TimeTool from '../../tool/TimeTool';
 
 const BookSearchInfo = ({rawBookInfo, isEditIconVisible, ...props}) => {
     const navigate = useNavigate()
-    const [bookInfo] = useState({
-        id: rawBookInfo.id,
-        title: rawBookInfo.title,
-        creator: rawBookInfo.creator,
-        createdDate: rawBookInfo.createdDate,
-        likeCount: rawBookInfo.likeCount,
-        tags: rawBookInfo.tags,
-        isShared: rawBookInfo.isShared,
-        imageUrl: rawBookInfo.imageUrl
-    })
+    const [bookInfo, setBookInfo] = useState({})
+    useEffect(() => {
+        (async () => {
+            const createrData = await UserProxy.searchUserOneByUserId(rawBookInfo.createrId)
+            const likeHistoryDatas = (await LikeHistoryProxy.searchLikeHistoryAllByBookId(rawBookInfo.bookId))._embedded.likeHistories
+            const tagDatas = (await TagProxy.searchAllTagByBookId(rawBookInfo.bookId))._embedded.tags
+            const fileData = await FileProxy.searchFileOneByFileId(rawBookInfo.bookId)
+    
+            setBookInfo({
+                id: rawBookInfo.bookId,
+                title: rawBookInfo.title,
+                creator: createrData.name,
+                createdDate: TimeTool.prettyOnlyDateString(rawBookInfo.createdDate),
+                likeCount: likeHistoryDatas.length,
+                tags: tagDatas.map((tagData) => tagData.name),
+                isShared: rawBookInfo.isShared,
+                imageUrl: fileData.url
+            })
+        })()
+    }, [rawBookInfo])
 
 
     const onClickLikeButton = () => {
@@ -31,7 +46,8 @@ const BookSearchInfo = ({rawBookInfo, isEditIconVisible, ...props}) => {
         alert("Shared: " + isShared)
     }
 
-
+    
+    if(!bookInfo.id) return (<></>)
     return (
         <Card sx={{width: "380px", height: "220px"}} onClick={()=>{navigate(`/book/info/${bookInfo.id}`)}} {...props}>
             <CardContent sx={{padding: "10px"}}>
