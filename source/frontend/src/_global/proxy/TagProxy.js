@@ -12,6 +12,14 @@ class TagProxy {
             "name": name
         })
     }
+
+    
+    static async editTag(tagId, tagName) {
+        await ServerProxy.request("put", "tag", "tags/editTag", {
+            "tagId": tagId, 
+            "tagName": tagName
+        })
+    }
 }
 
 export default TagProxy

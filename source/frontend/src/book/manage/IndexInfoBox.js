@@ -13,7 +13,7 @@ const IndexInfoBox = ({rawIndexInfo, priority}) => {
     useEffect(() => {
         (async () => {
             setIndexInfo({
-                id: rawIndexInfo.id,
+                id: rawIndexInfo.indexId,
                 name: rawIndexInfo.name,
                 isGenerated: (await ContentProxy.isContentExistByIndexId(rawIndexInfo.id)),
                 priority: priority

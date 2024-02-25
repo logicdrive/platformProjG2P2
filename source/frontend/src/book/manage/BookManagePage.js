@@ -128,7 +128,9 @@ const BookManagePage = () => {
         
             let successLog = ""
             if(eventName === "BookTitleUpdated") successLog = "책 제목이 정상적으로 수정되었습니다."
+
             else if(eventName === "TagCreated") successLog = "태그가 추가되었습니다."
+            else if(eventName === "TagEdited") successLog = "태그가 수정되었습니다."
 
             addAlertPopUp(successLog, "success")
             setIsBackdropOpened(false)
@@ -218,7 +220,7 @@ const BookManagePage = () => {
                         <Box sx={{display: "flex", flexDirection: "row", width: "630px", flexWrap: "wrap", marginTop: "10px", marginLeft: "-3px"}}>
                         {
                             bookInfo.rawTagInfos.map((rawTagInfo, index) => {
-                                return <TagInfoBox key={index} rawTagInfo={rawTagInfo}/>
+                                return <TagInfoBox key={index} rawTagInfo={rawTagInfo} setIsBackdropOpened={setIsBackdropOpened}/>
                             })  
                         }          
                         </Box>
