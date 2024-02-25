@@ -14,6 +14,13 @@ class IndexProxy {
         })
     }
 
+    static async generateIndexes(bookId, query) {
+        await ServerProxy.request("put", "index", "indexes/generateIndexes", {
+            "bookId": bookId,
+            "query": query
+        })
+    }
+
 
     static async editIndex(indexId, indexName, indexPriority) {
         await ServerProxy.request("put", "index", "indexes/editIndex", {

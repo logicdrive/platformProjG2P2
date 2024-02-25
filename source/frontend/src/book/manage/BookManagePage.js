@@ -54,6 +54,7 @@ ${rawIndexInfos.map((rawIndexInfo, index) => {
     return `${index+1}. ${rawIndexInfo.name}`
   }).join("\n")}
 `
+const indexQuery = rawBookInfo.title
 
                 setBookInfo({
                     id: rawBookInfo.bookId,
@@ -62,7 +63,8 @@ ${rawIndexInfos.map((rawIndexInfo, index) => {
                     rawTagInfos: rawTagInfos,
                     rawIndexInfos: rawIndexInfos,
 
-                    tagQuery: tagQuery
+                    tagQuery: tagQuery,
+                    indexQuery: indexQuery
                 })
                 setCoverImageUrl(fileData.url)
     
@@ -171,8 +173,17 @@ ${rawIndexInfos.map((rawIndexInfo, index) => {
         }
     }
 
-    const onClickGenerateIndexesButton = (query) => {
-        alert("Generate : "+ query)
+    const onClickGenerateIndexesButton = async (query) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await IndexProxy.generateIndexes(bookId, query)
+
+          } catch(error) {
+            addAlertPopUp("AI를 기반으로 인덱스를 생성하는 도중에 오류가 발생했습니다!", "error")
+            console.error("AI를 기반으로 인덱스를 생성하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
 
@@ -304,7 +315,7 @@ ${rawIndexInfos.map((rawIndexInfo, index) => {
                     <ListIcon sx={{float: "left", marginTop: "5px"}}/>
                     <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px", marginLeft: "5px"}}>목차</BoldText>
 
-                    <GenerateIndexesButton onClickGenerateButton={onClickGenerateIndexesButton} defaultQuery={"indexQuery"}/>
+                    <GenerateIndexesButton onClickGenerateButton={onClickGenerateIndexesButton} defaultQuery={bookInfo.indexQuery}/>
                     <AddIndexNameButton onClickAddButton={onClickAddIndexButton} defaultTitle=""/>
                 </Box>
                 <Stack sx={{width: "100%", marginTop: "16px"}} spacing={1}>
