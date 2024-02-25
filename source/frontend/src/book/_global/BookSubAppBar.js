@@ -37,7 +37,7 @@ const BookSubAppBar = ({focusedIndex, searchTypes, handleOnSubmit, sx, ...props}
 
     SubscribeMessageCreatedSocket(useState(() => {
         return (eventName, value) => {
-          if(eventName === "EmptyBookCreated")
+          if(eventName === "CoverImageFileIdUpdated")
           {
             addAlertPopUp("새로운 빈 책이 추가되었습니다.", "success")
             setIsBackdropOpened(false)
