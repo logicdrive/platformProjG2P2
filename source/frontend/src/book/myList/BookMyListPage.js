@@ -1,7 +1,7 @@
 import React, { useEffect, useState, useContext } from 'react';
 import { useSearchParams, useNavigate } from 'react-router-dom';
 
-import { Box, Stack, Pagination } from '@mui/material';
+import { Box, Stack, Pagination, Backdrop, CircularProgress } from '@mui/material';
 
 import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
 import { JwtTokenContext } from '../../_global/provider/jwtToken/JwtTokenContext';
@@ -9,12 +9,14 @@ import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BookSubAppBar from '../_global/BookSubAppBar';
 import BookSearchInfos from '../../_global/components/card/BookSearchInfos';
 import BookProxy from '../../_global/proxy/BookProxy';
+import SubscribeMessageCreatedSocket from '../../_global/socket/EventHandlerSocket';
 
 const BookMyListPage = () => {
     const navigate = useNavigate()
     const {addAlertPopUp} = useContext(AlertPopupContext)
     const {jwtTokenState} = useContext(JwtTokenContext)
     const [queryParameters] = useSearchParams()
+    const [isBackdropOpened, setIsBackdropOpened] = useState(false)
     const [searchInfo, setSearchInfo] = useState({
         searchType: queryParameters.get("searchType") || "",
         searchText: queryParameters.get("searchText") || "",
@@ -43,8 +45,8 @@ const BookMyListPage = () => {
     }
 
 
-    useEffect(() => {
-        (async () => {
+    const [loadBookInfos] = useState(() => {
+        return async () => {
             try {
 
                 let res = {}
@@ -61,8 +63,28 @@ const BookMyListPage = () => {
                 addAlertPopUp("책 정보를 가져오는 과정에서 오류가 발생했습니다!", "error");
                 console.error("책 정보를 가져오는 과정에서 오류가 발생했습니다!", error);
             }
-        })()
-    }, [addAlertPopUp, jwtTokenState, queryParameters, searchInfo])
+        }
+    })
+    useEffect(() => {
+        loadBookInfos()
+    }, [addAlertPopUp, jwtTokenState, queryParameters, searchInfo, loadBookInfos])
+
+
+    SubscribeMessageCreatedSocket(useState(() => {
+        return (eventName) => {
+        
+            let successLog = ""
+            if(eventName === "BookLiked") successLog = "책에 좋아요를 추가했습니다."
+
+            if(successLog.length > 0)
+            {
+                addAlertPopUp(successLog, "success")
+                setIsBackdropOpened(false)
+                loadBookInfos()
+            }
+
+        }
+    })[0])
 
 
     return (
@@ -77,12 +99,20 @@ const BookMyListPage = () => {
                 <BookSearchInfos
                     rawBookInfos={rawBookInfos}
                     isEditIconVisible={true}
+                    setIsBackdropOpened={setIsBackdropOpened}
                 />
                 
                 <Box sx={{width: "100%", marginTop: "10px", display: "flex", justifyContent: "center"}}>
                     <Pagination count={totalPages} onChange={onClickPageNumber} sx={{padding: "auto", margin: "0 auto"}}/>
                 </Box>
             </Stack>
+
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={isBackdropOpened}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
         </>
     )
 }

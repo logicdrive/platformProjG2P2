@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import { Card, CardContent, Box, IconButton, Stack } from '@mui/material';
@@ -6,8 +6,10 @@ import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import ShareIcon from '@mui/icons-material/Share';
 import EditIcon from '@mui/icons-material/Edit';
 
+import { AlertPopupContext } from '../../provider/alertPopUp/AlertPopUpContext';
 import BoldText from '../text/BoldText';
 import YesNoButton from '../button/YesNoButton';
+import BookProxy from '../../proxy/BookProxy';
 import UserProxy from '../../proxy/UserProxy';
 import LikeHistoryProxy from '../../proxy/LikeHistoryProxy';
 import TagProxy from '../../proxy/TagProxy';
@@ -15,8 +17,9 @@ import FileProxy from '../../proxy/FileProxy';
 import TimeTool from '../../tool/TimeTool';
 import StringTool from '../../tool/StringTool';
 
-const BookSearchInfo = ({rawBookInfo, isEditIconVisible, ...props}) => {
+const BookSearchInfo = ({rawBookInfo, isEditIconVisible, setIsBackdropOpened, ...props}) => {
     const navigate = useNavigate()
+    const {addAlertPopUp} = useContext(AlertPopupContext)
     const [bookInfo, setBookInfo] = useState({})
     useEffect(() => {
         (async () => {
@@ -39,8 +42,17 @@ const BookSearchInfo = ({rawBookInfo, isEditIconVisible, ...props}) => {
     }, [rawBookInfo])
 
 
-    const onClickLikeButton = () => {
-        alert("Liked")
+    const onClickLikeButton = async () => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookProxy.likeBook(bookInfo.id)
+    
+          } catch(error) {
+            addAlertPopUp("책에 좋아요를 추가하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책에 좋아요를 추가하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     const onClickSharedButton = (isShared) => {

@@ -26,6 +26,12 @@ class BookProxy {
         })
     }
 
+    static async likeBook(bookId) {
+        await ServerProxy.request("put", "book", "books/likeBook", {
+            "bookId": bookId
+        })
+    }
+
 
     static async deleteBook(bookId) {
         await ServerProxy.request("put", "book", "books/deleteBook", {

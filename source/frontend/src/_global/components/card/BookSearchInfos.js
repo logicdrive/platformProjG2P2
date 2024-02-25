@@ -4,7 +4,7 @@ import { Stack } from '@mui/material';
 
 import BookSearchInfo from './BookSearchInfo';
 
-const BookSearchInfos = ({rawBookInfos, isEditIconVisible}) => {
+const BookSearchInfos = ({rawBookInfos, isEditIconVisible, setIsBackdropOpened}) => {
     return (
     <Stack spacing={0.5}>
         <Stack direction="row" spacing={0.5}>
@@ -15,6 +15,7 @@ const BookSearchInfos = ({rawBookInfos, isEditIconVisible}) => {
                             key={index}
                             rawBookInfo={rawBookInfo}
                             isEditIconVisible={isEditIconVisible}
+                            setIsBackdropOpened={setIsBackdropOpened}
                         />
                     )
                 })
@@ -29,6 +30,7 @@ const BookSearchInfos = ({rawBookInfos, isEditIconVisible}) => {
                         key={index}
                         rawBookInfo={rawBookInfo}
                         isEditIconVisible={isEditIconVisible}
+                        setIsBackdropOpened={setIsBackdropOpened}
                     />
                 )
             })
