@@ -10,4 +10,5 @@ public interface ContentRepository
     extends PagingAndSortingRepository<Content, Long> {
     Optional<Content> findByContentId(Long contentId);
     Optional<Content> findByIndexId(Long indexId);
+    Boolean existsByIndexId(Long indexId);
 }

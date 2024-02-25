@@ -12,4 +12,5 @@ public interface ProblemRepository
     extends PagingAndSortingRepository<Problem, Long> {
     Optional<Problem> findByProblemId(Long problemId);
     Page<Problem> findByIndexIdOrderByPriority(Long indexId, Pageable pageable);
+    Boolean existsByIndexId(Long indexId);
 }
