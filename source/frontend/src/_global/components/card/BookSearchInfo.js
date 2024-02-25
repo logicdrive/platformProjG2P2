@@ -13,6 +13,7 @@ import LikeHistoryProxy from '../../proxy/LikeHistoryProxy';
 import TagProxy from '../../proxy/TagProxy';
 import FileProxy from '../../proxy/FileProxy';
 import TimeTool from '../../tool/TimeTool';
+import StringTool from '../../tool/StringTool';
 
 const BookSearchInfo = ({rawBookInfo, isEditIconVisible, ...props}) => {
     const navigate = useNavigate()
@@ -69,7 +70,7 @@ const BookSearchInfo = ({rawBookInfo, isEditIconVisible, ...props}) => {
 
                 <Stack sx={{float: "left", marginLeft: "10px", width: "238px"}}>
                     <Box sx={{height: "30px"}}>
-                        <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{bookInfo.title}</BoldText>
+                        <BoldText sx={{float: "left", fontSize: "18px", cursor: "pointer"}}>{StringTool.limitText(bookInfo.title, 22)}</BoldText>
                         {
                             (isEditIconVisible) ? (
                                 <Stack sx={{float: "right"}}>

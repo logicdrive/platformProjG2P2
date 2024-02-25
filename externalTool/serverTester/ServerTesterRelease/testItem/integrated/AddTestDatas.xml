@@ -1,0 +1,560 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<root>
+    <description>
+        <group>_통합 테스트</group>
+        <title>_테스트 데이터 추가</title>
+        <help>페이지네이션을 테스트하기 위해서 여러 빈 책들을 추가시킵니다.</help>
+    </description>
+
+    <tests>
+        <test>
+            <title>Book 1: 빈 E-Book 생성(CreateEmptyBook)</title>
+            <help>비어있는 E-Book을 생성합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/books/createEmptyBook</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 1: Book 제목 변경(UpdateBookTitle)</title>
+            <help>새로운 Book의 제목을 설정합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/books/updateBookTitle</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":2,"bookTitle":"React TypeScript Basic"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 1-1: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":2,"name":"IT"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 1-2: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":2,"name":"programming"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 1-3: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":2,"name":"react"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+
+        <test>
+            <title>Book 2: 빈 E-Book 생성(CreateEmptyBook)</title>
+            <help>비어있는 E-Book을 생성합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/books/createEmptyBook</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 2: Book 제목 변경(UpdateBookTitle)</title>
+            <help>새로운 Book의 제목을 설정합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/books/updateBookTitle</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":3,"bookTitle":"C Programming Basic"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 2-1: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":3,"name":"IT"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 2-2: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":3,"name":"programming"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 2-3: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":3,"name":"language"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+
+        <test>
+            <title>Book 3: 빈 E-Book 생성(CreateEmptyBook)</title>
+            <help>비어있는 E-Book을 생성합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/books/createEmptyBook</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 3: Book 제목 변경(UpdateBookTitle)</title>
+            <help>새로운 Book의 제목을 설정합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/books/updateBookTitle</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":4,"bookTitle":"Deep Learning With Python"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 3-1: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":4,"name":"IT"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 3-2: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":4,"name":"AI"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 3-3: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":4,"name":"python"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+
+        <test>
+            <title>Book 4: 빈 E-Book 생성(CreateEmptyBook)</title>
+            <help>비어있는 E-Book을 생성합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/books/createEmptyBook</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 4: Book 제목 변경(UpdateBookTitle)</title>
+            <help>새로운 Book의 제목을 설정합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/books/updateBookTitle</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":5,"bookTitle":"Java Programming"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 4-1: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":5,"name":"IT"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 4-2: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":5,"name":"programming"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 4-3: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":5,"name":"java"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+
+        <test>
+            <title>Book 5: 빈 E-Book 생성(CreateEmptyBook)</title>
+            <help>비어있는 E-Book을 생성합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/books/createEmptyBook</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 5: Book 제목 변경(UpdateBookTitle)</title>
+            <help>새로운 Book의 제목을 설정합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/books/updateBookTitle</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":6,"bookTitle":"Strange Math Book"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 5-1: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":6,"name":"math"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 5-2: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":6,"name":"science"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 5-3: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":6,"name":"story"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+
+
+        <test>
+            <title>Book 6: 빈 E-Book 생성(CreateEmptyBook)</title>
+            <help>비어있는 E-Book을 생성합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/books/createEmptyBook</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data></data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Book 6: Book 제목 변경(UpdateBookTitle)</title>
+            <help>새로운 Book의 제목을 설정합니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/book/books/updateBookTitle</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":7,"bookTitle":"The Eye Of Science"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 6-1: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":7,"name":"science"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 6-2: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":7,"name":"art"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+
+        <test>
+            <title>Tag 6-3: 태그 생성 요청</title>
+            <help>태그를 생성시킵니다.</help>
+
+            <method>PUT</method>
+            <baseUrl>http://localhost:8088</baseUrl>
+            <resourceUrl>api/tag/tags/createTag</resourceUrl>
+            <headers>
+                <header key="User-Id">2</header>
+                <header key="User-Role">User</header>
+            </headers>
+            <data>{"bookId":7,"name":"story"}</data>
+
+            <checks>
+                <check type="status">2.*</check>
+            </checks>
+        </test>
+    </tests>
+</root>

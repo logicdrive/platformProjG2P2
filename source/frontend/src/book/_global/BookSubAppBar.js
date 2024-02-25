@@ -39,7 +39,7 @@ const BookSubAppBar = ({focusedIndex, searchTypes, handleOnSubmit, sx, ...props}
         return (eventName, value) => {
           if(eventName === "EmptyBookCreated")
           {
-            addAlertPopUp("새로운 빈 책에 추가되었습니다.", "success")
+            addAlertPopUp("새로운 빈 책이 추가되었습니다.", "success")
             setIsBackdropOpened(false)
             navigate(`/book/manage/${value.bookId}`)
           }
