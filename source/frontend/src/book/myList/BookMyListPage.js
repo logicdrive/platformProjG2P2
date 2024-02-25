@@ -34,7 +34,8 @@ const BookMyListPage = () => {
 
 
     const onClickSearchButton = (searchText, searchType) => {
-        alert("검색어: " + searchText + ", 검색 대상: " + searchType)
+        if(searchText.length <= 0) return 
+        navigate(`/book/myList?searchType=${searchType}&searchText=${searchText}&pageNumber=1`)
     }
 
     const onClickPageNumber = (_, page) => {
@@ -45,8 +46,14 @@ const BookMyListPage = () => {
     useEffect(() => {
         (async () => {
             try {
+
+                let res = {}
                 
-                const res = await BookProxy.searchBookAllByCreaterId(jwtTokenState.jwtToken.id, searchInfo.pageNumber-1)
+                if(searchInfo.searchText.length > 0 && searchInfo.searchType==="bookTitle")
+                    res = await BookProxy.searchBookAllByCreaterIdAndTitle(jwtTokenState.jwtToken.id, searchInfo.searchText, searchInfo.pageNumber-1)
+                else
+                    res = await BookProxy.searchBookAllByCreaterId(jwtTokenState.jwtToken.id, searchInfo.pageNumber-1)
+
                 setTotalPages(res.page.totalPages)
                 setRawBookInfos(res._embedded.books)
 
