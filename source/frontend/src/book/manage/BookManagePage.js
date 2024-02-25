@@ -143,6 +143,7 @@ const BookManagePage = () => {
             else if(eventName === "tagDeleted") successLog = "태그가 삭제되었습니다."
 
             else if(eventName === "IndexCreated") successLog = "인덱스가 추가되었습니다."
+            else if(eventName === "IndexEdited") successLog = "인덱스가 수정되었습니다."
 
 
             addAlertPopUp(successLog, "success")
@@ -251,7 +252,7 @@ const BookManagePage = () => {
                 <Stack sx={{width: "100%", marginTop: "16px"}} spacing={1}>
                     {
                         bookInfo.rawIndexInfos.map((rawIndexInfo, index) => {
-                            return <IndexInfoBox key={index} rawIndexInfo={rawIndexInfo} priority={index+1}/>
+                            return <IndexInfoBox key={index} rawIndexInfo={rawIndexInfo} priority={index+1} setIsBackdropOpened={setIsBackdropOpened}/>
                         })
                     }
                 </Stack>

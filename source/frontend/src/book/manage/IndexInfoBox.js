@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Box } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 
+import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
 import BoldText from '../../_global/components/text/BoldText';
 import YesNoButton from '../../_global/components/button/YesNoButton';
 import EditIndexNameButton from './EditIndexNameButton';
 import GenerateContentButton from './GenerateContentButton';
 import ContentProxy from '../../_global/proxy/ContentProxy';
+import IndexProxy from '../../_global/proxy/IndexProxy';
 
-const IndexInfoBox = ({rawIndexInfo, priority}) => {
+const IndexInfoBox = ({rawIndexInfo, priority, setIsBackdropOpened}) => {
+    const {addAlertPopUp} = useContext(AlertPopupContext)
     const [indexInfo, setIndexInfo] = useState({})
     useEffect(() => {
         (async () => {
@@ -26,8 +29,17 @@ const IndexInfoBox = ({rawIndexInfo, priority}) => {
         alert("Delete")
     }
 
-    const onClickEditButton = (title) => {
-        alert("Edit :" + title)
+    const onClickEditButton = async (title) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await IndexProxy.editIndex(indexInfo.id, title, indexInfo.priority)
+    
+          } catch(error) {
+            addAlertPopUp("인덱스 내용을 변경하는 도중에 오류가 발생했습니다!", "error")
+            console.error("인덱스 내용을 변경하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     const onClickGenerateContentButton = (query) => {

@@ -13,6 +13,15 @@ class IndexProxy {
             "priority": priority
         })
     }
+
+
+    static async editIndex(indexId, indexName, indexPriority) {
+        await ServerProxy.request("put", "index", "indexes/editIndex", {
+            "indexId": indexId, 
+            "indexName": indexName,
+            "indexPriority": indexPriority
+        })
+    }
 }
 
 export default IndexProxy
