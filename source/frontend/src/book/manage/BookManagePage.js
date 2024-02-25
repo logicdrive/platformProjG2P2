@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams, useNavigate } from 'react-router-dom';
 
 import { Box, IconButton, Divider, Container, Stack } from "@mui/material";
@@ -11,6 +11,7 @@ import ListIcon from '@mui/icons-material/List';
 import LabelIcon from '@mui/icons-material/Label';
 import TitleIcon from '@mui/icons-material/Title';
 
+import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
 import NavText from '../../_global/components/text/NavText';
@@ -24,13 +25,43 @@ import GenerateTagsButton from './GenerateTagsButton';
 import GenerateIndexesButton from './GenerateIndexesButton';
 import GenerateCoverImageButton from './GenerateCoverImageButton';
 import FileUploadButton from '../../_global/components/button/FileUploadButton';
+import BookProxy from '../../_global/proxy/BookProxy';
+import TagProxy from '../../_global/proxy/TagProxy';
+import FileProxy from '../../_global/proxy/FileProxy';
+import IndexProxy from '../../_global/proxy/IndexProxy';
 
 const BookManagePage = () => {
     const navigate = useNavigate()
+    const {addAlertPopUp} = useContext(AlertPopupContext)
     const {bookId} = useParams()
     console.log("BookId :", bookId)
 
     const [coverImageUrl, setCoverImageUrl] = useState("")
+    const [bookInfo, setBookInfo] = useState({})
+    useEffect(() => {
+        (async () => {
+            try {
+
+                const rawBookInfo = await BookProxy.searchBookOneByBookId(bookId)
+                const rawTagInfos = (await TagProxy.searchAllTagByBookId(rawBookInfo.bookId))._embedded.tags
+                const rawIndexInfos = (await IndexProxy.searchIndexAllByBookId(rawBookInfo.bookId))._embedded.indexes
+                const fileData = await FileProxy.searchFileOneByFileId(rawBookInfo.bookId)
+
+                setBookInfo({
+                    id: rawBookInfo.bookId,
+                    title: rawBookInfo.title,
+                    imageUrl: fileData.url,
+                    rawTagInfos: rawTagInfos,
+                    rawIndexInfos: rawIndexInfos
+                })
+                setCoverImageUrl(fileData.url)
+
+            } catch (error) {
+                addAlertPopUp("책 정보를 가져오는 과정에서 오류가 발생했습니다!", "error");
+                console.error("책 정보를 가져오는 과정에서 오류가 발생했습니다!", error);
+            }
+        })()
+    }, [addAlertPopUp, bookId])
 
 
     const onClickCoverImageUploadButton = (fileName, dataUrl) => {
@@ -69,7 +100,8 @@ const BookManagePage = () => {
         alert("Generate : "+ query)
     }
 
-
+    
+    if(!bookInfo.id) return <></>
     return (
         <>
             <MainNavAppBar focusedIndex={0} backArrowUrl="/book/myList"/>
@@ -132,9 +164,9 @@ const BookManagePage = () => {
                     <Stack sx={{float: "left", flex: "1 0 auto", paddingY: "5px", paddingLeft: "5px"}}>
                         <Box>
                             <TitleIcon sx={{float: "left", color: "black", fontSize: "27px", marginTop: "10px"}}/>
-                            <BoldText sx={{float: "left", fontSize: "20px", marginTop: "10px"}}>제목: KKKKK</BoldText>
+                            <BoldText sx={{float: "left", fontSize: "20px", marginTop: "10px"}}>제목: {bookInfo.title}</BoldText>
 
-                            <EditBookTitleButton onClickEditButton={onClickEditBookTitleButton} defaultTitle={"KKKKK"}/>   
+                            <EditBookTitleButton onClickEditButton={onClickEditBookTitleButton} defaultTitle={bookInfo.title}/>   
                         </Box>
                         <Divider sx={{marginTop: "5px"}}/>
                         
@@ -146,10 +178,11 @@ const BookManagePage = () => {
                             <AddTagNameButton onClickAddButton={onClickAddTagButton}/>
                         </Box>
                         
-                        <TagInfoBox rawTagInfo={{
-                            id: 1,
-                            name: "IT"
-                        }}/>
+                        {
+                            bookInfo.rawTagInfos.map((rawTagInfo, index) => {
+                                return <TagInfoBox key={index} rawTagInfo={rawTagInfo}/>
+                            })  
+                        }
                     </Stack>
                 </Box>
                 <Divider sx={{width: "100%"}}/>
@@ -162,11 +195,11 @@ const BookManagePage = () => {
                     <AddIndexNameButton onClickAddButton={onClickAddIndexButton}/>
                 </Box>
                 <Stack sx={{width: "100%", marginTop: "16px"}}>
-                    <IndexInfoBox rawIndexInfo={{
-                        id: 1,
-                        name: "Python 소개",
-                        isGenerated: true
-                    }}/>
+                    {
+                        bookInfo.rawIndexInfos.map((rawIndexInfo, index) => {
+                            return <IndexInfoBox key={index} rawIndexInfo={rawIndexInfo} priority={index+1}/>
+                        })
+                    }
                 </Stack>
             </Container>
         </>
