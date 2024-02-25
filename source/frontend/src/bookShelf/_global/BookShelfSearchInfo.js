@@ -140,7 +140,7 @@ const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible}) => {
                                     {
                                         (bookShelfInfo.isShared) ? (
                                             <YesNoButton onClickYes={()=>{onClickSharedButton(false)}} title="해당 책장의 공유를 취소하시겠습니까?">
-                                                <ShareIcon sx={{color: "black"}}/>
+                                                <ShareIcon sx={{color: "gray"}}/>
                                             </YesNoButton>
                                         ) : (
                                             <YesNoButton onClickYes={(e)=>{onClickSharedButton(true)}} title="해당 책장을 공유시겠습니까?">

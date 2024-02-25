@@ -32,6 +32,13 @@ class BookProxy {
         })
     }
 
+    static async updateIsShared(bookId, isShared) {
+        await ServerProxy.request("put", "book", "books/updateIsShared", {
+            "bookId": bookId,
+            "isShared": isShared
+        })
+    }
+
 
     static async deleteBook(bookId) {
         await ServerProxy.request("put", "book", "books/deleteBook", {

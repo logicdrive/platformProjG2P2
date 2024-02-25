@@ -75,6 +75,7 @@ const BookMyListPage = () => {
         
             let successLog = ""
             if(eventName === "BookLiked") successLog = "책에 좋아요를 추가했습니다."
+            else if(eventName === "BookIsSharedUpdated") successLog = "책의 공유 여부를 변경시켰습니다."
 
             if(successLog.length > 0)
             {

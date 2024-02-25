@@ -55,8 +55,17 @@ const BookSearchInfo = ({rawBookInfo, isEditIconVisible, setIsBackdropOpened, ..
         }
     }
 
-    const onClickSharedButton = (isShared) => {
-        alert("Shared: " + isShared)
+    const onClickSharedButton = async (isShared) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookProxy.updateIsShared(bookInfo.id, isShared)
+    
+          } catch(error) {
+            addAlertPopUp("책의 공유 여부를 변경하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책의 공유 여부를 변경하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     
@@ -90,7 +99,7 @@ const BookSearchInfo = ({rawBookInfo, isEditIconVisible, setIsBackdropOpened, ..
                                     {
                                         (bookInfo.isShared) ? (
                                             <YesNoButton onClickYes={()=>{onClickSharedButton(false)}} title="해당 책의 공유를 취소하시겠습니까?">
-                                                <ShareIcon sx={{color: "black"}}/>
+                                                <ShareIcon sx={{color: "gray"}}/>
                                             </YesNoButton>
                                         ) : (
                                             <YesNoButton onClickYes={(e)=>{onClickSharedButton(true)}} title="해당 책을 공유시겠습니까?">

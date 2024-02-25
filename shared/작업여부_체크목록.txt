@@ -23,7 +23,7 @@ frontend: U++
 UserSignUpPage: U++ E
 UserSignInPage: U++ E
 
-BookMyListPage: U++
+BookMyListPage: U++ E
 BookSharedListPage: U++
 BookInfoPage: U++
 BookReadPage: U++
