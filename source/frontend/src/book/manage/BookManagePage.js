@@ -68,9 +68,17 @@ const BookManagePage = () => {
     }, [addAlertPopUp, bookId, loadBookInfo])
 
 
-    const onClickCoverImageUploadButton = (fileName, dataUrl) => {
-        alert("Upload : "+ fileName + " / " + dataUrl.length)
-        setCoverImageUrl(dataUrl)
+    const onClickCoverImageUploadButton = async (fileName, dataUrl) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookProxy.updateCoverImage(bookId, dataUrl)
+    
+          } catch(error) {
+            addAlertPopUp("책 표지 이미지를 변경하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책 표지 이미지를 변경하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     const onClickGenerateCoverImageButton = (query) => {
@@ -137,6 +145,7 @@ const BookManagePage = () => {
         
             let successLog = ""
             if(eventName === "BookTitleUpdated") successLog = "책 제목이 정상적으로 수정되었습니다."
+            else if(eventName === "CoverImageInfoUpdated") successLog = "책 표지 이미지가 정상적으로 수정되었습니다."
 
             else if(eventName === "TagCreated") successLog = "태그가 추가되었습니다."
             else if(eventName === "TagEdited") successLog = "태그가 수정되었습니다."
@@ -147,9 +156,12 @@ const BookManagePage = () => {
             else if(eventName === "IndexDeleted") successLog = "인덱스가 삭제되었습니다."
 
 
-            addAlertPopUp(successLog, "success")
-            setIsBackdropOpened(false)
-            loadBookInfo()
+            if(successLog.length > 0)
+            {
+                addAlertPopUp(successLog, "success")
+                setIsBackdropOpened(false)
+                loadBookInfo()
+            }
 
         }
     })[0])
