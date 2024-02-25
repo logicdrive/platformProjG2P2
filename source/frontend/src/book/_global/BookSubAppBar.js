@@ -1,13 +1,18 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 
-import { Box, Paper, InputBase, MenuItem, Select } from "@mui/material";
+import { Box, Paper, InputBase, MenuItem, Select, Backdrop, CircularProgress } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
+import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
 import BoldText from '../../_global/components/text/BoldText';
+import BookProxy from '../../_global/proxy/BookProxy';
+import SubscribeMessageCreatedSocket from '../../_global/socket/EventHandlerSocket';
 
 const BookSubAppBar = ({focusedIndex, searchTypes, handleOnSubmit, sx, ...props}) => {
     const navigate = useNavigate()
+    const {addAlertPopUp} = useContext(AlertPopupContext)
+    const [isBackdropOpened, setIsBackdropOpened] = useState(false)
 
     let commonSx = {fontSize: "15px", height: "30px", paddingX: "10px", paddingTop: "10px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}
     let focusedSx = {color: "white", backgroundColor: "royalblue", ...commonSx}
@@ -16,6 +21,32 @@ const BookSubAppBar = ({focusedIndex, searchTypes, handleOnSubmit, sx, ...props}
     const [searchText, setSearchText] = useState("")
     const [searchType, setSearchType] = useState((searchTypes) ? searchTypes[0].type : "")
 
+
+    const onClickCreateEmptyBookButton = async () => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookProxy.createEmptyBook()
+    
+        } catch(error) {
+            addAlertPopUp("새로운 빈 책 추가 도중에 오류가 발생했습니다!", "error")
+            console.error("새로운 빈 책 추가 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
+    }
+
+    SubscribeMessageCreatedSocket(useState(() => {
+        return (eventName, value) => {
+          if(eventName === "EmptyBookCreated")
+          {
+            addAlertPopUp("새로운 빈 책에 추가되었습니다.", "success")
+            setIsBackdropOpened(false)
+            navigate(`/book/manage/${value.bookId}`)
+          }
+        }
+    })[0])
+
+
     return (
         <>
             <Box sx={{width: "100%", height: "50px", padding: "10px", marginTop: "5px", ...sx}} {...props}>
@@ -23,7 +54,7 @@ const BookSubAppBar = ({focusedIndex, searchTypes, handleOnSubmit, sx, ...props}
                 <BoldText onClick={()=>{navigate("/book/sharedList")}} sx={(focusedIndex === 1) ? ({float: "left", marginLeft: "5px", ...focusedSx}) : ({float: "left", marginLeft: "5px", ...normalSx})}>공유된 책</BoldText>
                 <BoldText onClick={()=>{navigate("/book/recommend")}} sx={(focusedIndex === 2) ? ({float: "left", marginLeft: "5px", ...focusedSx}) : ({float: "left", marginLeft: "5px", ...normalSx})}>추천 책 목록</BoldText>
                 
-                <BoldText onClick={()=>{navigate("/book/manage/1")}} sx={(focusedIndex === 3) ? ({float: "right", marginRight: "10px", ...focusedSx}) : ({float: "right", marginRight: "10px", ...normalSx})}>책 생성하기</BoldText>
+                <BoldText onClick={onClickCreateEmptyBookButton} sx={(focusedIndex === 3) ? ({float: "right", marginRight: "10px", ...focusedSx}) : ({float: "right", marginRight: "10px", ...normalSx})}>책 생성하기</BoldText>
                 {
                     (searchTypes) ? (
                             <Paper component="form" sx={{float:"right", width: "397px", height: "35px", marginLeft: "5px", marginTop: "2px", ...sx}} {...props}>
@@ -61,6 +92,13 @@ const BookSubAppBar = ({focusedIndex, searchTypes, handleOnSubmit, sx, ...props}
                     ) : (null)
                 }
             </Box>
+
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={isBackdropOpened}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
         </>
     )
 }
