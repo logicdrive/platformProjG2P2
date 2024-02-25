@@ -2,6 +2,7 @@ package bookGenerator.webSocket;
 
 import java.io.IOException;
 import java.util.HashMap;
+import java.util.Set;
 
 import org.springframework.stereotype.Component;
 import org.springframework.web.socket.TextMessage;
@@ -88,7 +89,7 @@ public class WebSocketEventHandler extends TextWebSocketHandler {
 
 
             for(HashMap<String, WebSocketSession> subscribedSessions : this.subscribes.values()) {
-                for(String sessionId : subscribedSessions.keySet()) {
+                for(String sessionId : Set.copyOf(subscribedSessions.keySet())) {
                     WebSocketSession session = subscribedSessions.get(sessionId);
                     if(!session.isOpen())
                     {
@@ -119,7 +120,7 @@ public class WebSocketEventHandler extends TextWebSocketHandler {
             if(!this.subscribes.containsKey(userId))
                 return;
             
-            for(String sessionId : this.subscribes.get(userId).keySet()) {
+            for(String sessionId : Set.copyOf(this.subscribes.get(userId).keySet())) {
                 WebSocketSession session = this.subscribes.get(userId).get(sessionId);
                 if(!session.isOpen())
                 {
