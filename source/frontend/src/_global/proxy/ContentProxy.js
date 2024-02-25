@@ -5,8 +5,8 @@ class ContentProxy {
         return (await ServerProxy.request("get", "collectedData", `contents/search/findByIndexId?indexId=${indexId}`)).data
     }
 
-    static async isContentExistByIndexId(indexId) {
-        return ((await ServerProxy.request("get", "collectedData", `contents/search/existsByIndexId?indexId=${indexId}`)).status === 200)
+    static async existsByIndexId(indexId) {
+        return (await ServerProxy.request("get", "collectedData",  `contents/search/existsByIndexId?indexId=${indexId}`)).data === "true"
     }
 }
 

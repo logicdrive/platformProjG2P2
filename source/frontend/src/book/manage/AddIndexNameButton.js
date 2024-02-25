@@ -14,6 +14,8 @@ const AddIndexNameButton = ({onClickAddButton, defaultTitle, ...props}) => {
     onClickAddButton(title);
   }
 
+
+  setTestAutomationCommands(isDialogOpend, setTitle)
   return (
     <>
     <Box onClick={()=>{setIsDialogOpend(true);setTitle(defaultTitle)}} sx={{marginRight: "5px", float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
@@ -52,6 +54,54 @@ const AddIndexNameButton = ({onClickAddButton, defaultTitle, ...props}) => {
     </Dialog>
     </>
   )
+}
+
+function setTestAutomationCommands(isDialogOpend, setTitle) {
+  window.onkeydown = (e) => {
+      if(!e || !e.code) return
+      if(!isDialogOpend) return
+
+      if(e.code.startsWith("Digit1") && e.altKey)
+      {
+        setTitle("Introduction to Python")
+      }
+      else if(e.code.startsWith("Digit2") && e.altKey)
+      {
+        setTitle("Python Syntax and Variables")
+      }
+      else if(e.code.startsWith("Digit3") && e.altKey)
+      {
+        setTitle("Data Types in Python")
+      }
+      else if(e.code.startsWith("Digit4") && e.altKey)
+      {
+        setTitle("Control Flow in Python")
+      }
+      else if(e.code.startsWith("Digit5") && e.altKey)
+      {
+        setTitle("Functions in Python")
+      }
+      else if(e.code.startsWith("Digit6") && e.altKey)
+      {
+        setTitle("Lists, Tuples, and Sets in Python")
+      }
+      else if(e.code.startsWith("Digit7") && e.altKey)
+      {
+        setTitle("Dictionaries in Python")
+      }
+      else if(e.code.startsWith("Digit8") && e.altKey)
+      {
+        setTitle("File Handling in Python")
+      }
+      else if(e.code.startsWith("Digit9") && e.altKey)
+      {
+        setTitle("Object-Oriented Programming in Python")
+      }
+      else if(e.code.startsWith("Digit0") && e.altKey)
+      {
+        setTitle("Exception Handling in Python")
+      }
+  }
 }
 
 export default AddIndexNameButton;

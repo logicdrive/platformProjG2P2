@@ -15,7 +15,7 @@ const IndexInfoBox = ({rawIndexInfo, priority}) => {
             setIndexInfo({
                 id: rawIndexInfo.indexId,
                 name: rawIndexInfo.name,
-                isGenerated: (await ContentProxy.isContentExistByIndexId(rawIndexInfo.id)),
+                isGenerated: (await ContentProxy.existsByIndexId(rawIndexInfo.indexId)),
                 priority: priority
             })
         })()

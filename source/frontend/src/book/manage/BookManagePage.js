@@ -114,8 +114,17 @@ const BookManagePage = () => {
     }
 
 
-    const onClickAddIndexButton = (title) => {
-        alert("Add : "+ title)
+    const onClickAddIndexButton = async (title) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await IndexProxy.createIndex(bookId, title, bookInfo.rawIndexInfos.length+1)
+    
+          } catch(error) {
+            addAlertPopUp("인덱스를 추가하는 도중에 오류가 발생했습니다!", "error")
+            console.error("인덱스를 추가하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     const onClickGenerateIndexesButton = (query) => {
@@ -133,7 +142,9 @@ const BookManagePage = () => {
             else if(eventName === "TagEdited") successLog = "태그가 수정되었습니다."
             else if(eventName === "tagDeleted") successLog = "태그가 삭제되었습니다."
 
-            
+            else if(eventName === "IndexCreated") successLog = "인덱스가 추가되었습니다."
+
+
             addAlertPopUp(successLog, "success")
             setIsBackdropOpened(false)
             loadBookInfo()
@@ -235,9 +246,9 @@ const BookManagePage = () => {
                     <BoldText sx={{float: "left", fontSize: "20px", marginTop: "5px", marginLeft: "5px"}}>목차</BoldText>
 
                     <GenerateIndexesButton onClickGenerateButton={onClickGenerateIndexesButton} defaultQuery={"indexQuery"}/>
-                    <AddIndexNameButton onClickAddButton={onClickAddIndexButton}/>
+                    <AddIndexNameButton onClickAddButton={onClickAddIndexButton} defaultTitle=""/>
                 </Box>
-                <Stack sx={{width: "100%", marginTop: "16px"}}>
+                <Stack sx={{width: "100%", marginTop: "16px"}} spacing={1}>
                     {
                         bookInfo.rawIndexInfos.map((rawIndexInfo, index) => {
                             return <IndexInfoBox key={index} rawIndexInfo={rawIndexInfo} priority={index+1}/>
