@@ -14,6 +14,8 @@ const AddTagNameButton = ({onClickAddButton, defaultTitle, ...props}) => {
     onClickAddButton(title);
   }
 
+
+  setTestAutomationCommands(isDialogOpend, setTitle)
   return (
     <>
     <Box onClick={()=>{setIsDialogOpend(true);setTitle(defaultTitle)}} sx={{marginRight: "5px", float: "right", backgroundColor: "cornflowerblue", width: "63px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
@@ -52,6 +54,26 @@ const AddTagNameButton = ({onClickAddButton, defaultTitle, ...props}) => {
     </Dialog>
     </>
   )
+}
+
+function setTestAutomationCommands(isDialogOpend, setTitle) {
+  window.onkeydown = (e) => {
+      if(!e || !e.code) return
+      if(!isDialogOpend) return
+
+      if(e.code.startsWith("Digit1") && e.altKey)
+      {
+        setTitle("IT")
+      }
+      else if(e.code.startsWith("Digit2") && e.altKey)
+      {
+        setTitle("programming")
+      }
+      else if(e.code.startsWith("Digit3") && e.altKey)
+      {
+        setTitle("python")
+      }
+  }
 }
 
 export default AddTagNameButton;

@@ -96,8 +96,17 @@ const BookManagePage = () => {
     }
 
     
-    const onClickAddTagButton = (title) => {
-        alert("Add : "+ title)
+    const onClickAddTagButton = async (title) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await TagProxy.createTag(bookId, title)
+    
+          } catch(error) {
+            addAlertPopUp("태그를 추가하는 도중에 오류가 발생했습니다!", "error")
+            console.error("태그를 추가하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     const onClickGenerateTagsButton = (query) => {
@@ -115,13 +124,16 @@ const BookManagePage = () => {
 
 
     SubscribeMessageCreatedSocket(useState(() => {
-        return (eventName, value) => {
-          if(eventName === "BookTitleUpdated" && Number(bookId) === value.bookId)
-          {
-            addAlertPopUp("책 제목이 정상적으로 수정되었습니다.", "success")
+        return (eventName) => {
+        
+            let successLog = ""
+            if(eventName === "BookTitleUpdated") successLog = "책 제목이 정상적으로 수정되었습니다."
+            else if(eventName === "TagCreated") successLog = "태그가 추가되었습니다."
+
+            addAlertPopUp(successLog, "success")
             setIsBackdropOpened(false)
             loadBookInfo()
-          }
+
         }
     })[0])
 
@@ -200,7 +212,7 @@ const BookManagePage = () => {
                             <BoldText sx={{float: "left", fontSize: "20px", marginLeft: "2px"}}>태그</BoldText>
 
                             <GenerateTagsButton onClickGenerateButton={onClickGenerateTagsButton} defaultQuery={"tagQuery"}/>
-                            <AddTagNameButton onClickAddButton={onClickAddTagButton}/>
+                            <AddTagNameButton onClickAddButton={onClickAddTagButton} defaultTitle=""/>
                         </Box>
 
                         <Box sx={{display: "flex", flexDirection: "row", width: "630px", flexWrap: "wrap", marginTop: "10px", marginLeft: "-3px"}}>
