@@ -26,7 +26,7 @@ public class WhenBookDeleted_DeleteLikeHistory_ViewHandler {
             CustomLogger.debugObject(CustomLoggerType.ENTER, bookDeleted);
 
 
-            LikeHistory.repository().findByBookId(bookDeleted.getId()).forEach(
+            LikeHistory.repository().findByBookId(bookDeleted.getId(), null).forEach(
                 likeHistory -> {
                     LikeHistory.repository().delete(likeHistory);
                 }

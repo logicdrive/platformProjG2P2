@@ -1,8 +1,9 @@
 package bookGenerator.bookShelfBook.domain;
 
-import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
@@ -10,5 +11,5 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface BookShelfBookRepository
     extends PagingAndSortingRepository<BookShelfBook, Long> {
     Optional<BookShelfBook> findByBookShelfBookId(Long bookShelfBookId);
-    List<BookShelfBook> findByBookShelfIdOrderByCreatedDateDesc(Long bookShelfId);
+    Page<BookShelfBook> findByBookShelfIdOrderByCreatedDateDesc(Long bookShelfId, Pageable pageable);
 }

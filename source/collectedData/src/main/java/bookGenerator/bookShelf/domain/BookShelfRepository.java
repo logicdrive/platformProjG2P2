@@ -1,8 +1,9 @@
 package bookGenerator.bookShelf.domain;
 
-import java.util.List;
 import java.util.Optional;
 
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.data.repository.PagingAndSortingRepository;
 import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 
@@ -10,7 +11,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface BookShelfRepository
     extends PagingAndSortingRepository<BookShelf, Long> {
     Optional<BookShelf> findByBookShelfId(Long bookShelfId);
-    List<BookShelf> findByCreaterIdOrderByTitle(Long createrId);
-    List<BookShelf> findByIsSharedAndTitleContainingIgnoreCaseOrderByCreatedDateDesc(Boolean isShared, String title);
-    List<BookShelf> findByIsSharedAndCreaterIdOrderByCreatedDateDesc(Boolean isShared, Long createrId);
+    Page<BookShelf> findByCreaterIdOrderByTitle(Long createrId, Pageable pageable);
+    Page<BookShelf> findByIsSharedAndTitleContainingIgnoreCaseOrderByCreatedDateDesc(Boolean isShared, String title, Pageable pageable);
+    Page<BookShelf> findByIsSharedAndCreaterIdOrderByCreatedDateDesc(Boolean isShared, Long createrId, Pageable pageable);
 }
