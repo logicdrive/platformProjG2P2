@@ -106,7 +106,7 @@ const BookSearchInfo = ({rawBookInfo, isEditIconVisible, ...props}) => {
                     </IconButton>
 
 
-                    <Box sx={{display: "flex", flexDirection: "row", width: "215px", flexWrap: "wrap-reverse", marginTop: "75px", marginLeft: "-3px"}}>
+                    <Box sx={{display: "flex", flexDirection: "row", width: "240px", flexWrap: "wrap-reverse", marginTop: "23px", marginLeft: "-3px"}}>
                         {
                             bookInfo.tags.map((tag, index) => {
                                 return (
