@@ -12,6 +12,7 @@ public interface BookRepository
     extends PagingAndSortingRepository<Book, Long> {
     Optional<Book> findByBookId(Long bookId);
     Optional<Book> findByCoverImageFileId(Long coverImageFileId);
+    Page<Book> findByCreaterIdAndTitleContainingIgnoreCaseOrderByCreatedDate(Long createrId, String title, Pageable pageable);
     Page<Book> findByCreaterIdOrderByCreatedDateDesc(Long createrId, Pageable pageable);
     Page<Book> findByIsSharedOrderByCreatedDateDesc(Boolean isShared, Pageable pageable);
     Page<Book> findByIsSharedAndTitleContainingIgnoreCaseOrderByCreatedDateDesc(Boolean isShared, String title, Pageable pageable);

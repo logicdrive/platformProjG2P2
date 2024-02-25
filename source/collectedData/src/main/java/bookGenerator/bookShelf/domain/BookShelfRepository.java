@@ -11,6 +11,7 @@ import org.springframework.data.rest.core.annotation.RepositoryRestResource;
 public interface BookShelfRepository
     extends PagingAndSortingRepository<BookShelf, Long> {
     Optional<BookShelf> findByBookShelfId(Long bookShelfId);
+    Page<BookShelf> findByCreaterIdAndTitleContainingIgnoreCaseOrderByCreatedDate(Long createrId, String title, Pageable pageable);
     Page<BookShelf> findByCreaterIdOrderByTitle(Long createrId, Pageable pageable);
     Page<BookShelf> findByIsSharedAndTitleContainingIgnoreCaseOrderByCreatedDateDesc(Boolean isShared, String title, Pageable pageable);
     Page<BookShelf> findByIsSharedAndCreaterIdOrderByCreatedDateDesc(Boolean isShared, Long createrId, Pageable pageable);
