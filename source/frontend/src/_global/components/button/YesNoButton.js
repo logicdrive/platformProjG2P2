@@ -11,7 +11,11 @@ const YesNoButton = ({title, onClickYes, children, ...props}) => {
     </Box>
 
     <Dialog open={isSharedLinkDialogOpend} onClose={()=>{setIsSharedLinkDialogOpend(false);}} {...props}>
-        <DialogTitle sx={{color: "black", fontWeight: "bolder", fontFamily: "BMDfont", width: "400px"}}>{title}</DialogTitle>
+        <DialogTitle sx={{color: "black", fontWeight: "bolder", fontFamily: "BMDfont", width: "400px"}}>{
+              title.split('\\n').map((textLine, key) => {
+                return <p key={key}>{textLine}</p>;
+              })
+        }</DialogTitle>
 
         <DialogActions>
             <Button onClick={() => {

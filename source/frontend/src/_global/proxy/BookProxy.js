@@ -5,6 +5,12 @@ class BookProxy {
         await ServerProxy.request("put", "book", "books/createEmptyBook")
     }
 
+    static async generateCoverImage(bookId) {
+        await ServerProxy.request("put", "book", "books/generateCoverImage", {
+            "bookId": bookId,
+        })
+    }
+
 
     static async updateBookTitle(bookId, title) {
         await ServerProxy.request("put", "book", "books/updateBookTitle", {

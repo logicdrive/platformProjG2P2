@@ -81,8 +81,17 @@ const BookManagePage = () => {
         }
     }
 
-    const onClickGenerateCoverImageButton = (query) => {
-        alert("Generate : "+ query)
+    const onClickGenerateCoverImageButton = async () => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookProxy.generateCoverImage(bookId)
+    
+          } catch(error) {
+            addAlertPopUp("책 표지 이미지를 생성하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책 표지 이미지를 생성하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
     
 
@@ -233,7 +242,7 @@ const BookManagePage = () => {
                         />
                         
                         <Box sx={{marginTop: "5px", marginLeft: "18px", marginBottom: "5px"}}>
-                            <GenerateCoverImageButton onClickGenerateButton={onClickGenerateCoverImageButton} defaultQuery={"CoverImageQuery"}/>
+                            <GenerateCoverImageButton onClickGenerateButton={onClickGenerateCoverImageButton}/>
 
                             <FileUploadButton accept="image/*" onUploadFile={onClickCoverImageUploadButton}>
                                 <Box sx={{marginLeft: "5px", float: "left", backgroundColor: "cornflowerblue", width: "82px", height: "25px", padding: "8px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}}>
