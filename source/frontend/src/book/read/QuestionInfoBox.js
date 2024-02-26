@@ -21,7 +21,7 @@ const QuestionInfoBox = ({rawProblemInfo, order}) => {
             })
             setIsShowAnswer(false)
         })()
-    }, [rawProblemInfo])
+    }, [rawProblemInfo, order])
 
 
     return (

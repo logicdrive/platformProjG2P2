@@ -58,6 +58,11 @@ class BookProxy {
     static async searchBookOneByBookId(bookId) {
         return (await ServerProxy.request("get", "collectedData", `books/search/findByBookId?bookId=${bookId}`)).data
     }
+
+
+    static async searchBookAllByIsShared(isShared, page, size=6) {
+        return (await ServerProxy.request("get", "collectedData", `books/search/findByIsSharedOrderByCreatedDateDesc?isShared=${isShared}&page=${page}&size=${size}`)).data
+    }
 }
 
 export default BookProxy
