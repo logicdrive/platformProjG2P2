@@ -1,10 +1,11 @@
-import React from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 import { Divider, Box, Stack } from "@mui/material";
 import ListIcon from '@mui/icons-material/List';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 import QuizIcon from '@mui/icons-material/Quiz';
 
+import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
 import NormalText from '../../_global/components/text/NormalText';
@@ -12,16 +13,36 @@ import QuestionInfoBox from './QuestionInfoBox';
 import IndexesInfoBox from './IndexesInfoBox';
 import ContentInfoBox from './ContentInfoBox';
 import IndexMoveButtons from './IndexMoveButtons';
+import BookProxy from '../../_global/proxy/BookProxy';
 
 const BookReadPage = () => {
     const {bookId, indexId} = useParams()
-    console.log("BookId :", bookId, "IndexId :", indexId)
+    const {addAlertPopUp} = useContext(AlertPopupContext)
+
+
+    const [rawBookInfo, setRawBookInfo] = useState({})
+    const [loadInfos] = useState(() => {
+        return async (bookId, indexId) => {
+            try {
+
+                setRawBookInfo(await BookProxy.searchBookOneByBookId(bookId))
+
+            } catch (error) {
+                addAlertPopUp("관련 정보를 가져오는 과정에서 오류가 발생했습니다!", "error");
+                console.error("관련 정보를 가져오는 과정에서 오류가 발생했습니다!", error);
+            }
+        }
+    })
+    useEffect(() => {
+        loadInfos(bookId, indexId)
+    }, [bookId, indexId, loadInfos])
+
 
     return (
         <>
             <MainNavAppBar focusedIndex={0} backArrowUrl={-1}/>
 
-            <BoldText sx={{fontSize: "25px", marginTop: "10px", cursor: "context-menu"}}>Python</BoldText>
+            <BoldText sx={{fontSize: "25px", marginTop: "10px", cursor: "context-menu"}}>{rawBookInfo.title}</BoldText>
             <Divider sx={{marginTop: "5px"}}/>
 
             <Box sx={{display: "flex"}}>
