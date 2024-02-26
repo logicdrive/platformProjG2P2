@@ -30,7 +30,7 @@ BookReadPage: E
 BookManagePage: E
 
 BookShelfMyListPage: E
-BookShelfSharedListPage: 
+BookShelfSharedListPage: E
 BookShelfInfoPage: 
 
 RecommandUserPage: E

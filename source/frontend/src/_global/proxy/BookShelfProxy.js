@@ -24,6 +24,19 @@ class BookShelfProxy {
     static async searchBookShelfAllByCreaterIdAndTitle(createrId, title, page=0, size=6) {
         return (await ServerProxy.request("get", "collectedData", `bookShelfs/search/findByCreaterIdAndTitleContainingIgnoreCaseOrderByCreatedDate?createrId=${createrId}&title=${title}&page=${page}&size=${size}`)).data
     }
+
+
+    static async searchBookShelfAllByIsShared(isShared, page=0, size=6) {
+        return (await ServerProxy.request("get", "collectedData", `bookShelfs/search/findByIsSharedAndTitleContainingIgnoreCaseOrderByCreatedDateDesc?isShared=${isShared}&title=&page=${page}&size=${size}`)).data
+    }
+    
+    static async searchBookShelfAllByIsSharedAndTitle(isShared, title, page=0, size=6) {
+        return (await ServerProxy.request("get", "collectedData", `bookShelfs/search/findByIsSharedAndTitleContainingIgnoreCaseOrderByCreatedDateDesc?isShared=${isShared}&title=${title}&page=${page}&size=${size}`)).data
+    }
+
+    static async searchBookShelfAllByIsSharedAndCreaterId(isShared, createrId, page=0, size=6) {
+        return (await ServerProxy.request("get", "collectedData", `bookShelfs/search/findByIsSharedAndCreaterIdOrderByCreatedDateDesc?isShared=${isShared}&createrId=${createrId}&page=${page}&size=${size}`)).data
+    }
 }
 
 export default BookShelfProxy
