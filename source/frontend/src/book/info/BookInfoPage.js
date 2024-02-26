@@ -16,6 +16,14 @@ import BookProxy from '../../_global/proxy/BookProxy';
 
 const BookInfoPage = () => {
     const {bookId} = useParams()
+
+    const [rawBookInfo, setRawBookInfo] = useState({})
+    useEffect(() => {
+        (async () => {
+            setRawBookInfo(await BookProxy.searchBookOneByBookId(bookId))
+        })()
+    }, [bookId])
+
     const [rawRecommendedBookInfos, setRawRecommendedBookInfos] = useState([])
     useEffect(() => {
         (async () => {
@@ -45,18 +53,10 @@ const BookInfoPage = () => {
 
             <Container maxWidth="md" sx={{padding: "5px", marginTop: "10px"}}>
                 <Stack>
-                    <BoldText sx={{fontSize: "25px"}}>Python</BoldText>
+                    <BoldText sx={{fontSize: "25px"}}>{rawBookInfo.title}</BoldText>
                     <Divider sx={{marginTop: "5px"}}/>
 
-                    <BookInfoBox rawBookInfo={{
-                        id: 1,
-                        imageUrl: "/src/NoImage.jpg",
-                        creator: "TestCreater",
-                        createdDate: "2024-02-23 11:46",
-                        editedDate: "2024-02-23 11:46",
-                        indexCount: 5,
-                        likeCount: 10
-                    }}/>
+                    <BookInfoBox rawBookInfo={rawBookInfo}/>
 
 
                     <Box sx={{marginTop: "15px"}}>
