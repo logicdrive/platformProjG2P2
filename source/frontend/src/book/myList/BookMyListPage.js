@@ -81,7 +81,7 @@ const BookMyListPage = () => {
             {
                 addAlertPopUp(successLog, "success")
                 setIsBackdropOpened(false)
-                loadBookInfos()
+                loadBookInfos(searchInfo)
             }
 
         }
