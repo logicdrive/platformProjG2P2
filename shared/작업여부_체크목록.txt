@@ -29,7 +29,7 @@ BookInfoPage: E
 BookReadPage: E
 BookManagePage: E
 
-BookShelfMyListPage: 
+BookShelfMyListPage: E
 BookShelfSharedListPage: 
 BookShelfInfoPage: 
 

@@ -18,6 +18,7 @@ import IndexProxy from '../../_global/proxy/IndexProxy';
 import TimeTool from '../../_global/tool/TimeTool';
 import DictionaryTool from '../../_global/tool/DictionaryTool';
 import BookProxy from '../../_global/proxy/BookProxy';
+import BookShelfBookProxy from '../../_global/proxy/BookShelfBookProxy';
 
 const BookInfoBox = ({rawBookInfo, setIsBackdropOpened}) => {
     const navigate = useNavigate()
@@ -48,8 +49,17 @@ const BookInfoBox = ({rawBookInfo, setIsBackdropOpened}) => {
     }, [rawBookInfo])
 
 
-    const onClickAddToBookShelfButton = (selectedBookShelfId) => {
-        alert("Add to BookShelf Button Clicked! Selected BookShelf Id: " + selectedBookShelfId)
+    const onClickAddToBookShelfButton = async (selectedBookShelfId) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookShelfBookProxy.addBookShelfBook(selectedBookShelfId, bookInfo.id)
+    
+          } catch(error) {
+            addAlertPopUp("책장에 책을 추가하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책장에 책을 추가하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     const onClickLikeButton = async () => {

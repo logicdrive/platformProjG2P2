@@ -109,6 +109,7 @@ const BookInfoPage = () => {
                 else if(eventName === "CommentCreated") successLog = "댓글을 추가했습니다."
                 else if(eventName === "CommentUpdated") successLog = "댓글을 수정했습니다."
                 else if(eventName === "CommentDeleted") successLog = "댓글을 삭제했습니다."
+                else if(eventName === "BookShelfBookAdded") successLog = "책장에 책을 추가했습니다."
     
                 if(successLog.length > 0)
                 {

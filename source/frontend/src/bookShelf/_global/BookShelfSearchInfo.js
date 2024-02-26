@@ -85,7 +85,7 @@ const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible, setIsBackdrop
                                     border: "1px solid lightgray",
                                 }}
                                 alt="업로드된 이미지가 표시됩니다."
-                                src={bookShelfInfo.imageUrls[0]}
+                                src={(bookShelfInfo.imageUrls[0]) ? bookShelfInfo.imageUrls[0] : "/src/NoImage.jpg"}
                             />
 
                             <Box
@@ -102,7 +102,7 @@ const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible, setIsBackdrop
                                     marginTop: "20px"
                                 }}
                                 alt="업로드된 이미지가 표시됩니다."
-                                src={bookShelfInfo.imageUrls[1]}
+                                src={(bookShelfInfo.imageUrls[1]) ? bookShelfInfo.imageUrls[1] : "/src/NoImage.jpg"}
                             />
 
                             <Box
@@ -119,7 +119,7 @@ const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible, setIsBackdrop
                                     marginTop: "40px"
                                 }}
                                 alt="업로드된 이미지가 표시됩니다."
-                                src={bookShelfInfo.imageUrls[2]}
+                                src={(bookShelfInfo.imageUrls[2]) ? bookShelfInfo.imageUrls[2] : "/src/NoImage.jpg"}
                             />
                             </>
                         )
@@ -136,7 +136,7 @@ const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible, setIsBackdrop
                                     border: "1px solid lightgray",
                                 }}
                                 alt="업로드된 이미지가 표시됩니다."
-                                src={bookShelfInfo.imageUrls[0]}
+                                src={(bookShelfInfo.imageUrls[0]) ? bookShelfInfo.imageUrls[0] : "/src/NoImage.jpg"}
                             />
 
                             <Box
@@ -153,7 +153,7 @@ const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible, setIsBackdrop
                                     marginTop: "20px"
                                 }}
                                 alt="업로드된 이미지가 표시됩니다."
-                                src={bookShelfInfo.imageUrls[1]}
+                                src={(bookShelfInfo.imageUrls[1]) ? bookShelfInfo.imageUrls[1] : "/src/NoImage.jpg"}
                             />
                             </>
                         )
@@ -169,7 +169,7 @@ const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible, setIsBackdrop
                                     border: "1px solid lightgray",
                                 }}
                                 alt="업로드된 이미지가 표시됩니다."
-                                src={(bookShelfInfo.imageUrls && bookShelfInfo.imageUrls.length >= 1) ? bookShelfInfo.imageUrls[0] : "/src/NoImage.jpg"}
+                                src={(bookShelfInfo.imageUrls && bookShelfInfo.imageUrls.length >= 1 && bookShelfInfo.imageUrls[0]) ? bookShelfInfo.imageUrls[0] : "/src/NoImage.jpg"}
                             />
                         )
                     } 
