@@ -1,12 +1,15 @@
-import React, {useState} from 'react';
+import React, { useState, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Box, Paper, InputBase, MenuItem, Select } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 
+import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
 import BoldText from '../../_global/components/text/BoldText';
 import CreateBookShelfButton from './CreateBookShelfButton';
+import BookShelfProxy from '../../_global/proxy/BookShelfProxy';
 
-const BookShelfSubAppBar = ({focusedIndex, searchTypes, handleOnSubmit, sx, ...props}) => {
+const BookShelfSubAppBar = ({focusedIndex, searchTypes, handleOnSubmit, setIsBackdropOpened, sx, ...props}) => {
+    const {addAlertPopUp} = useContext(AlertPopupContext)
     const navigate = useNavigate()
 
     let commonSx = {fontSize: "15px", height: "30px", paddingX: "10px", paddingTop: "10px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}}
@@ -17,8 +20,17 @@ const BookShelfSubAppBar = ({focusedIndex, searchTypes, handleOnSubmit, sx, ...p
     const [searchType, setSearchType] = useState(searchTypes[0].type)
 
 
-    const onClickCreateButton = (title) => {
-        alert("생성할 책장 제목: " + title)
+    const onClickCreateButton = async (title) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookShelfProxy.createBookShelf(title)
+    
+          } catch(error) {
+            addAlertPopUp("책장을 생성하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책장을 생성하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
 

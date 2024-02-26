@@ -1,11 +1,15 @@
-import React from 'react';
-import { Box, Stack, Pagination } from '@mui/material';
+import React, { useState, useContext } from 'react';
+import { Box, Stack, Pagination, Backdrop, CircularProgress } from '@mui/material';
 
+import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BookShelfSubAppBar from '../_global/BookShelfSubAppBar';
 import BookShelfSearchInfos from '../_global/BookShelfSearchInfos';
+import SubscribeMessageCreatedSocket from '../../_global/socket/EventHandlerSocket';
 
 const BookShelfMyListPage = () => {
+    const {addAlertPopUp} = useContext(AlertPopupContext)
+    const [isBackdropOpened, setIsBackdropOpened] = useState(false)
 
     const onClickSearchButton = (searchText, searchType) => {
         alert("검색어: " + searchText + ", 검색 대상: " + searchType)
@@ -15,12 +19,30 @@ const BookShelfMyListPage = () => {
         alert("페이지 번호: " + page)
     }
 
+
+    SubscribeMessageCreatedSocket(useState(() => {
+        return (eventName) => {
+        
+            let successLog = ""
+            if(eventName === "BookShelfCreated") successLog = "책장이 생성되었습니다."
+
+            if(successLog.length > 0)
+            {
+                addAlertPopUp(successLog, "success")
+                setIsBackdropOpened(false)
+            }
+
+        }
+    })[0])
+
+
     return (
         <>
             <MainNavAppBar focusedIndex={1}/>
             <BookShelfSubAppBar focusedIndex={0}
                 searchTypes={[{type: "bookShelfTitle", name: "책장 제목"}]}
                 handleOnSubmit={onClickSearchButton}
+                setIsBackdropOpened={setIsBackdropOpened}
             />
 
             <Stack>
@@ -44,6 +66,13 @@ const BookShelfMyListPage = () => {
                     <Pagination count={10} onChange={onClickPageNumber} sx={{padding: "auto", margin: "0 auto"}}/>
                 </Box>
             </Stack>
+
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={isBackdropOpened}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
         </>
     )
 }

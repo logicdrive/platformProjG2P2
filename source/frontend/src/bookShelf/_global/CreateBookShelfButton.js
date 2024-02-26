@@ -13,6 +13,7 @@ const CreateBookShelfButton = ({onClickCreateButton, defaultTitle, ...props}) =>
     onClickCreateButton(title);
   }
 
+  setTestAutomationCommands(setTitle)
   return (
     <>
     <BoldText onClick={()=>{setIsDialogOpend(true);setTitle(defaultTitle);}} sx={{float: "right", marginRight: "10px", fontSize: "15px", height: "30px", paddingX: "10px", paddingTop: "10px", borderRadius: "5px", cursor: "pointer", "&:hover": {opacity: 0.80}, color: "black"}} {...props}>책장 생성하기</BoldText>
@@ -48,6 +49,17 @@ const CreateBookShelfButton = ({onClickCreateButton, defaultTitle, ...props}) =>
     </Dialog>
     </>
   )
+}
+
+function setTestAutomationCommands(setTitle) {
+  window.onkeydown = (e) => {
+      if(!e || !e.code) return
+
+      if(e.code.startsWith("Digit") && e.altKey)
+      {
+        setTitle(`TestBookShelf${e.code[5]}`)
+      }
+  }
 }
 
 export default CreateBookShelfButton;
