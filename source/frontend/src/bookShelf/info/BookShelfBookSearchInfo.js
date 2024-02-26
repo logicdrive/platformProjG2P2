@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import { Card, CardContent, Box, IconButton, Stack } from '@mui/material';
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import DeleteIcon from '@mui/icons-material/Delete';
 
+import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
 import BoldText from '../../_global/components/text/BoldText';
 import YesNoButton from '../../_global/components/button/YesNoButton';
 import UserProxy from '../../_global/proxy/UserProxy';
@@ -16,6 +17,7 @@ import TimeTool from '../../_global/tool/TimeTool';
 
 const BookShelfBookSearchInfo = ({rawBookShelfBookInfo, setIsBackdropOpened}) => {
     const navigate = useNavigate()
+    const {addAlertPopUp} = useContext(AlertPopupContext)
     const [bookInfo, setBookInfo] = useState({})
     useEffect(() => {
         (async () => {
@@ -38,6 +40,19 @@ const BookShelfBookSearchInfo = ({rawBookShelfBookInfo, setIsBackdropOpened}) =>
         })()
     }, [rawBookShelfBookInfo])
 
+
+    const onClickLikeButton = async () => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookProxy.likeBook(bookInfo.id)
+    
+          } catch(error) {
+            addAlertPopUp("책에 좋아요를 추가하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책에 좋아요를 추가하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
+    }
 
     const onClickDeleteButton = () => {
         alert("Deleted")
@@ -79,7 +94,7 @@ const BookShelfBookSearchInfo = ({rawBookShelfBookInfo, setIsBackdropOpened}) =>
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성자: {bookInfo.creator}</BoldText>
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성일: {bookInfo.createdDate}</BoldText>
                     
-                    <IconButton onClick={(e)=>{e.stopPropagation(); alert("BBB")}} sx={{paddingY: "0px", borderRadius: "5px", marginLeft: "-10px", width: "110px"}}>
+                    <IconButton onClick={(e)=>{e.stopPropagation();onClickLikeButton()}} sx={{paddingY: "0px", borderRadius: "5px", marginLeft: "-10px", width: "110px"}}>
                         <ThumbUpIcon sx={{fontSize: "20px"}}/> 
                         <BoldText sx={{marginTop: "3px", marginLeft: "3px", fontSize: "15px", color: "gray"}}>{bookInfo.likeCount} LIKES</BoldText>
                     </IconButton>
