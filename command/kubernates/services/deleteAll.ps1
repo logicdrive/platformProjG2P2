@@ -1,0 +1,1 @@
+Start-Process powershell -ArgumentList "-Command", "cd ./source/user;./command/kubernetes/deleteAll.ps1"
