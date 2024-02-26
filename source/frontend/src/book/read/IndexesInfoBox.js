@@ -1,20 +1,26 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Stack } from "@mui/material";
 
 import NormalText from '../../_global/components/text/NormalText';
+import DictionaryTool from '../../_global/tool/DictionaryTool';
 
 const IndexesInfoBox = ({bookId, rawIndexInfos, focusedIndex}) => {
     const navigate = useNavigate();
-    const [indexInfos] = useState(
-        rawIndexInfos.map((indexInfo) => {
-            return {
-                id: indexInfo.id,
-                title: indexInfo.title
-            }
-        })
-    )
+    const [indexInfos, setIndexInfos] = useState([])
+    useEffect(() => {
+        (async () => {
+            if(DictionaryTool.isEmpty(rawIndexInfos)) return
+
+            setIndexInfos(rawIndexInfos.map((indexInfo) => {
+                return {
+                    id: indexInfo.indexId,
+                    title: indexInfo.name
+                }
+            }))
+        })()
+    }, [rawIndexInfos])
 
     return (
         <Stack

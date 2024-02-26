@@ -10,7 +10,10 @@ const ContentInfoBox = ({rawContentInfo}) => {
     const [contentInfo, setContentInfo] = useState({})
     useEffect(() => {
         (async () => {
-            if(DictionaryTool.isEmpty(rawContentInfo)) return
+            if(DictionaryTool.isEmpty(rawContentInfo)) {
+                setContentInfo({})
+                return
+            }
 
             const fileData = await FileProxy.searchFileOneByFileId(rawContentInfo.imageFileId)
             setContentInfo({

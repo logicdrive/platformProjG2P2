@@ -15,6 +15,7 @@ import ContentInfoBox from './ContentInfoBox';
 import IndexMoveButtons from './IndexMoveButtons';
 import BookProxy from '../../_global/proxy/BookProxy';
 import ContentProxy from '../../_global/proxy/ContentProxy';
+import IndexProxy from '../../_global/proxy/IndexProxy';
 
 const BookReadPage = () => {
     const {bookId, indexId} = useParams()
@@ -22,15 +23,19 @@ const BookReadPage = () => {
 
 
     const [rawBookInfo, setRawBookInfo] = useState({})
+    const [rawIndexInfos, setRawIndexInfos] = useState([])
     const [rawContentInfo, setRawContentInfo] = useState({})
     const [loadInfos] = useState(() => {
         return async (bookId, indexId) => {
             try {
 
                 setRawBookInfo(await BookProxy.searchBookOneByBookId(bookId))
+                setRawIndexInfos((await IndexProxy.searchIndexAllByBookId(bookId))._embedded.indexes)
 
                 if(await ContentProxy.existsByIndexId(indexId))
                     setRawContentInfo(await ContentProxy.searchContentOneByIndexId(indexId))
+                else
+                    setRawContentInfo({})
 
             } catch (error) {
                 addAlertPopUp("관련 정보를 가져오는 과정에서 오류가 발생했습니다!", "error");
@@ -59,9 +64,7 @@ const BookReadPage = () => {
                     
                     <IndexesInfoBox 
                         bookId={bookId} 
-                        rawIndexInfos={[
-                            {id: 1, title: "Python 소개"},
-                            {id: 2, title: "Python 기초 문법"}]}
+                        rawIndexInfos={rawIndexInfos}
                         focusedIndex={indexId}
                     />
                 </Stack>
@@ -98,7 +101,7 @@ const BookReadPage = () => {
                     </Stack>
                     <Divider sx={{marginY: "5px"}}/>
 
-                    <IndexMoveButtons bookId={bookId} indexId={indexId} indexCount={2}/>
+                    <IndexMoveButtons bookId={bookId} indexId={indexId} indexCount={rawIndexInfos.length}/>
                 </Stack>
             </Box>
         </>
