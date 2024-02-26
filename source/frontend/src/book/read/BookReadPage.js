@@ -14,6 +14,7 @@ import IndexesInfoBox from './IndexesInfoBox';
 import ContentInfoBox from './ContentInfoBox';
 import IndexMoveButtons from './IndexMoveButtons';
 import BookProxy from '../../_global/proxy/BookProxy';
+import ContentProxy from '../../_global/proxy/ContentProxy';
 
 const BookReadPage = () => {
     const {bookId, indexId} = useParams()
@@ -21,11 +22,15 @@ const BookReadPage = () => {
 
 
     const [rawBookInfo, setRawBookInfo] = useState({})
+    const [rawContentInfo, setRawContentInfo] = useState({})
     const [loadInfos] = useState(() => {
         return async (bookId, indexId) => {
             try {
 
                 setRawBookInfo(await BookProxy.searchBookOneByBookId(bookId))
+
+                if(await ContentProxy.existsByIndexId(indexId))
+                    setRawContentInfo(await ContentProxy.searchContentOneByIndexId(indexId))
 
             } catch (error) {
                 addAlertPopUp("관련 정보를 가져오는 과정에서 오류가 발생했습니다!", "error");
@@ -69,11 +74,7 @@ const BookReadPage = () => {
                             <NormalText sx={{fontSize: "20px", float: "left", marginLeft: "2px"}}>학습</NormalText>
                         </Box>
 
-                        <ContentInfoBox rawContentInfo={{
-                            id: 1,
-                            imageUrl: "/src/NoImage.jpg",
-                            content: "Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is Python is "
-                        }}/>
+                        <ContentInfoBox rawContentInfo={rawContentInfo}/>
                     </Stack>
                     <Divider sx={{marginY: "5px"}}/>
 
