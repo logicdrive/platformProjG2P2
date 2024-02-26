@@ -40,8 +40,17 @@ const BookShelfInfoSubAppBar = ({rawBookShelfInfo, searchTypes, handleOnSubmit, 
         }
     }
 
-    const onClickSharedButton = (isShared) => {
-        alert("Shared: " + isShared)
+    const onClickSharedButton = async (isShared) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookShelfProxy.updateIsShared(bookShelfInfo.id, isShared)
+    
+          } catch(error) {
+            addAlertPopUp("책장의 공유 여부를 변경하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책장의 공유 여부를 변경하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     const onClickDeleteButton = () => {

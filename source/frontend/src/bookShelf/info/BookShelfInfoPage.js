@@ -82,6 +82,7 @@ const BookShelfInfoPage = () => {
             let successLog = ""
             if(eventName === "BookLiked") successLog = "책에 좋아요를 추가했습니다."
             else if(eventName === "BookShelfTitleUpdated") successLog = "책장의 제목을 변경했습니다."
+            else if(eventName === "BookShelfIsSharedUpdated") successLog = "책장 공유 여부가 변경되었습니다."
 
             if(successLog.length > 0)
             {
