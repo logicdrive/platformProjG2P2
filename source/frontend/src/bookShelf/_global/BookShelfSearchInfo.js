@@ -1,28 +1,60 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, Box, Stack } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
 
 import BoldText from '../../_global/components/text/BoldText';
 import YesNoButton from '../../_global/components/button/YesNoButton';
+import UserProxy from '../../_global/proxy/UserProxy';
+import TimeTool from '../../_global/tool/TimeTool';
+import TagProxy from '../../_global/proxy/TagProxy';
+import BookProxy from '../../_global/proxy/BookProxy';
+import FileProxy from '../../_global/proxy/FileProxy';
+import BookShelfBookProxy from '../../_global/proxy/BookShelfBookProxy';
 
-const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible}) => {
+const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible, setIsBackdropOpened}) => {
     const navigate = useNavigate()
-    const [bookShelfInfo] = useState({
-        id: rawBookShelfInfo.id,
-        title: rawBookShelfInfo.title,
-        creator: rawBookShelfInfo.creator,
-        createdDate: rawBookShelfInfo.createdDate,
-        bookCount: rawBookShelfInfo.bookCount,
-        tags: rawBookShelfInfo.tags,
-        isShared: rawBookShelfInfo.isShared,
-        imageUrls: rawBookShelfInfo.imageUrls
-    })
+    const [bookShelfInfo, setBookShelfInfo] = useState({})
+    useEffect(() => {
+        (async () => {
+            const createrData = await UserProxy.searchUserOneByUserId(rawBookShelfInfo.createrId)
+            const BookShelfBookData = (await BookShelfBookProxy.searchBookShelfBooksByBookShelfId(rawBookShelfInfo.bookShelfId, 0, 3))._embedded.bookShelfBooks
+            
+            let tagDatas = []
+            if(BookShelfBookData.length > 0) {
+                tagDatas = (await TagProxy.searchAllTagByBookId(BookShelfBookData[0].bookId))._embedded.tags
+                tagDatas = tagDatas.slice(0, 3)
+            }
+            
+            let imageUrls = []
+            if(BookShelfBookData.length > 0) {
+                for(let i=0; i<BookShelfBookData.length; i++) {
+                    const bookData = await BookProxy.searchBookOneByBookId(BookShelfBookData[i].bookId)
+                    const imageUrl = (await FileProxy.searchFileOneByFileId(bookData.coverImageFileId)).url 
+                    imageUrls.push(imageUrl)
+                }
+            }
+    
+            setBookShelfInfo({
+                id: rawBookShelfInfo.bookShelfId,
+                title: rawBookShelfInfo.title,
+                creator: createrData.name,
+                createdDate: TimeTool.prettyOnlyDateString(rawBookShelfInfo.createdDate),
+                bookCount: rawBookShelfInfo.bookCount,
+                tags: tagDatas.map((tagData) => tagData.name),
+                isShared: rawBookShelfInfo.isShared,
+                imageUrls: imageUrls
+            })
+        })()
+    }, [rawBookShelfInfo])
+
 
     const onClickSharedButton = (isShared) => {
         alert("Shared: " + isShared)
     }
 
+
+    if(!bookShelfInfo.id) return <></>
     return (
         <Card sx={{width: "380px", height: "220px"}} onClick={()=>{navigate(`/bookShelf/info/${bookShelfInfo.id}`)}}>
             <CardContent sx={{padding: "10px"}}>

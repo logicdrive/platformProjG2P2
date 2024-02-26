@@ -1,23 +1,73 @@
-import React, { useState, useContext } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
+import { useSearchParams, useNavigate } from 'react-router-dom';
+
 import { Box, Stack, Pagination, Backdrop, CircularProgress } from '@mui/material';
 
 import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
+import { JwtTokenContext } from '../../_global/provider/jwtToken/JwtTokenContext';
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BookShelfSubAppBar from '../_global/BookShelfSubAppBar';
 import BookShelfSearchInfos from '../_global/BookShelfSearchInfos';
 import SubscribeMessageCreatedSocket from '../../_global/socket/EventHandlerSocket';
+import BookShelfProxy from '../../_global/proxy/BookShelfProxy';
 
 const BookShelfMyListPage = () => {
+    const navigate = useNavigate()
     const {addAlertPopUp} = useContext(AlertPopupContext)
+    const {jwtTokenState} = useContext(JwtTokenContext)
+    const [queryParameters] = useSearchParams()
     const [isBackdropOpened, setIsBackdropOpened] = useState(false)
+    const [searchInfo, setSearchInfo] = useState({
+        searchType: queryParameters.get("searchType") || "",
+        searchText: queryParameters.get("searchText") || "",
+        pageNumber: Number(queryParameters.get("pageNumber")) || 1
+    })
+    useEffect(() => {
+        setSearchInfo({
+            searchType: queryParameters.get("searchType") || "",
+            searchText: queryParameters.get("searchText") || "",
+            pageNumber: Number(queryParameters.get("pageNumber")) || 1
+        })
+    }, [queryParameters])
+
+
+    const [rawBookShelfInfos, setRawBookShelfInfos] = useState([])
+    const [totalPages, setTotalPages] = useState(0)
+
 
     const onClickSearchButton = (searchText, searchType) => {
-        alert("검색어: " + searchText + ", 검색 대상: " + searchType)
+        if(searchText.length <= 0) return 
+        navigate(`/bookShelf/myList?searchType=${searchType}&searchText=${searchText}&pageNumber=1`)
     }
 
     const onClickPageNumber = (_, page) => {
-        alert("페이지 번호: " + page)
+        navigate(`/bookShelf/myList?searchType=${searchInfo.searchType}&searchText=${searchInfo.searchText}&pageNumber=${page}`)
     }
+
+
+    const [loadBookShelfs] = useState(() => {
+        return async (searchInfo) => {
+            try {
+
+                let res = {}
+                
+                // if(searchInfo.searchText.length > 0 && searchInfo.searchType==="bookTitle")
+                //     res = await BookProxy.searchBookAllByCreaterIdAndTitle(jwtTokenState.jwtToken.id, searchInfo.searchText, searchInfo.pageNumber-1)
+                // else
+                res = await BookShelfProxy.searchBookShelfAllByCreaterId(jwtTokenState.jwtToken.id, searchInfo.pageNumber-1)
+
+                setTotalPages(res.page.totalPages)
+                setRawBookShelfInfos(res._embedded.bookShelfs)
+
+            } catch (error) {
+                addAlertPopUp("책장 정보를 가져오는 과정에서 오류가 발생했습니다!", "error");
+                console.error("책장 정보를 가져오는 과정에서 오류가 발생했습니다!", error);
+            }
+        }
+    })
+    useEffect(() => {
+        loadBookShelfs(searchInfo)
+    }, [addAlertPopUp, jwtTokenState, queryParameters, searchInfo, loadBookShelfs])
 
 
     SubscribeMessageCreatedSocket(useState(() => {
@@ -48,22 +98,14 @@ const BookShelfMyListPage = () => {
             <Stack>
                 <Stack direction="row" spacing={2}>
                     <BookShelfSearchInfos
-                        rawBookShelfInfos={[{
-                            id: 1,
-                            title: "My BookShelf",
-                            creator: "TestCreater",
-                            createdDate: "2024-02-22 12:47",
-                            bookCount: 3,
-                            tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD", "EEEEE"],
-                            isShared: false,
-                            imageUrls: ["/src/NoImage.jpg", "/src/NoImage.jpg", "/src/NoImage.jpg"]
-                        }]}
+                        rawBookShelfInfos={rawBookShelfInfos}
                         isEditIconVisible={true}
+                        setIsBackdropOpened={setIsBackdropOpened}
                     />
                 </Stack>
 
                 <Box sx={{width: "100%", marginTop: "10px", display: "flex", justifyContent: "center"}}>
-                    <Pagination count={10} onChange={onClickPageNumber} sx={{padding: "auto", margin: "0 auto"}}/>
+                    <Pagination count={totalPages} onChange={onClickPageNumber} sx={{padding: "auto", margin: "0 auto"}}/>
                 </Box>
             </Stack>
 
