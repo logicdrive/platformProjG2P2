@@ -39,6 +39,30 @@ const BookInfoPage = () => {
         loadBookInfos(bookId)
     }, [bookId, loadBookInfos])
 
+    const [rawCommentInfos, setRawCommentInfos] = useState([])
+    const [totalCommentCount, setTotalCommentCount] = useState(0)
+    const [totalPages, setTotalPages] = useState(0)
+    
+    const [currentPage, setCurrentPage] = useState(1)
+    const [loadCommentInfos] = useState(() => {
+        return async (bookId, currentPage) => {
+            try {
+
+                const res = await CommentProxy.searchCommentAllByBookId(bookId, currentPage-1)
+                setRawCommentInfos(res._embedded.comments)
+                setTotalCommentCount(res.page.totalElements)
+                setTotalPages(res.page.totalPages)
+
+            } catch (error) {
+                addAlertPopUp("댓글 정보를 가져오는 과정에서 오류가 발생했습니다!", "error");
+                console.error("댓글 정보를 가져오는 과정에서 오류가 발생했습니다!", error);
+            }
+        }
+    })
+    useEffect(() => {
+        loadCommentInfos(bookId, currentPage)
+    }, [bookId, currentPage, loadCommentInfos])
+
 
     const [rawRecommendedBookInfos, setRawRecommendedBookInfos] = useState([])
     useEffect(() => {
@@ -68,7 +92,7 @@ const BookInfoPage = () => {
     }
 
     const onClickCommentPageNumber = (_, page) => {
-        alert("페이지 번호: " + page)
+        setCurrentPage(page)
     }
 
 
@@ -76,7 +100,6 @@ const BookInfoPage = () => {
         return (eventName) => {
         }
     })
-    SubscribeMessageCreatedSocket(socketCallBack)
     useEffect(() => {
         setSocketCallBack(() => {
             return (eventName) => {
@@ -90,11 +113,15 @@ const BookInfoPage = () => {
                     addAlertPopUp(successLog, "success")
                     setIsBackdropOpened(false)
                     loadBookInfos(bookId)
+
+                    setCurrentPage(1)
+                    loadCommentInfos(bookId, 1)
                 }
     
             }
         })
-    }, [bookId, addAlertPopUp, loadBookInfos])
+    }, [bookId, addAlertPopUp, loadBookInfos, loadCommentInfos])
+    SubscribeMessageCreatedSocket(socketCallBack)
 
     
     return (
@@ -119,24 +146,17 @@ const BookInfoPage = () => {
 
                     <Box sx={{marginTop: "15px"}}>
                         <ChatBubbleIcon sx={{float: "left", color: "gray"}}/>
-                        <BoldText sx={{float: "left", fontSize: "17px", marginLeft: "5px", color: "gray"}}>댓글: 5개</BoldText>
+                        <BoldText sx={{float: "left", fontSize: "17px", marginLeft: "5px", color: "gray"}}>댓글: {totalCommentCount}개</BoldText>
                     </Box>
                     <Divider sx={{marginTop: "5px", marginBottom: "5px", width: "100%"}}/>
                     
                     <AddCommentForm onClickAddCommentButton={onClickAddCommentButton}/>
 
 
-                    <CommentsInfosBox rawCommentInfos={[
-                        {
-                            id: 1,
-                            creator: "TestCreater",
-                            createdDate: "2024-02-23 11:46",
-                            content: "TestContent"
-                        }
-                    ]}/>
+                    <CommentsInfosBox rawCommentInfos={rawCommentInfos}/>
 
                     <Box sx={{width: "100%", marginTop: "10px", display: "flex", justifyContent: "center"}}>
-                        <Pagination count={10} onChange={onClickCommentPageNumber} sx={{padding: "auto", margin: "0 auto"}}/>
+                        <Pagination page={currentPage} count={totalPages} onChange={onClickCommentPageNumber} sx={{padding: "auto", margin: "0 auto"}}/>
                     </Box>
                 </Stack>
             </Container>

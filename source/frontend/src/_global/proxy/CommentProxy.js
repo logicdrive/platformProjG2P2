@@ -9,6 +9,11 @@ class CommentProxy {
         })
     }
 
-}
+
+    static async searchCommentAllByBookId(bookId, page, size=5) {
+        return (await ServerProxy.request("get", "collectedData", `comments/search/findByBookIdOrderByCreatedDateDesc?bookId=${bookId}&page=${page}&size=${size}`)).data
+    }
+
+} 
 
 export default CommentProxy

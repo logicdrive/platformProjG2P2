@@ -1,4 +1,4 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 
 import { Stack, Box, IconButton } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -7,14 +7,26 @@ import BoldText from '../../_global/components/text/BoldText';
 import NormalText from '../../_global/components/text/NormalText';
 import EditCommentButton from './EditCommentButton';
 import YesNoButton from '../../_global/components/button/YesNoButton';
+import UserProxy from '../../_global/proxy/UserProxy';
+import DictionaryTool from '../../_global/tool/DictionaryTool';
+import TimeTool from '../../_global/tool/TimeTool';
 
 const CommentInfoBox = ({rawCommentInfo}) => {
-    const [commentInfo] = useState({
-        id: rawCommentInfo.id,
-        creator: rawCommentInfo.creator,
-        createdDate: rawCommentInfo.createdDate,
-        content: rawCommentInfo.content
-    })
+    const [commentInfo, setCommentInfo] = useState({})
+    useEffect(() => {
+        (async () => {
+            if(DictionaryTool.isEmpty(rawCommentInfo)) return
+
+            const createrData = await UserProxy.searchUserOneByUserId(rawCommentInfo.createrId)
+            setCommentInfo({
+                id: rawCommentInfo.commentId,
+                creator: createrData.name,
+                createdDate: TimeTool.prettyDateString(rawCommentInfo.createdDate),
+                content: rawCommentInfo.content
+            })
+        })()
+    }, [rawCommentInfo])
+
 
     const onClickEditCommentButton = (comment) => {
         alert(comment)
@@ -24,6 +36,8 @@ const CommentInfoBox = ({rawCommentInfo}) => {
         alert("Delete")
     }
 
+
+    if(!commentInfo.id) return <></>
     return (
         <Stack>
             <Box>
