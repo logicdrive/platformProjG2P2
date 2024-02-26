@@ -30,6 +30,10 @@ class UserProxy {
     static async searchUserOneByUserId(userId) {
         return (await ServerProxy.request("get", "collectedData", `users/search/findByUserId?userId=${userId}`)).data
     }
+
+    static async searchUserAllByName(name) {
+        return (await ServerProxy.request("get", "collectedData", `users/search/findByNameContainingIgnoreCase?name=${name}&page=0&size=1000`)).data
+    }
 }
 
 export default UserProxy

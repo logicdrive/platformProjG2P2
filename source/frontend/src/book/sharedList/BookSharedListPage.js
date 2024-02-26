@@ -8,6 +8,7 @@ import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BookSubAppBar from '../_global/BookSubAppBar';
 import BookSearchInfos from '../../_global/components/card/BookSearchInfos';
 import BookProxy from '../../_global/proxy/BookProxy';
+import UserProxy from '../../_global/proxy/UserProxy';
 import SubscribeMessageCreatedSocket from '../../_global/socket/EventHandlerSocket';
 
 const BookSharedListPage = () => {
@@ -49,8 +50,19 @@ const BookSharedListPage = () => {
 
                 let res = {}
                 
-                // if(searchInfo.searchText.length > 0 && searchInfo.searchType==="bookTitle")
-                res = await BookProxy.searchBookAllByIsShared(true, searchInfo.pageNumber-1)
+                if(searchInfo.searchText.length > 0 && searchInfo.searchType==="bookTitle")
+                    res = await BookProxy.searchBookAllByIsSharedAndTitle(true, searchInfo.searchText, searchInfo.pageNumber-1)
+                if(searchInfo.searchText.length > 0 && searchInfo.searchType==="bookCreater") {
+                    const searchedUsers = (await UserProxy.searchUserAllByName(searchInfo.searchText))._embedded.users
+                    if(searchedUsers.length <= 0) {
+                        setRawBookInfos([])
+                        return
+                    }
+                    
+                    res = await BookProxy.searchBookAllByIsSharedAndCreaterId(true, searchedUsers[0].userId, searchInfo.pageNumber-1)
+                }
+                else
+                    res = await BookProxy.searchBookAllByIsShared(true, searchInfo.pageNumber-1)
 
                 setTotalPages(res.page.totalPages)
                 setRawBookInfos(res._embedded.books)
