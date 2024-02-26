@@ -7,6 +7,13 @@ class BookShelfBookProxy {
             "bookId": bookId
         })
     }
+
+
+    static async deleteBookShelfBook(bookShelfBookId) {
+        await ServerProxy.request("put", "bookShelfBook", "bookShelfBooks/deleteBookShelfBook", {
+            "bookShelfBookId": bookShelfBookId
+        })
+    }
     
     
     static async searchBookShelfBooksByBookShelfId(bookShelfId, page=0, size=6) {

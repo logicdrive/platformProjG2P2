@@ -89,6 +89,7 @@ const BookShelfInfoPage = () => {
                 navigate("/bookShelf/myList")
                 return
             }
+            else if(eventName === "BookShelfBookDeleted") successLog = "책장에서 책을 제외시켰습니다."
 
             if(successLog.length > 0)
             {

@@ -14,6 +14,7 @@ import TagProxy from '../../_global/proxy/TagProxy';
 import FileProxy from '../../_global/proxy/FileProxy';
 import BookProxy from '../../_global/proxy/BookProxy';
 import TimeTool from '../../_global/tool/TimeTool';
+import BookShelfBookProxy from '../../_global/proxy/BookShelfBookProxy';
 
 const BookShelfBookSearchInfo = ({rawBookShelfBookInfo, setIsBackdropOpened}) => {
     const navigate = useNavigate()
@@ -54,8 +55,17 @@ const BookShelfBookSearchInfo = ({rawBookShelfBookInfo, setIsBackdropOpened}) =>
         }
     }
 
-    const onClickDeleteButton = () => {
-        alert("Deleted")
+    const onClickDeleteButton = async () => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookShelfBookProxy.deleteBookShelfBook(bookInfo.bookShelfId)
+    
+          } catch(error) {
+            addAlertPopUp("책장의 책을 삭제하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책장의 책을 삭제하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     
