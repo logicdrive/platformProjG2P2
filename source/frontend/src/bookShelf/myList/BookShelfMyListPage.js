@@ -51,10 +51,10 @@ const BookShelfMyListPage = () => {
 
                 let res = {}
                 
-                // if(searchInfo.searchText.length > 0 && searchInfo.searchType==="bookTitle")
-                //     res = await BookProxy.searchBookAllByCreaterIdAndTitle(jwtTokenState.jwtToken.id, searchInfo.searchText, searchInfo.pageNumber-1)
-                // else
-                res = await BookShelfProxy.searchBookShelfAllByCreaterId(jwtTokenState.jwtToken.id, searchInfo.pageNumber-1)
+                if(searchInfo.searchText.length > 0 && searchInfo.searchType==="bookShelfTitle")
+                    res = await BookShelfProxy.searchBookShelfAllByCreaterIdAndTitle(jwtTokenState.jwtToken.id, searchInfo.searchText, searchInfo.pageNumber-1)
+                else
+                    res = await BookShelfProxy.searchBookShelfAllByCreaterId(jwtTokenState.jwtToken.id, searchInfo.pageNumber-1)
 
                 setTotalPages(res.page.totalPages)
                 setRawBookShelfInfos(res._embedded.bookShelfs)

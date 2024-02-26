@@ -12,6 +12,10 @@ class BookShelfProxy {
     static async searchBookShelfAllByCreaterId(createrId, page=0, size=6) {
         return (await ServerProxy.request("get", "collectedData", `bookShelfs/search/findByCreaterIdOrderByTitle?createrId=${createrId}&page=${page}&size=${size}`)).data
     }
+
+    static async searchBookShelfAllByCreaterIdAndTitle(createrId, title, page=0, size=6) {
+        return (await ServerProxy.request("get", "collectedData", `bookShelfs/search/findByCreaterIdAndTitleContainingIgnoreCaseOrderByCreatedDate?createrId=${createrId}&title=${title}&page=${page}&size=${size}`)).data
+    }
 }
 
 export default BookShelfProxy
