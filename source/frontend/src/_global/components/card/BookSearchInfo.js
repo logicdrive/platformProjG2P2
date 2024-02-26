@@ -126,16 +126,15 @@ const BookSearchInfo = ({rawBookInfo, isEditIconVisible, setIsBackdropOpened, ..
                         <BoldText sx={{marginTop: "3px", marginLeft: "3px", fontSize: "15px", color: "gray"}}>{bookInfo.likeCount} LIKES</BoldText>
                     </IconButton>
 
-
-                    <Box sx={{display: "flex", flexDirection: "row", width: "240px", flexWrap: "wrap-reverse", marginTop: "23px", marginLeft: "-3px"}}>
+                    <Stack direction="row" alignItems="flex-end" flexWrap="wrap" sx={{width: "240px", height: "105px", marginLeft: "-3px"}}>
                         {
                             bookInfo.tags.map((tag, index) => {
                                 return (
-                                    <BoldText key={index} sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", margin: "2px", cursor: "context-menu"}}>{tag}</BoldText>
+                                    <BoldText key={index} sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", marginRight: "4px", cursor: "context-menu"}}>{tag}</BoldText>
                                 )
                             })
                         }
-                    </Box>
+                    </Stack>
                 </Stack>
             </CardContent>
         </Card>
