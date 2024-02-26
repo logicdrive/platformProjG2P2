@@ -14,6 +14,7 @@ import AddCommentForm from './AddCommentForm';
 import RelatedBookInfosBox from './RelatedBookInfosBox';
 import RecommenedBookToBookProxy from '../../_global/proxy/RecommenedBookToBookProxy';
 import BookProxy from '../../_global/proxy/BookProxy';
+import CommentProxy from '../../_global/proxy/CommentProxy';
 import SubscribeMessageCreatedSocket from '../../_global/socket/EventHandlerSocket';
 
 const BookInfoPage = () => {
@@ -53,8 +54,17 @@ const BookInfoPage = () => {
     }, [bookId])
 
 
-    const onClickAddCommentButton = (commentText) => {
-        alert(commentText)
+    const onClickAddCommentButton = async (commentText) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await CommentProxy.createComment(bookId, commentText)
+
+          } catch(error) {
+            addAlertPopUp("댓글을 추가하는 도중에 오류가 발생했습니다!", "error")
+            console.error("댓글을 추가하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     const onClickCommentPageNumber = (_, page) => {
@@ -62,21 +72,30 @@ const BookInfoPage = () => {
     }
 
 
-    SubscribeMessageCreatedSocket(useState(() => {
+    const [socketCallBack, setSocketCallBack] = useState(() => {
         return (eventName) => {
-        
-            let successLog = ""
-            if(eventName === "BookLiked") successLog = "책에 좋아요를 추가했습니다."
-
-            if(successLog.length > 0)
-            {
-                addAlertPopUp(successLog, "success")
-                setIsBackdropOpened(false)
-                loadBookInfos(bookId)
-            }
-
         }
-    })[0])
+    })
+    SubscribeMessageCreatedSocket(socketCallBack)
+    useEffect(() => {
+        setSocketCallBack(() => {
+            return (eventName) => {
+            
+                let successLog = ""
+                if(eventName === "BookLiked") successLog = "책에 좋아요를 추가했습니다."
+                else if(eventName === "CommentCreated") successLog = "댓글을 추가했습니다."
+    
+                if(successLog.length > 0)
+                {
+                    addAlertPopUp(successLog, "success")
+                    setIsBackdropOpened(false)
+                    loadBookInfos(bookId)
+                }
+    
+            }
+        })
+    }, [bookId, addAlertPopUp, loadBookInfos])
+
     
     return (
         <>
