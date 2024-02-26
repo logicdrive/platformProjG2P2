@@ -33,4 +33,4 @@ BookShelfMyListPage:
 BookShelfSharedListPage: 
 BookShelfInfoPage: 
 
-RecommandUserPage: 
+RecommandUserPage: E

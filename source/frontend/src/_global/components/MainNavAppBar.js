@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useContext } from 'react';
+import { useNavigate } from "react-router-dom";
 
 import { Box } from "@mui/material";
 import LogoutIcon from '@mui/icons-material/Logout';
@@ -6,6 +7,7 @@ import BookIcon from '@mui/icons-material/Book';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
+import { JwtTokenContext } from '../provider/jwtToken/JwtTokenContext';
 import TopAppBar from '../../_global/components/TopAppBar';
 import YesNoButton from '../../_global/components/button/YesNoButton';
 import IconButton from '../../_global/components/button/IconButton';
@@ -14,6 +16,9 @@ import NavText from '../../_global/components/text/NavText';
 import UserManageButton from './button/UserManageButton';
 
 const MainNavAppBar = ({focusedIndex, backArrowUrl, ...props}) => {
+    const {deleteTokenValue} = useContext(JwtTokenContext)
+    const navigate = useNavigate()
+    
     return (
         <TopAppBar title="BOOKGEN" titleLink="/book/myList" {...props}>
             <IconNavigationButton url="/book/myList" sx={{marginLeft: "20px", marginBottom: "10px"}} buttonSx={{width: "75px"}} textSx={{width: "75px"}}>
@@ -36,7 +41,7 @@ const MainNavAppBar = ({focusedIndex, backArrowUrl, ...props}) => {
                         <ArrowBackIcon sx={{fontSize: 40}}/>
                     </IconNavigationButton>
                 ) : (
-                    <YesNoButton onClickYes={() => {}} title="정말로 로그아웃 하시겠습니까?">
+                    <YesNoButton onClickYes={() => {deleteTokenValue();navigate("/user/signIn")}} title="정말로 로그아웃 하시겠습니까?">
                         <IconButton>
                             <LogoutIcon sx={{fontSize: 35, paddingTop: 0.3, paddingLeft: 0.3}}/>
                         </IconButton>

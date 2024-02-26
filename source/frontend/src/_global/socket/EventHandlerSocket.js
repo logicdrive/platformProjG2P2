@@ -25,8 +25,12 @@ const SubscribeMessageCreatedSocket = (notifiedEventStatus) => {
 
 
   useEffect(() => {
-    console.log(`[EFFECT] Send data by using socket: <proxyUrl: '${proxyUrl}', userId: ${2}>`)
-    sendJsonMessage({"userId": 2})
+    const jwtToken = localStorage.getItem("jwtToken")
+    const tokenPayload = JSON.parse(atob(jwtToken.split(".")[1]))
+    const userId = Number(tokenPayload.sub)
+
+    console.log(`[EFFECT] Send data by using socket: <proxyUrl: '${proxyUrl}', userId: ${userId}>`)
+    sendJsonMessage({"userId": userId})
   }, [sendJsonMessage, proxyUrl])
 
 
