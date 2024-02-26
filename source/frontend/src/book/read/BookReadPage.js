@@ -16,6 +16,7 @@ import IndexMoveButtons from './IndexMoveButtons';
 import BookProxy from '../../_global/proxy/BookProxy';
 import ContentProxy from '../../_global/proxy/ContentProxy';
 import IndexProxy from '../../_global/proxy/IndexProxy';
+import ProblemProxy from '../../_global/proxy/ProblemProxy';
 
 const BookReadPage = () => {
     const {bookId, indexId} = useParams()
@@ -25,6 +26,7 @@ const BookReadPage = () => {
     const [rawBookInfo, setRawBookInfo] = useState({})
     const [rawIndexInfos, setRawIndexInfos] = useState([])
     const [rawContentInfo, setRawContentInfo] = useState({})
+    const [rawProblemInfos, setRawProblemInfos] = useState([])
     const [loadInfos] = useState(() => {
         return async (bookId, indexId) => {
             try {
@@ -36,6 +38,7 @@ const BookReadPage = () => {
                     setRawContentInfo(await ContentProxy.searchContentOneByIndexId(indexId))
                 else
                     setRawContentInfo({})
+                setRawProblemInfos((await ProblemProxy.searchProblemAllByIndexId(indexId))._embedded.problems)      
 
             } catch (error) {
                 addAlertPopUp("관련 정보를 가져오는 과정에서 오류가 발생했습니다!", "error");
@@ -90,13 +93,11 @@ const BookReadPage = () => {
                         <Stack
                             spacing={2}
                         >
-                            <QuestionInfoBox rawProblemInfo={
-                                {
-                                    id: 1,
-                                    content: "Q1. What is the Python?\n\nA. Python is a programming language.\nB. Python is a snake.\nC. Python is a food.",
-                                    answer: "A. Python is a programming language."
-                                }
-                            }/>
+                        {
+                            rawProblemInfos.map((rawProblemInfo, index) => {
+                                return <QuestionInfoBox key={index} rawProblemInfo={rawProblemInfo} order={index+1}/>
+                            })
+                        }
                         </Stack>
                     </Stack>
                     <Divider sx={{marginY: "5px"}}/>

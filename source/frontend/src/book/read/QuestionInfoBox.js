@@ -1,14 +1,28 @@
-import React, {useState} from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Button } from "@mui/material";
 import NormalText from '../../_global/components/text/NormalText';
+import DictionaryTool from '../../_global/tool/DictionaryTool';
 
-const QuestionInfoBox = ({rawProblemInfo}) => {
+const QuestionInfoBox = ({rawProblemInfo, order}) => {
     const [isShowAnswer, setIsShowAnswer] = useState(false)
-    const [problemInfo] = useState({
-        id: rawProblemInfo.id,
-        content: rawProblemInfo.content,
-        answer: rawProblemInfo.answer
-    })
+    const [problemInfo, setProblemInfo] = useState({})
+
+    useEffect(() => {
+        (async () => {
+            if(DictionaryTool.isEmpty(rawProblemInfo)) {
+                setProblemInfo({})
+                return
+            }
+
+            setProblemInfo({
+                id: rawProblemInfo.problemId,
+                content: `Q${order}. ${rawProblemInfo.content}`,
+                answer: rawProblemInfo.answer
+            })
+            setIsShowAnswer(false)
+        })()
+    }, [rawProblemInfo])
+
 
     return (
         <Box>
