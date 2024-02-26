@@ -1,4 +1,5 @@
 import React, { useState, useEffect, useContext } from 'react';
+
 import { Box, Paper, InputBase, MenuItem, Select } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -53,8 +54,17 @@ const BookShelfInfoSubAppBar = ({rawBookShelfInfo, searchTypes, handleOnSubmit, 
         }
     }
 
-    const onClickDeleteButton = () => {
-        alert("Delete")
+    const onClickDeleteButton = async () => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookShelfProxy.deleteBookShelf(bookShelfInfo.id)
+    
+          } catch(error) {
+            addAlertPopUp("책장을 삭제하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책장을 삭제하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
 

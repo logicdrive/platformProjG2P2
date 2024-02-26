@@ -23,6 +23,13 @@ class BookShelfProxy {
         })
     }
 
+
+    static async deleteBookShelf(bookShelfId) {
+        await ServerProxy.request("put", "bookShelf", `bookShelfs/deleteBookShelf`, {
+            "bookShelfId": bookShelfId
+        })
+    }
+
     
     static async searchBookShelfAllByCreaterId(createrId, page=0, size=6) {
         return (await ServerProxy.request("get", "collectedData", `bookShelfs/search/findByCreaterIdOrderByTitle?createrId=${createrId}&page=${page}&size=${size}`)).data
