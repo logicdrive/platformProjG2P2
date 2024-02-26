@@ -32,7 +32,7 @@ const BookShelfMyListPage = () => {
                             creator: "TestCreater",
                             createdDate: "2024-02-22 12:47",
                             bookCount: 3,
-                            tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
+                            tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD", "EEEEE"],
                             isShared: false,
                             imageUrls: ["/src/NoImage.jpg", "/src/NoImage.jpg", "/src/NoImage.jpg"]
                         }]}

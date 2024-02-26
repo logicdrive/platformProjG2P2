@@ -156,15 +156,15 @@ const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible}) => {
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>보관된 책 개수: {bookShelfInfo.bookCount}</BoldText>
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성자: {bookShelfInfo.creator}</BoldText>
                     <BoldText sx={{fontSize: "15px", color:"lightgray", cursor: "pointer"}}>작성일: {bookShelfInfo.createdDate}</BoldText>
-                    
-                    <Box sx={{display: "flex", flexDirection: "row", width: "215px", flexWrap: "wrap-reverse", marginTop: "78px", marginLeft: "-3px"}}>
-                        {
-                            bookShelfInfo.tags.map((tag, index) => {
-                                return (
-                                    <BoldText key={index} sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", margin: "2px", cursor: "context-menu"}}>{tag}</BoldText>
-                                )
-                            })
-                        }
+
+                    <Box>
+                    {
+                        bookShelfInfo.tags.map((tag, index) => {
+                            return (
+                                <BoldText key={index} sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", marginRight: "4px", cursor: "context-menu"}}>{tag}</BoldText>
+                            )
+                        })
+                    }
                     </Box>
                 </Stack>
             </CardContent>

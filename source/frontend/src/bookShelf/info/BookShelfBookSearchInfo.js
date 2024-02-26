@@ -65,14 +65,14 @@ const BookShelfBookSearchInfo = ({rawBookInfo}) => {
                         <BoldText sx={{marginTop: "3px", marginLeft: "3px", fontSize: "15px", color: "gray"}}>{bookInfo.likeCount} LIKES</BoldText>
                     </IconButton>
 
-                    <Box sx={{display: "flex", flexDirection: "row", width: "215px", flexWrap: "wrap-reverse", marginTop: "75px", marginLeft: "-3px"}}>
-                        {
-                            bookInfo.tags.map((tag, index) => {
-                                return (
-                                    <BoldText key={index} sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", margin: "2px", cursor: "context-menu"}}>{tag}</BoldText>
-                                )
-                            })
-                        }
+                    <Box>
+                    {
+                        bookInfo.tags.map((tag, index) => {
+                            return (
+                                <BoldText key={index} sx={{fontSize: "10px", backgroundColor: "lightgray", padding: "5px", display: "inline-block", color: "gray", borderRadius: "5px", marginRight: "4px", cursor: "context-menu"}}>{tag}</BoldText>
+                            )
+                        })
+                    }
                     </Box>
                 </Stack>
             </CardContent>

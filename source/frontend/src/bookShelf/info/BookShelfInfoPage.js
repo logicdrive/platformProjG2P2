@@ -42,7 +42,7 @@ const BookShelfInfoPage = () => {
                             creator: "TestCreater",
                             createdDate: "2024-02-22 12:47",
                             likeCount: 10,
-                            tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
+                            tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD", "EEEEE"],
                             imageUrl: ""
                         }]}
                     />
