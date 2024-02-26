@@ -1,10 +1,11 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from 'react-router-dom';
 
 import { Divider, Stack, Box, IconButton } from "@mui/material";
 import ThumbUpIcon from '@mui/icons-material/ThumbUp';
 import AutoStoriesIcon from '@mui/icons-material/AutoStories';
 
+import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
 import BoldText from '../../_global/components/text/BoldText';
 import NormalText from '../../_global/components/text/NormalText';
 import NavText from '../../_global/components/text/NavText';
@@ -16,9 +17,11 @@ import FileProxy from '../../_global/proxy/FileProxy';
 import IndexProxy from '../../_global/proxy/IndexProxy';
 import TimeTool from '../../_global/tool/TimeTool';
 import DictionaryTool from '../../_global/tool/DictionaryTool';
+import BookProxy from '../../_global/proxy/BookProxy';
 
-const BookInfoBox = ({rawBookInfo}) => {
+const BookInfoBox = ({rawBookInfo, setIsBackdropOpened}) => {
     const navigate = useNavigate()
+    const {addAlertPopUp} = useContext(AlertPopupContext)
     const [bookInfo, setBookInfo] = useState({})
     useEffect(() => {
         (async () => {
@@ -49,6 +52,19 @@ const BookInfoBox = ({rawBookInfo}) => {
         alert("Add to BookShelf Button Clicked! Selected BookShelf Id: " + selectedBookShelfId)
     }
 
+    const onClickLikeButton = async () => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookProxy.likeBook(bookInfo.id)
+    
+          } catch(error) {
+            addAlertPopUp("책에 좋아요를 추가하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책에 좋아요를 추가하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
+    }
+
 
     if(!bookInfo.id) return <></>
     return (
@@ -76,7 +92,7 @@ const BookInfoBox = ({rawBookInfo}) => {
                 <NormalText sx={{fontSize: "20px"}}>목차수: {bookInfo.indexCount}</NormalText>
                 
                 <Divider sx={{marginTop: "5px", marginBottom: "5px"}}/>
-                <IconButton onClick={(e)=>{e.stopPropagation(); alert("LIKE")}} sx={{paddingY: "0px", borderRadius: "5px", marginLeft: "-10px", width: "120px"}}>
+                <IconButton onClick={onClickLikeButton} sx={{paddingY: "0px", borderRadius: "5px", marginLeft: "-10px", width: "120px"}}>
                     <ThumbUpIcon sx={{fontSize: "20px"}}/> 
                     <BoldText sx={{marginTop: "3px", marginLeft: "3px", fontSize: "15px", color: "gray"}}>{bookInfo.likeCount} LIKES</BoldText>
                 </IconButton>

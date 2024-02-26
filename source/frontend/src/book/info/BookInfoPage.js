@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useState, useContext } from 'react';
 import { useParams } from 'react-router-dom';
 
-import { Container, Divider, Stack, Box, Pagination } from "@mui/material";
+import { Container, Divider, Stack, Box, Pagination, Backdrop, CircularProgress } from "@mui/material";
 import ChatBubbleIcon from '@mui/icons-material/ChatBubble';
 import CollectionsBookmarkIcon from '@mui/icons-material/CollectionsBookmark';
 
+import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
 import MainNavAppBar from '../../_global/components/MainNavAppBar';
 import BoldText from '../../_global/components/text/BoldText';
 import BookInfoBox from './BookInfoBox';
@@ -13,16 +14,30 @@ import AddCommentForm from './AddCommentForm';
 import RelatedBookInfosBox from './RelatedBookInfosBox';
 import RecommenedBookToBookProxy from '../../_global/proxy/RecommenedBookToBookProxy';
 import BookProxy from '../../_global/proxy/BookProxy';
+import SubscribeMessageCreatedSocket from '../../_global/socket/EventHandlerSocket';
 
 const BookInfoPage = () => {
     const {bookId} = useParams()
+    const [isBackdropOpened, setIsBackdropOpened] = useState(false)
+    const {addAlertPopUp} = useContext(AlertPopupContext)
 
     const [rawBookInfo, setRawBookInfo] = useState({})
+    const [loadBookInfos] = useState(() => {
+        return async (bookId) => {
+            try {
+
+                setRawBookInfo(await BookProxy.searchBookOneByBookId(bookId))
+
+            } catch (error) {
+                addAlertPopUp("책 정보를 가져오는 과정에서 오류가 발생했습니다!", "error");
+                console.error("책 정보를 가져오는 과정에서 오류가 발생했습니다!", error);
+            }
+        }
+    })
     useEffect(() => {
-        (async () => {
-            setRawBookInfo(await BookProxy.searchBookOneByBookId(bookId))
-        })()
-    }, [bookId])
+        loadBookInfos(bookId)
+    }, [bookId, loadBookInfos])
+
 
     const [rawRecommendedBookInfos, setRawRecommendedBookInfos] = useState([])
     useEffect(() => {
@@ -46,6 +61,22 @@ const BookInfoPage = () => {
         alert("페이지 번호: " + page)
     }
 
+
+    SubscribeMessageCreatedSocket(useState(() => {
+        return (eventName) => {
+        
+            let successLog = ""
+            if(eventName === "BookLiked") successLog = "책에 좋아요를 추가했습니다."
+
+            if(successLog.length > 0)
+            {
+                addAlertPopUp(successLog, "success")
+                setIsBackdropOpened(false)
+                loadBookInfos(bookId)
+            }
+
+        }
+    })[0])
     
     return (
         <>
@@ -56,7 +87,7 @@ const BookInfoPage = () => {
                     <BoldText sx={{fontSize: "25px"}}>{rawBookInfo.title}</BoldText>
                     <Divider sx={{marginTop: "5px"}}/>
 
-                    <BookInfoBox rawBookInfo={rawBookInfo}/>
+                    <BookInfoBox rawBookInfo={rawBookInfo} setIsBackdropOpened={setIsBackdropOpened}/>
 
 
                     <Box sx={{marginTop: "15px"}}>
@@ -90,6 +121,13 @@ const BookInfoPage = () => {
                     </Box>
                 </Stack>
             </Container>
+
+            <Backdrop
+                sx={{ color: '#fff', zIndex: (theme) => theme.zIndex.drawer + 1 }}
+                open={isBackdropOpened}
+            >
+                <CircularProgress color="inherit" />
+            </Backdrop>
         </>
     )
 }
