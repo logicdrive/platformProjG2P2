@@ -75,11 +75,13 @@ const BookShelfMyListPage = () => {
         
             let successLog = ""
             if(eventName === "BookShelfCreated") successLog = "책장이 생성되었습니다."
+            else if(eventName === "BookShelfIsSharedUpdated") successLog = "책장 공유 여부가 변경되었습니다."
 
             if(successLog.length > 0)
             {
                 addAlertPopUp(successLog, "success")
                 setIsBackdropOpened(false)
+                loadBookShelfs(searchInfo)
             }
 
         }

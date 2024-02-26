@@ -8,6 +8,14 @@ class BookShelfProxy {
         })
     }
 
+
+    static async updateIsShared(bookShelfId, isShared) {
+        await ServerProxy.request("put", "bookShelf", `bookShelfs/updateIsShared`, {
+            "bookShelfId": bookShelfId,
+            "isShared": isShared
+        })
+    }
+
     
     static async searchBookShelfAllByCreaterId(createrId, page=0, size=6) {
         return (await ServerProxy.request("get", "collectedData", `bookShelfs/search/findByCreaterIdOrderByTitle?createrId=${createrId}&page=${page}&size=${size}`)).data

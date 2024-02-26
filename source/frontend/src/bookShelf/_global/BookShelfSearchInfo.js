@@ -1,8 +1,9 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { useNavigate } from "react-router-dom";
 import { Card, CardContent, Box, Stack } from '@mui/material';
 import ShareIcon from '@mui/icons-material/Share';
 
+import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
 import BoldText from '../../_global/components/text/BoldText';
 import YesNoButton from '../../_global/components/button/YesNoButton';
 import UserProxy from '../../_global/proxy/UserProxy';
@@ -11,8 +12,10 @@ import TagProxy from '../../_global/proxy/TagProxy';
 import BookProxy from '../../_global/proxy/BookProxy';
 import FileProxy from '../../_global/proxy/FileProxy';
 import BookShelfBookProxy from '../../_global/proxy/BookShelfBookProxy';
+import BookShelfProxy from '../../_global/proxy/BookShelfProxy';
 
 const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible, setIsBackdropOpened}) => {
+    const {addAlertPopUp} = useContext(AlertPopupContext)
     const navigate = useNavigate()
     const [bookShelfInfo, setBookShelfInfo] = useState({})
     useEffect(() => {
@@ -49,8 +52,17 @@ const BookShelfSearchInfo = ({rawBookShelfInfo, isEditIconVisible, setIsBackdrop
     }, [rawBookShelfInfo])
 
 
-    const onClickSharedButton = (isShared) => {
-        alert("Shared: " + isShared)
+    const onClickSharedButton = async (isShared) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookShelfProxy.updateIsShared(bookShelfInfo.id, isShared)
+    
+          } catch(error) {
+            addAlertPopUp("책장의 공유 여부를 변경하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책장의 공유 여부를 변경하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
 
