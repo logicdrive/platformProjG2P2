@@ -46,7 +46,7 @@ const BookMyListPage = () => {
 
 
     const [loadBookInfos] = useState(() => {
-        return async () => {
+        return async (searchInfo) => {
             try {
 
                 let res = {}
@@ -66,7 +66,7 @@ const BookMyListPage = () => {
         }
     })
     useEffect(() => {
-        loadBookInfos()
+        loadBookInfos(searchInfo)
     }, [addAlertPopUp, jwtTokenState, queryParameters, searchInfo, loadBookInfos])
 
 
