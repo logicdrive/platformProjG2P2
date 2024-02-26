@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 
 import { Container, Divider, Stack, Box, Pagination } from "@mui/material";
@@ -11,10 +11,23 @@ import BookInfoBox from './BookInfoBox';
 import CommentsInfosBox from './CommentsInfosBox';
 import AddCommentForm from './AddCommentForm';
 import RelatedBookInfosBox from './RelatedBookInfosBox';
+import RecommenedBookToBookProxy from '../../_global/proxy/RecommenedBookToBookProxy';
+import BookProxy from '../../_global/proxy/BookProxy';
 
 const BookInfoPage = () => {
     const {bookId} = useParams()
-    console.log("BookId :", bookId)
+    const [rawRecommendedBookInfos, setRawRecommendedBookInfos] = useState([])
+    useEffect(() => {
+        (async () => {
+            const recommenedBookToBook = (await RecommenedBookToBookProxy.searchRecommendBookToBookAllByBookId(bookId))._embedded.recommenedBookToBooks
+            
+            let bookInfos = []
+            for(let i=0; i<recommenedBookToBook.length; i++) {
+                bookInfos.push(await BookProxy.searchBookOneByBookId(recommenedBookToBook[i].recommendedBookId))
+            }
+            setRawRecommendedBookInfos(bookInfos)
+        })()
+    }, [bookId])
 
 
     const onClickAddCommentButton = (commentText) => {
@@ -51,29 +64,7 @@ const BookInfoPage = () => {
                         <BoldText sx={{float: "left", fontSize: "17px", marginLeft: "5px", color: "gray"}}>비슷한 책 목록</BoldText>
                     </Box>
                     <Divider sx={{marginTop: "5px", marginBottom: "5px", width: "100%"}}/>
-                    <RelatedBookInfosBox rawBookInfos={[
-                        {
-                            id: 1,
-                            title: "점프 투 파이썬",
-                            creator: "TestCreater",
-                            createdDate: "2024-02-22 12:47",
-                            likeCount: 10,
-                            tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
-                            isShared: false,
-                            imageUrl: ""
-                        },
-
-                        {
-                            id: 1,
-                            title: "점프 투 파이썬",
-                            creator: "TestCreater",
-                            createdDate: "2024-02-22 12:47",
-                            likeCount: 10,
-                            tags: ["AAAAA", "BBBBB", "CCCCC", "DDDDD"],
-                            isShared: false,
-                            imageUrl: ""
-                        }
-                    ]}/>
+                    <RelatedBookInfosBox rawBookInfos={rawRecommendedBookInfos}/>
 
 
                     <Box sx={{marginTop: "15px"}}>
