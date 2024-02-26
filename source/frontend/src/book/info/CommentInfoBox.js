@@ -1,8 +1,9 @@
-import React, {useState, useEffect} from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 
 import { Stack, Box, IconButton } from "@mui/material";
 import DeleteIcon from '@mui/icons-material/Delete';
 
+import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
 import BoldText from '../../_global/components/text/BoldText';
 import NormalText from '../../_global/components/text/NormalText';
 import EditCommentButton from './EditCommentButton';
@@ -10,8 +11,10 @@ import YesNoButton from '../../_global/components/button/YesNoButton';
 import UserProxy from '../../_global/proxy/UserProxy';
 import DictionaryTool from '../../_global/tool/DictionaryTool';
 import TimeTool from '../../_global/tool/TimeTool';
+import CommentProxy from '../../_global/proxy/CommentProxy';
 
-const CommentInfoBox = ({rawCommentInfo}) => {
+const CommentInfoBox = ({rawCommentInfo, setIsBackdropOpened}) => {
+    const {addAlertPopUp} = useContext(AlertPopupContext)
     const [commentInfo, setCommentInfo] = useState({})
     useEffect(() => {
         (async () => {
@@ -28,12 +31,30 @@ const CommentInfoBox = ({rawCommentInfo}) => {
     }, [rawCommentInfo])
 
 
-    const onClickEditCommentButton = (comment) => {
-        alert(comment)
+    const onClickEditCommentButton = async (comment) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await CommentProxy.updateComment(commentInfo.id, comment)
+    
+          } catch(error) {
+            addAlertPopUp("댓글을 수정하는 도중에 오류가 발생했습니다!", "error")
+            console.error("댓글을 수정하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
-    const onClickDeleteCommentButton = () => {
-        alert("Delete")
+    const onClickDeleteCommentButton = async () => {
+        try {
+
+            setIsBackdropOpened(true)
+            await CommentProxy.deleteComment(commentInfo.id)
+    
+          } catch(error) {
+            addAlertPopUp("댓글을 삭제하는 도중에 오류가 발생했습니다!", "error")
+            console.error("댓글을 삭제하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
 

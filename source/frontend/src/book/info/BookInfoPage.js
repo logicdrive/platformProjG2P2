@@ -107,6 +107,8 @@ const BookInfoPage = () => {
                 let successLog = ""
                 if(eventName === "BookLiked") successLog = "책에 좋아요를 추가했습니다."
                 else if(eventName === "CommentCreated") successLog = "댓글을 추가했습니다."
+                else if(eventName === "CommentUpdated") successLog = "댓글을 수정했습니다."
+                else if(eventName === "CommentDeleted") successLog = "댓글을 삭제했습니다."
     
                 if(successLog.length > 0)
                 {
@@ -153,7 +155,7 @@ const BookInfoPage = () => {
                     <AddCommentForm onClickAddCommentButton={onClickAddCommentButton}/>
 
 
-                    <CommentsInfosBox rawCommentInfos={rawCommentInfos}/>
+                    <CommentsInfosBox rawCommentInfos={rawCommentInfos} setIsBackdropOpened={setIsBackdropOpened}/>
 
                     <Box sx={{width: "100%", marginTop: "10px", display: "flex", justifyContent: "center"}}>
                         <Pagination page={currentPage} count={totalPages} onChange={onClickCommentPageNumber} sx={{padding: "auto", margin: "0 auto"}}/>

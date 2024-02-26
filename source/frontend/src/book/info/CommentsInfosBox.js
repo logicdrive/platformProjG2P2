@@ -3,7 +3,7 @@ import React from 'react';
 import { Divider, Stack } from "@mui/material";
 import CommentInfoBox from './CommentInfoBox';
 
-const CommentsInfosBox = ({rawCommentInfos}) => {
+const CommentsInfosBox = ({rawCommentInfos, setIsBackdropOpened}) => {
     return (
         <>
             <Stack
@@ -14,7 +14,7 @@ const CommentsInfosBox = ({rawCommentInfos}) => {
                 {
                     rawCommentInfos.map((rawCommentInfo, index) => {
                         return (
-                            <CommentInfoBox key={index} rawCommentInfo={rawCommentInfo}/>   
+                            <CommentInfoBox key={index} rawCommentInfo={rawCommentInfo} setIsBackdropOpened={setIsBackdropOpened}/>   
                         )
                     })
                 }

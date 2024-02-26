@@ -25,7 +25,7 @@ UserSignInPage: E
 
 BookMyListPage: E
 BookSharedListPage: 
-BookInfoPage: 
+BookInfoPage: E
 BookReadPage: 
 BookManagePage: E
 
