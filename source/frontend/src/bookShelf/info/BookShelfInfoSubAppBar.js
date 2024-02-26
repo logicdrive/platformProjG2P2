@@ -1,14 +1,17 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useContext } from 'react';
 import { Box, Paper, InputBase, MenuItem, Select } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
 import ShareIcon from '@mui/icons-material/Share';
 
+import { AlertPopupContext } from '../../_global/provider/alertPopUp/AlertPopUpContext';
 import BoldText from '../../_global/components/text/BoldText';
 import EditBookShelfTitleButton from './EditBookShelfTitleButton';
 import YesNoButton from '../../_global/components/button/YesNoButton';
+import BookShelfProxy from '../../_global/proxy/BookShelfProxy';
 
 const BookShelfInfoSubAppBar = ({rawBookShelfInfo, searchTypes, handleOnSubmit, setIsBackdropOpened, sx, ...props}) => {
+    const {addAlertPopUp} = useContext(AlertPopupContext)
     const [searchText, setSearchText] = useState("")
     const [searchType, setSearchType] = useState(searchTypes[0].type)
     
@@ -24,8 +27,17 @@ const BookShelfInfoSubAppBar = ({rawBookShelfInfo, searchTypes, handleOnSubmit, 
     }, [rawBookShelfInfo])
 
 
-    const onClickBookShelfTitleEditButton = (title) => {
-        alert("Edit: " + title);
+    const onClickBookShelfTitleEditButton = async (title) => {
+        try {
+
+            setIsBackdropOpened(true)
+            await BookShelfProxy.updateBookShelfTitle(bookShelfInfo.id, title)
+    
+          } catch(error) {
+            addAlertPopUp("책장의 제목을 변경하는 도중에 오류가 발생했습니다!", "error")
+            console.error("책장의 제목을 변경하는 도중에 오류가 발생했습니다!", error)
+            setIsBackdropOpened(false)
+        }
     }
 
     const onClickSharedButton = (isShared) => {
