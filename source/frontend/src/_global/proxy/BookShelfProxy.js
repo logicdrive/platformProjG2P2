@@ -37,6 +37,11 @@ class BookShelfProxy {
     static async searchBookShelfAllByIsSharedAndCreaterId(isShared, createrId, page=0, size=6) {
         return (await ServerProxy.request("get", "collectedData", `bookShelfs/search/findByIsSharedAndCreaterIdOrderByCreatedDateDesc?isShared=${isShared}&createrId=${createrId}&page=${page}&size=${size}`)).data
     }
+
+
+    static async searchBookShelfOneByBookShelfId(bookShelfId) {
+        return (await ServerProxy.request("get", "collectedData", `bookShelfs/search/findByBookShelfId?bookShelfId=${bookShelfId}`)).data
+    }
 }
 
 export default BookShelfProxy

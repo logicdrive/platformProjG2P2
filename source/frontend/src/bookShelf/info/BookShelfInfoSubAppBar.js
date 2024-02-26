@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Box, Paper, InputBase, MenuItem, Select } from "@mui/material";
 import SearchIcon from '@mui/icons-material/Search';
 import DeleteIcon from '@mui/icons-material/Delete';
@@ -8,14 +8,20 @@ import BoldText from '../../_global/components/text/BoldText';
 import EditBookShelfTitleButton from './EditBookShelfTitleButton';
 import YesNoButton from '../../_global/components/button/YesNoButton';
 
-const BookShelfInfoSubAppBar = ({rawBookShelfInfo, searchTypes, handleOnSubmit, sx, ...props}) => {
+const BookShelfInfoSubAppBar = ({rawBookShelfInfo, searchTypes, handleOnSubmit, setIsBackdropOpened, sx, ...props}) => {
     const [searchText, setSearchText] = useState("")
     const [searchType, setSearchType] = useState(searchTypes[0].type)
     
-    const [bookShelfInfo] = useState({
-        title: rawBookShelfInfo.title,
-        isShared: rawBookShelfInfo.isShared
-    })
+    const [bookShelfInfo, setBookShelfInfo] = useState({})
+    useEffect(() => {
+        (async () => {
+            setBookShelfInfo({
+                id: rawBookShelfInfo.bookShelfId,
+                title: rawBookShelfInfo.title,
+                isShared: rawBookShelfInfo.isShared
+            })
+        })()
+    }, [rawBookShelfInfo])
 
 
     const onClickBookShelfTitleEditButton = (title) => {
@@ -46,7 +52,7 @@ const BookShelfInfoSubAppBar = ({rawBookShelfInfo, searchTypes, handleOnSubmit, 
                 {
                     (bookShelfInfo.isShared) ? (
                         <YesNoButton onClickYes={()=>{onClickSharedButton(false)}} title="해당 책장의 공유를 취소하시겠습니까?">
-                            <ShareIcon sx={{fontSize: "20px", color: "black"}}/>
+                            <ShareIcon sx={{fontSize: "20px", color: "gray"}}/>
                         </YesNoButton>
                     ) : (
                         <YesNoButton onClickYes={(e)=>{onClickSharedButton(true)}} title="해당 책장을 공유시겠습니까?">

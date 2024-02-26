@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useNavigate } from "react-router-dom";
 
 import { Card, CardContent, Box, IconButton, Stack } from '@mui/material';
@@ -7,18 +7,36 @@ import DeleteIcon from '@mui/icons-material/Delete';
 
 import BoldText from '../../_global/components/text/BoldText';
 import YesNoButton from '../../_global/components/button/YesNoButton';
+import UserProxy from '../../_global/proxy/UserProxy';
+import LikeHistoryProxy from '../../_global/proxy/LikeHistoryProxy';
+import TagProxy from '../../_global/proxy/TagProxy';
+import FileProxy from '../../_global/proxy/FileProxy';
+import BookProxy from '../../_global/proxy/BookProxy';
+import TimeTool from '../../_global/tool/TimeTool';
 
-const BookShelfBookSearchInfo = ({rawBookInfo}) => {
+const BookShelfBookSearchInfo = ({rawBookShelfBookInfo, setIsBackdropOpened}) => {
     const navigate = useNavigate()
-    const [bookInfo] = useState({
-        id: rawBookInfo.id,
-        title: rawBookInfo.title,
-        creator: rawBookInfo.creator,
-        createdDate: rawBookInfo.createdDate,
-        likeCount: rawBookInfo.likeCount,
-        tags: rawBookInfo.tags,
-        imageUrl: rawBookInfo.imageUrl
-    })
+    const [bookInfo, setBookInfo] = useState({})
+    useEffect(() => {
+        (async () => {
+            const bookData = await BookProxy.searchBookOneByBookId(rawBookShelfBookInfo.bookId)
+            const createrData = await UserProxy.searchUserOneByUserId(bookData.createrId)
+            const likeHistoryDatas = (await LikeHistoryProxy.searchLikeHistoryAllByBookId(bookData.bookId))._embedded.likeHistories
+            const tagDatas = (await TagProxy.searchAllTagByBookId(bookData.bookId))._embedded.tags
+            const fileData = await FileProxy.searchFileOneByFileId(bookData.coverImageFileId)
+
+            setBookInfo({
+                id: bookData.bookId,
+                title: bookData.title,
+                creator: createrData.name,
+                createdDate: TimeTool.prettyOnlyDateString(bookData.createdDate),
+                likeCount: likeHistoryDatas.length,
+                tags: tagDatas.map((tagData) => tagData.name),
+                imageUrl: fileData.url,
+                bookShelfId: rawBookShelfBookInfo.bookShelfId
+            })
+        })()
+    }, [rawBookShelfBookInfo])
 
 
     const onClickDeleteButton = () => {
@@ -26,6 +44,7 @@ const BookShelfBookSearchInfo = ({rawBookInfo}) => {
     }
 
     
+    if(!bookInfo.id) return <></>
     return (
         <Card sx={{width: "380px", height: "220px"}} onClick={()=>{navigate(`/book/info/${bookInfo.id}`)}}>
             <CardContent sx={{padding: "10px"}}>
