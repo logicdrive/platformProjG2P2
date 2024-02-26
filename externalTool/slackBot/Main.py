@@ -1,8 +1,24 @@
 import os
-import openai
+from openai import OpenAI
 from slack_bolt.adapter.socket_mode import SocketModeHandler
 from slack import WebClient
 from slack_bolt import App
+
+
+
+CLIENT = OpenAI()
+
+# ChatGPT와 통신해서 관련 응답을 얻어내기 위해서
+def getChatGptAnswer(messages:list[str]) -> str :
+    answer:str = CLIENT.chat.completions.create(
+                model="gpt-3.5-turbo",
+                temperature=1.0,
+                max_tokens=512,
+                messages=messages
+            ).choices[0].message.content
+    return answer
+
+
 
 SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
 SLACK_APP_TOKEN = os.environ.get("SLACK_APP_TOKEN")
@@ -24,18 +40,15 @@ def handle_message_events(body, logger):
                             thread_ts=CURRENT_THREAD,
                             text=f"응답을 기다리는 중입니다. 잠시만 기다려주세요. :robot_face:")
 
-    # openai.api_key = OPENAI_API_KEY
-    # response = openai.Completion.create(
-    #     engine="text-davinci-003",
-    #     prompt=prompt,
-    #     max_tokens=1024,
-    #     n=1,
-    #     stop=None,
-    #     temperature=0.5).choices[0].text
+
+    BOT_ANSWER = getChatGptAnswer([
+        { "role": "user", "content": USER_PROMPT }
+    ])
+
 
     client.chat_postMessage(channel=CURRENT_CHANNEL, 
                             thread_ts=CURRENT_THREAD,
-                            text=f"ECHO: {USER_PROMPT}")
+                            text=f"{BOT_ANSWER}")
 
 
 if __name__ == "__main__":
