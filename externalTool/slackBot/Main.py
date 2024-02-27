@@ -5,8 +5,23 @@ from slack import WebClient
 from slack_bolt import App
 
 
+botTrainMessages = []
+for index, file in enumerate(os.listdir("botTrainMessages")):
+    message = "\n".join(open(f"botTrainMessages/{file}", "rt", encoding="UTF8").readlines())
+    if index%2 == 0:
+        botTrainMessages.append({
+            "role": "system",
+            "content": message
+        })
+    else:
+        botTrainMessages.append({
+            "role": "user",
+            "content": message
+        })
+
 
 CLIENT = OpenAI()
+
 
 # ChatGPT와 통신해서 관련 응답을 얻어내기 위해서
 def getChatGptAnswer(messages:list[str]) -> str :
@@ -18,6 +33,11 @@ def getChatGptAnswer(messages:list[str]) -> str :
             ).choices[0].message.content
     return answer
 
+# ChatGPT로부터 문서 검색 결과를 얻기 위해서
+def getDocumentSearchAnswerByChatGpt(query) -> str :
+    return getChatGptAnswer(
+        botTrainMessages + [{"role": "user", "content": query}]
+    )
 
 
 SLACK_BOT_TOKEN = os.environ.get("SLACK_BOT_TOKEN")
@@ -41,9 +61,7 @@ def handle_message_events(body, logger):
                             text=f"응답을 기다리는 중입니다. 잠시만 기다려주세요. :robot_face:")
 
 
-    BOT_ANSWER = getChatGptAnswer([
-        { "role": "user", "content": USER_PROMPT }
-    ])
+    BOT_ANSWER = getDocumentSearchAnswerByChatGpt(USER_PROMPT)
 
 
     client.chat_postMessage(channel=CURRENT_CHANNEL, 

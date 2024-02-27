@@ -1,0 +1,7 @@
+```
+1. .\compose 폴더에서 kafka를 동작시킵니다.  
+```bash
+docker-compose -f .\kafka-host.yml up
+```  
+```
+위의 가이드 내용에서 알 수 있듯이 'docker-compose -f .\kafka-host.yml up' 명령어를 실행시키면 됩니다.
