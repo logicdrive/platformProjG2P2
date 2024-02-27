@@ -71,6 +71,7 @@
 
             <checks>
                 <check type="status">2.*</check>
+                <check type="data">"id"[ ]*:[ ]*"2"</check>
             </checks>
         </test>
 
