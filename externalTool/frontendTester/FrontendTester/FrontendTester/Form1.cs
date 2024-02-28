@@ -15,6 +15,7 @@ namespace FrontendTester
         public MainForm()
         {
             InitializeComponent();
+            this.Size = new Size(1300, 650);
         }
     }
 }
