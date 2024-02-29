@@ -12,19 +12,35 @@ using OpenQA.Selenium.Chrome;
 using OpenQA.Selenium;
 using OpenQA.Selenium.Support.UI;
 using FrontendTester.Service;
+using ServerTester.TestItem;
 
 namespace FrontendTester
 {
     public partial class MainForm : Form
     {
         SeleniumService seleniumService;
+        TestItemService testItemService;
 
         public MainForm()
         {
             InitializeComponent();
             this.Size = new Size(1300, 650);
 
-            seleniumService = new SeleniumService(LogTextBox);
+            this.loadSerives();
+        }
+
+        private void loadSerives()
+        {
+            try
+            {
+                seleniumService = new SeleniumService(LogTextBox);
+                testItemService = new TestItemService();
+                HelpTextBox.Text = string.Format("{0} 개의 테스트 항목이 로드되었습니다.", testItemService.testItemDtoDic.Count);
+            } catch(Exception e)
+            {
+                MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine(e.Message);
+            }
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
