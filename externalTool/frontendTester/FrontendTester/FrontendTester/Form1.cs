@@ -17,12 +17,14 @@ namespace FrontendTester
 {
     public partial class MainForm : Form
     {
-        SeleniumService seleniumService = new SeleniumService();
+        SeleniumService seleniumService;
 
         public MainForm()
         {
             InitializeComponent();
             this.Size = new Size(1300, 650);
+
+            seleniumService = new SeleniumService(LogTextBox);
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -38,8 +40,9 @@ namespace FrontendTester
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
-            seleniumService.goToUrl("http://localhost:8088/user/signIn");
-            seleniumService.clickButton("//button[text()='회원가입']");
+            this.seleniumService.clearLog();
+            this.seleniumService.goToUrl("http://localhost:8088/user/signIn");
+            this.seleniumService.clickButton("//button[text()='회원가입']");
         }
     }
 }
