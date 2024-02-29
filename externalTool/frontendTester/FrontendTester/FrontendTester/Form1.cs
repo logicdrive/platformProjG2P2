@@ -27,6 +27,7 @@ namespace FrontendTester
             this.Size = new Size(1300, 650);
 
             this.loadSerives();
+            this.InitializeComponents();
         }
 
         private void loadSerives()
@@ -35,12 +36,28 @@ namespace FrontendTester
             {
                 seleniumService = new SeleniumService(LogTextBox);
                 testItemService = new TestItemService();
-                HelpTextBox.Text = string.Format("{0} 개의 테스트 항목이 로드되었습니다.", testItemService.testItemDtoDic.Count);
             } catch(Exception e)
             {
                 MessageBox.Show(e.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
                 Console.WriteLine(e.Message);
             }
+        }
+
+        public void InitializeComponents()
+        {
+            TestSetListBox.Items.Clear();
+            TestDetailSetListBox.Items.Clear();
+            LogTextBox.Text = "";
+            TestSetProgessBar.Value = 0;
+
+            testItemService.testItemDtoDic.Keys.ToList().ForEach(x => TestSetListBox.Items.Add(x));
+            HelpTextBox.Text = string.Format("{0} 개의 테스트 항목이 로드되었습니다.", testItemService.testItemDtoDic.Count);
+        }
+
+        private void ResetButton_Click(object sender, EventArgs e)
+        {
+            InitializeComponents();
+            MessageBox.Show("초기화 완료", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
         }
 
         private void MainForm_FormClosed(object sender, FormClosedEventArgs e)
@@ -54,25 +71,27 @@ namespace FrontendTester
 
         }
 
-        private void ResetButton_Click(object sender, EventArgs e)
+
+        private void TestSetListBox_SelectedIndexChanged(object sender, EventArgs e)
         {
-            /*
-            this.seleniumService.clearLog();
-            this.seleniumService.goToUrl("http://localhost:8088/user/signIn");
-            this.seleniumService.clickButton("//button[text()='회원가입']");
-            this.seleniumService.checkUrl("http://localhost:8088/user/signUp");
+            if(TestSetListBox.SelectedIndex < 0) return;
 
-            this.seleniumService.sendKeysToElement("//input[@name='email']", "testemail1@gmail.com");
-            this.seleniumService.sendKeysToElement("//input[@name='password']", "testpassword1");
-            this.seleniumService.sendKeysToElement("//input[@name='name']", "testname1");
-            this.seleniumService.clickButton("//button[text()='회원가입']");
-            this.seleniumService.checkUrl("http://localhost:8088/user/signIn");
 
-            this.seleniumService.sendKeysToElement("//input[@name='email']", "testemail1@gmail.com");
-            this.seleniumService.sendKeysToElement("//input[@name='password']", "testpassword1");
-            this.seleniumService.clickButton("//button[text()='로그인']");
-            this.seleniumService.checkUrl("http://localhost:8088/book/myList");
-            */
+            TestItemDto testItemDto = testItemService.testItemDtoDic[TestSetListBox.SelectedItem.ToString()];
+            HelpTextBox.Text = testItemDto.help;
+
+            TestDetailSetListBox.Items.Clear();
+            for(int i = 0; i < testItemDto.functions.Count; i++)
+                TestDetailSetListBox.Items.Add(string.Format("{0}. {1}", i+1, testItemDto.functions[i].title));
+        }
+
+        private void TestDetailSetListBox_SelectedIndexChanged(object sender, EventArgs e)
+        {
+            if(TestSetListBox.SelectedIndex < 0) return;
+            if(TestDetailSetListBox.SelectedIndex < 0) return;
+
+
+            HelpTextBox.Text = testItemService.testItemDtoDic[TestSetListBox.SelectedItem.ToString()].functions[TestDetailSetListBox.SelectedIndex].help;
         }
     }
 }

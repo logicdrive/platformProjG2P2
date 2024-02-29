@@ -70,6 +70,7 @@
             this.TestSetListBox.Name = "TestSetListBox";
             this.TestSetListBox.Size = new System.Drawing.Size(394, 1036);
             this.TestSetListBox.TabIndex = 2;
+            this.TestSetListBox.SelectedIndexChanged += new System.EventHandler(this.TestSetListBox_SelectedIndexChanged);
             // 
             // label2
             // 
@@ -124,6 +125,7 @@
             this.TestDetailSetListBox.Name = "TestDetailSetListBox";
             this.TestDetailSetListBox.Size = new System.Drawing.Size(583, 1036);
             this.TestDetailSetListBox.TabIndex = 8;
+            this.TestDetailSetListBox.SelectedIndexChanged += new System.EventHandler(this.TestDetailSetListBox_SelectedIndexChanged);
             // 
             // LogTextBox
             // 
