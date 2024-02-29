@@ -43,28 +43,36 @@ namespace FrontendTester.Service
         {
             this.printLog(String.Format("[*] '{0}' URL로 이동 시도중...", url));
             driver.Navigate().GoToUrl(url);
-            
-            this.printLog(String.Format("[*] '{0}' URL이동이 완료되었는지 확인중...", url));
-            (new WebDriverWait(driver, TimeSpan.FromSeconds(waitSecond))).Until(x => {
-                try {
+
+            this.checkUrl(url, waitSecond);
+        }
+
+        public void checkUrl(string url, double waitSecond = 30)
+        {
+            this.printLog(String.Format("[*] '{0}' URL로 이동완료를 기다리는중...", url));
+            (new WebDriverWait(driver, TimeSpan.FromSeconds(waitSecond))).Until(x =>
+            {
+                try
+                {
                     return (driver.Url == url);
-                } catch {
+                } catch
+                {
                     return false;
                 }
             });
 
-            this.printLog(String.Format("[*] '{0}' URL이동이 완료됨!", url));
+            this.printLog(String.Format("[*] '{0}' URL로 이동완료됨!", url));
         }
 
 
         public void clickButton(string xpath, double waitSecond = 30)
         {
             this.printLog(String.Format("[*] '{0}' XPath에 해당하는 엘리먼트 클릭을 시도중...", xpath));
-            this.waitElement(xpath, waitSecond).Click();
+            this.checkElement(xpath, waitSecond).Click();
             this.printLog(String.Format("[*] '{0}' XPath에 해당하는 엘리먼트 클릭함!", xpath));
         }
 
-        public IWebElement waitElement(string xpath, double waitSecond = 30)
+        public IWebElement checkElement(string xpath, double waitSecond = 30)
         {
             this.printLog(String.Format("[*] '{0}' XPath에 해당하는 엘리먼트 발견을 기다리는중...", xpath));
             (new WebDriverWait(driver, TimeSpan.FromSeconds(waitSecond))).Until(x => {
@@ -77,6 +85,6 @@ namespace FrontendTester.Service
 
             this.printLog(String.Format("[*] '{0}' XPath에 해당하는 엘리먼트를 발견함!", xpath));
             return driver.FindElement(By.XPath(xpath));
-        }   
+        } 
     }
 }
