@@ -50,6 +50,7 @@
             this.ExecuteTestSetButton.TabIndex = 0;
             this.ExecuteTestSetButton.Text = "테스트 항목 실행";
             this.ExecuteTestSetButton.UseVisualStyleBackColor = true;
+            this.ExecuteTestSetButton.Click += new System.EventHandler(this.ExecuteTestSetButton_Click);
             // 
             // label1
             // 
@@ -113,6 +114,7 @@
             this.ResetButton.TabIndex = 7;
             this.ResetButton.Text = "초기화";
             this.ResetButton.UseVisualStyleBackColor = true;
+            this.ResetButton.Click += new System.EventHandler(this.ResetButton_Click);
             // 
             // TestDetailSetListBox
             // 
@@ -166,6 +168,7 @@
             this.Name = "MainForm";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
             this.Text = "FrontendTester v1.0.0";
+            this.FormClosed += new System.Windows.Forms.FormClosedEventHandler(this.MainForm_FormClosed);
             this.ResumeLayout(false);
             this.PerformLayout();
 
