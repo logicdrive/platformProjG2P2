@@ -40,9 +40,23 @@ namespace FrontendTester
 
         private void ResetButton_Click(object sender, EventArgs e)
         {
+            /*
             this.seleniumService.clearLog();
             this.seleniumService.goToUrl("http://localhost:8088/user/signIn");
             this.seleniumService.clickButton("//button[text()='회원가입']");
+            this.seleniumService.checkUrl("http://localhost:8088/user/signUp");
+
+            this.seleniumService.sendKeysToElement("//input[@name='email']", "testemail1@gmail.com");
+            this.seleniumService.sendKeysToElement("//input[@name='password']", "testpassword1");
+            this.seleniumService.sendKeysToElement("//input[@name='name']", "testname1");
+            this.seleniumService.clickButton("//button[text()='회원가입']");
+            this.seleniumService.checkUrl("http://localhost:8088/user/signIn");
+
+            this.seleniumService.sendKeysToElement("//input[@name='email']", "testemail1@gmail.com");
+            this.seleniumService.sendKeysToElement("//input[@name='password']", "testpassword1");
+            this.seleniumService.clickButton("//button[text()='로그인']");
+            this.seleniumService.checkUrl("http://localhost:8088/book/myList");
+            */
         }
     }
 }

@@ -72,6 +72,13 @@ namespace FrontendTester.Service
             this.printLog(String.Format("[*] '{0}' XPath에 해당하는 엘리먼트 클릭함!", xpath));
         }
 
+        public void sendKeysToElement(string xpath, string keys, double waitSecond = 30)
+        {
+            this.printLog(String.Format("[*] '{0}' XPath에 해당하는 엘리먼트에 '{1}' 키 입력을 시도중...", xpath, keys));
+            this.checkElement(xpath, waitSecond).SendKeys(keys);
+            this.printLog(String.Format("[*] '{0}' XPath에 해당하는 엘리먼트에 '{1}' 키 입력함!", xpath, keys));
+        }
+
         public IWebElement checkElement(string xpath, double waitSecond = 30)
         {
             this.printLog(String.Format("[*] '{0}' XPath에 해당하는 엘리먼트 발견을 기다리는중...", xpath));
