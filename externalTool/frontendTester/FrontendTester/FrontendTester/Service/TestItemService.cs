@@ -5,6 +5,7 @@ using System.IO;
 using System.Xml;
 using System.Text.RegularExpressions;
 using OpenQA.Selenium.DevTools.V120.Debugger;
+using FrontendTester.Service;
 
 namespace ServerTester.TestItem
 {
@@ -97,6 +98,40 @@ namespace ServerTester.TestItem
 
 
             return testItemDto;
+        }
+
+
+        public void executeTestItemDto(TestItemDto testItemDto, SeleniumService seleniumService)
+        {
+            foreach(TestItemFunctionDto functionDto in testItemDto.functions){
+                this.executeFunction(functionDto, seleniumService);
+            }
+        }
+
+        public void executeFunction(TestItemFunctionDto functionDto, SeleniumService seleniumService)
+        {
+            switch (functionDto.method)
+            {
+                case "goToUrl":
+                    seleniumService.goToUrl(functionDto.values[0]);
+                    break;
+
+                case "checkUrl":
+                    seleniumService.checkUrl(functionDto.values[0]);
+                    break;
+
+                case "clickElement":
+                    seleniumService.clickButton(functionDto.values[0]);
+                    break;
+
+                case "sendKeysToElement":
+                    seleniumService.sendKeysToElement(functionDto.values[0], functionDto.values[1]);
+                    break;
+
+                case "checkElementExist":
+                    seleniumService.checkElement(functionDto.values[0]);
+                    break;
+            }
         }
     }
 

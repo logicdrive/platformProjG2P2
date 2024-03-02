@@ -68,7 +68,24 @@ namespace FrontendTester
 
         private void ExecuteTestSetButton_Click(object sender, EventArgs e)
         {
+            if(TestSetListBox.SelectedIndex < 0)
+            {
+                MessageBox.Show("테스트 항목을 선택해주세요.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return;
+            }
 
+            try
+            {
+
+                TestItemDto testItemDto = testItemService.testItemDtoDic[TestSetListBox.SelectedItem.ToString()];
+                testItemService.executeTestItemDto(testItemDto, seleniumService);
+
+                MessageBox.Show("테스트 항목이 성공적으로 실행되었습니다.", "알림", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            } catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Error", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
         }
 
 
