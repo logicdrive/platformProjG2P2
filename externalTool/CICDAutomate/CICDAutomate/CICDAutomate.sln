@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.8.34525.116
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CICDAutomate", "CICDAutomate\CICDAutomate.csproj", "{F46883C2-A3EF-4BAA-8991-555781F7CFA8}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{F46883C2-A3EF-4BAA-8991-555781F7CFA8}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{F46883C2-A3EF-4BAA-8991-555781F7CFA8}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{F46883C2-A3EF-4BAA-8991-555781F7CFA8}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{F46883C2-A3EF-4BAA-8991-555781F7CFA8}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {4D96B66B-3DAA-446C-872C-D613EEB07FB8}
+	EndGlobalSection
+EndGlobal
