@@ -9,6 +9,10 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <Compile Remove="Sample\TestItemService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
     <None Remove="Resource\add.png" />
     <None Remove="Resource\cancel.png" />
     <None Remove="Resource\delete.png" />
@@ -28,6 +32,15 @@
 
   <ItemGroup>
     <Folder Include="Font\" />
+    <Folder Include="Util\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="Sample\TestItemService.cs" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="RestSharp" Version="110.2.0" />
   </ItemGroup>
 
   <ItemGroup>
