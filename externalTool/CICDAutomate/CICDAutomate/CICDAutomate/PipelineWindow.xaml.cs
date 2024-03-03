@@ -10,24 +10,18 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CICDAutomate.Component
+namespace CICDAutomate
 {
-    public partial class PipelineCardControl : UserControl
+    /// <summary>
+    /// PipelineWindow.xaml에 대한 상호 작용 논리
+    /// </summary>
+    public partial class PipelineWindow : Window
     {
-        public PipelineCardControl(string title)
+        public PipelineWindow()
         {
             InitializeComponent();
-
-            TitleLabel.Content = title;
-        }
-
-        private void EditButton_MouseDown(object sender, MouseButtonEventArgs e)
-        {
-            PipelineWindow pipelineWindow = new PipelineWindow();
-            pipelineWindow.ShowDialog();
         }
     }
 }

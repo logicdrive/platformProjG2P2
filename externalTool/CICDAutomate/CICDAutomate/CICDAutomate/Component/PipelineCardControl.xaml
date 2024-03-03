@@ -23,7 +23,7 @@
 
         <Label Grid.Row="0" Margin="5,8,0,5" x:Name="TitleLabel" Content="User Service" FontFamily="{StaticResource BMDOHYEON}" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left"/>
         <Button Grid.Row="0" VerticalAlignment="Center" Width="50" Height="50" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
-            <Image Source="/Resource/play.png" Width="30" Height="30"/>
+            <Image x:Name="PlayButton" Source="/Resource/play.png" Width="30" Height="30"/>
         </Button>
 
         <Label Grid.Row="1" Margin="5,0,0,0" x:Name="ActionCountLabel" Content="액션 수: 3" FontFamily="{StaticResource BMDOHYEON}" FontWeight="Bold" HorizontalAlignment="Left" FontSize="16"/>
@@ -32,13 +32,13 @@
 
         <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right">
             <Button VerticalAlignment="Center" Width="35" Height="35" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,0,0,5">
-                <Image Source="/Resource/log.png" Width="25" Height="25"/>
+                <Image x:Name="LogButton" Source="/Resource/log.png" Width="25" Height="25"/>
             </Button>
             <Button VerticalAlignment="Center" Width="35" Height="35" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,0,0,5">
-                <Image Source="/Resource/edit.png" Width="25" Height="25"/>
+                <Image x:Name="EditButton" Source="/Resource/edit.png" Width="25" Height="25" MouseDown="EditButton_MouseDown"/>
             </Button>
             <Button VerticalAlignment="Center" Width="35" Height="35" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,0,5,5">
-                <Image Source="/Resource/delete.png" Width="25" Height="25"/>
+                <Image x:Name="DeleteButton" Source="/Resource/delete.png" Width="25" Height="25"/>
             </Button>
         </StackPanel>
     </Grid>

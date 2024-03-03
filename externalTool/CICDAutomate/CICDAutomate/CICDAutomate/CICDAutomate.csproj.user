@@ -10,12 +10,18 @@
     <Compile Update="Component\PipelineCardControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="PipelineWindow.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Page Update="Component\PipelineCardControl.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="PipelineWindow.xaml">
       <SubType>Designer</SubType>
     </Page>
   </ItemGroup>
