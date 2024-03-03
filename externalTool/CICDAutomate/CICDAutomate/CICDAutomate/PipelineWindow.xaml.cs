@@ -36,6 +36,10 @@ namespace CICDAutomate
             JobSelectStackPanel.Children.Add(new PipelineJobSelectCardControl(
                 "/Resource/kubernetes.png", "Kubernetes", "배포", "Kubernetes 배포 작업 생성"
             ));
+
+            JobListStackPanel.Children.Add(new PipelineJobListCardControl(
+                "/Resource/github.png", "Github", "Github 관련 파이프라인 트리거 생성"
+            ));
         }
     }
 }

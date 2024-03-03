@@ -71,6 +71,9 @@
   </ItemGroup>
 
   <ItemGroup>
+    <Compile Update="Component\PipelineJobListCardControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Component\PipelineJobSelectCardControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
