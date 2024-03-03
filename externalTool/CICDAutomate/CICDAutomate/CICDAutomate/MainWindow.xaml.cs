@@ -21,10 +21,9 @@ namespace CICDAutomate
         {
             InitializeComponent();
 
-            // Add new ProjectCardControl to the StackPanel
-            ProjectStackPanel.Children.Add(new ProjectCardControl("CICD Automate 1"));
-            ProjectStackPanel.Children.Add(new ProjectCardControl("CICD Automate 2"));
-            ProjectStackPanel.Children.Add(new ProjectCardControl("CICD Automate 3"));
+            ProjectStackPanel.Children.Add(new PipelineCardControl("CICD Automate 1"));
+            ProjectStackPanel.Children.Add(new PipelineCardControl("CICD Automate 2"));
+            ProjectStackPanel.Children.Add(new PipelineCardControl("CICD Automate 3"));
         }
     }
 }

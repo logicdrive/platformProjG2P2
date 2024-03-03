@@ -15,12 +15,9 @@ using System.Windows.Shapes;
 
 namespace CICDAutomate.Component
 {
-    /// <summary>
-    /// ProjectCardControl.xaml에 대한 상호 작용 논리
-    /// </summary>
-    public partial class ProjectCardControl : UserControl
+    public partial class PipelineCardControl : UserControl
     {
-        public ProjectCardControl(string title)
+        public PipelineCardControl(string title)
         {
             InitializeComponent();
 

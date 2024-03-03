@@ -1,13 +1,15 @@
-﻿<UserControl x:Class="CICDAutomate.Component.ProjectCardControl"
+﻿<UserControl x:Class="CICDAutomate.Component.PipelineCardControl"
              xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
              xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
-             xmlns:local="clr-namespace:CICDAutomate.Component"
              mc:Ignorable="d" 
              Width="290" Height="290" Margin="5">
+    <UserControl.Resources>
+        <FontFamily x:Key="BMDOHYEON">/Font/BMDOHYEON_ttf.ttf</FontFamily>
+    </UserControl.Resources>
     <Grid>
         <Rectangle Fill="#FFF6F6F6" RadiusX="10" RadiusY="10" />
-        <Label x:Name="TitleLabel" Content="TEXT" />
+        <Label x:Name="TitleLabel" Content="User Service" FontFamily="{StaticResource BMDOHYEON}" FontWeight="Bold" />
     </Grid>
 </UserControl>
