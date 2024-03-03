@@ -12,10 +12,13 @@
     <None Remove="Resource\add.png" />
     <None Remove="Resource\cancel.png" />
     <None Remove="Resource\delete.png" />
+    <None Remove="Resource\docker.png" />
     <None Remove="Resource\edit.png" />
     <None Remove="Resource\github.png" />
     <None Remove="Resource\icon.png" />
+    <None Remove="Resource\kubernetes.png" />
     <None Remove="Resource\log.png" />
+    <None Remove="Resource\maven.png" />
     <None Remove="Resource\pause.png" />
     <None Remove="Resource\play.png" />
     <None Remove="Resource\save.png" />
@@ -35,6 +38,9 @@
     <Resource Include="Resource\delete.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resource\docker.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resource\edit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -44,7 +50,13 @@
     <Resource Include="Resource\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resource\kubernetes.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resource\log.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resource\maven.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resource\pause.png">

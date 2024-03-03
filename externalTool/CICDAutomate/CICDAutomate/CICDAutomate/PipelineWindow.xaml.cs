@@ -24,10 +24,18 @@ namespace CICDAutomate
         {
             InitializeComponent();
 
-            PipelineJobSelectCardControl pipelineJobSelectControll = new PipelineJobSelectCardControl(
+            JobSelectStackPanel.Children.Add(new PipelineJobSelectCardControl(
                 "/Resource/github.png", "Github", "트리거", "Github 관련 파이프라인 트리거 생성"
-            );
-            JobSelectStackPanel.Children.Add(pipelineJobSelectControll);
+            ));
+            JobSelectStackPanel.Children.Add(new PipelineJobSelectCardControl(
+                "/Resource/maven.png", "Maven", "빌드", "Maven 빌드 작업 생성"
+            ));
+            JobSelectStackPanel.Children.Add(new PipelineJobSelectCardControl(
+                "/Resource/docker.png", "Docker", "빌드", "Docker 빌드 작업 생성"
+            ));
+            JobSelectStackPanel.Children.Add(new PipelineJobSelectCardControl(
+                "/Resource/kubernetes.png", "Kubernetes", "배포", "Kubernetes 배포 작업 생성"
+            ));
         }
     }
 }
