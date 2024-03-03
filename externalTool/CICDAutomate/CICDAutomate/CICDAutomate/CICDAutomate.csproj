@@ -13,6 +13,7 @@
     <None Remove="Resource\cancel.png" />
     <None Remove="Resource\delete.png" />
     <None Remove="Resource\edit.png" />
+    <None Remove="Resource\github.png" />
     <None Remove="Resource\icon.png" />
     <None Remove="Resource\log.png" />
     <None Remove="Resource\pause.png" />
@@ -37,6 +38,9 @@
     <Resource Include="Resource\edit.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resource\github.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resource\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
@@ -52,6 +56,12 @@
     <Resource Include="Resource\save.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Update="Component\PipelineJobSelectCardControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
   </ItemGroup>
 
 </Project>

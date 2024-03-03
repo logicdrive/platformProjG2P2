@@ -15,6 +15,9 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
+    <Page Update="Component\PipelineJobSelectCardControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Component\PipelineCardControl.xaml">
       <SubType>Designer</SubType>
     </Page>

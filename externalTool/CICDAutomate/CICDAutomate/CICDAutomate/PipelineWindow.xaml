@@ -40,13 +40,14 @@
                 <ColumnDefinition Width="300"/>
             </Grid.ColumnDefinitions>
 
-            <StackPanel Grid.Column="0">
+            <StackPanel x:Name="JobListStackPanel" Grid.Column="0">
                 <Label Grid.Row="0" Content="파이프라인 작업 목록" FontFamily="{StaticResource BMDOHYEON}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,5,0,0" Foreground="Black"/>
+                <Border BorderBrush="LightGray" BorderThickness="0,0,0,1"></Border>
             </StackPanel>
-
-            <StackPanel Grid.Column="1">
-                <Border BorderBrush="#FFAEAEAE" BorderThickness="1,0,0,0"></Border>
+            <Border BorderBrush="LightGray" BorderThickness="0,0,1,0"></Border>
+            <StackPanel x:Name="JobSelectStackPanel" Grid.Column="1" >
                 <Label Grid.Row="0" Content="작업 추가" FontFamily="{StaticResource BMDOHYEON}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,5,0,0" Foreground="Black"/>
+                <Border BorderBrush="LightGray" BorderThickness="0,0,0,1"></Border>
             </StackPanel>
         </Grid>
     </Grid>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using CICDAutomate.Component;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -22,6 +23,11 @@ namespace CICDAutomate
         public PipelineWindow()
         {
             InitializeComponent();
+
+            PipelineJobSelectCardControl pipelineJobSelectControll = new PipelineJobSelectCardControl(
+                "/Resource/github.png", "Github", "트리거", "Github 관련 파이프라인 트리거 생성"
+            );
+            JobSelectStackPanel.Children.Add(pipelineJobSelectControll);
         }
     }
 }
