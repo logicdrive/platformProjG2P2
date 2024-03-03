@@ -5,7 +5,7 @@
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         xmlns:local="clr-namespace:CICDAutomate"
         mc:Ignorable="d"
-        Title="CICDAutomate" Height="750" Width="1200" WindowStartupLocation="CenterScreen" Icon="/icon.ico">
+        Title="CICDAutomate" Height="750" Width="1200" WindowStartupLocation="CenterScreen" Icon="/Resource/icon.png" ResizeMode="NoResize">
     <Grid>
 
     </Grid>

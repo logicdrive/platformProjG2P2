@@ -9,16 +9,17 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <None Remove="icon.ico" />
+    <None Remove="Resource\icon.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Component\" />
-    <Folder Include="Resource\" />
   </ItemGroup>
 
   <ItemGroup>
-    <Resource Include="icon.ico" />
+    <Resource Include="Resource\icon.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
   </ItemGroup>
 
 </Project>
