@@ -9,14 +9,19 @@
   </PropertyGroup>
 
   <ItemGroup>
+    <None Remove="Resource\add.png" />
     <None Remove="Resource\icon.png" />
   </ItemGroup>
 
   <ItemGroup>
     <Folder Include="Component\" />
+    <Folder Include="Font\" />
   </ItemGroup>
 
   <ItemGroup>
+    <Resource Include="Resource\add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resource\icon.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
