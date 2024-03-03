@@ -44,6 +44,9 @@ namespace CICDAutomate
             JobListStackPanel.Children.Add(new PipelineJobListCardControl(
                 "/Resource/maven.png", "Maven", "Maven 빌드 작업 생성", new MavenJobEditDialog()
             ));
+            JobListStackPanel.Children.Add(new PipelineJobListCardControl(
+                "/Resource/docker.png", "Docker", "Docker 빌드 작업 생성", new DockerJobEditDialog()
+            ));
         }
     }
 }
