@@ -16,9 +16,6 @@ using System.Windows.Shapes;
 
 namespace CICDAutomate
 {
-    /// <summary>
-    /// PipelineWindow.xaml에 대한 상호 작용 논리
-    /// </summary>
     public partial class PipelineWindow : Window
     {
         public PipelineWindow()
@@ -46,6 +43,9 @@ namespace CICDAutomate
             ));
             JobListStackPanel.Children.Add(new PipelineJobListCardControl(
                 "/Resource/docker.png", "Docker", "Docker 빌드 작업 생성", new DockerJobEditDialog()
+            ));
+            JobListStackPanel.Children.Add(new PipelineJobListCardControl(
+                "/Resource/kubernetes.png", "Kubernetes", "Kubernetes 배포 작업 생성", new KubernatesJobEditDialog()
             ));
         }
     }

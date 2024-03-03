@@ -85,6 +85,9 @@
     <Compile Update="Component\PipelineJobSelectCardControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Dialog\KubernatesJobEditDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="Dialog\DockerJobEditDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
