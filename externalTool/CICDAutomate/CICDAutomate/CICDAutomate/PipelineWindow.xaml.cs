@@ -41,6 +41,9 @@ namespace CICDAutomate
             JobListStackPanel.Children.Add(new PipelineJobListCardControl(
                 "/Resource/github.png", "Github", "Github 관련 파이프라인 트리거 생성", new GithubJobEditDialog()
             ));
+            JobListStackPanel.Children.Add(new PipelineJobListCardControl(
+                "/Resource/maven.png", "Maven", "Maven 빌드 작업 생성", new MavenJobEditDialog()
+            ));
         }
     }
 }

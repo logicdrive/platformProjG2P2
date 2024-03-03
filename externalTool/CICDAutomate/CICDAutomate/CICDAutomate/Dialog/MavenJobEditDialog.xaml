@@ -1,0 +1,49 @@
+﻿<Window x:Class="CICDAutomate.Dialog.MavenJobEditDialog"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d"
+        Title="MavenJobEditDialog" Height="145" Width="800" WindowStartupLocation="CenterScreen" Icon="/Resource/icon.png" ResizeMode="NoResize">
+    <Window.Resources>
+        <FontFamily x:Key="BMDOHYEON">/Font/BMDOHYEON_ttf.ttf</FontFamily>
+    </Window.Resources>
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Grid.Row="0" Fill="#FF0487FF"/>
+        <Label Grid.Row="0" Content="Maven Job 설정" FontFamily="{StaticResource BMDOHYEON}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="White"/>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button x:Name="CancelButton" Width="91" Height="40" FontFamily="{StaticResource BMDOHYEON}" HorizontalAlignment="Right" Margin="5,5,0,5" Background="{x:Null}" FontWeight="Bold" FontSize="20" BorderBrush="{x:Null}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resource/cancel.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="취소" Foreground="White" Margin="0,3,0,0"/>
+                </StackPanel>
+            </Button>
+
+            <Button x:Name="SaveButton" Width="91" Height="40" FontFamily="{StaticResource BMDOHYEON}" HorizontalAlignment="Right" Margin="5,5,0,5" Background="{x:Null}" FontWeight="Bold" FontSize="20" BorderBrush="{x:Null}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resource/save.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="저장" Foreground="White" Margin="0,3,0,0"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="150"/>
+                <ColumnDefinition Width="500"/>
+                <ColumnDefinition Width="*"/>
+            </Grid.ColumnDefinitions>
+
+            <Label Grid.Column="0" Content="pom.xml 경로: " FontFamily="{StaticResource BMDOHYEON}" FontSize="18" FontWeight="Bold" HorizontalAlignment="Right" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="Black"/>
+            <TextBox x:Name="OAuthPasswordBox" Grid.Column="1" Width="490" FontFamily="{StaticResource BMDOHYEON}" FontSize="18" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="Black" BorderBrush="Black" BorderThickness="1" Padding="5"/>
+        </Grid>
+    </Grid>
+</Window>
