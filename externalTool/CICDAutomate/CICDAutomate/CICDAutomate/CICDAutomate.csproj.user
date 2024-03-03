@@ -10,6 +10,9 @@
     <Compile Update="Component\PipelineCardControl.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
+    <Compile Update="Dialog\GithubJobEditDialog.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
     <Compile Update="PipelineWindow.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
@@ -22,6 +25,9 @@
       <SubType>Designer</SubType>
     </Page>
     <Page Update="Component\PipelineCardControl.xaml">
+      <SubType>Designer</SubType>
+    </Page>
+    <Page Update="Dialog\GithubJobEditDialog.xaml">
       <SubType>Designer</SubType>
     </Page>
     <Page Update="MainWindow.xaml">

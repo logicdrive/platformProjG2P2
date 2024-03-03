@@ -1,4 +1,5 @@
 ﻿using CICDAutomate.Component;
+using CICDAutomate.Dialog;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -38,7 +39,7 @@ namespace CICDAutomate
             ));
 
             JobListStackPanel.Children.Add(new PipelineJobListCardControl(
-                "/Resource/github.png", "Github", "Github 관련 파이프라인 트리거 생성"
+                "/Resource/github.png", "Github", "Github 관련 파이프라인 트리거 생성", new GithubJobEditDialog()
             ));
         }
     }

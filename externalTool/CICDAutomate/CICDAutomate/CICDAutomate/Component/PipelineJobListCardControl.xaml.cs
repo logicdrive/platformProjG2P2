@@ -17,13 +17,22 @@ namespace CICDAutomate.Component
 {
     public partial class PipelineJobListCardControl : UserControl
     {
-        public PipelineJobListCardControl(string selectImagePath, string title, string description)
+        public Window editWindow;
+
+        public PipelineJobListCardControl(string selectImagePath, string title, string description, Window editWindow)
         {
             InitializeComponent();
+
+            this.editWindow = editWindow;
 
             SelectImage.Source = new BitmapImage(new Uri(selectImagePath, UriKind.Relative));
             SelectTitleLabel.Content = title;
             DescriptionLabel.Content = description;
+        }
+
+        private void EditButton_Click(object sender, RoutedEventArgs e)
+        {
+            this.editWindow.ShowDialog();
         }
     }
 }

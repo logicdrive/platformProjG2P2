@@ -10,25 +10,15 @@ using System.Windows.Documents;
 using System.Windows.Input;
 using System.Windows.Media;
 using System.Windows.Media.Imaging;
-using System.Windows.Navigation;
 using System.Windows.Shapes;
 
-namespace CICDAutomate.Component
+namespace CICDAutomate.Dialog
 {
-    public partial class PipelineCardControl : UserControl
+    public partial class GithubJobEditDialog : Window
     {
-        public PipelineCardControl(string title)
+        public GithubJobEditDialog()
         {
             InitializeComponent();
-
-            TitleLabel.Content = title;
-        }
-
-
-        private void EditButton_MouseDown(object sender, RoutedEventArgs e)
-        {
-            PipelineWindow pipelineWindow = new PipelineWindow();
-            pipelineWindow.ShowDialog();
         }
     }
 }

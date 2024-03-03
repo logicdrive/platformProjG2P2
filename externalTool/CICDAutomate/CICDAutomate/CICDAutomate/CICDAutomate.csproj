@@ -21,7 +21,9 @@
     <None Remove="Resource\maven.png" />
     <None Remove="Resource\pause.png" />
     <None Remove="Resource\play.png" />
+    <None Remove="Resource\register.png" />
     <None Remove="Resource\save.png" />
+    <None Remove="Resource\search.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -65,7 +67,13 @@
     <Resource Include="Resource\play.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
+    <Resource Include="Resource\register.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
     <Resource Include="Resource\save.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resource\search.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>
