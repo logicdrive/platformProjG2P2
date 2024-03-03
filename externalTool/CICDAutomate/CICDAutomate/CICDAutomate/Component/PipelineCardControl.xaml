@@ -9,7 +9,37 @@
         <FontFamily x:Key="BMDOHYEON">/Font/BMDOHYEON_ttf.ttf</FontFamily>
     </UserControl.Resources>
     <Grid>
-        <Rectangle Fill="#FFF6F6F6" RadiusX="10" RadiusY="10" />
-        <Label x:Name="TitleLabel" Content="User Service" FontFamily="{StaticResource BMDOHYEON}" FontWeight="Bold" />
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="25"/>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="45"/>
+        </Grid.RowDefinitions>
+
+        <Rectangle Fill="White" Stroke="#FFA3D5FF" RadiusX="5" RadiusY="5" StrokeThickness="5" Grid.RowSpan="7"/>
+
+
+        <Label Grid.Row="0" Margin="5,8,0,5" x:Name="TitleLabel" Content="User Service" FontFamily="{StaticResource BMDOHYEON}" FontWeight="Bold" FontSize="24" HorizontalAlignment="Left"/>
+        <Button Grid.Row="0" VerticalAlignment="Center" Width="50" Height="50" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}">
+            <Image Source="/Resource/play.png" Width="30" Height="30"/>
+        </Button>
+
+        <Label Grid.Row="1" Margin="5,0,0,0" x:Name="ActionCountLabel" Content="액션 수: 3" FontFamily="{StaticResource BMDOHYEON}" FontWeight="Bold" HorizontalAlignment="Left" FontSize="16"/>
+        <Label Grid.Row="2" Margin="5,0,0,0" x:Name="CreatedDateLabel" Content="생성날짜: 2024-03-05 13:45" FontFamily="{StaticResource BMDOHYEON}" FontWeight="Bold" HorizontalAlignment="Left" FontSize="16"/>
+        <Label Grid.Row="3" Margin="5,0,0,0" x:Name="UpdatedDateLabel" Content="수정날짜: 2024-03-05 13:45" FontFamily="{StaticResource BMDOHYEON}" FontWeight="Bold" HorizontalAlignment="Left" FontSize="16"/>
+
+        <StackPanel Grid.Row="5" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button VerticalAlignment="Center" Width="35" Height="35" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,0,0,5">
+                <Image Source="/Resource/log.png" Width="25" Height="25"/>
+            </Button>
+            <Button VerticalAlignment="Center" Width="35" Height="35" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,0,0,5">
+                <Image Source="/Resource/edit.png" Width="25" Height="25"/>
+            </Button>
+            <Button VerticalAlignment="Center" Width="35" Height="35" HorizontalAlignment="Right" Background="{x:Null}" BorderBrush="{x:Null}" Foreground="{x:Null}" Margin="0,0,5,5">
+                <Image Source="/Resource/delete.png" Width="25" Height="25"/>
+            </Button>
+        </StackPanel>
     </Grid>
 </UserControl>

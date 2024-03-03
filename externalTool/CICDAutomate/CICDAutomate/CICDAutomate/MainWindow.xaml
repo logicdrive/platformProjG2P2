@@ -29,6 +29,6 @@
         </Button>
         <Border Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="LightGray"/>
 
-        <StackPanel x:Name="ProjectStackPanel" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
+        <StackPanel x:Name="ProjectStackPanel" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center" Orientation="Horizontal"/>
     </Grid>
 </Window>
