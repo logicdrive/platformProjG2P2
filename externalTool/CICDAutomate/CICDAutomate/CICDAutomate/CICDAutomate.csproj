@@ -10,12 +10,14 @@
 
   <ItemGroup>
     <None Remove="Resource\add.png" />
+    <None Remove="Resource\cancel.png" />
     <None Remove="Resource\delete.png" />
     <None Remove="Resource\edit.png" />
     <None Remove="Resource\icon.png" />
     <None Remove="Resource\log.png" />
     <None Remove="Resource\pause.png" />
     <None Remove="Resource\play.png" />
+    <None Remove="Resource\save.png" />
   </ItemGroup>
 
   <ItemGroup>
@@ -24,6 +26,9 @@
 
   <ItemGroup>
     <Resource Include="Resource\add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resource\cancel.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resource\delete.png">
@@ -42,6 +47,9 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resource\play.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resource\save.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
   </ItemGroup>

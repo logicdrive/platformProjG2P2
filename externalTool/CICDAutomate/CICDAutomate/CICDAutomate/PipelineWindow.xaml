@@ -16,5 +16,38 @@
 
         <Rectangle Grid.Row="0" Fill="#FF0487FF"/>
         <Label Grid.Row="0" Content="파이프라인 편집" FontFamily="{StaticResource BMDOHYEON}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="White"/>
+
+        <StackPanel Grid.Row="0" Orientation="Horizontal" HorizontalAlignment="Right">
+            <Button Width="91" Height="40" FontFamily="{StaticResource BMDOHYEON}" HorizontalAlignment="Right" Margin="5,5,0,5" Background="{x:Null}" FontWeight="Bold" FontSize="20" BorderBrush="{x:Null}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resource/cancel.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="취소" Foreground="White" Margin="0,3,0,0"/>
+                </StackPanel>
+            </Button>
+
+            <Button Width="91" Height="40" FontFamily="{StaticResource BMDOHYEON}" HorizontalAlignment="Right" Margin="5,5,0,5" Background="{x:Null}" FontWeight="Bold" FontSize="20" BorderBrush="{x:Null}">
+                <StackPanel Orientation="Horizontal">
+                    <Image Source="/Resource/save.png" Width="20" Height="20" Margin="0,0,5,0"/>
+                    <TextBlock Text="저장" Foreground="White" Margin="0,3,0,0"/>
+                </StackPanel>
+            </Button>
+        </StackPanel>
+
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*"/>
+                <ColumnDefinition Width="300"/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Grid.Column="0">
+                <Label Grid.Row="0" Content="파이프라인 작업 목록" FontFamily="{StaticResource BMDOHYEON}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,5,0,0" Foreground="Black"/>
+            </StackPanel>
+
+            <StackPanel Grid.Column="1">
+                <Border BorderBrush="#FFAEAEAE" BorderThickness="1,0,0,0"></Border>
+                <Label Grid.Row="0" Content="작업 추가" FontFamily="{StaticResource BMDOHYEON}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,5,0,0" Foreground="Black"/>
+            </StackPanel>
+        </Grid>
     </Grid>
 </Window>
