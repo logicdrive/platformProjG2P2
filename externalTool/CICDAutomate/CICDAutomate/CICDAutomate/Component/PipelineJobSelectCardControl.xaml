@@ -4,14 +4,14 @@
              xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
              xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
              mc:Ignorable="d" 
-             Width="290" Height="110" Margin="5">
+             Width="290" Height="115" Margin="5">
     <UserControl.Resources>
         <FontFamily x:Key="BMDOHYEON">/Font/BMDOHYEON_ttf.ttf</FontFamily>
     </UserControl.Resources>
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="25"/>
+            <RowDefinition Height="30"/>
             <RowDefinition Height="35"/>
         </Grid.RowDefinitions>
 
