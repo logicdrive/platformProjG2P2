@@ -13,9 +13,11 @@
         <Grid.RowDefinitions>
             <RowDefinition Height="50"/>
             <RowDefinition Height="50"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="300"/>
+            <RowDefinition Height="300"/>
         </Grid.RowDefinitions>
 
+        
         <Rectangle Grid.Row="0" Fill="#FF0487FF"/>
         <Label Grid.Row="0" Content="프로젝트" FontFamily="{StaticResource BMDOHYEON}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="White"/>
 
@@ -26,5 +28,7 @@
             </StackPanel>
         </Button>
         <Border Grid.Row="1" BorderThickness="0,0,0,1" BorderBrush="LightGray"/>
+
+        <StackPanel x:Name="ProjectStackPanel" Grid.Row="2" HorizontalAlignment="Left" VerticalAlignment="Center"/>
     </Grid>
 </Window>

@@ -1,4 +1,5 @@
-﻿using System.Text;
+﻿using CICDAutomate.Component;
+using System.Text;
 using System.Windows;
 using System.Windows.Controls;
 using System.Windows.Data;
@@ -19,6 +20,11 @@ namespace CICDAutomate
         public MainWindow()
         {
             InitializeComponent();
+
+            // Add new ProjectCardControl to the StackPanel
+            ProjectStackPanel.Children.Add(new ProjectCardControl("CICD Automate 1"));
+            ProjectStackPanel.Children.Add(new ProjectCardControl("CICD Automate 2"));
+            ProjectStackPanel.Children.Add(new ProjectCardControl("CICD Automate 3"));
         }
     }
 }
