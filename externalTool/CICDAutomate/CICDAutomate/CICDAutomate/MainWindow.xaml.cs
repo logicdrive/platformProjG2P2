@@ -1,5 +1,6 @@
 ﻿using CICDAutomate.Component;
 using CICDAutomate.Dialog;
+using CICDAutomate.Service.PipelineService;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -15,6 +16,8 @@ namespace CICDAutomate
 {
     public partial class MainWindow : Window
     {
+        private PipelineService pipelineService = new PipelineService();
+
         public MainWindow()
         {
             InitializeComponent();
@@ -25,7 +28,7 @@ namespace CICDAutomate
 
         private void PipelineAddButton_Click(object sender, RoutedEventArgs e)
         {
-            (new PipelineAddDialog()).ShowDialog();
+            (new PipelineAddDialog(pipelineService)).ShowDialog();
         }
     }
 }

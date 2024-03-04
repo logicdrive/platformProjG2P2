@@ -26,7 +26,7 @@
                 </StackPanel>
             </Button>
 
-            <Button x:Name="AddButton" Width="91" Height="40" FontFamily="{StaticResource BMDOHYEON}" HorizontalAlignment="Right" Margin="5,5,0,5" Background="{x:Null}" FontWeight="Bold" FontSize="20" BorderBrush="{x:Null}">
+            <Button x:Name="AddButton" Width="91" Height="40" FontFamily="{StaticResource BMDOHYEON}" HorizontalAlignment="Right" Margin="5,5,0,5" Background="{x:Null}" FontWeight="Bold" FontSize="20" BorderBrush="{x:Null}" Click="AddButton_Click">
                 <StackPanel Orientation="Horizontal">
                     <Image Source="/Resource/add_white.png" Width="20" Height="20" Margin="0,0,5,0"/>
                     <TextBlock Text="추가" Foreground="White" Margin="0,3,0,0"/>
