@@ -14,6 +14,7 @@
 
   <ItemGroup>
     <None Remove="Resource\add.png" />
+    <None Remove="Resource\add_white.png" />
     <None Remove="Resource\cancel.png" />
     <None Remove="Resource\delete.png" />
     <None Remove="Resource\docker.png" />
@@ -45,6 +46,9 @@
 
   <ItemGroup>
     <Resource Include="Resource\add.png">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Resource>
+    <Resource Include="Resource\add_white.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Resource>
     <Resource Include="Resource\cancel.png">
@@ -96,6 +100,9 @@
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Component\PipelineJobSelectCardControl.xaml.cs">
+      <SubType>Code</SubType>
+    </Compile>
+    <Compile Update="Dialog\PipelineAddDialog.xaml.cs">
       <SubType>Code</SubType>
     </Compile>
     <Compile Update="Dialog\KubernatesJobEditDialog.xaml.cs">

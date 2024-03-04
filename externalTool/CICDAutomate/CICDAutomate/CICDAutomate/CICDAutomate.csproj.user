@@ -27,6 +27,9 @@
     <Page Update="Component\PipelineCardControl.xaml">
       <SubType>Designer</SubType>
     </Page>
+    <Page Update="Dialog\PipelineAddDialog.xaml">
+      <SubType>Designer</SubType>
+    </Page>
     <Page Update="Dialog\KubernatesJobEditDialog.xaml">
       <SubType>Designer</SubType>
     </Page>

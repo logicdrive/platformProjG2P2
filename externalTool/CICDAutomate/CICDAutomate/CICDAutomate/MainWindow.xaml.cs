@@ -1,4 +1,5 @@
 ﻿using CICDAutomate.Component;
+using CICDAutomate.Dialog;
 using System.Text;
 using System.Windows;
 using System.Windows.Controls;
@@ -19,6 +20,12 @@ namespace CICDAutomate
             InitializeComponent();
 
             ProjectStackPanel.Children.Add(new PipelineCardControl("USER SERVICE"));
+        }
+
+
+        private void PipelineAddButton_Click(object sender, RoutedEventArgs e)
+        {
+            (new PipelineAddDialog()).ShowDialog();
         }
     }
 }

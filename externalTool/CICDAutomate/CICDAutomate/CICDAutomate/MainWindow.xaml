@@ -21,7 +21,7 @@
         <Rectangle Grid.Row="0" Fill="#FF0487FF"/>
         <Label Grid.Row="0" Content="파이프라인" FontFamily="{StaticResource BMDOHYEON}" FontSize="24" FontWeight="Bold" HorizontalAlignment="Left" VerticalAlignment="Center" Margin="5,0,0,0" Foreground="White"/>
 
-        <Button Grid.Row="1" Width="91" Height="40" FontFamily="{StaticResource BMDOHYEON}" HorizontalAlignment="Left" Margin="5,5,0,5" BorderBrush="White" Background="{x:Null}" FontWeight="Bold" FontSize="20">
+        <Button x:Name="PipelineAddButton" Grid.Row="1" Width="91" Height="40" FontFamily="{StaticResource BMDOHYEON}" HorizontalAlignment="Left" Margin="5,5,0,5" BorderBrush="White" Background="{x:Null}" FontWeight="Bold" FontSize="20" Click="PipelineAddButton_Click">
             <StackPanel Orientation="Horizontal">
                 <Image Source="/Resource/add.png" Width="20" Height="20" Margin="0,0,5,0"/>
                 <TextBlock Text="추가" Foreground="Black" Margin="0,3,0,0"/>
